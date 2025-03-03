@@ -112,4 +112,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\bin\${{ matrix.configuration }}\net9.0-windows10.0.26100.0
+        path: ${{ env.Wap_Project_Directory }}\bin\${{ matrix.configuration }}\net9.0-windows10.0.26100.0\*
