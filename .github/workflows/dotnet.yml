@@ -32,6 +32,6 @@ jobs:
         # Artifact name
         name: Debug Package
         # A file, directory or wildcard pattern that describes what to upload
-        path: ${{ github.workspace }}\CareerCanvas\bin\Debug\net9.0-windows10.0.26100.0
+        path: ${{ github.workspace }}\bin\Debug\net9.0-windows10.0.26100.0
         # The desired behavior if no files are found using the provided path.
           
