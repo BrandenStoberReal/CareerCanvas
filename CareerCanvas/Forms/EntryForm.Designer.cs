@@ -30,6 +30,7 @@
         {
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
+            welcomeLabel = new ReaLTaiizor.Controls.MaterialLabel();
             resumePage = new TabPage();
             recentsFlowPanel = new FlowLayoutPanel();
             recentsLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -38,7 +39,7 @@
             newResumeButton = new ReaLTaiizor.Controls.MaterialButton();
             loadResumeButton = new ReaLTaiizor.Controls.MaterialButton();
             creditsPage = new TabPage();
-            welcomeLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            cvPage = new TabPage();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             resumePage.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             materialTabControl1.Controls.Add(welcomePage);
             materialTabControl1.Controls.Add(resumePage);
+            materialTabControl1.Controls.Add(cvPage);
             materialTabControl1.Controls.Add(creditsPage);
             materialTabControl1.Depth = 0;
             materialTabControl1.Location = new Point(6, 67);
@@ -69,6 +71,20 @@
             welcomePage.TabIndex = 2;
             welcomePage.Text = "Welcome";
             welcomePage.UseVisualStyleBackColor = true;
+            // 
+            // welcomeLabel
+            // 
+            welcomeLabel.Depth = 0;
+            welcomeLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
+            welcomeLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
+            welcomeLabel.HighEmphasis = true;
+            welcomeLabel.Location = new Point(84, 0);
+            welcomeLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            welcomeLabel.Name = "welcomeLabel";
+            welcomeLabel.Size = new Size(1106, 57);
+            welcomeLabel.TabIndex = 0;
+            welcomeLabel.Text = "Welcome to CareerCanvas!";
+            welcomeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // resumePage
             // 
@@ -177,19 +193,14 @@
             creditsPage.Text = "Credits";
             creditsPage.UseVisualStyleBackColor = true;
             // 
-            // welcomeLabel
+            // cvPage
             // 
-            welcomeLabel.Depth = 0;
-            welcomeLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
-            welcomeLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
-            welcomeLabel.HighEmphasis = true;
-            welcomeLabel.Location = new Point(84, 0);
-            welcomeLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            welcomeLabel.Name = "welcomeLabel";
-            welcomeLabel.Size = new Size(1106, 57);
-            welcomeLabel.TabIndex = 0;
-            welcomeLabel.Text = "Welcome to CareerCanvas!";
-            welcomeLabel.TextAlign = ContentAlignment.MiddleCenter;
+            cvPage.Location = new Point(4, 24);
+            cvPage.Name = "cvPage";
+            cvPage.Size = new Size(1274, 570);
+            cvPage.TabIndex = 3;
+            cvPage.Text = "Cover Letter";
+            cvPage.UseVisualStyleBackColor = true;
             // 
             // EntryForm
             // 
@@ -223,5 +234,6 @@
         private FlowLayoutPanel recentResumesFlow;
         private TabPage welcomePage;
         private ReaLTaiizor.Controls.MaterialLabel welcomeLabel;
+        private TabPage cvPage;
     }
 }
