@@ -31,6 +31,7 @@
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
             welcomeLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            identityPage = new TabPage();
             resumePage = new TabPage();
             recentsFlowPanel = new FlowLayoutPanel();
             recentsLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -38,8 +39,8 @@
             mainMenuButtonFlowPanel = new FlowLayoutPanel();
             newResumeButton = new ReaLTaiizor.Controls.MaterialButton();
             loadResumeButton = new ReaLTaiizor.Controls.MaterialButton();
-            creditsPage = new TabPage();
             cvPage = new TabPage();
+            creditsPage = new TabPage();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             resumePage.SuspendLayout();
@@ -50,6 +51,7 @@
             // materialTabControl1
             // 
             materialTabControl1.Controls.Add(welcomePage);
+            materialTabControl1.Controls.Add(identityPage);
             materialTabControl1.Controls.Add(resumePage);
             materialTabControl1.Controls.Add(cvPage);
             materialTabControl1.Controls.Add(creditsPage);
@@ -83,8 +85,17 @@
             welcomeLabel.Name = "welcomeLabel";
             welcomeLabel.Size = new Size(1106, 57);
             welcomeLabel.TabIndex = 0;
-            welcomeLabel.Text = "Welcome to CareerCanvas!";
+            welcomeLabel.Text = "Welcome to Career Canvas!";
             welcomeLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // identityPage
+            // 
+            identityPage.Location = new Point(4, 24);
+            identityPage.Name = "identityPage";
+            identityPage.Size = new Size(1274, 570);
+            identityPage.TabIndex = 4;
+            identityPage.Text = "Identities";
+            identityPage.UseVisualStyleBackColor = true;
             // 
             // resumePage
             // 
@@ -184,15 +195,6 @@
             loadResumeButton.UseAccentColor = false;
             loadResumeButton.UseVisualStyleBackColor = true;
             // 
-            // creditsPage
-            // 
-            creditsPage.Location = new Point(4, 24);
-            creditsPage.Name = "creditsPage";
-            creditsPage.Size = new Size(1274, 570);
-            creditsPage.TabIndex = 1;
-            creditsPage.Text = "Credits";
-            creditsPage.UseVisualStyleBackColor = true;
-            // 
             // cvPage
             // 
             cvPage.Location = new Point(4, 24);
@@ -201,6 +203,15 @@
             cvPage.TabIndex = 3;
             cvPage.Text = "Cover Letter";
             cvPage.UseVisualStyleBackColor = true;
+            // 
+            // creditsPage
+            // 
+            creditsPage.Location = new Point(4, 24);
+            creditsPage.Name = "creditsPage";
+            creditsPage.Size = new Size(1274, 570);
+            creditsPage.TabIndex = 1;
+            creditsPage.Text = "Credits";
+            creditsPage.UseVisualStyleBackColor = true;
             // 
             // EntryForm
             // 
@@ -235,5 +246,6 @@
         private TabPage welcomePage;
         private ReaLTaiizor.Controls.MaterialLabel welcomeLabel;
         private TabPage cvPage;
+        private TabPage identityPage;
     }
 }

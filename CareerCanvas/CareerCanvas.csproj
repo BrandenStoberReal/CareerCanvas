@@ -6,10 +6,15 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspose.HTML" Version="25.2.0" />
     <PackageReference Include="Aspose.PDF" Version="25.2.0" />
+    <PackageReference Include="Markdig" Version="0.40.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="protobuf-net" Version="3.2.46" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.1" />
     <PackageReference Include="Serilog" Version="4.2.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
@@ -29,5 +34,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(ProjectDir)Export\version.json&quot; &quot;$(TargetDir)&quot;&#xA;" />
+  </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties export_4version_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

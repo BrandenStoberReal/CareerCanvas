@@ -14,6 +14,8 @@
         {
             CreateFolderIfNotExists("./data");
             CreateFolderIfNotExists("./data/resumes");
+            CreateFolderIfNotExists("./data/coverletters");
+            CreateFolderIfNotExists("./data/identities");
         }
     }
 }
