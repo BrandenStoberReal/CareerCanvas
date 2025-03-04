@@ -627,6 +627,7 @@
             MainMenuStrip = menuStrip1;
             Name = "IdentityWorkspace";
             Padding = new Padding(3, 24, 3, 3);
+            Sizable = false;
             Text = "Identity Workspace";
             Load += IdentityWorkspace_Load;
             Shown += IdentityWorkspace_Shown;

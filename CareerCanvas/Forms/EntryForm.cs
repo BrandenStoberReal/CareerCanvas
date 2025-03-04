@@ -65,5 +65,27 @@ namespace CareerCanvas
             IdentityWorkspace identityWorkspace = new IdentityWorkspace();
             identityWorkspace.Show();
         }
+
+        private void identityPage_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
+
+        private void openIdentityButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = Path.GetFullPath("./data/identities");
+            openFileDialog1.Filter = "Identity files (*.identity)|*.identity";
+
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            string selectedFileName = openFileDialog1.FileName;
+            IdentityWorkspace identityWorkspace = new IdentityWorkspace(Path.GetFileNameWithoutExtension(selectedFileName).ToLower());
+            identityWorkspace.Show();
+        }
     }
 }

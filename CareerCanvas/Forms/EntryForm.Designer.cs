@@ -37,6 +37,7 @@
             identitiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
             identityButtonsFlow = new FlowLayoutPanel();
             newIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
+            openIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
             resumePage = new TabPage();
             recentResumesFlow = new FlowLayoutPanel();
             recentResumesLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -107,6 +108,7 @@
             identityPage.TabIndex = 4;
             identityPage.Text = "Identities";
             identityPage.UseVisualStyleBackColor = true;
+            identityPage.Click += identityPage_Click;
             // 
             // flowLayoutPanel1
             // 
@@ -146,11 +148,13 @@
             identitiesListBox.SelectedIndex = -1;
             identitiesListBox.SelectedItem = null;
             identitiesListBox.Size = new Size(334, 535);
-            identitiesListBox.TabIndex = 2;
+            identitiesListBox.TabIndex = 200;
+            identitiesListBox.TabStop = false;
             // 
             // identityButtonsFlow
             // 
             identityButtonsFlow.Controls.Add(newIdentityButton);
+            identityButtonsFlow.Controls.Add(openIdentityButton);
             identityButtonsFlow.Dock = DockStyle.Left;
             identityButtonsFlow.Location = new Point(0, 0);
             identityButtonsFlow.Name = "identityButtonsFlow";
@@ -173,12 +177,37 @@
             newIdentityButton.Name = "newIdentityButton";
             newIdentityButton.NoAccentTextColor = Color.Empty;
             newIdentityButton.Size = new Size(136, 36);
-            newIdentityButton.TabIndex = 1;
+            newIdentityButton.TabIndex = 100;
+            newIdentityButton.TabStop = false;
             newIdentityButton.Text = "New Identity";
             newIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             newIdentityButton.UseAccentColor = false;
             newIdentityButton.UseVisualStyleBackColor = true;
             newIdentityButton.Click += newIdentityButton_Click;
+            // 
+            // openIdentityButton
+            // 
+            openIdentityButton.Anchor = AnchorStyles.None;
+            openIdentityButton.AutoSize = false;
+            openIdentityButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openIdentityButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openIdentityButton.Depth = 0;
+            openIdentityButton.HighEmphasis = true;
+            openIdentityButton.Icon = null;
+            openIdentityButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openIdentityButton.Location = new Point(6, 54);
+            openIdentityButton.Margin = new Padding(6);
+            openIdentityButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openIdentityButton.Name = "openIdentityButton";
+            openIdentityButton.NoAccentTextColor = Color.Empty;
+            openIdentityButton.Size = new Size(136, 36);
+            openIdentityButton.TabIndex = 101;
+            openIdentityButton.TabStop = false;
+            openIdentityButton.Text = "Open Identity";
+            openIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openIdentityButton.UseAccentColor = false;
+            openIdentityButton.UseVisualStyleBackColor = true;
+            openIdentityButton.Click += openIdentityButton_Click;
             // 
             // resumePage
             // 
@@ -347,5 +376,6 @@
         private ReaLTaiizor.Controls.MaterialListBox recentResumesListBox;
         private FlowLayoutPanel flowLayoutPanel1;
         private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
+        private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
     }
 }

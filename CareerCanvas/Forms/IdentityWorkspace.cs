@@ -32,6 +32,8 @@ namespace CareerCanvas.Forms
             {
                 Serializer.Serialize(file, identity);
             }
+
+            this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
         }
 
         private void LoadIdentity(string filename)
@@ -53,6 +55,8 @@ namespace CareerCanvas.Forms
             emailTextBox.Text = identity.Email;
             linkedInTextBox.Text = identity.LinkedIn;
             portfolioTextBox.Text = identity.Portfolio;
+
+            this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
         }
 
         public IdentityWorkspace(string? filename = null)
@@ -74,6 +78,10 @@ namespace CareerCanvas.Forms
             if (filename != null)
             {
                 LoadIdentity(filename);
+            }
+            else
+            {
+                this.Text = "New Identity - Identity Workspace";
             }
         }
 
