@@ -31,7 +31,6 @@
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
             readMeView = new Microsoft.Web.WebView2.WinForms.WebView2();
-            welcomeLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityPage = new TabPage();
             resumePage = new TabPage();
             recentsFlowPanel = new FlowLayoutPanel();
@@ -69,7 +68,6 @@
             // welcomePage
             // 
             welcomePage.Controls.Add(readMeView);
-            welcomePage.Controls.Add(welcomeLabel);
             welcomePage.Location = new Point(4, 24);
             welcomePage.Name = "welcomePage";
             welcomePage.Size = new Size(1274, 570);
@@ -83,27 +81,13 @@
             readMeView.BackColor = SystemColors.Desktop;
             readMeView.CreationProperties = null;
             readMeView.DefaultBackgroundColor = Color.White;
-            readMeView.Dock = DockStyle.Bottom;
+            readMeView.Dock = DockStyle.Fill;
             readMeView.ForeColor = SystemColors.Control;
-            readMeView.Location = new Point(0, 60);
+            readMeView.Location = new Point(0, 0);
             readMeView.Name = "readMeView";
-            readMeView.Size = new Size(1274, 510);
+            readMeView.Size = new Size(1274, 570);
             readMeView.TabIndex = 1;
             readMeView.ZoomFactor = 1D;
-            // 
-            // welcomeLabel
-            // 
-            welcomeLabel.Depth = 0;
-            welcomeLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
-            welcomeLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
-            welcomeLabel.HighEmphasis = true;
-            welcomeLabel.Location = new Point(84, 0);
-            welcomeLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            welcomeLabel.Name = "welcomeLabel";
-            welcomeLabel.Size = new Size(1106, 57);
-            welcomeLabel.TabIndex = 0;
-            welcomeLabel.Text = "Welcome to Career Canvas!";
-            welcomeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // identityPage
             // 
@@ -262,7 +246,6 @@
         private ReaLTaiizor.Controls.MaterialLabel recentsLabel;
         private FlowLayoutPanel recentResumesFlow;
         private TabPage welcomePage;
-        private ReaLTaiizor.Controls.MaterialLabel welcomeLabel;
         private TabPage cvPage;
         private TabPage identityPage;
         private Microsoft.Web.WebView2.WinForms.WebView2 readMeView;
