@@ -178,6 +178,7 @@
             newIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             newIdentityButton.UseAccentColor = false;
             newIdentityButton.UseVisualStyleBackColor = true;
+            newIdentityButton.Click += newIdentityButton_Click;
             // 
             // resumePage
             // 

@@ -1,4 +1,5 @@
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Forms;
 using ReaLTaiizor.Colors;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
@@ -57,6 +58,12 @@ namespace CareerCanvas
                     readMeView.NavigateToString(html);
                 }
             }
+        }
+
+        private void newIdentityButton_Click(object sender, EventArgs e)
+        {
+            IdentityWorkspace identityWorkspace = new IdentityWorkspace();
+            identityWorkspace.Show();
         }
     }
 }
