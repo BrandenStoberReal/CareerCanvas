@@ -30,6 +30,7 @@
         {
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
+            readMeView = new Microsoft.Web.WebView2.WinForms.WebView2();
             welcomeLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityPage = new TabPage();
             resumePage = new TabPage();
@@ -43,6 +44,7 @@
             creditsPage = new TabPage();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)readMeView).BeginInit();
             resumePage.SuspendLayout();
             recentsFlowPanel.SuspendLayout();
             mainMenuButtonFlowPanel.SuspendLayout();
@@ -66,6 +68,7 @@
             // 
             // welcomePage
             // 
+            welcomePage.Controls.Add(readMeView);
             welcomePage.Controls.Add(welcomeLabel);
             welcomePage.Location = new Point(4, 24);
             welcomePage.Name = "welcomePage";
@@ -73,6 +76,20 @@
             welcomePage.TabIndex = 2;
             welcomePage.Text = "Welcome";
             welcomePage.UseVisualStyleBackColor = true;
+            // 
+            // readMeView
+            // 
+            readMeView.AllowExternalDrop = true;
+            readMeView.BackColor = SystemColors.Desktop;
+            readMeView.CreationProperties = null;
+            readMeView.DefaultBackgroundColor = Color.White;
+            readMeView.Dock = DockStyle.Bottom;
+            readMeView.ForeColor = SystemColors.Control;
+            readMeView.Location = new Point(0, 60);
+            readMeView.Name = "readMeView";
+            readMeView.Size = new Size(1274, 510);
+            readMeView.TabIndex = 1;
+            readMeView.ZoomFactor = 1D;
             // 
             // welcomeLabel
             // 
@@ -226,6 +243,7 @@
             Load += Form1_Load;
             materialTabControl1.ResumeLayout(false);
             welcomePage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)readMeView).EndInit();
             resumePage.ResumeLayout(false);
             recentsFlowPanel.ResumeLayout(false);
             mainMenuButtonFlowPanel.ResumeLayout(false);
@@ -247,5 +265,6 @@
         private ReaLTaiizor.Controls.MaterialLabel welcomeLabel;
         private TabPage cvPage;
         private TabPage identityPage;
+        private Microsoft.Web.WebView2.WinForms.WebView2 readMeView;
     }
 }
