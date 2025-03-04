@@ -53,7 +53,7 @@ namespace CareerCanvas
                 {
                     httpClient.DefaultRequestHeaders.Add("User-Agent", "CareerCanvas");
                     httpClient.DefaultRequestVersion = new Version(3, 0);
-                    string reply = await httpClient.GetStringAsync("https://raw.githubusercontent.com/BrandenStoberReal/CareerCanvas/refs/heads/main/README.md");
+                    string reply = await httpClient.GetStringAsync("https://raw.githubusercontent.com/BrandenStoberReal/CareerCanvas/refs/heads/main/CHANGELOG.md");
                     var html = Markdig.Markdown.ToHtml(reply);
                     readMeView.NavigateToString(html);
                 }
