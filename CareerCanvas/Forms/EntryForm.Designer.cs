@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
             readMeView = new Microsoft.Web.WebView2.WinForms.WebView2();
@@ -38,6 +39,13 @@
             identityButtonsFlow = new FlowLayoutPanel();
             newIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
             openIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
+            historyPage = new TabPage();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            newHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
+            openHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
             resumePage = new TabPage();
             recentResumesFlow = new FlowLayoutPanel();
             recentResumesLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -47,12 +55,16 @@
             loadResumeButton = new ReaLTaiizor.Controls.MaterialButton();
             cvPage = new TabPage();
             creditsPage = new TabPage();
+            identityRefreshTimer = new System.Windows.Forms.Timer(components);
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)readMeView).BeginInit();
             identityPage.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             identityButtonsFlow.SuspendLayout();
+            historyPage.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             resumePage.SuspendLayout();
             recentResumesFlow.SuspendLayout();
             mainMenuButtonFlowPanel.SuspendLayout();
@@ -62,6 +74,7 @@
             // 
             materialTabControl1.Controls.Add(welcomePage);
             materialTabControl1.Controls.Add(identityPage);
+            materialTabControl1.Controls.Add(historyPage);
             materialTabControl1.Controls.Add(resumePage);
             materialTabControl1.Controls.Add(cvPage);
             materialTabControl1.Controls.Add(creditsPage);
@@ -150,6 +163,7 @@
             identitiesListBox.Size = new Size(334, 535);
             identitiesListBox.TabIndex = 200;
             identitiesListBox.TabStop = false;
+            identitiesListBox.SelectedIndexChanged += identitiesListBox_SelectedIndexChanged;
             // 
             // identityButtonsFlow
             // 
@@ -158,7 +172,7 @@
             identityButtonsFlow.Dock = DockStyle.Left;
             identityButtonsFlow.Location = new Point(0, 0);
             identityButtonsFlow.Name = "identityButtonsFlow";
-            identityButtonsFlow.Size = new Size(158, 570);
+            identityButtonsFlow.Size = new Size(209, 570);
             identityButtonsFlow.TabIndex = 0;
             // 
             // newIdentityButton
@@ -203,11 +217,119 @@
             openIdentityButton.Size = new Size(136, 36);
             openIdentityButton.TabIndex = 101;
             openIdentityButton.TabStop = false;
-            openIdentityButton.Text = "Open Identity";
+            openIdentityButton.Text = "Import Identity";
             openIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             openIdentityButton.UseAccentColor = false;
             openIdentityButton.UseVisualStyleBackColor = true;
             openIdentityButton.Click += openIdentityButton_Click;
+            // 
+            // historyPage
+            // 
+            historyPage.Controls.Add(flowLayoutPanel2);
+            historyPage.Controls.Add(flowLayoutPanel3);
+            historyPage.Location = new Point(4, 24);
+            historyPage.Name = "historyPage";
+            historyPage.Size = new Size(1274, 570);
+            historyPage.TabIndex = 5;
+            historyPage.Text = "History";
+            historyPage.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(historiesLabel);
+            flowLayoutPanel2.Controls.Add(historiesListBox);
+            flowLayoutPanel2.Dock = DockStyle.Right;
+            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel2.Location = new Point(924, 0);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(350, 570);
+            flowLayoutPanel2.TabIndex = 5;
+            // 
+            // historiesLabel
+            // 
+            historiesLabel.Anchor = AnchorStyles.Top;
+            historiesLabel.Depth = 0;
+            historiesLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            historiesLabel.Location = new Point(3, 0);
+            historiesLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            historiesLabel.Name = "historiesLabel";
+            historiesLabel.Size = new Size(340, 23);
+            historiesLabel.TabIndex = 4;
+            historiesLabel.Text = "Histories";
+            historiesLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // historiesListBox
+            // 
+            historiesListBox.BackColor = Color.White;
+            historiesListBox.BorderColor = Color.LightGray;
+            historiesListBox.Depth = 0;
+            historiesListBox.Dock = DockStyle.Bottom;
+            historiesListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            historiesListBox.Location = new Point(6, 29);
+            historiesListBox.Margin = new Padding(6);
+            historiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            historiesListBox.Name = "historiesListBox";
+            historiesListBox.SelectedIndex = -1;
+            historiesListBox.SelectedItem = null;
+            historiesListBox.Size = new Size(334, 535);
+            historiesListBox.TabIndex = 200;
+            historiesListBox.TabStop = false;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.Controls.Add(newHistoryButton);
+            flowLayoutPanel3.Controls.Add(openHistoryButton);
+            flowLayoutPanel3.Dock = DockStyle.Left;
+            flowLayoutPanel3.Location = new Point(0, 0);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(158, 570);
+            flowLayoutPanel3.TabIndex = 4;
+            // 
+            // newHistoryButton
+            // 
+            newHistoryButton.Anchor = AnchorStyles.None;
+            newHistoryButton.AutoSize = false;
+            newHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            newHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            newHistoryButton.Depth = 0;
+            newHistoryButton.HighEmphasis = true;
+            newHistoryButton.Icon = null;
+            newHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            newHistoryButton.Location = new Point(6, 6);
+            newHistoryButton.Margin = new Padding(6);
+            newHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            newHistoryButton.Name = "newHistoryButton";
+            newHistoryButton.NoAccentTextColor = Color.Empty;
+            newHistoryButton.Size = new Size(136, 36);
+            newHistoryButton.TabIndex = 100;
+            newHistoryButton.TabStop = false;
+            newHistoryButton.Text = "New History";
+            newHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            newHistoryButton.UseAccentColor = false;
+            newHistoryButton.UseVisualStyleBackColor = true;
+            // 
+            // openHistoryButton
+            // 
+            openHistoryButton.Anchor = AnchorStyles.None;
+            openHistoryButton.AutoSize = false;
+            openHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openHistoryButton.Depth = 0;
+            openHistoryButton.HighEmphasis = true;
+            openHistoryButton.Icon = null;
+            openHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openHistoryButton.Location = new Point(6, 54);
+            openHistoryButton.Margin = new Padding(6);
+            openHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openHistoryButton.Name = "openHistoryButton";
+            openHistoryButton.NoAccentTextColor = Color.Empty;
+            openHistoryButton.Size = new Size(136, 36);
+            openHistoryButton.TabIndex = 101;
+            openHistoryButton.TabStop = false;
+            openHistoryButton.Text = "Open History";
+            openHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openHistoryButton.UseAccentColor = false;
+            openHistoryButton.UseVisualStyleBackColor = true;
             // 
             // resumePage
             // 
@@ -333,6 +455,12 @@
             creditsPage.Text = "Credits";
             creditsPage.UseVisualStyleBackColor = true;
             // 
+            // identityRefreshTimer
+            // 
+            identityRefreshTimer.Enabled = true;
+            identityRefreshTimer.Interval = 1000;
+            identityRefreshTimer.Tick += identityRefreshTimer_Tick;
+            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -350,6 +478,9 @@
             identityPage.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             identityButtonsFlow.ResumeLayout(false);
+            historyPage.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel3.ResumeLayout(false);
             resumePage.ResumeLayout(false);
             recentResumesFlow.ResumeLayout(false);
             mainMenuButtonFlowPanel.ResumeLayout(false);
@@ -377,5 +508,13 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
         private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
+        private TabPage historyPage;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private ReaLTaiizor.Controls.MaterialLabel historiesLabel;
+        private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private ReaLTaiizor.Controls.MaterialButton newHistoryButton;
+        private ReaLTaiizor.Controls.MaterialButton openHistoryButton;
+        private System.Windows.Forms.Timer identityRefreshTimer;
     }
 }
