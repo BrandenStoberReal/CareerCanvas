@@ -184,6 +184,7 @@ namespace CareerCanvas
 
         private void identityEncryptionCheckbox_CheckedChanged(object sender, EventArgs e)
         {
+            // Dynamic save button enable/disable
             if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked || Globals.IdentityConfig.EncryptionKey != identityEncryptionPasswordBox.Text)
             {
                 identityConfigExpansionPanel.ValidationButtonEnable = true;
@@ -207,6 +208,7 @@ namespace CareerCanvas
 
         private void identityEncryptionPasswordBox_TextChanged(object sender, EventArgs e)
         {
+            // Dynamic save button enable/disable
             if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked || Globals.IdentityConfig.EncryptionKey != identityEncryptionPasswordBox.Text)
             {
                 identityConfigExpansionPanel.ValidationButtonEnable = true;
