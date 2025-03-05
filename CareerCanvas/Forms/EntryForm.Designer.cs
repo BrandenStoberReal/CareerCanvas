@@ -603,7 +603,7 @@
             Sizable = false;
             Text = "Career Canvas";
             FormClosing += EntryForm_FormClosing;
-            Load += Form1_Load;
+            Load += EntryForm_Load;
             materialTabControl1.ResumeLayout(false);
             welcomePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)readMeView).EndInit();

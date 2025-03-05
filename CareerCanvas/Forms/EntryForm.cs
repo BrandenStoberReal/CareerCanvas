@@ -36,7 +36,7 @@ namespace CareerCanvas
             materialSkinManager.ColorScheme = new MaterialColorScheme(MaterialPrimary.Indigo500, MaterialPrimary.Indigo700, MaterialPrimary.Indigo100, MaterialAccent.Pink200, MaterialTextShade.LIGHT);
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private async void EntryForm_Load(object sender, EventArgs e)
         {
             this.ActiveControl = null;
 
@@ -79,9 +79,16 @@ namespace CareerCanvas
                 {
                     httpClient.DefaultRequestHeaders.Add("User-Agent", "CareerCanvas");
                     httpClient.DefaultRequestVersion = new Version(3, 0);
-                    string reply = await httpClient.GetStringAsync("https://raw.githubusercontent.com/BrandenStoberReal/CareerCanvas/refs/heads/main/CHANGELOG.md");
-                    var html = Markdig.Markdown.ToHtml(reply);
-                    readMeView.NavigateToString(html);
+                    try
+                    {
+                        string reply = await httpClient.GetStringAsync("https://raw.githubusercontent.com/BrandenStoberReal/CareerCanvas/refs/heads/main/CHANGELOG.md");
+                        var html = Markdig.Markdown.ToHtml(reply);
+                        readMeView.NavigateToString(html);
+                    }
+                    catch (Exception)
+                    {
+                        readMeView.NavigateToString("<h1>Failed to load changelog</h1>");
+                    }
                 }
             }
 
@@ -108,7 +115,7 @@ namespace CareerCanvas
 
             openFileDialog1.InitialDirectory = Path.GetFullPath("./data/identities");
             openFileDialog1.Filter = "Identity files (*.identity)|*.identity";
-            openFileDialog1.Title = "Open External Identity File";
+            openFileDialog1.Title = "Import External Identity File";
 
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
             {
