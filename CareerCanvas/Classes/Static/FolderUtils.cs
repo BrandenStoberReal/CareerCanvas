@@ -13,6 +13,8 @@
         public static void CreateAppFolders()
         {
             CreateFolderIfNotExists("./data");
+            CreateFolderIfNotExists("./data/misc");
+            CreateFolderIfNotExists("./data/configs");
             CreateFolderIfNotExists("./data/resumes");
             CreateFolderIfNotExists("./data/coverletters");
             CreateFolderIfNotExists("./data/identities");

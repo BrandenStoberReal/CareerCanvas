@@ -1,5 +1,7 @@
+using CareerCanvas.Classes.Configs;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Forms;
+using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Colors;
 using ReaLTaiizor.Forms;
@@ -15,6 +17,7 @@ namespace CareerCanvas
     {
         private readonly MaterialSkinManager materialSkinManager;
         private readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+        private readonly string identityConfigPath = $"./data/configs/identity.careerconfig";
 
         public EntryForm()
         {
@@ -41,6 +44,26 @@ namespace CareerCanvas
 
             FolderUtils.CreateAppFolders();
 
+            // Create encryption key if not exists
+            if (!File.Exists("./data/misc/encryption.key"))
+            {
+                File.WriteAllText("./data/misc/encryption.key", EncryptionUtils.Generate256BitKey());
+            }
+
+            // Load identity settings
+            if (File.Exists(identityConfigPath))
+            {
+                // Decrypt identity settings
+                EncryptionUtils.DecryptFile(identityConfigPath, identityConfigPath, File.ReadAllText("./data/misc/encryption.key"));
+
+                // Read file
+                using (FileStream file = File.OpenRead(identityConfigPath))
+                {
+                    Globals.IdentityConfig = Serializer.Deserialize<IdentityConfig>(file);
+                }
+            }
+
+            // Load changelog
             using (SocketsHttpHandler handler = new SocketsHttpHandler())
             {
                 handler.AllowAutoRedirect = true;
@@ -61,6 +84,10 @@ namespace CareerCanvas
                     readMeView.NavigateToString(html);
                 }
             }
+
+            // Load identity settings
+            identityEncryptionCheckbox.Checked = Globals.IdentityConfig.UseEncryption;
+            identityEncryptionPasswordBox.Text = Globals.IdentityConfig.EncryptionKey;
         }
 
         private void newIdentityButton_Click(object sender, EventArgs e)
@@ -128,6 +155,78 @@ namespace CareerCanvas
                 identitiesListBox.SelectedItem = null;
                 identityWorkspace.Show();
             }
+        }
+
+        private void identityConfigExpansionPanel_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
+
+        private void identityShowPasswordCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (identityShowPasswordCheckbox.Checked)
+            {
+                identityEncryptionPasswordBox.UseSystemPasswordChar = false;
+                identityEncryptionPasswordBox.PasswordChar = '\0';
+            }
+            else
+            {
+                identityEncryptionPasswordBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void identityEncryptionCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked || Globals.IdentityConfig.EncryptionKey != identityEncryptionPasswordBox.Text)
+            {
+                identityConfigExpansionPanel.ValidationButtonEnable = true;
+            }
+            else
+            {
+                identityConfigExpansionPanel.ValidationButtonEnable = false;
+            }
+
+            if (identityEncryptionCheckbox.Checked)
+            {
+                identityEncryptionPasswordBox.Enabled = true;
+                identityShowPasswordCheckbox.Enabled = true;
+            }
+            else
+            {
+                identityEncryptionPasswordBox.Enabled = false;
+                identityShowPasswordCheckbox.Enabled = false;
+            }
+        }
+
+        private void identityEncryptionPasswordBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked || Globals.IdentityConfig.EncryptionKey != identityEncryptionPasswordBox.Text)
+            {
+                identityConfigExpansionPanel.ValidationButtonEnable = true;
+            }
+            else
+            {
+                identityConfigExpansionPanel.ValidationButtonEnable = false;
+            }
+        }
+
+        private void identityConfigExpansionPanel_SaveClick(object sender, EventArgs e)
+        {
+            Globals.IdentityConfig.UseEncryption = identityEncryptionCheckbox.Checked;
+            Globals.IdentityConfig.EncryptionKey = identityEncryptionPasswordBox.Text;
+            identityConfigExpansionPanel.ValidationButtonEnable = false;
+        }
+
+        private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Save identity settings
+            using (FileStream file = File.Create(identityConfigPath))
+            {
+                Serializer.Serialize(file, Globals.IdentityConfig);
+            }
+
+            // Encrypt identity settings
+            EncryptionUtils.EncryptFile(identityConfigPath, identityConfigPath, File.ReadAllText("./data/misc/encryption.key"));
         }
     }
 }

@@ -33,12 +33,18 @@
             welcomePage = new TabPage();
             readMeView = new Microsoft.Web.WebView2.WinForms.WebView2();
             identityPage = new TabPage();
+            identityConfigExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
+            identityEncryptionPasswordLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            identityShowPasswordCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
+            identityEncryptionPasswordBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            identityEncryptionCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
+            materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
+            openIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
+            newIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
+            materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
             flowLayoutPanel1 = new FlowLayoutPanel();
             identitiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identitiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
-            identityButtonsFlow = new FlowLayoutPanel();
-            newIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
-            openIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
             historyPage = new TabPage();
             flowLayoutPanel2 = new FlowLayoutPanel();
             historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -60,8 +66,10 @@
             welcomePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)readMeView).BeginInit();
             identityPage.SuspendLayout();
+            identityConfigExpansionPanel.SuspendLayout();
+            materialCard2.SuspendLayout();
+            materialCard1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            identityButtonsFlow.SuspendLayout();
             historyPage.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -113,8 +121,9 @@
             // 
             // identityPage
             // 
-            identityPage.Controls.Add(flowLayoutPanel1);
-            identityPage.Controls.Add(identityButtonsFlow);
+            identityPage.Controls.Add(identityConfigExpansionPanel);
+            identityPage.Controls.Add(materialCard2);
+            identityPage.Controls.Add(materialCard1);
             identityPage.Location = new Point(4, 24);
             identityPage.Name = "identityPage";
             identityPage.Size = new Size(1274, 570);
@@ -123,15 +132,195 @@
             identityPage.UseVisualStyleBackColor = true;
             identityPage.Click += identityPage_Click;
             // 
+            // identityConfigExpansionPanel
+            // 
+            identityConfigExpansionPanel.BackColor = Color.FromArgb(255, 255, 255);
+            identityConfigExpansionPanel.Controls.Add(identityEncryptionPasswordLabel);
+            identityConfigExpansionPanel.Controls.Add(identityShowPasswordCheckbox);
+            identityConfigExpansionPanel.Controls.Add(identityEncryptionPasswordBox);
+            identityConfigExpansionPanel.Controls.Add(identityEncryptionCheckbox);
+            identityConfigExpansionPanel.Depth = 0;
+            identityConfigExpansionPanel.Description = "Settings related to how identities are stored and handled";
+            identityConfigExpansionPanel.ExpandHeight = 542;
+            identityConfigExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            identityConfigExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            identityConfigExpansionPanel.Location = new Point(198, 14);
+            identityConfigExpansionPanel.Margin = new Padding(16);
+            identityConfigExpansionPanel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            identityConfigExpansionPanel.Name = "identityConfigExpansionPanel";
+            identityConfigExpansionPanel.Padding = new Padding(24, 64, 24, 16);
+            identityConfigExpansionPanel.Size = new Size(663, 542);
+            identityConfigExpansionPanel.TabIndex = 6;
+            identityConfigExpansionPanel.Title = "Options";
+            identityConfigExpansionPanel.SaveClick += identityConfigExpansionPanel_SaveClick;
+            identityConfigExpansionPanel.Click += identityConfigExpansionPanel_Click;
+            // 
+            // identityEncryptionPasswordLabel
+            // 
+            identityEncryptionPasswordLabel.Depth = 0;
+            identityEncryptionPasswordLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            identityEncryptionPasswordLabel.Location = new Point(24, 138);
+            identityEncryptionPasswordLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            identityEncryptionPasswordLabel.Name = "identityEncryptionPasswordLabel";
+            identityEncryptionPasswordLabel.Size = new Size(159, 48);
+            identityEncryptionPasswordLabel.TabIndex = 5;
+            identityEncryptionPasswordLabel.Text = "Encryption Password:";
+            identityEncryptionPasswordLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // identityShowPasswordCheckbox
+            // 
+            identityShowPasswordCheckbox.AutoSize = true;
+            identityShowPasswordCheckbox.Depth = 0;
+            identityShowPasswordCheckbox.Enabled = false;
+            identityShowPasswordCheckbox.Location = new Point(24, 101);
+            identityShowPasswordCheckbox.Margin = new Padding(0);
+            identityShowPasswordCheckbox.MouseLocation = new Point(-1, -1);
+            identityShowPasswordCheckbox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            identityShowPasswordCheckbox.Name = "identityShowPasswordCheckbox";
+            identityShowPasswordCheckbox.ReadOnly = false;
+            identityShowPasswordCheckbox.Ripple = true;
+            identityShowPasswordCheckbox.Size = new Size(226, 37);
+            identityShowPasswordCheckbox.TabIndex = 4;
+            identityShowPasswordCheckbox.Text = "Show encryption password";
+            identityShowPasswordCheckbox.UseAccentColor = false;
+            identityShowPasswordCheckbox.UseVisualStyleBackColor = true;
+            identityShowPasswordCheckbox.CheckedChanged += identityShowPasswordCheckbox_CheckedChanged;
+            // 
+            // identityEncryptionPasswordBox
+            // 
+            identityEncryptionPasswordBox.AnimateReadOnly = false;
+            identityEncryptionPasswordBox.AutoCompleteMode = AutoCompleteMode.None;
+            identityEncryptionPasswordBox.AutoCompleteSource = AutoCompleteSource.None;
+            identityEncryptionPasswordBox.BackgroundImageLayout = ImageLayout.None;
+            identityEncryptionPasswordBox.CharacterCasing = CharacterCasing.Normal;
+            identityEncryptionPasswordBox.Depth = 0;
+            identityEncryptionPasswordBox.Enabled = false;
+            identityEncryptionPasswordBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            identityEncryptionPasswordBox.HideSelection = true;
+            identityEncryptionPasswordBox.LeadingIcon = null;
+            identityEncryptionPasswordBox.Location = new Point(189, 138);
+            identityEncryptionPasswordBox.MaxLength = 32767;
+            identityEncryptionPasswordBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            identityEncryptionPasswordBox.Name = "identityEncryptionPasswordBox";
+            identityEncryptionPasswordBox.PasswordChar = '●';
+            identityEncryptionPasswordBox.PrefixSuffixText = null;
+            identityEncryptionPasswordBox.ReadOnly = false;
+            identityEncryptionPasswordBox.RightToLeft = RightToLeft.No;
+            identityEncryptionPasswordBox.SelectedText = "";
+            identityEncryptionPasswordBox.SelectionLength = 0;
+            identityEncryptionPasswordBox.SelectionStart = 0;
+            identityEncryptionPasswordBox.ShortcutsEnabled = true;
+            identityEncryptionPasswordBox.Size = new Size(250, 48);
+            identityEncryptionPasswordBox.TabIndex = 3;
+            identityEncryptionPasswordBox.TabStop = false;
+            identityEncryptionPasswordBox.TextAlign = HorizontalAlignment.Left;
+            identityEncryptionPasswordBox.TrailingIcon = null;
+            identityEncryptionPasswordBox.UseSystemPasswordChar = true;
+            identityEncryptionPasswordBox.TextChanged += identityEncryptionPasswordBox_TextChanged;
+            // 
+            // identityEncryptionCheckbox
+            // 
+            identityEncryptionCheckbox.AutoSize = true;
+            identityEncryptionCheckbox.Depth = 0;
+            identityEncryptionCheckbox.Location = new Point(24, 64);
+            identityEncryptionCheckbox.Margin = new Padding(0);
+            identityEncryptionCheckbox.MouseLocation = new Point(-1, -1);
+            identityEncryptionCheckbox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            identityEncryptionCheckbox.Name = "identityEncryptionCheckbox";
+            identityEncryptionCheckbox.ReadOnly = false;
+            identityEncryptionCheckbox.Ripple = true;
+            identityEncryptionCheckbox.Size = new Size(139, 37);
+            identityEncryptionCheckbox.TabIndex = 2;
+            identityEncryptionCheckbox.Text = "Use encryption";
+            identityEncryptionCheckbox.UseAccentColor = false;
+            identityEncryptionCheckbox.UseVisualStyleBackColor = true;
+            identityEncryptionCheckbox.CheckedChanged += identityEncryptionCheckbox_CheckedChanged;
+            // 
+            // materialCard2
+            // 
+            materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Controls.Add(openIdentityButton);
+            materialCard2.Controls.Add(newIdentityButton);
+            materialCard2.Depth = 0;
+            materialCard2.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard2.Location = new Point(14, 14);
+            materialCard2.Margin = new Padding(14);
+            materialCard2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard2.Name = "materialCard2";
+            materialCard2.Padding = new Padding(14);
+            materialCard2.Size = new Size(167, 542);
+            materialCard2.TabIndex = 5;
+            // 
+            // openIdentityButton
+            // 
+            openIdentityButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            openIdentityButton.AutoSize = false;
+            openIdentityButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openIdentityButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openIdentityButton.Depth = 0;
+            openIdentityButton.HighEmphasis = true;
+            openIdentityButton.Icon = null;
+            openIdentityButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openIdentityButton.Location = new Point(10, 58);
+            openIdentityButton.Margin = new Padding(6);
+            openIdentityButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openIdentityButton.Name = "openIdentityButton";
+            openIdentityButton.NoAccentTextColor = Color.Empty;
+            openIdentityButton.Size = new Size(147, 36);
+            openIdentityButton.TabIndex = 101;
+            openIdentityButton.TabStop = false;
+            openIdentityButton.Text = "Import Identity";
+            openIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openIdentityButton.UseAccentColor = false;
+            openIdentityButton.UseVisualStyleBackColor = true;
+            openIdentityButton.Click += openIdentityButton_Click;
+            // 
+            // newIdentityButton
+            // 
+            newIdentityButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            newIdentityButton.AutoSize = false;
+            newIdentityButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            newIdentityButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            newIdentityButton.Depth = 0;
+            newIdentityButton.HighEmphasis = true;
+            newIdentityButton.Icon = null;
+            newIdentityButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            newIdentityButton.Location = new Point(10, 10);
+            newIdentityButton.Margin = new Padding(6);
+            newIdentityButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            newIdentityButton.Name = "newIdentityButton";
+            newIdentityButton.NoAccentTextColor = Color.Empty;
+            newIdentityButton.Size = new Size(147, 36);
+            newIdentityButton.TabIndex = 100;
+            newIdentityButton.TabStop = false;
+            newIdentityButton.Text = "New Identity";
+            newIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            newIdentityButton.UseAccentColor = false;
+            newIdentityButton.UseVisualStyleBackColor = true;
+            newIdentityButton.Click += newIdentityButton_Click;
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(flowLayoutPanel1);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(878, 14);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(382, 542);
+            materialCard1.TabIndex = 4;
+            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(identitiesLabel);
             flowLayoutPanel1.Controls.Add(identitiesListBox);
-            flowLayoutPanel1.Dock = DockStyle.Right;
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(924, 0);
+            flowLayoutPanel1.Location = new Point(17, 17);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(350, 570);
+            flowLayoutPanel1.Size = new Size(350, 508);
             flowLayoutPanel1.TabIndex = 3;
             // 
             // identitiesLabel
@@ -160,68 +349,10 @@
             identitiesListBox.Name = "identitiesListBox";
             identitiesListBox.SelectedIndex = -1;
             identitiesListBox.SelectedItem = null;
-            identitiesListBox.Size = new Size(334, 535);
+            identitiesListBox.Size = new Size(334, 470);
             identitiesListBox.TabIndex = 200;
             identitiesListBox.TabStop = false;
             identitiesListBox.SelectedIndexChanged += identitiesListBox_SelectedIndexChanged;
-            // 
-            // identityButtonsFlow
-            // 
-            identityButtonsFlow.Controls.Add(newIdentityButton);
-            identityButtonsFlow.Controls.Add(openIdentityButton);
-            identityButtonsFlow.Dock = DockStyle.Left;
-            identityButtonsFlow.Location = new Point(0, 0);
-            identityButtonsFlow.Name = "identityButtonsFlow";
-            identityButtonsFlow.Size = new Size(209, 570);
-            identityButtonsFlow.TabIndex = 0;
-            // 
-            // newIdentityButton
-            // 
-            newIdentityButton.Anchor = AnchorStyles.None;
-            newIdentityButton.AutoSize = false;
-            newIdentityButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            newIdentityButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            newIdentityButton.Depth = 0;
-            newIdentityButton.HighEmphasis = true;
-            newIdentityButton.Icon = null;
-            newIdentityButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            newIdentityButton.Location = new Point(6, 6);
-            newIdentityButton.Margin = new Padding(6);
-            newIdentityButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            newIdentityButton.Name = "newIdentityButton";
-            newIdentityButton.NoAccentTextColor = Color.Empty;
-            newIdentityButton.Size = new Size(136, 36);
-            newIdentityButton.TabIndex = 100;
-            newIdentityButton.TabStop = false;
-            newIdentityButton.Text = "New Identity";
-            newIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            newIdentityButton.UseAccentColor = false;
-            newIdentityButton.UseVisualStyleBackColor = true;
-            newIdentityButton.Click += newIdentityButton_Click;
-            // 
-            // openIdentityButton
-            // 
-            openIdentityButton.Anchor = AnchorStyles.None;
-            openIdentityButton.AutoSize = false;
-            openIdentityButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            openIdentityButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            openIdentityButton.Depth = 0;
-            openIdentityButton.HighEmphasis = true;
-            openIdentityButton.Icon = null;
-            openIdentityButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openIdentityButton.Location = new Point(6, 54);
-            openIdentityButton.Margin = new Padding(6);
-            openIdentityButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            openIdentityButton.Name = "openIdentityButton";
-            openIdentityButton.NoAccentTextColor = Color.Empty;
-            openIdentityButton.Size = new Size(136, 36);
-            openIdentityButton.TabIndex = 101;
-            openIdentityButton.TabStop = false;
-            openIdentityButton.Text = "Import Identity";
-            openIdentityButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            openIdentityButton.UseAccentColor = false;
-            openIdentityButton.UseVisualStyleBackColor = true;
-            openIdentityButton.Click += openIdentityButton_Click;
             // 
             // historyPage
             // 
@@ -471,13 +602,17 @@
             Name = "EntryForm";
             Sizable = false;
             Text = "Career Canvas";
+            FormClosing += EntryForm_FormClosing;
             Load += Form1_Load;
             materialTabControl1.ResumeLayout(false);
             welcomePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)readMeView).EndInit();
             identityPage.ResumeLayout(false);
+            identityConfigExpansionPanel.ResumeLayout(false);
+            identityConfigExpansionPanel.PerformLayout();
+            materialCard2.ResumeLayout(false);
+            materialCard1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
-            identityButtonsFlow.ResumeLayout(false);
             historyPage.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
@@ -499,7 +634,6 @@
         private TabPage cvPage;
         private TabPage identityPage;
         private Microsoft.Web.WebView2.WinForms.WebView2 readMeView;
-        private FlowLayoutPanel identityButtonsFlow;
         private ReaLTaiizor.Controls.MaterialButton newIdentityButton;
         private ReaLTaiizor.Controls.MaterialListBox identitiesListBox;
         private FlowLayoutPanel recentResumesFlow;
@@ -516,5 +650,12 @@
         private ReaLTaiizor.Controls.MaterialButton newHistoryButton;
         private ReaLTaiizor.Controls.MaterialButton openHistoryButton;
         private System.Windows.Forms.Timer identityRefreshTimer;
+        private ReaLTaiizor.Controls.MaterialCard materialCard1;
+        private ReaLTaiizor.Controls.MaterialCard materialCard2;
+        private ReaLTaiizor.Controls.MaterialExpansionPanel identityConfigExpansionPanel;
+        private ReaLTaiizor.Controls.MaterialCheckBox identityEncryptionCheckbox;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit identityEncryptionPasswordBox;
+        private ReaLTaiizor.Controls.MaterialCheckBox identityShowPasswordCheckbox;
+        private ReaLTaiizor.Controls.MaterialLabel identityEncryptionPasswordLabel;
     }
 }
