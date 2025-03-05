@@ -63,6 +63,12 @@ namespace CareerCanvas
                 }
             }
 
+            // Generate encryption key for identity files
+            if (Globals.IdentityConfig.UseEncryption && Globals.IdentityConfig.EncryptionKey == null)
+            {
+                Globals.IdentityConfig.EncryptionKey = EncryptionUtils.Generate256BitKey();
+            }
+
             // Load changelog
             using (SocketsHttpHandler handler = new SocketsHttpHandler())
             {
@@ -94,7 +100,6 @@ namespace CareerCanvas
 
             // Load identity settings
             identityEncryptionCheckbox.Checked = Globals.IdentityConfig.UseEncryption;
-            identityEncryptionPasswordBox.Text = Globals.IdentityConfig.EncryptionKey;
         }
 
         private void newIdentityButton_Click(object sender, EventArgs e)
@@ -136,11 +141,12 @@ namespace CareerCanvas
 
         private void identityRefreshTimer_Tick(object sender, EventArgs e)
         {
+            identitiesListBox.Items.Clear();
             foreach (string file in Directory.GetFiles("./data/identities"))
             {
                 if (file.EndsWith(".identity"))
                 {
-                    string identityName = textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " "));
+                    string identityName = textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " ").Replace(".enc", " (Encrypted)"));
                     if (!identitiesListBox.Items.Any(x => x.Text == identityName))
                     {
                         MaterialListBoxItem item = new MaterialListBoxItem(identityName);
@@ -156,7 +162,7 @@ namespace CareerCanvas
         {
             if (identitiesListBox.SelectedItem != null)
             {
-                string identityName = identitiesListBox.SelectedItem.Text.Replace(" ", "_");
+                string identityName = identitiesListBox.SelectedItem.Text.Replace(" (Encrypted)", ".enc").Replace(" ", "_");
                 IdentityWorkspace identityWorkspace = new IdentityWorkspace(identityName.ToLower());
 
                 identitiesListBox.SelectedItem = null;
@@ -169,23 +175,10 @@ namespace CareerCanvas
             this.ActiveControl = null;
         }
 
-        private void identityShowPasswordCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (identityShowPasswordCheckbox.Checked)
-            {
-                identityEncryptionPasswordBox.UseSystemPasswordChar = false;
-                identityEncryptionPasswordBox.PasswordChar = '\0';
-            }
-            else
-            {
-                identityEncryptionPasswordBox.UseSystemPasswordChar = true;
-            }
-        }
-
         private void identityEncryptionCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             // Dynamic save button enable/disable
-            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked || Globals.IdentityConfig.EncryptionKey != identityEncryptionPasswordBox.Text)
+            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked)
             {
                 identityConfigExpansionPanel.ValidationButtonEnable = true;
             }
@@ -193,23 +186,12 @@ namespace CareerCanvas
             {
                 identityConfigExpansionPanel.ValidationButtonEnable = false;
             }
-
-            if (identityEncryptionCheckbox.Checked)
-            {
-                identityEncryptionPasswordBox.Enabled = true;
-                identityShowPasswordCheckbox.Enabled = true;
-            }
-            else
-            {
-                identityEncryptionPasswordBox.Enabled = false;
-                identityShowPasswordCheckbox.Enabled = false;
-            }
         }
 
         private void identityEncryptionPasswordBox_TextChanged(object sender, EventArgs e)
         {
             // Dynamic save button enable/disable
-            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked || Globals.IdentityConfig.EncryptionKey != identityEncryptionPasswordBox.Text)
+            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked)
             {
                 identityConfigExpansionPanel.ValidationButtonEnable = true;
             }
@@ -222,7 +204,6 @@ namespace CareerCanvas
         private void identityConfigExpansionPanel_SaveClick(object sender, EventArgs e)
         {
             Globals.IdentityConfig.UseEncryption = identityEncryptionCheckbox.Checked;
-            Globals.IdentityConfig.EncryptionKey = identityEncryptionPasswordBox.Text;
             identityConfigExpansionPanel.ValidationButtonEnable = false;
         }
 

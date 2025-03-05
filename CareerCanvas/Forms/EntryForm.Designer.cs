@@ -34,9 +34,6 @@
             readMeView = new Microsoft.Web.WebView2.WinForms.WebView2();
             identityPage = new TabPage();
             identityConfigExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
-            identityEncryptionPasswordLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            identityShowPasswordCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
-            identityEncryptionPasswordBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             identityEncryptionCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
             materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
             openIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
@@ -135,9 +132,6 @@
             // identityConfigExpansionPanel
             // 
             identityConfigExpansionPanel.BackColor = Color.FromArgb(255, 255, 255);
-            identityConfigExpansionPanel.Controls.Add(identityEncryptionPasswordLabel);
-            identityConfigExpansionPanel.Controls.Add(identityShowPasswordCheckbox);
-            identityConfigExpansionPanel.Controls.Add(identityEncryptionPasswordBox);
             identityConfigExpansionPanel.Controls.Add(identityEncryptionCheckbox);
             identityConfigExpansionPanel.Depth = 0;
             identityConfigExpansionPanel.Description = "Settings related to how identities are stored and handled";
@@ -154,69 +148,6 @@
             identityConfigExpansionPanel.Title = "Options";
             identityConfigExpansionPanel.SaveClick += identityConfigExpansionPanel_SaveClick;
             identityConfigExpansionPanel.Click += identityConfigExpansionPanel_Click;
-            // 
-            // identityEncryptionPasswordLabel
-            // 
-            identityEncryptionPasswordLabel.Depth = 0;
-            identityEncryptionPasswordLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            identityEncryptionPasswordLabel.Location = new Point(24, 138);
-            identityEncryptionPasswordLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            identityEncryptionPasswordLabel.Name = "identityEncryptionPasswordLabel";
-            identityEncryptionPasswordLabel.Size = new Size(159, 48);
-            identityEncryptionPasswordLabel.TabIndex = 5;
-            identityEncryptionPasswordLabel.Text = "Encryption Password:";
-            identityEncryptionPasswordLabel.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // identityShowPasswordCheckbox
-            // 
-            identityShowPasswordCheckbox.AutoSize = true;
-            identityShowPasswordCheckbox.Depth = 0;
-            identityShowPasswordCheckbox.Enabled = false;
-            identityShowPasswordCheckbox.Location = new Point(24, 101);
-            identityShowPasswordCheckbox.Margin = new Padding(0);
-            identityShowPasswordCheckbox.MouseLocation = new Point(-1, -1);
-            identityShowPasswordCheckbox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            identityShowPasswordCheckbox.Name = "identityShowPasswordCheckbox";
-            identityShowPasswordCheckbox.ReadOnly = false;
-            identityShowPasswordCheckbox.Ripple = true;
-            identityShowPasswordCheckbox.Size = new Size(226, 37);
-            identityShowPasswordCheckbox.TabIndex = 4;
-            identityShowPasswordCheckbox.Text = "Show encryption password";
-            identityShowPasswordCheckbox.UseAccentColor = false;
-            identityShowPasswordCheckbox.UseVisualStyleBackColor = true;
-            identityShowPasswordCheckbox.CheckedChanged += identityShowPasswordCheckbox_CheckedChanged;
-            // 
-            // identityEncryptionPasswordBox
-            // 
-            identityEncryptionPasswordBox.AnimateReadOnly = false;
-            identityEncryptionPasswordBox.AutoCompleteMode = AutoCompleteMode.None;
-            identityEncryptionPasswordBox.AutoCompleteSource = AutoCompleteSource.None;
-            identityEncryptionPasswordBox.BackgroundImageLayout = ImageLayout.None;
-            identityEncryptionPasswordBox.CharacterCasing = CharacterCasing.Normal;
-            identityEncryptionPasswordBox.Depth = 0;
-            identityEncryptionPasswordBox.Enabled = false;
-            identityEncryptionPasswordBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            identityEncryptionPasswordBox.HideSelection = true;
-            identityEncryptionPasswordBox.LeadingIcon = null;
-            identityEncryptionPasswordBox.Location = new Point(189, 138);
-            identityEncryptionPasswordBox.MaxLength = 32767;
-            identityEncryptionPasswordBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            identityEncryptionPasswordBox.Name = "identityEncryptionPasswordBox";
-            identityEncryptionPasswordBox.PasswordChar = '●';
-            identityEncryptionPasswordBox.PrefixSuffixText = null;
-            identityEncryptionPasswordBox.ReadOnly = false;
-            identityEncryptionPasswordBox.RightToLeft = RightToLeft.No;
-            identityEncryptionPasswordBox.SelectedText = "";
-            identityEncryptionPasswordBox.SelectionLength = 0;
-            identityEncryptionPasswordBox.SelectionStart = 0;
-            identityEncryptionPasswordBox.ShortcutsEnabled = true;
-            identityEncryptionPasswordBox.Size = new Size(250, 48);
-            identityEncryptionPasswordBox.TabIndex = 3;
-            identityEncryptionPasswordBox.TabStop = false;
-            identityEncryptionPasswordBox.TextAlign = HorizontalAlignment.Left;
-            identityEncryptionPasswordBox.TrailingIcon = null;
-            identityEncryptionPasswordBox.UseSystemPasswordChar = true;
-            identityEncryptionPasswordBox.TextChanged += identityEncryptionPasswordBox_TextChanged;
             // 
             // identityEncryptionCheckbox
             // 
@@ -654,8 +585,5 @@
         private ReaLTaiizor.Controls.MaterialCard materialCard2;
         private ReaLTaiizor.Controls.MaterialExpansionPanel identityConfigExpansionPanel;
         private ReaLTaiizor.Controls.MaterialCheckBox identityEncryptionCheckbox;
-        private ReaLTaiizor.Controls.MaterialTextBoxEdit identityEncryptionPasswordBox;
-        private ReaLTaiizor.Controls.MaterialCheckBox identityShowPasswordCheckbox;
-        private ReaLTaiizor.Controls.MaterialLabel identityEncryptionPasswordLabel;
     }
 }

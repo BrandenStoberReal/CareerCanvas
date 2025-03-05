@@ -1,4 +1,5 @@
 ﻿using CareerCanvas.Classes.Main;
+using CareerCanvas.Classes.Static;
 using ProtoBuf;
 using ReaLTaiizor.Colors;
 using ReaLTaiizor.Forms;
@@ -11,6 +12,9 @@ namespace CareerCanvas.Forms
     {
         private readonly MaterialSkinManager materialSkinManager;
 
+        /// <summary>
+        /// Flushes an identity to disk.
+        /// </summary>
         private void SaveIdentity()
         {
             ProfessionalIdentity identity = new ProfessionalIdentity
@@ -33,17 +37,54 @@ namespace CareerCanvas.Forms
                 Serializer.Serialize(file, identity);
             }
 
+            if (Globals.IdentityConfig.UseEncryption)
+            {
+                if (Globals.IdentityConfig.EncryptionKey == null)
+                {
+                    Globals.IdentityConfig.EncryptionKey = EncryptionUtils.Generate256BitKey();
+                }
+                string key = Globals.IdentityConfig.EncryptionKey;
+                string encryptedPath = $"./data/identities/{identity.FirstName.ToLower()}_{identity.LastName.ToLower()}.enc.identity";
+                EncryptionUtils.EncryptFile(identityPath, encryptedPath, key);
+                File.Delete(identityPath);
+            }
             this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
         }
 
+        /// <summary>
+        /// Loads an identity from disk.
+        /// </summary>
+        /// <param name="filename">The name of the file, not the path, to load.</param>
         private void LoadIdentity(string filename)
         {
             string identityPath = Path.Combine("./data/identities", filename.ToLower() + ".identity");
             ProfessionalIdentity identity;
+
+            // Handle encrypted files
+            if (filename.Contains(".enc"))
+            {
+                try
+                {
+                    string key = Globals.IdentityConfig.EncryptionKey;
+                    string decryptedPath = $"./data/identities/{filename.Replace(".enc", "")}.identity";
+                    EncryptionUtils.DecryptFile(identityPath, decryptedPath, key);
+                    File.Delete(identityPath);
+                    identityPath = decryptedPath;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("An error occurred while decrypting the identity file. Only self-encrypted files are supported at this time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // Load binary data
             using (FileStream file = File.OpenRead(identityPath))
             {
                 identity = Serializer.Deserialize<ProfessionalIdentity>(file);
             }
+
+            // Populate fields
             firstNameTextBox.Text = identity.FirstName;
             middleNametextBox.Text = identity.MiddleName;
             lastNameTextBox.Text = identity.LastName;
@@ -56,6 +97,7 @@ namespace CareerCanvas.Forms
             linkedInTextBox.Text = identity.LinkedIn;
             portfolioTextBox.Text = identity.Portfolio;
 
+            // Change window title
             this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
         }
 
@@ -127,6 +169,14 @@ namespace CareerCanvas.Forms
 
             string selectedFileName = openFileDialog1.FileName;
             LoadIdentity(Path.GetFileNameWithoutExtension(selectedFileName).ToLower());
+        }
+
+        private void IdentityWorkspace_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (firstNameTextBox.Text != String.Empty && lastNameTextBox.Text != String.Empty)
+            {
+                SaveIdentity();
+            }
         }
     }
 }

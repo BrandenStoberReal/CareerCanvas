@@ -80,21 +80,21 @@
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(180, 22);
+            saveToolStripMenuItem.Size = new Size(153, 22);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // loadToolStripMenuItem
             // 
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            loadToolStripMenuItem.Size = new Size(180, 22);
+            loadToolStripMenuItem.Size = new Size(153, 22);
             loadToolStripMenuItem.Text = "Load";
             loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // exportToToolStripMenuItem
             // 
             exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
-            exportToToolStripMenuItem.Size = new Size(180, 22);
+            exportToToolStripMenuItem.Size = new Size(153, 22);
             exportToToolStripMenuItem.Text = "Export to JSON";
             // 
             // editToolStripMenuItem
@@ -629,6 +629,7 @@
             Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
             Text = "Identity Workspace";
+            FormClosing += IdentityWorkspace_FormClosing;
             Load += IdentityWorkspace_Load;
             Shown += IdentityWorkspace_Shown;
             Click += IdentityWorkspace_Click;

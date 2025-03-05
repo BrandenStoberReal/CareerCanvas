@@ -9,6 +9,6 @@ namespace CareerCanvas.Classes.Configs
         public bool UseEncryption { get; set; } = false;
 
         [ProtoMember(2)]
-        public string EncryptionKey { get; set; } = String.Empty;
+        public string? EncryptionKey { get; set; }
     }
 }
