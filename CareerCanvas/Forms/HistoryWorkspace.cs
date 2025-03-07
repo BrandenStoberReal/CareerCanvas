@@ -62,5 +62,10 @@ namespace CareerCanvas.Forms
                 employmentListBox.Refresh();
             }
         }
+
+        private void HistoryWorkspace_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
     }
 }

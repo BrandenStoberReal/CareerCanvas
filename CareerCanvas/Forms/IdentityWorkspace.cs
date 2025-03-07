@@ -124,6 +124,10 @@ namespace CareerCanvas.Forms
             if (filename != null)
             {
                 LoadIdentity(filename);
+                if (firstNameTextBox.Text == String.Empty || lastNameTextBox.Text == String.Empty)
+                {
+                    this.Text = $"New Identity - Identity Workspace";
+                }
             }
             else
             {
