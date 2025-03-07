@@ -39,7 +39,6 @@
             // 
             // employmentHistoryCard
             // 
-            employmentHistoryCard.AutoScroll = true;
             employmentHistoryCard.BackColor = Color.FromArgb(255, 255, 255);
             employmentHistoryCard.Controls.Add(jobTitleLabel);
             employmentHistoryCard.Controls.Add(employmentListBox);
@@ -50,24 +49,26 @@
             employmentHistoryCard.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             employmentHistoryCard.Name = "employmentHistoryCard";
             employmentHistoryCard.Padding = new Padding(14);
-            employmentHistoryCard.Size = new Size(580, 585);
+            employmentHistoryCard.Size = new Size(543, 594);
             employmentHistoryCard.TabIndex = 0;
             // 
             // jobTitleLabel
             // 
+            jobTitleLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             jobTitleLabel.Depth = 0;
             jobTitleLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             jobTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             jobTitleLabel.Location = new Point(17, 14);
             jobTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             jobTitleLabel.Name = "jobTitleLabel";
-            jobTitleLabel.Size = new Size(546, 23);
+            jobTitleLabel.Size = new Size(509, 23);
             jobTitleLabel.TabIndex = 1;
             jobTitleLabel.Text = "Jobs";
             jobTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // employmentListBox
             // 
+            employmentListBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             employmentListBox.BackColor = Color.White;
             employmentListBox.BorderColor = Color.LightGray;
             employmentListBox.Depth = 0;
@@ -77,7 +78,7 @@
             employmentListBox.Name = "employmentListBox";
             employmentListBox.SelectedIndex = -1;
             employmentListBox.SelectedItem = null;
-            employmentListBox.Size = new Size(546, 528);
+            employmentListBox.Size = new Size(509, 537);
             employmentListBox.TabIndex = 0;
             // 
             // addEmploymentButton
@@ -89,7 +90,7 @@
             addEmploymentButton.HighEmphasis = true;
             addEmploymentButton.Icon = null;
             addEmploymentButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            addEmploymentButton.Location = new Point(615, 38);
+            addEmploymentButton.Location = new Point(578, 38);
             addEmploymentButton.Margin = new Padding(4, 6, 4, 6);
             addEmploymentButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             addEmploymentButton.Name = "addEmploymentButton";
