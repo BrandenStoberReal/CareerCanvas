@@ -218,5 +218,11 @@ namespace CareerCanvas
             // Encrypt identity settings
             EncryptionUtils.EncryptFile(identityConfigPath, identityConfigPath, File.ReadAllText("./data/misc/encryption.key"));
         }
+
+        private void newHistoryButton_Click(object sender, EventArgs e)
+        {
+            HistoryWorkspace historyWorkspace = new HistoryWorkspace();
+            historyWorkspace.Show();
+        }
     }
 }

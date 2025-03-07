@@ -30,10 +30,10 @@
         {
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
-            saveToolStripMenuItem = new ToolStripMenuItem();
             loadToolStripMenuItem = new ToolStripMenuItem();
             exportToToolStripMenuItem = new ToolStripMenuItem();
             editToolStripMenuItem = new ToolStripMenuItem();
+            clearAllFieldsToolStripMenuItem = new ToolStripMenuItem();
             firstNameTextBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             firstNameLabel = new ReaLTaiizor.Controls.MaterialLabel();
             middleNameLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -57,6 +57,7 @@
             linkedInTextBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             portfolioLabel = new ReaLTaiizor.Controls.MaterialLabel();
             portfolioTextBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            saveOnCloseLabel = new ReaLTaiizor.Controls.MaterialLabel();
             menuStrip1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -72,17 +73,10 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { saveToolStripMenuItem, loadToolStripMenuItem, exportToToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { loadToolStripMenuItem, exportToToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 20);
             fileToolStripMenuItem.Text = "File";
-            // 
-            // saveToolStripMenuItem
-            // 
-            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(153, 22);
-            saveToolStripMenuItem.Text = "Save";
-            saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // loadToolStripMenuItem
             // 
@@ -99,9 +93,17 @@
             // 
             // editToolStripMenuItem
             // 
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clearAllFieldsToolStripMenuItem });
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(39, 20);
             editToolStripMenuItem.Text = "Edit";
+            // 
+            // clearAllFieldsToolStripMenuItem
+            // 
+            clearAllFieldsToolStripMenuItem.Name = "clearAllFieldsToolStripMenuItem";
+            clearAllFieldsToolStripMenuItem.Size = new Size(180, 22);
+            clearAllFieldsToolStripMenuItem.Text = "Clear all fields";
+            clearAllFieldsToolStripMenuItem.Click += clearAllFieldsToolStripMenuItem_Click;
             // 
             // firstNameTextBox
             // 
@@ -217,7 +219,7 @@
             flowLayoutPanel1.Controls.Add(portfolioTextBox);
             flowLayoutPanel1.Location = new Point(6, 51);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(430, 636);
+            flowLayoutPanel1.Size = new Size(381, 636);
             flowLayoutPanel1.TabIndex = 104;
             // 
             // lastNameLabel
@@ -616,11 +618,26 @@
             portfolioTextBox.TrailingIcon = null;
             portfolioTextBox.UseSystemPasswordChar = false;
             // 
+            // saveOnCloseLabel
+            // 
+            saveOnCloseLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            saveOnCloseLabel.AutoSize = true;
+            saveOnCloseLabel.Depth = 0;
+            saveOnCloseLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            saveOnCloseLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            saveOnCloseLabel.Location = new Point(542, 54);
+            saveOnCloseLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            saveOnCloseLabel.Name = "saveOnCloseLabel";
+            saveOnCloseLabel.Size = new Size(252, 17);
+            saveOnCloseLabel.TabIndex = 106;
+            saveOnCloseLabel.Text = "Identity is automatically saved on close";
+            // 
             // IdentityWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 693);
+            Controls.Add(saveOnCloseLabel);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(menuStrip1);
             FormStyle = ReaLTaiizor.Enum.Material.FormStyles.ActionBar_None;
@@ -644,7 +661,6 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem loadToolStripMenuItem;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem exportToToolStripMenuItem;
@@ -671,5 +687,7 @@
         private ReaLTaiizor.Controls.MaterialTextBoxEdit linkedInTextBox;
         private ReaLTaiizor.Controls.MaterialLabel portfolioLabel;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit portfolioTextBox;
+        private ReaLTaiizor.Controls.MaterialLabel saveOnCloseLabel;
+        private ToolStripMenuItem clearAllFieldsToolStripMenuItem;
     }
 }

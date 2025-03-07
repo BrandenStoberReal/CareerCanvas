@@ -18,6 +18,7 @@
             CreateFolderIfNotExists("./data/resumes");
             CreateFolderIfNotExists("./data/coverletters");
             CreateFolderIfNotExists("./data/identities");
+            CreateFolderIfNotExists("./data/histories");
         }
     }
 }

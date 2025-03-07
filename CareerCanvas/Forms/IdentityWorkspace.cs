@@ -1,4 +1,4 @@
-﻿using CareerCanvas.Classes.Main;
+﻿using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
 using ProtoBuf;
 using ReaLTaiizor.Colors;
@@ -17,6 +17,7 @@ namespace CareerCanvas.Forms
         /// </summary>
         private void SaveIdentity()
         {
+            // Flush class to disk
             ProfessionalIdentity identity = new ProfessionalIdentity
             {
                 FirstName = firstNameTextBox.Text,
@@ -37,6 +38,7 @@ namespace CareerCanvas.Forms
                 Serializer.Serialize(file, identity);
             }
 
+            // Encrypt file if enabled
             if (Globals.IdentityConfig.UseEncryption)
             {
                 if (Globals.IdentityConfig.EncryptionKey == null)
@@ -48,6 +50,8 @@ namespace CareerCanvas.Forms
                 EncryptionUtils.EncryptFile(identityPath, encryptedPath, key);
                 File.Delete(identityPath);
             }
+
+            // Update window title
             this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
         }
 
@@ -167,6 +171,11 @@ namespace CareerCanvas.Forms
                 return;
             }
 
+            if (firstNameTextBox.Text != String.Empty && lastNameTextBox.Text != String.Empty)
+            {
+                SaveIdentity();
+            }
+
             string selectedFileName = openFileDialog1.FileName;
             LoadIdentity(Path.GetFileNameWithoutExtension(selectedFileName).ToLower());
         }
@@ -176,6 +185,28 @@ namespace CareerCanvas.Forms
             if (firstNameTextBox.Text != String.Empty && lastNameTextBox.Text != String.Empty)
             {
                 SaveIdentity();
+            }
+        }
+
+        private void clearAllFieldsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear all fields?", "Clear Fields", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                firstNameTextBox.Text = String.Empty;
+                middleNametextBox.Text = String.Empty;
+                lastNameTextBox.Text = String.Empty;
+                addressTextBox.Text = String.Empty;
+                cityTextBox.Text = String.Empty;
+                stateTextBox.Text = String.Empty;
+                zipTextBox.Text = String.Empty;
+                phoneTextBox.Text = String.Empty;
+                emailTextBox.Text = String.Empty;
+                linkedInTextBox.Text = String.Empty;
+                portfolioTextBox.Text = String.Empty;
+
+                this.Text = "New Identity - Identity Workspace";
             }
         }
     }

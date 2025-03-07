@@ -43,12 +43,12 @@
             identitiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identitiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
             historyPage = new TabPage();
-            flowLayoutPanel2 = new FlowLayoutPanel();
+            historyListFlowPanel = new FlowLayoutPanel();
             historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
-            flowLayoutPanel3 = new FlowLayoutPanel();
+            historyButtonFlowPanel = new FlowLayoutPanel();
             newHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
-            openHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
+            importHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
             resumePage = new TabPage();
             recentResumesFlow = new FlowLayoutPanel();
             recentResumesLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -58,6 +58,19 @@
             loadResumeButton = new ReaLTaiizor.Controls.MaterialButton();
             cvPage = new TabPage();
             creditsPage = new TabPage();
+            creditsFlowPanel = new FlowLayoutPanel();
+            peopleCreditTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            brandenCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            libraryCreditsFlowPanel = new FlowLayoutPanel();
+            librariesCreditTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            googleCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            newtonsoftCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            microsoftCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            asposeCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            alexanderCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            taiizorCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            serilogCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            hapCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
@@ -68,11 +81,14 @@
             materialCard1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             historyPage.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
+            historyListFlowPanel.SuspendLayout();
+            historyButtonFlowPanel.SuspendLayout();
             resumePage.SuspendLayout();
             recentResumesFlow.SuspendLayout();
             mainMenuButtonFlowPanel.SuspendLayout();
+            creditsPage.SuspendLayout();
+            creditsFlowPanel.SuspendLayout();
+            libraryCreditsFlowPanel.SuspendLayout();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -132,6 +148,7 @@
             // identityConfigExpansionPanel
             // 
             identityConfigExpansionPanel.BackColor = Color.FromArgb(255, 255, 255);
+            identityConfigExpansionPanel.Collapse = true;
             identityConfigExpansionPanel.Controls.Add(identityEncryptionCheckbox);
             identityConfigExpansionPanel.Depth = 0;
             identityConfigExpansionPanel.Description = "Settings related to how identities are stored and handled";
@@ -139,11 +156,11 @@
             identityConfigExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             identityConfigExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
             identityConfigExpansionPanel.Location = new Point(198, 14);
-            identityConfigExpansionPanel.Margin = new Padding(16);
+            identityConfigExpansionPanel.Margin = new Padding(16, 1, 16, 0);
             identityConfigExpansionPanel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             identityConfigExpansionPanel.Name = "identityConfigExpansionPanel";
             identityConfigExpansionPanel.Padding = new Padding(24, 64, 24, 16);
-            identityConfigExpansionPanel.Size = new Size(663, 542);
+            identityConfigExpansionPanel.Size = new Size(663, 48);
             identityConfigExpansionPanel.TabIndex = 6;
             identityConfigExpansionPanel.Title = "Options";
             identityConfigExpansionPanel.SaveClick += identityConfigExpansionPanel_SaveClick;
@@ -287,8 +304,8 @@
             // 
             // historyPage
             // 
-            historyPage.Controls.Add(flowLayoutPanel2);
-            historyPage.Controls.Add(flowLayoutPanel3);
+            historyPage.Controls.Add(historyListFlowPanel);
+            historyPage.Controls.Add(historyButtonFlowPanel);
             historyPage.Location = new Point(4, 24);
             historyPage.Name = "historyPage";
             historyPage.Size = new Size(1274, 570);
@@ -296,16 +313,16 @@
             historyPage.Text = "History";
             historyPage.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel2
+            // historyListFlowPanel
             // 
-            flowLayoutPanel2.Controls.Add(historiesLabel);
-            flowLayoutPanel2.Controls.Add(historiesListBox);
-            flowLayoutPanel2.Dock = DockStyle.Right;
-            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel2.Location = new Point(924, 0);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(350, 570);
-            flowLayoutPanel2.TabIndex = 5;
+            historyListFlowPanel.Controls.Add(historiesLabel);
+            historyListFlowPanel.Controls.Add(historiesListBox);
+            historyListFlowPanel.Dock = DockStyle.Right;
+            historyListFlowPanel.FlowDirection = FlowDirection.TopDown;
+            historyListFlowPanel.Location = new Point(924, 0);
+            historyListFlowPanel.Name = "historyListFlowPanel";
+            historyListFlowPanel.Size = new Size(350, 570);
+            historyListFlowPanel.TabIndex = 5;
             // 
             // historiesLabel
             // 
@@ -337,15 +354,15 @@
             historiesListBox.TabIndex = 200;
             historiesListBox.TabStop = false;
             // 
-            // flowLayoutPanel3
+            // historyButtonFlowPanel
             // 
-            flowLayoutPanel3.Controls.Add(newHistoryButton);
-            flowLayoutPanel3.Controls.Add(openHistoryButton);
-            flowLayoutPanel3.Dock = DockStyle.Left;
-            flowLayoutPanel3.Location = new Point(0, 0);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new Size(158, 570);
-            flowLayoutPanel3.TabIndex = 4;
+            historyButtonFlowPanel.Controls.Add(newHistoryButton);
+            historyButtonFlowPanel.Controls.Add(importHistoryButton);
+            historyButtonFlowPanel.Dock = DockStyle.Left;
+            historyButtonFlowPanel.Location = new Point(0, 0);
+            historyButtonFlowPanel.Name = "historyButtonFlowPanel";
+            historyButtonFlowPanel.Size = new Size(158, 570);
+            historyButtonFlowPanel.TabIndex = 4;
             // 
             // newHistoryButton
             // 
@@ -369,29 +386,30 @@
             newHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             newHistoryButton.UseAccentColor = false;
             newHistoryButton.UseVisualStyleBackColor = true;
+            newHistoryButton.Click += newHistoryButton_Click;
             // 
-            // openHistoryButton
+            // importHistoryButton
             // 
-            openHistoryButton.Anchor = AnchorStyles.None;
-            openHistoryButton.AutoSize = false;
-            openHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            openHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            openHistoryButton.Depth = 0;
-            openHistoryButton.HighEmphasis = true;
-            openHistoryButton.Icon = null;
-            openHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openHistoryButton.Location = new Point(6, 54);
-            openHistoryButton.Margin = new Padding(6);
-            openHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            openHistoryButton.Name = "openHistoryButton";
-            openHistoryButton.NoAccentTextColor = Color.Empty;
-            openHistoryButton.Size = new Size(136, 36);
-            openHistoryButton.TabIndex = 101;
-            openHistoryButton.TabStop = false;
-            openHistoryButton.Text = "Open History";
-            openHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            openHistoryButton.UseAccentColor = false;
-            openHistoryButton.UseVisualStyleBackColor = true;
+            importHistoryButton.Anchor = AnchorStyles.None;
+            importHistoryButton.AutoSize = false;
+            importHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            importHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            importHistoryButton.Depth = 0;
+            importHistoryButton.HighEmphasis = true;
+            importHistoryButton.Icon = null;
+            importHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            importHistoryButton.Location = new Point(6, 54);
+            importHistoryButton.Margin = new Padding(6);
+            importHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            importHistoryButton.Name = "importHistoryButton";
+            importHistoryButton.NoAccentTextColor = Color.Empty;
+            importHistoryButton.Size = new Size(136, 36);
+            importHistoryButton.TabIndex = 101;
+            importHistoryButton.TabStop = false;
+            importHistoryButton.Text = "Import History";
+            importHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            importHistoryButton.UseAccentColor = false;
+            importHistoryButton.UseVisualStyleBackColor = true;
             // 
             // resumePage
             // 
@@ -510,12 +528,197 @@
             // 
             // creditsPage
             // 
+            creditsPage.Controls.Add(creditsFlowPanel);
+            creditsPage.Controls.Add(libraryCreditsFlowPanel);
             creditsPage.Location = new Point(4, 24);
             creditsPage.Name = "creditsPage";
             creditsPage.Size = new Size(1274, 570);
             creditsPage.TabIndex = 1;
             creditsPage.Text = "Credits";
             creditsPage.UseVisualStyleBackColor = true;
+            // 
+            // creditsFlowPanel
+            // 
+            creditsFlowPanel.Controls.Add(peopleCreditTitleLabel);
+            creditsFlowPanel.Controls.Add(brandenCreditLabel);
+            creditsFlowPanel.Dock = DockStyle.Left;
+            creditsFlowPanel.FlowDirection = FlowDirection.TopDown;
+            creditsFlowPanel.Location = new Point(0, 0);
+            creditsFlowPanel.Name = "creditsFlowPanel";
+            creditsFlowPanel.Size = new Size(261, 570);
+            creditsFlowPanel.TabIndex = 0;
+            // 
+            // peopleCreditTitleLabel
+            // 
+            peopleCreditTitleLabel.Anchor = AnchorStyles.Top;
+            peopleCreditTitleLabel.AutoSize = true;
+            peopleCreditTitleLabel.Depth = 0;
+            peopleCreditTitleLabel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            peopleCreditTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
+            peopleCreditTitleLabel.Location = new Point(78, 0);
+            peopleCreditTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            peopleCreditTitleLabel.Name = "peopleCreditTitleLabel";
+            peopleCreditTitleLabel.Size = new Size(91, 24);
+            peopleCreditTitleLabel.TabIndex = 8;
+            peopleCreditTitleLabel.Text = "Dev Team";
+            // 
+            // brandenCreditLabel
+            // 
+            brandenCreditLabel.Anchor = AnchorStyles.Top;
+            brandenCreditLabel.AutoSize = true;
+            brandenCreditLabel.Depth = 0;
+            brandenCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            brandenCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            brandenCreditLabel.Location = new Point(3, 24);
+            brandenCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            brandenCreditLabel.Name = "brandenCreditLabel";
+            brandenCreditLabel.Size = new Size(241, 17);
+            brandenCreditLabel.TabIndex = 0;
+            brandenCreditLabel.Text = "Branden Stober - UI and Programming";
+            // 
+            // libraryCreditsFlowPanel
+            // 
+            libraryCreditsFlowPanel.Controls.Add(librariesCreditTitleLabel);
+            libraryCreditsFlowPanel.Controls.Add(googleCreditLabel);
+            libraryCreditsFlowPanel.Controls.Add(newtonsoftCreditLabel);
+            libraryCreditsFlowPanel.Controls.Add(microsoftCreditLabel);
+            libraryCreditsFlowPanel.Controls.Add(asposeCreditLabel);
+            libraryCreditsFlowPanel.Controls.Add(alexanderCreditLabel);
+            libraryCreditsFlowPanel.Controls.Add(taiizorCreditLabel);
+            libraryCreditsFlowPanel.Controls.Add(serilogCreditLabel);
+            libraryCreditsFlowPanel.Controls.Add(hapCreditLabel);
+            libraryCreditsFlowPanel.Dock = DockStyle.Right;
+            libraryCreditsFlowPanel.FlowDirection = FlowDirection.TopDown;
+            libraryCreditsFlowPanel.Location = new Point(913, 0);
+            libraryCreditsFlowPanel.Name = "libraryCreditsFlowPanel";
+            libraryCreditsFlowPanel.Size = new Size(361, 570);
+            libraryCreditsFlowPanel.TabIndex = 4;
+            // 
+            // librariesCreditTitleLabel
+            // 
+            librariesCreditTitleLabel.Anchor = AnchorStyles.Top;
+            librariesCreditTitleLabel.AutoSize = true;
+            librariesCreditTitleLabel.Depth = 0;
+            librariesCreditTitleLabel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            librariesCreditTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
+            librariesCreditTitleLabel.Location = new Point(135, 0);
+            librariesCreditTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            librariesCreditTitleLabel.Name = "librariesCreditTitleLabel";
+            librariesCreditTitleLabel.Size = new Size(79, 24);
+            librariesCreditTitleLabel.TabIndex = 7;
+            librariesCreditTitleLabel.Text = "Libraries";
+            // 
+            // googleCreditLabel
+            // 
+            googleCreditLabel.Anchor = AnchorStyles.Top;
+            googleCreditLabel.AutoSize = true;
+            googleCreditLabel.Depth = 0;
+            googleCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            googleCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            googleCreditLabel.Location = new Point(95, 24);
+            googleCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            googleCreditLabel.Name = "googleCreditLabel";
+            googleCreditLabel.Size = new Size(158, 17);
+            googleCreditLabel.TabIndex = 1;
+            googleCreditLabel.Text = "Google - Protobuf library";
+            // 
+            // newtonsoftCreditLabel
+            // 
+            newtonsoftCreditLabel.Anchor = AnchorStyles.Top;
+            newtonsoftCreditLabel.AutoSize = true;
+            newtonsoftCreditLabel.Depth = 0;
+            newtonsoftCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            newtonsoftCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            newtonsoftCreditLabel.Location = new Point(91, 41);
+            newtonsoftCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            newtonsoftCreditLabel.Name = "newtonsoftCreditLabel";
+            newtonsoftCreditLabel.Size = new Size(166, 17);
+            newtonsoftCreditLabel.TabIndex = 2;
+            newtonsoftCreditLabel.Text = "Newtonsoft - JSON library";
+            // 
+            // microsoftCreditLabel
+            // 
+            microsoftCreditLabel.Anchor = AnchorStyles.Top;
+            microsoftCreditLabel.AutoSize = true;
+            microsoftCreditLabel.Depth = 0;
+            microsoftCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            microsoftCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            microsoftCreditLabel.Location = new Point(3, 58);
+            microsoftCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            microsoftCreditLabel.Name = "microsoftCreditLabel";
+            microsoftCreditLabel.Size = new Size(343, 17);
+            microsoftCreditLabel.TabIndex = 3;
+            microsoftCreditLabel.Text = "Microsoft - WinForms Framework and DotNet Runtime";
+            // 
+            // asposeCreditLabel
+            // 
+            asposeCreditLabel.Anchor = AnchorStyles.Top;
+            asposeCreditLabel.AutoSize = true;
+            asposeCreditLabel.Depth = 0;
+            asposeCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            asposeCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            asposeCreditLabel.Location = new Point(69, 75);
+            asposeCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            asposeCreditLabel.Name = "asposeCreditLabel";
+            asposeCreditLabel.Size = new Size(210, 17);
+            asposeCreditLabel.TabIndex = 4;
+            asposeCreditLabel.Text = "Aspose - HTML and PDF libraries";
+            // 
+            // alexanderCreditLabel
+            // 
+            alexanderCreditLabel.Anchor = AnchorStyles.Top;
+            alexanderCreditLabel.AutoSize = true;
+            alexanderCreditLabel.Depth = 0;
+            alexanderCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            alexanderCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            alexanderCreditLabel.Location = new Point(68, 92);
+            alexanderCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            alexanderCreditLabel.Name = "alexanderCreditLabel";
+            alexanderCreditLabel.Size = new Size(213, 17);
+            alexanderCreditLabel.TabIndex = 5;
+            alexanderCreditLabel.Text = "Alexandre Mutel - Markdig library";
+            // 
+            // taiizorCreditLabel
+            // 
+            taiizorCreditLabel.Anchor = AnchorStyles.Top;
+            taiizorCreditLabel.AutoSize = true;
+            taiizorCreditLabel.Depth = 0;
+            taiizorCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            taiizorCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            taiizorCreditLabel.Location = new Point(83, 109);
+            taiizorCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            taiizorCreditLabel.Name = "taiizorCreditLabel";
+            taiizorCreditLabel.Size = new Size(182, 17);
+            taiizorCreditLabel.TabIndex = 6;
+            taiizorCreditLabel.Text = "Taiizor - Material UI controls";
+            // 
+            // serilogCreditLabel
+            // 
+            serilogCreditLabel.Anchor = AnchorStyles.Top;
+            serilogCreditLabel.AutoSize = true;
+            serilogCreditLabel.Depth = 0;
+            serilogCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            serilogCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            serilogCreditLabel.Location = new Point(83, 126);
+            serilogCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            serilogCreditLabel.Name = "serilogCreditLabel";
+            serilogCreditLabel.Size = new Size(183, 17);
+            serilogCreditLabel.TabIndex = 8;
+            serilogCreditLabel.Text = "Serilog - Logging Framework";
+            // 
+            // hapCreditLabel
+            // 
+            hapCreditLabel.Anchor = AnchorStyles.Top;
+            hapCreditLabel.AutoSize = true;
+            hapCreditLabel.Depth = 0;
+            hapCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            hapCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            hapCreditLabel.Location = new Point(80, 143);
+            hapCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            hapCreditLabel.Name = "hapCreditLabel";
+            hapCreditLabel.Size = new Size(189, 17);
+            hapCreditLabel.TabIndex = 9;
+            hapCreditLabel.Text = "Zzzprojects - HtmlAgilityPack";
             // 
             // identityRefreshTimer
             // 
@@ -545,11 +748,16 @@
             materialCard1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             historyPage.ResumeLayout(false);
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel3.ResumeLayout(false);
+            historyListFlowPanel.ResumeLayout(false);
+            historyButtonFlowPanel.ResumeLayout(false);
             resumePage.ResumeLayout(false);
             recentResumesFlow.ResumeLayout(false);
             mainMenuButtonFlowPanel.ResumeLayout(false);
+            creditsPage.ResumeLayout(false);
+            creditsFlowPanel.ResumeLayout(false);
+            creditsFlowPanel.PerformLayout();
+            libraryCreditsFlowPanel.ResumeLayout(false);
+            libraryCreditsFlowPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -574,16 +782,29 @@
         private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
         private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
         private TabPage historyPage;
-        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel historyListFlowPanel;
         private ReaLTaiizor.Controls.MaterialLabel historiesLabel;
         private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
-        private FlowLayoutPanel flowLayoutPanel3;
+        private FlowLayoutPanel historyButtonFlowPanel;
         private ReaLTaiizor.Controls.MaterialButton newHistoryButton;
-        private ReaLTaiizor.Controls.MaterialButton openHistoryButton;
+        private ReaLTaiizor.Controls.MaterialButton importHistoryButton;
         private System.Windows.Forms.Timer identityRefreshTimer;
         private ReaLTaiizor.Controls.MaterialCard materialCard1;
         private ReaLTaiizor.Controls.MaterialCard materialCard2;
         private ReaLTaiizor.Controls.MaterialExpansionPanel identityConfigExpansionPanel;
         private ReaLTaiizor.Controls.MaterialCheckBox identityEncryptionCheckbox;
+        private FlowLayoutPanel creditsFlowPanel;
+        private ReaLTaiizor.Controls.MaterialLabel brandenCreditLabel;
+        private FlowLayoutPanel libraryCreditsFlowPanel;
+        private ReaLTaiizor.Controls.MaterialLabel googleCreditLabel;
+        private ReaLTaiizor.Controls.MaterialLabel newtonsoftCreditLabel;
+        private ReaLTaiizor.Controls.MaterialLabel microsoftCreditLabel;
+        private ReaLTaiizor.Controls.MaterialLabel asposeCreditLabel;
+        private ReaLTaiizor.Controls.MaterialLabel alexanderCreditLabel;
+        private ReaLTaiizor.Controls.MaterialLabel taiizorCreditLabel;
+        private ReaLTaiizor.Controls.MaterialLabel peopleCreditTitleLabel;
+        private ReaLTaiizor.Controls.MaterialLabel librariesCreditTitleLabel;
+        private ReaLTaiizor.Controls.MaterialLabel serilogCreditLabel;
+        private ReaLTaiizor.Controls.MaterialLabel hapCreditLabel;
     }
 }
