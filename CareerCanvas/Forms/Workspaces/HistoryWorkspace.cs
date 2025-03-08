@@ -67,5 +67,23 @@ namespace CareerCanvas.Forms
         {
             this.ActiveControl = null;
         }
+
+        private void employmentListBox_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
+        {
+            if (employmentListBox.SelectedItem != null)
+            {
+                removeJobButton.Enabled = true;
+            }
+        }
+
+        private void removeJobButton_Click(object sender, EventArgs e)
+        {
+            if (employmentListBox.SelectedItem != null)
+            {
+                jobHistory.RemoveAt(employmentListBox.SelectedIndex);
+                employmentListBox.Items.RemoveAt(employmentListBox.SelectedIndex);
+                removeJobButton.Enabled = false;
+            }
+        }
     }
 }
