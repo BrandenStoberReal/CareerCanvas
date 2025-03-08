@@ -159,7 +159,7 @@
             titleBox.Depth = 0;
             titleBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             titleBox.HideSelection = true;
-            titleBox.Hint = "History Name";
+            titleBox.Hint = "Industry Name";
             titleBox.LeadingIcon = null;
             titleBox.Location = new Point(3, 3);
             titleBox.MaxLength = 32767;
@@ -244,6 +244,7 @@
             jobsExpansionPanel.Controls.Add(employmentListBox);
             jobsExpansionPanel.Controls.Add(addEmploymentButton);
             jobsExpansionPanel.Depth = 0;
+            jobsExpansionPanel.Description = "Relevant job history";
             jobsExpansionPanel.ExpandHeight = 450;
             jobsExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             jobsExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
@@ -263,6 +264,7 @@
             educationExpansionPanel.Controls.Add(educationListBox);
             educationExpansionPanel.Controls.Add(addEducationButton);
             educationExpansionPanel.Depth = 0;
+            educationExpansionPanel.Description = "Relevant degrees or higher education";
             educationExpansionPanel.ExpandHeight = 450;
             educationExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             educationExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
@@ -282,6 +284,7 @@
             certificatesExpansionPanel.Controls.Add(certificatesListBox);
             certificatesExpansionPanel.Controls.Add(addCertificateButton);
             certificatesExpansionPanel.Depth = 0;
+            certificatesExpansionPanel.Description = "Relevant certificate programs";
             certificatesExpansionPanel.ExpandHeight = 450;
             certificatesExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             certificatesExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
