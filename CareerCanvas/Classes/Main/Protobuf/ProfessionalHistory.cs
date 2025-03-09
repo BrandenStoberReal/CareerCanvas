@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using CareerCanvas.Classes.Main.History;
+using ProtoBuf;
 
 namespace CareerCanvas.Classes.Main.Protobuf
 {

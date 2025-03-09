@@ -1,4 +1,4 @@
-﻿using CareerCanvas.Classes.Main;
+﻿using CareerCanvas.Classes.Main.History;
 using ReaLTaiizor.Colors;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
@@ -37,7 +37,6 @@ namespace CareerCanvas.Forms
 
         private void AddJobForm_Shown(object sender, EventArgs e)
         {
-            this.ActiveControl = null;
         }
 
         private void flowLayoutPanel1_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace CareerCanvas.Classes.Main
+namespace CareerCanvas.Classes.Main.History
 {
     [ProtoContract]
     public class Employment
@@ -12,10 +12,10 @@ namespace CareerCanvas.Classes.Main
         public DateTime EndDate { get; set; }
 
         [ProtoMember(3)]
-        public string CompanyName { get; set; } = String.Empty;
+        public string CompanyName { get; set; } = string.Empty;
 
         [ProtoMember(4)]
-        public string JobTitle { get; set; } = String.Empty;
+        public string JobTitle { get; set; } = string.Empty;
 
         [ProtoMember(5)]
         public string? JobDescription { get; set; }

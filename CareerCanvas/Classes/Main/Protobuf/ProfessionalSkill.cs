@@ -1,12 +1,13 @@
-﻿using ProtoBuf;
+﻿using CareerCanvas.Classes.Main.History;
+using ProtoBuf;
 
-namespace CareerCanvas.Classes.Main
+namespace CareerCanvas.Classes.Main.Protobuf
 {
     [ProtoContract]
     public class ProfessionalSkill
     {
         [ProtoMember(1)]
-        public string SkillName { get; set; } = String.Empty;
+        public string SkillName { get; set; } = string.Empty;
 
         [ProtoMember(2)]
         public int YearsExperience { get; set; }
@@ -16,5 +17,8 @@ namespace CareerCanvas.Classes.Main
 
         [ProtoMember(4)]
         public List<Education> RelevantEducation { get; set; } = new List<Education>();
+
+        [ProtoMember(5)]
+        public List<CertificateProgram> RelevantCertificates { get; set; } = new List<CertificateProgram>();
     }
 }

@@ -1,23 +1,29 @@
 ﻿using ProtoBuf;
+using System.ComponentModel;
 
-namespace CareerCanvas.Classes.Main
+namespace CareerCanvas.Classes.Main.History
 {
     [ProtoContract]
     public enum DegreeType
     {
         [ProtoEnum]
+        [Description("High School Diploma")]
         HighSchool,
 
         [ProtoEnum]
+        [Description("Associate's Degree")]
         Associate,
 
         [ProtoEnum]
+        [Description("Bachelor's Degree")]
         Bachelor,
 
         [ProtoEnum]
+        [Description("Master's Degree")]
         Master,
 
         [ProtoEnum]
+        [Description("Doctorate Degree")]
         Doctorate
     }
 
@@ -31,7 +37,7 @@ namespace CareerCanvas.Classes.Main
         public DateTime EndDate { get; set; }
 
         [ProtoMember(3)]
-        public string SchoolName { get; set; } = String.Empty;
+        public string SchoolName { get; set; } = string.Empty;
 
         [ProtoMember(4)]
         public DegreeType Degree { get; set; }
