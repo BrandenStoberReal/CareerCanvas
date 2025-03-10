@@ -49,9 +49,8 @@
             openIndustryFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             importHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
             materialCard3 = new ReaLTaiizor.Controls.MaterialCard();
-            historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            historyListFlowPanel = new FlowLayoutPanel();
             historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
+            historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             resumePage = new TabPage();
             recentResumesFlow = new FlowLayoutPanel();
             recentResumesLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -87,7 +86,6 @@
             industryPage.SuspendLayout();
             materialCard4.SuspendLayout();
             materialCard3.SuspendLayout();
-            historyListFlowPanel.SuspendLayout();
             resumePage.SuspendLayout();
             recentResumesFlow.SuspendLayout();
             mainMenuButtonFlowPanel.SuspendLayout();
@@ -367,12 +365,12 @@
             newHistoryButton.HighEmphasis = true;
             newHistoryButton.Icon = null;
             newHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            newHistoryButton.Location = new Point(20, 16);
+            newHistoryButton.Location = new Point(10, 11);
             newHistoryButton.Margin = new Padding(6);
             newHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             newHistoryButton.Name = "newHistoryButton";
             newHistoryButton.NoAccentTextColor = Color.Empty;
-            newHistoryButton.Size = new Size(136, 36);
+            newHistoryButton.Size = new Size(153, 36);
             newHistoryButton.TabIndex = 100;
             newHistoryButton.TabStop = false;
             newHistoryButton.Text = "New Industry";
@@ -391,12 +389,12 @@
             openIndustryFolderButton.HighEmphasis = true;
             openIndustryFolderButton.Icon = null;
             openIndustryFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openIndustryFolderButton.Location = new Point(20, 112);
+            openIndustryFolderButton.Location = new Point(10, 107);
             openIndustryFolderButton.Margin = new Padding(6);
             openIndustryFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             openIndustryFolderButton.Name = "openIndustryFolderButton";
             openIndustryFolderButton.NoAccentTextColor = Color.Empty;
-            openIndustryFolderButton.Size = new Size(136, 36);
+            openIndustryFolderButton.Size = new Size(153, 36);
             openIndustryFolderButton.TabIndex = 102;
             openIndustryFolderButton.TabStop = false;
             openIndustryFolderButton.Text = "Open Folder";
@@ -415,12 +413,12 @@
             importHistoryButton.HighEmphasis = true;
             importHistoryButton.Icon = null;
             importHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            importHistoryButton.Location = new Point(20, 64);
+            importHistoryButton.Location = new Point(10, 59);
             importHistoryButton.Margin = new Padding(6);
             importHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             importHistoryButton.Name = "importHistoryButton";
             importHistoryButton.NoAccentTextColor = Color.Empty;
-            importHistoryButton.Size = new Size(136, 36);
+            importHistoryButton.Size = new Size(153, 36);
             importHistoryButton.TabIndex = 101;
             importHistoryButton.TabStop = false;
             importHistoryButton.Text = "Import Industry";
@@ -431,8 +429,8 @@
             // materialCard3
             // 
             materialCard3.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard3.Controls.Add(historiesListBox);
             materialCard3.Controls.Add(historiesLabel);
-            materialCard3.Controls.Add(historyListFlowPanel);
             materialCard3.Depth = 0;
             materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
             materialCard3.Location = new Point(849, 14);
@@ -442,6 +440,20 @@
             materialCard3.Padding = new Padding(14);
             materialCard3.Size = new Size(425, 556);
             materialCard3.TabIndex = 6;
+            // 
+            // historiesListBox
+            // 
+            historiesListBox.BackColor = Color.White;
+            historiesListBox.BorderColor = Color.LightGray;
+            historiesListBox.Depth = 0;
+            historiesListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            historiesListBox.Location = new Point(17, 40);
+            historiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            historiesListBox.Name = "historiesListBox";
+            historiesListBox.SelectedIndex = -1;
+            historiesListBox.SelectedItem = null;
+            historiesListBox.Size = new Size(391, 499);
+            historiesListBox.TabIndex = 5;
             // 
             // historiesLabel
             // 
@@ -455,33 +467,6 @@
             historiesLabel.TabIndex = 4;
             historiesLabel.Text = "Industries";
             historiesLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // historyListFlowPanel
-            // 
-            historyListFlowPanel.Controls.Add(historiesListBox);
-            historyListFlowPanel.FlowDirection = FlowDirection.TopDown;
-            historyListFlowPanel.Location = new Point(37, 40);
-            historyListFlowPanel.Name = "historyListFlowPanel";
-            historyListFlowPanel.Size = new Size(350, 485);
-            historyListFlowPanel.TabIndex = 5;
-            // 
-            // historiesListBox
-            // 
-            historiesListBox.BackColor = Color.White;
-            historiesListBox.BorderColor = Color.LightGray;
-            historiesListBox.Depth = 0;
-            historiesListBox.Dock = DockStyle.Bottom;
-            historiesListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            historiesListBox.Location = new Point(6, 6);
-            historiesListBox.Margin = new Padding(6);
-            historiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            historiesListBox.Name = "historiesListBox";
-            historiesListBox.SelectedIndex = -1;
-            historiesListBox.SelectedItem = null;
-            historiesListBox.Size = new Size(0, 535);
-            historiesListBox.TabIndex = 200;
-            historiesListBox.TabStop = false;
-            historiesListBox.SelectedIndexChanged += historiesListBox_SelectedIndexChanged;
             // 
             // resumePage
             // 
@@ -828,7 +813,6 @@
             industryPage.ResumeLayout(false);
             materialCard4.ResumeLayout(false);
             materialCard3.ResumeLayout(false);
-            historyListFlowPanel.ResumeLayout(false);
             resumePage.ResumeLayout(false);
             recentResumesFlow.ResumeLayout(false);
             mainMenuButtonFlowPanel.ResumeLayout(false);
@@ -861,9 +845,7 @@
         private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
         private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
         private TabPage industryPage;
-        private FlowLayoutPanel historyListFlowPanel;
         private ReaLTaiizor.Controls.MaterialLabel historiesLabel;
-        private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
         private ReaLTaiizor.Controls.MaterialButton newHistoryButton;
         private ReaLTaiizor.Controls.MaterialButton importHistoryButton;
         private System.Windows.Forms.Timer identityRefreshTimer;
@@ -889,5 +871,6 @@
         private ReaLTaiizor.Controls.MaterialButton openIndustryFolderButton;
         private ReaLTaiizor.Controls.MaterialCard materialCard3;
         private ReaLTaiizor.Controls.MaterialCard materialCard4;
+        private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
     }
 }
