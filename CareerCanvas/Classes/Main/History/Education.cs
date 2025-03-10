@@ -44,14 +44,5 @@ namespace CareerCanvas.Classes.Main.History
 
         [ProtoMember(5)]
         public TimeSpan TotalTimeSpent { get; private set; }
-
-        public Education(DateTime startDate, DateTime endDate, string schoolName, DegreeType degree)
-        {
-            StartDate = startDate;
-            EndDate = endDate;
-            SchoolName = schoolName;
-            Degree = degree;
-            TotalTimeSpent = EndDate - StartDate;
-        }
     }
 }

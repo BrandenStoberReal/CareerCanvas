@@ -19,14 +19,5 @@ namespace CareerCanvas.Classes.Main.History
 
         [ProtoMember(5)]
         public string? JobDescription { get; set; }
-
-        public Employment(DateTime startDate, DateTime endDate, string companyName, string jobTitle, string? jobDescription = null)
-        {
-            StartDate = startDate;
-            EndDate = endDate;
-            CompanyName = companyName;
-            JobTitle = jobTitle;
-            JobDescription = jobDescription;
-        }
     }
 }

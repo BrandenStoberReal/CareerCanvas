@@ -74,7 +74,11 @@ namespace CareerCanvas.Forms.InputDialogs
                 return;
             }
 
-            Education newEducation = new Education(startDate, endDate, schoolNameBox.Text, (DegreeType)degreeComboBox.SelectedIndex);
+            Education newEducation = new Education();
+            newEducation.StartDate = startDate;
+            newEducation.EndDate = endDate;
+            newEducation.SchoolName = schoolNameBox.Text;
+            newEducation.Degree = (DegreeType)degreeComboBox.SelectedIndex;
             masterList.Add(newEducation);
             Close();
         }

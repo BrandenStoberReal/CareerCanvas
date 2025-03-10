@@ -72,6 +72,7 @@
             serilogCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
             hapCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
+            historyRefreshTimer = new System.Windows.Forms.Timer(components);
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)readMeView).BeginInit();
@@ -353,6 +354,7 @@
             historiesListBox.Size = new Size(334, 535);
             historiesListBox.TabIndex = 200;
             historiesListBox.TabStop = false;
+            historiesListBox.SelectedIndexChanged += historiesListBox_SelectedIndexChanged;
             // 
             // historyButtonFlowPanel
             // 
@@ -726,6 +728,12 @@
             identityRefreshTimer.Interval = 1000;
             identityRefreshTimer.Tick += identityRefreshTimer_Tick;
             // 
+            // historyRefreshTimer
+            // 
+            historyRefreshTimer.Enabled = true;
+            historyRefreshTimer.Interval = 1000;
+            historyRefreshTimer.Tick += historyRefreshTimer_Tick;
+            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -806,5 +814,6 @@
         private ReaLTaiizor.Controls.MaterialLabel librariesCreditTitleLabel;
         private ReaLTaiizor.Controls.MaterialLabel serilogCreditLabel;
         private ReaLTaiizor.Controls.MaterialLabel hapCreditLabel;
+        private System.Windows.Forms.Timer historyRefreshTimer;
     }
 }

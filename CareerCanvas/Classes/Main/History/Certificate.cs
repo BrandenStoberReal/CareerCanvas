@@ -13,14 +13,5 @@ namespace CareerCanvas.Classes.Main.History
 
         [ProtoMember(3)]
         public DateTime IssueDate { get; set; }
-
-        public Certificate(CertificateProgram parent, string certificateName, DateTime issueDate)
-        {
-            CertificateName = certificateName;
-            IssuingOrganization = parent.IssuingOrganization;
-            IssueDate = issueDate;
-
-            parent.Certificate = this;
-        }
     }
 }

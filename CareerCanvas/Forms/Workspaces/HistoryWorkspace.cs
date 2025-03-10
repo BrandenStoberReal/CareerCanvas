@@ -1,23 +1,27 @@
 ﻿using CareerCanvas.Classes.Main.History;
+using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Forms.InputDialogs;
+using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Colors;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 using ReaLTaiizor.Util;
+using System.Globalization;
 
 namespace CareerCanvas.Forms
 {
     public partial class HistoryWorkspace : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+        private readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
-        private readonly List<Employment> jobHistory = new List<Employment>();
-        private readonly List<Education> educationHistory = new List<Education>();
-        private readonly List<CertificateProgram> certificateHistory = new List<CertificateProgram>();
+        private List<Employment> jobHistory = new List<Employment>();
+        private List<Education> educationHistory = new List<Education>();
+        private List<CertificateProgram> certificateHistory = new List<CertificateProgram>();
 
-        public HistoryWorkspace()
+        public HistoryWorkspace(string? filepath = null)
         {
             InitializeComponent();
 
@@ -32,6 +36,44 @@ namespace CareerCanvas.Forms
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
 
             materialSkinManager.ColorScheme = new MaterialColorScheme(MaterialPrimary.Indigo500, MaterialPrimary.Indigo700, MaterialPrimary.Indigo100, MaterialAccent.Pink200, MaterialTextShade.LIGHT);
+
+            if (filepath != null)
+            {
+                LoadIndustry(filepath);
+            }
+        }
+
+        public void SaveIndustry()
+        {
+            // Flush class to disk
+            Industry industry = new Industry();
+            industry.Jobs = jobHistory;
+            industry.Schooling = educationHistory;
+            industry.Certificates = certificateHistory;
+
+            string industryPath = Path.Combine("./data/industries", titleBox.Text.ToLower().Replace(" ", "_") + ".industry");
+
+            using (var file = File.Create(industryPath))
+            {
+                Serializer.Serialize(file, industry);
+            }
+        }
+
+        public void LoadIndustry(string filepath)
+        {
+            Industry industry;
+
+            // Load binary data
+            using (FileStream file = File.OpenRead(filepath))
+            {
+                industry = Serializer.Deserialize<Industry>(file);
+            }
+
+            // Load data into workspace
+            titleBox.Text = textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(filepath).Replace("_", " "));
+            jobHistory = industry.Jobs;
+            educationHistory = industry.Schooling;
+            certificateHistory = industry.Certificates;
         }
 
         private void HistoryWorkspace_Load(object sender, EventArgs e)
@@ -162,6 +204,21 @@ namespace CareerCanvas.Forms
                 removeCertificateButton.Enabled = false;
                 certificatesListBox.SelectedItem = null;
             }
+        }
+
+        private void HistoryWorkspace_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (titleBox.Text == "")
+            {
+                DialogResult discardChanges = MessageBox.Show("No industry name found! Discard changes?", "Discard", MessageBoxButtons.YesNo);
+                if (discardChanges == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            SaveIndustry();
         }
     }
 }

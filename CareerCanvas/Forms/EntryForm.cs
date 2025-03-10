@@ -158,6 +158,26 @@ namespace CareerCanvas
             }
         }
 
+        private void historyRefreshTimer_Tick(object sender, EventArgs e)
+        {
+            historiesListBox.Items.Clear();
+
+            foreach (string file in Directory.GetFiles("./data/industries"))
+            {
+                if (file.EndsWith(".industry"))
+                {
+                    string historyName = textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " "));
+                    if (!historiesListBox.Items.Any(x => x.Text == historyName))
+                    {
+                        MaterialListBoxItem item = new MaterialListBoxItem(historyName);
+                        item.SecondaryText = "Last Modified: " + File.GetLastWriteTime(file).ToString("MM/dd/yyyy HH:mm:ss");
+                        historiesListBox.Items.Add(item);
+                        historiesListBox.Refresh();
+                    }
+                }
+            }
+        }
+
         private void identitiesListBox_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
         {
             if (identitiesListBox.SelectedItem != null)
@@ -167,6 +187,18 @@ namespace CareerCanvas
 
                 identitiesListBox.SelectedItem = null;
                 identityWorkspace.Show();
+            }
+        }
+
+        private void historiesListBox_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
+        {
+            if (historiesListBox.SelectedItem != null)
+            {
+                string historyName = historiesListBox.SelectedItem.Text.Replace(" ", "_");
+                HistoryWorkspace historyWorkspace = new HistoryWorkspace(Path.Combine("./data/industries", historyName.ToLower() + ".industry"));
+
+                historiesListBox.SelectedItem = null;
+                historyWorkspace.Show();
             }
         }
 

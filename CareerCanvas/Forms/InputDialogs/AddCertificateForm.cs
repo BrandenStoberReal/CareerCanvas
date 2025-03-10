@@ -58,8 +58,17 @@ namespace CareerCanvas.Forms.InputDialogs
                 return;
             }
 
-            CertificateProgram certificateProgram = new CertificateProgram(programNameBox.Text, issuerBox.Text, startDate, endDate);
-            Certificate certificate = new Certificate(certificateProgram, certificateTitleBox.Text, issueDate);
+            CertificateProgram certificateProgram = new CertificateProgram();
+            certificateProgram.ProgramName = programNameBox.Text;
+            certificateProgram.IssuingOrganization = issuerBox.Text;
+            certificateProgram.StartDate = startDate;
+            certificateProgram.EndDate = endDate;
+
+            Certificate certificate = new Certificate();
+            certificate.CertificateName = certificateTitleBox.Text;
+            certificate.IssueDate = issueDate;
+
+            certificateProgram.Certificate = certificate;
             masterList.Add(certificateProgram);
             this.Close();
         }

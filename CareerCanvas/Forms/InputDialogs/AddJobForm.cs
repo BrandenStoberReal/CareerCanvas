@@ -75,7 +75,11 @@ namespace CareerCanvas.Forms
                 return;
             }
 
-            Employment newJob = new Employment(startDate, endDate, companyBox.Text, jobTitleBox.Text);
+            Employment newJob = new Employment();
+            newJob.StartDate = startDate;
+            newJob.EndDate = endDate;
+            newJob.CompanyName = companyBox.Text;
+            newJob.JobTitle = jobTitleBox.Text;
             refMasterList.Add(newJob);
             this.Close();
         }

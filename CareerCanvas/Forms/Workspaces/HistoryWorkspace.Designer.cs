@@ -407,6 +407,7 @@
             Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
             Text = "History Workspace";
+            FormClosing += HistoryWorkspace_FormClosing;
             Load += HistoryWorkspace_Load;
             Shown += HistoryWorkspace_Shown;
             Click += HistoryWorkspace_Click;

@@ -22,14 +22,5 @@ namespace CareerCanvas.Classes.Main.History
 
         [ProtoMember(6)]
         public Certificate Certificate { get; set; }
-
-        public CertificateProgram(string programName, string issuingOrganization, DateTime startDate, DateTime endDate)
-        {
-            ProgramName = programName;
-            IssuingOrganization = issuingOrganization;
-            StartDate = startDate;
-            EndDate = endDate;
-            TotalTimeSpent = EndDate - StartDate;
-        }
     }
 }
