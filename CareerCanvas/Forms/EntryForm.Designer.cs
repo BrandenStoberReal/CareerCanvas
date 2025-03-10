@@ -36,6 +36,7 @@
             identityConfigExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
             identityEncryptionCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
             materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
+            openIdentityFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             openIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
             newIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
@@ -73,6 +74,7 @@
             hapCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
             historyRefreshTimer = new System.Windows.Forms.Timer(components);
+            openIndustryFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)readMeView).BeginInit();
@@ -188,6 +190,7 @@
             // materialCard2
             // 
             materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Controls.Add(openIdentityFolderButton);
             materialCard2.Controls.Add(openIdentityButton);
             materialCard2.Controls.Add(newIdentityButton);
             materialCard2.Depth = 0;
@@ -199,6 +202,28 @@
             materialCard2.Padding = new Padding(14);
             materialCard2.Size = new Size(167, 542);
             materialCard2.TabIndex = 5;
+            // 
+            // openIdentityFolderButton
+            // 
+            openIdentityFolderButton.AutoSize = false;
+            openIdentityFolderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openIdentityFolderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openIdentityFolderButton.Depth = 0;
+            openIdentityFolderButton.HighEmphasis = true;
+            openIdentityFolderButton.Icon = null;
+            openIdentityFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openIdentityFolderButton.Location = new Point(10, 106);
+            openIdentityFolderButton.Margin = new Padding(4, 6, 4, 6);
+            openIdentityFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openIdentityFolderButton.Name = "openIdentityFolderButton";
+            openIdentityFolderButton.NoAccentTextColor = Color.Empty;
+            openIdentityFolderButton.Size = new Size(147, 36);
+            openIdentityFolderButton.TabIndex = 102;
+            openIdentityFolderButton.Text = "Open Folder";
+            openIdentityFolderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openIdentityFolderButton.UseAccentColor = false;
+            openIdentityFolderButton.UseVisualStyleBackColor = true;
+            openIdentityFolderButton.Click += openIdentityFolderButton_Click;
             // 
             // openIdentityButton
             // 
@@ -360,6 +385,7 @@
             // 
             historyButtonFlowPanel.Controls.Add(newHistoryButton);
             historyButtonFlowPanel.Controls.Add(importHistoryButton);
+            historyButtonFlowPanel.Controls.Add(openIndustryFolderButton);
             historyButtonFlowPanel.Dock = DockStyle.Left;
             historyButtonFlowPanel.Location = new Point(0, 0);
             historyButtonFlowPanel.Name = "historyButtonFlowPanel";
@@ -734,6 +760,30 @@
             historyRefreshTimer.Interval = 1000;
             historyRefreshTimer.Tick += historyRefreshTimer_Tick;
             // 
+            // openIndustryFolderButton
+            // 
+            openIndustryFolderButton.Anchor = AnchorStyles.None;
+            openIndustryFolderButton.AutoSize = false;
+            openIndustryFolderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openIndustryFolderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openIndustryFolderButton.Depth = 0;
+            openIndustryFolderButton.HighEmphasis = true;
+            openIndustryFolderButton.Icon = null;
+            openIndustryFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openIndustryFolderButton.Location = new Point(6, 102);
+            openIndustryFolderButton.Margin = new Padding(6);
+            openIndustryFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openIndustryFolderButton.Name = "openIndustryFolderButton";
+            openIndustryFolderButton.NoAccentTextColor = Color.Empty;
+            openIndustryFolderButton.Size = new Size(136, 36);
+            openIndustryFolderButton.TabIndex = 102;
+            openIndustryFolderButton.TabStop = false;
+            openIndustryFolderButton.Text = "Open Folder";
+            openIndustryFolderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openIndustryFolderButton.UseAccentColor = false;
+            openIndustryFolderButton.UseVisualStyleBackColor = true;
+            openIndustryFolderButton.Click += openIndustryFolderButton_Click;
+            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -815,5 +865,7 @@
         private ReaLTaiizor.Controls.MaterialLabel serilogCreditLabel;
         private ReaLTaiizor.Controls.MaterialLabel hapCreditLabel;
         private System.Windows.Forms.Timer historyRefreshTimer;
+        private ReaLTaiizor.Controls.MaterialButton openIdentityFolderButton;
+        private ReaLTaiizor.Controls.MaterialButton openIndustryFolderButton;
     }
 }

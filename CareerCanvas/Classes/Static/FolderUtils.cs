@@ -1,4 +1,6 @@
-﻿namespace CareerCanvas.Classes.Static
+﻿using System.Diagnostics;
+
+namespace CareerCanvas.Classes.Static
 {
     public static class FolderUtils
     {
@@ -19,6 +21,11 @@
             CreateFolderIfNotExists("./data/coverletters");
             CreateFolderIfNotExists("./data/identities");
             CreateFolderIfNotExists("./data/industries");
+        }
+
+        public static void OpenFolder(string folderPath)
+        {
+            Process.Start("explorer.exe", folderPath);
         }
     }
 }

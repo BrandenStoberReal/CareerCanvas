@@ -256,5 +256,15 @@ namespace CareerCanvas
             HistoryWorkspace historyWorkspace = new HistoryWorkspace();
             historyWorkspace.Show();
         }
+
+        private void openIdentityFolderButton_Click(object sender, EventArgs e)
+        {
+            FolderUtils.OpenFolder(Path.GetFullPath("./data/identities"));
+        }
+
+        private void openIndustryFolderButton_Click(object sender, EventArgs e)
+        {
+            FolderUtils.OpenFolder(Path.GetFullPath("./data/industries"));
+        }
     }
 }
