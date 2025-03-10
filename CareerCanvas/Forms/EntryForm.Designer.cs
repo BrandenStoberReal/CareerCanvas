@@ -42,7 +42,7 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             identitiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identitiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
-            historyPage = new TabPage();
+            industryPage = new TabPage();
             historyListFlowPanel = new FlowLayoutPanel();
             historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
@@ -81,7 +81,7 @@
             materialCard2.SuspendLayout();
             materialCard1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            historyPage.SuspendLayout();
+            industryPage.SuspendLayout();
             historyListFlowPanel.SuspendLayout();
             historyButtonFlowPanel.SuspendLayout();
             resumePage.SuspendLayout();
@@ -96,7 +96,7 @@
             // 
             materialTabControl1.Controls.Add(welcomePage);
             materialTabControl1.Controls.Add(identityPage);
-            materialTabControl1.Controls.Add(historyPage);
+            materialTabControl1.Controls.Add(industryPage);
             materialTabControl1.Controls.Add(resumePage);
             materialTabControl1.Controls.Add(cvPage);
             materialTabControl1.Controls.Add(creditsPage);
@@ -303,16 +303,16 @@
             identitiesListBox.TabStop = false;
             identitiesListBox.SelectedIndexChanged += identitiesListBox_SelectedIndexChanged;
             // 
-            // historyPage
+            // industryPage
             // 
-            historyPage.Controls.Add(historyListFlowPanel);
-            historyPage.Controls.Add(historyButtonFlowPanel);
-            historyPage.Location = new Point(4, 24);
-            historyPage.Name = "historyPage";
-            historyPage.Size = new Size(1274, 570);
-            historyPage.TabIndex = 5;
-            historyPage.Text = "History";
-            historyPage.UseVisualStyleBackColor = true;
+            industryPage.Controls.Add(historyListFlowPanel);
+            industryPage.Controls.Add(historyButtonFlowPanel);
+            industryPage.Location = new Point(4, 24);
+            industryPage.Name = "industryPage";
+            industryPage.Size = new Size(1274, 570);
+            industryPage.TabIndex = 5;
+            industryPage.Text = "History";
+            industryPage.UseVisualStyleBackColor = true;
             // 
             // historyListFlowPanel
             // 
@@ -755,7 +755,7 @@
             materialCard2.ResumeLayout(false);
             materialCard1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
-            historyPage.ResumeLayout(false);
+            industryPage.ResumeLayout(false);
             historyListFlowPanel.ResumeLayout(false);
             historyButtonFlowPanel.ResumeLayout(false);
             resumePage.ResumeLayout(false);
@@ -789,7 +789,7 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
         private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
-        private TabPage historyPage;
+        private TabPage industryPage;
         private FlowLayoutPanel historyListFlowPanel;
         private ReaLTaiizor.Controls.MaterialLabel historiesLabel;
         private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
