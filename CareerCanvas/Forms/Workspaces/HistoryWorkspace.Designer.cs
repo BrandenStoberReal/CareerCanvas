@@ -36,7 +36,6 @@
             addEducationButton = new ReaLTaiizor.Controls.MaterialButton();
             materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
             titleBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            materialDivider1 = new ReaLTaiizor.Controls.MaterialDivider();
             addCertificateButton = new ReaLTaiizor.Controls.MaterialButton();
             certificatesListBox = new ReaLTaiizor.Controls.MaterialListBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -67,7 +66,7 @@
             employmentListBox.SelectedIndex = -1;
             employmentListBox.SelectedItem = null;
             employmentListBox.ShowScrollBar = true;
-            employmentListBox.Size = new Size(458, 364);
+            employmentListBox.Size = new Size(458, 391);
             employmentListBox.TabIndex = 0;
             employmentListBox.SelectedIndexChanged += employmentListBox_SelectedIndexChanged;
             // 
@@ -113,7 +112,7 @@
             educationListBox.SelectedIndex = -1;
             educationListBox.SelectedItem = null;
             educationListBox.ShowScrollBar = true;
-            educationListBox.Size = new Size(458, 364);
+            educationListBox.Size = new Size(458, 391);
             educationListBox.TabIndex = 0;
             educationListBox.SelectedIndexChanged += educationListBox_SelectedIndexChanged;
             // 
@@ -188,17 +187,6 @@
             titleBox.TrailingIcon = null;
             titleBox.UseSystemPasswordChar = false;
             // 
-            // materialDivider1
-            // 
-            materialDivider1.BackColor = Color.FromArgb(30, 0, 0, 0);
-            materialDivider1.Depth = 0;
-            materialDivider1.Location = new Point(6, 96);
-            materialDivider1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialDivider1.Name = "materialDivider1";
-            materialDivider1.Size = new Size(1913, 23);
-            materialDivider1.TabIndex = 105;
-            materialDivider1.Text = "materialDivider1";
-            // 
             // addCertificateButton
             // 
             addCertificateButton.AutoSize = false;
@@ -235,7 +223,7 @@
             certificatesListBox.SelectedIndex = -1;
             certificatesListBox.SelectedItem = null;
             certificatesListBox.ShowScrollBar = true;
-            certificatesListBox.Size = new Size(458, 364);
+            certificatesListBox.Size = new Size(458, 391);
             certificatesListBox.TabIndex = 0;
             certificatesListBox.SelectedIndexChanged += certificatesListBox_SelectedIndexChanged;
             // 
@@ -256,16 +244,16 @@
             jobsExpansionPanel.Controls.Add(addEmploymentButton);
             jobsExpansionPanel.Depth = 0;
             jobsExpansionPanel.Description = "Relevant job history";
-            jobsExpansionPanel.ExpandHeight = 450;
+            jobsExpansionPanel.ExpandHeight = 477;
             jobsExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             jobsExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            jobsExpansionPanel.Location = new Point(17, 136);
+            jobsExpansionPanel.Location = new Point(17, 109);
             jobsExpansionPanel.Margin = new Padding(14, 16, 3, 16);
             jobsExpansionPanel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             jobsExpansionPanel.Name = "jobsExpansionPanel";
             jobsExpansionPanel.Padding = new Padding(24, 64, 24, 16);
             jobsExpansionPanel.ShowValidationButtons = false;
-            jobsExpansionPanel.Size = new Size(592, 450);
+            jobsExpansionPanel.Size = new Size(592, 477);
             jobsExpansionPanel.TabIndex = 107;
             jobsExpansionPanel.Title = "Job History";
             // 
@@ -300,16 +288,16 @@
             educationExpansionPanel.Controls.Add(addEducationButton);
             educationExpansionPanel.Depth = 0;
             educationExpansionPanel.Description = "Relevant degrees or higher education";
-            educationExpansionPanel.ExpandHeight = 450;
+            educationExpansionPanel.ExpandHeight = 477;
             educationExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             educationExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            educationExpansionPanel.Location = new Point(615, 136);
+            educationExpansionPanel.Location = new Point(615, 109);
             educationExpansionPanel.Margin = new Padding(3, 16, 3, 16);
             educationExpansionPanel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             educationExpansionPanel.Name = "educationExpansionPanel";
             educationExpansionPanel.Padding = new Padding(24, 64, 24, 16);
             educationExpansionPanel.ShowValidationButtons = false;
-            educationExpansionPanel.Size = new Size(590, 450);
+            educationExpansionPanel.Size = new Size(590, 477);
             educationExpansionPanel.TabIndex = 108;
             educationExpansionPanel.Title = "Education History";
             // 
@@ -344,16 +332,16 @@
             certificatesExpansionPanel.Controls.Add(addCertificateButton);
             certificatesExpansionPanel.Depth = 0;
             certificatesExpansionPanel.Description = "Relevant certificate programs";
-            certificatesExpansionPanel.ExpandHeight = 450;
+            certificatesExpansionPanel.ExpandHeight = 477;
             certificatesExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             certificatesExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            certificatesExpansionPanel.Location = new Point(1211, 136);
+            certificatesExpansionPanel.Location = new Point(1211, 109);
             certificatesExpansionPanel.Margin = new Padding(3, 16, 3, 16);
             certificatesExpansionPanel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             certificatesExpansionPanel.Name = "certificatesExpansionPanel";
             certificatesExpansionPanel.Padding = new Padding(24, 64, 24, 16);
             certificatesExpansionPanel.ShowValidationButtons = false;
-            certificatesExpansionPanel.Size = new Size(592, 450);
+            certificatesExpansionPanel.Size = new Size(592, 477);
             certificatesExpansionPanel.TabIndex = 2;
             certificatesExpansionPanel.Title = "Certificates";
             // 
@@ -401,7 +389,6 @@
             Controls.Add(educationExpansionPanel);
             Controls.Add(jobsExpansionPanel);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(materialDivider1);
             FormStyle = ReaLTaiizor.Enum.Material.FormStyles.ActionBar_None;
             Name = "HistoryWorkspace";
             Padding = new Padding(3, 24, 3, 3);
@@ -430,7 +417,6 @@
         private ReaLTaiizor.Controls.MaterialButton addEducationButton;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit titleBox;
-        private ReaLTaiizor.Controls.MaterialDivider materialDivider1;
         private ReaLTaiizor.Controls.MaterialButton addCertificateButton;
         private ReaLTaiizor.Controls.MaterialListBox certificatesListBox;
         private FlowLayoutPanel flowLayoutPanel1;
