@@ -14,5 +14,8 @@ namespace CareerCanvas.Classes.Main.Protobuf
 
         [ProtoMember(3)]
         public List<CertificateProgram> Certificates { get; set; } = new List<CertificateProgram>();
+
+        [ProtoMember(4)]
+        public string Description { get; set; } = string.Empty;
     }
 }

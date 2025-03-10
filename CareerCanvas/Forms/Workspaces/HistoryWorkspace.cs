@@ -50,6 +50,7 @@ namespace CareerCanvas.Forms
             industry.Jobs = jobHistory;
             industry.Schooling = educationHistory;
             industry.Certificates = certificateHistory;
+            industry.Description = descriptionBox.Text;
 
             string industryPath = Path.Combine("./data/industries", titleBox.Text.ToLower().Replace(" ", "_") + ".industry");
 
@@ -74,6 +75,7 @@ namespace CareerCanvas.Forms
             jobHistory = industry.Jobs;
             educationHistory = industry.Schooling;
             certificateHistory = industry.Certificates;
+            descriptionBox.Text = industry.Description;
         }
 
         private void HistoryWorkspace_Load(object sender, EventArgs e)

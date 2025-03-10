@@ -34,11 +34,9 @@
             updateJobsTimer = new System.Windows.Forms.Timer(components);
             educationListBox = new ReaLTaiizor.Controls.MaterialListBox();
             addEducationButton = new ReaLTaiizor.Controls.MaterialButton();
-            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
             titleBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             addCertificateButton = new ReaLTaiizor.Controls.MaterialButton();
             certificatesListBox = new ReaLTaiizor.Controls.MaterialListBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             jobsExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
             removeJobButton = new ReaLTaiizor.Controls.MaterialButton();
             educationExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
@@ -47,7 +45,8 @@
             removeCertificateButton = new ReaLTaiizor.Controls.MaterialButton();
             updateEducationTimer = new System.Windows.Forms.Timer(components);
             updateCertificatesTimer = new System.Windows.Forms.Timer(components);
-            flowLayoutPanel1.SuspendLayout();
+            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
+            descriptionBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             jobsExpansionPanel.SuspendLayout();
             educationExpansionPanel.SuspendLayout();
             certificatesExpansionPanel.SuspendLayout();
@@ -139,22 +138,6 @@
             addEducationButton.UseVisualStyleBackColor = true;
             addEducationButton.Click += addEducationButton_Click;
             // 
-            // materialLabel1
-            // 
-            materialLabel1.Anchor = AnchorStyles.Left;
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel1.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel1.ForeColor = SystemColors.ControlText;
-            materialLabel1.Location = new Point(259, 18);
-            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(401, 17);
-            materialLabel1.TabIndex = 102;
-            materialLabel1.Text = "<---- History is automatically saved on exit IF name is filled out!";
-            materialLabel1.UseAccent = true;
-            // 
             // titleBox
             // 
             titleBox.Anchor = AnchorStyles.Left;
@@ -168,7 +151,7 @@
             titleBox.HideSelection = true;
             titleBox.Hint = "Industry Name";
             titleBox.LeadingIcon = null;
-            titleBox.Location = new Point(3, 3);
+            titleBox.Location = new Point(17, 42);
             titleBox.MaxLength = 32767;
             titleBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             titleBox.Name = "titleBox";
@@ -226,15 +209,6 @@
             certificatesListBox.Size = new Size(458, 391);
             certificatesListBox.TabIndex = 0;
             certificatesListBox.SelectedIndexChanged += certificatesListBox_SelectedIndexChanged;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Controls.Add(titleBox);
-            flowLayoutPanel1.Controls.Add(materialLabel1);
-            flowLayoutPanel1.Location = new Point(17, 34);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1786, 56);
-            flowLayoutPanel1.TabIndex = 106;
             // 
             // jobsExpansionPanel
             // 
@@ -380,15 +354,61 @@
             updateCertificatesTimer.Interval = 200;
             updateCertificatesTimer.Tick += updateCertificatesTimer_Tick;
             // 
+            // materialLabel1
+            // 
+            materialLabel1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(1534, 33);
+            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(269, 19);
+            materialLabel1.TabIndex = 105;
+            materialLabel1.Text = "All data is saved automatically on exit";
+            // 
+            // descriptionBox
+            // 
+            descriptionBox.AnimateReadOnly = false;
+            descriptionBox.AutoCompleteMode = AutoCompleteMode.None;
+            descriptionBox.AutoCompleteSource = AutoCompleteSource.None;
+            descriptionBox.BackgroundImageLayout = ImageLayout.None;
+            descriptionBox.CharacterCasing = CharacterCasing.Normal;
+            descriptionBox.Depth = 0;
+            descriptionBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            descriptionBox.HideSelection = true;
+            descriptionBox.Hint = "Description (optional)";
+            descriptionBox.LeadingIcon = null;
+            descriptionBox.Location = new Point(273, 42);
+            descriptionBox.MaxLength = 32767;
+            descriptionBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            descriptionBox.Name = "descriptionBox";
+            descriptionBox.PasswordChar = '\0';
+            descriptionBox.PrefixSuffixText = null;
+            descriptionBox.ReadOnly = false;
+            descriptionBox.RightToLeft = RightToLeft.No;
+            descriptionBox.SelectedText = "";
+            descriptionBox.SelectionLength = 0;
+            descriptionBox.SelectionStart = 0;
+            descriptionBox.ShortcutsEnabled = true;
+            descriptionBox.Size = new Size(932, 48);
+            descriptionBox.TabIndex = 109;
+            descriptionBox.TabStop = false;
+            descriptionBox.TextAlign = HorizontalAlignment.Left;
+            descriptionBox.TrailingIcon = null;
+            descriptionBox.UseSystemPasswordChar = false;
+            // 
             // HistoryWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1820, 605);
+            Controls.Add(descriptionBox);
+            Controls.Add(materialLabel1);
+            Controls.Add(titleBox);
             Controls.Add(certificatesExpansionPanel);
             Controls.Add(educationExpansionPanel);
             Controls.Add(jobsExpansionPanel);
-            Controls.Add(flowLayoutPanel1);
             FormStyle = ReaLTaiizor.Enum.Material.FormStyles.ActionBar_None;
             Name = "HistoryWorkspace";
             Padding = new Padding(3, 24, 3, 3);
@@ -398,8 +418,6 @@
             Load += HistoryWorkspace_Load;
             Shown += HistoryWorkspace_Shown;
             Click += HistoryWorkspace_Click;
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             jobsExpansionPanel.ResumeLayout(false);
             jobsExpansionPanel.PerformLayout();
             educationExpansionPanel.ResumeLayout(false);
@@ -407,6 +425,7 @@
             certificatesExpansionPanel.ResumeLayout(false);
             certificatesExpansionPanel.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -415,11 +434,9 @@
         private System.Windows.Forms.Timer updateJobsTimer;
         private ReaLTaiizor.Controls.MaterialListBox educationListBox;
         private ReaLTaiizor.Controls.MaterialButton addEducationButton;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit titleBox;
         private ReaLTaiizor.Controls.MaterialButton addCertificateButton;
         private ReaLTaiizor.Controls.MaterialListBox certificatesListBox;
-        private FlowLayoutPanel flowLayoutPanel1;
         private ReaLTaiizor.Controls.MaterialExpansionPanel jobsExpansionPanel;
         private ReaLTaiizor.Controls.MaterialExpansionPanel educationExpansionPanel;
         private ReaLTaiizor.Controls.MaterialExpansionPanel certificatesExpansionPanel;
@@ -428,5 +445,7 @@
         private System.Windows.Forms.Timer updateCertificatesTimer;
         private ReaLTaiizor.Controls.MaterialButton removeEducationButton;
         private ReaLTaiizor.Controls.MaterialButton removeCertificateButton;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit descriptionBox;
     }
 }
