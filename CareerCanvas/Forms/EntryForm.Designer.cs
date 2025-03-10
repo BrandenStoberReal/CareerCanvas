@@ -311,7 +311,7 @@
             industryPage.Name = "industryPage";
             industryPage.Size = new Size(1274, 570);
             industryPage.TabIndex = 5;
-            industryPage.Text = "History";
+            industryPage.Text = "Industries";
             industryPage.UseVisualStyleBackColor = true;
             // 
             // historyListFlowPanel
