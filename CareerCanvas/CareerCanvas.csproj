@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Globals">
-    <WebView2UseWinRT>True</WebView2UseWinRT>
+    <WebView2UseWinRT>False</WebView2UseWinRT>
     <WebView2LoaderPreference>Dynamic</WebView2LoaderPreference>
-    <WebView2UseDispatchAdapter>True</WebView2UseDispatchAdapter>
+    <WebView2UseDispatchAdapter>False</WebView2UseDispatchAdapter>
     <WebView2EnableCsWinRTProjection>False</WebView2EnableCsWinRTProjection>
   </PropertyGroup>
 
