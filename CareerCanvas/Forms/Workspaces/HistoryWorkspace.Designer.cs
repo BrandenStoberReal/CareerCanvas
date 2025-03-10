@@ -231,9 +231,9 @@
             // 
             flowLayoutPanel1.Controls.Add(titleBox);
             flowLayoutPanel1.Controls.Add(materialLabel1);
-            flowLayoutPanel1.Location = new Point(9, 34);
+            flowLayoutPanel1.Location = new Point(17, 34);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1910, 56);
+            flowLayoutPanel1.Size = new Size(1786, 56);
             flowLayoutPanel1.TabIndex = 106;
             // 
             // jobsExpansionPanel
