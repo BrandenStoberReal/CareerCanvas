@@ -216,6 +216,10 @@ namespace CareerCanvas.Forms
                     e.Cancel = true;
                     return;
                 }
+                else if (discardChanges == DialogResult.Yes)
+                {
+                    return;
+                }
             }
 
             SaveIndustry();
