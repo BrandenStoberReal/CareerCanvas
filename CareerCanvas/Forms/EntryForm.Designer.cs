@@ -367,7 +367,7 @@
             newHistoryButton.HighEmphasis = true;
             newHistoryButton.Icon = null;
             newHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            newHistoryButton.Location = new Point(20, 27);
+            newHistoryButton.Location = new Point(20, 16);
             newHistoryButton.Margin = new Padding(6);
             newHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             newHistoryButton.Name = "newHistoryButton";
@@ -391,7 +391,7 @@
             openIndustryFolderButton.HighEmphasis = true;
             openIndustryFolderButton.Icon = null;
             openIndustryFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openIndustryFolderButton.Location = new Point(20, 123);
+            openIndustryFolderButton.Location = new Point(20, 112);
             openIndustryFolderButton.Margin = new Padding(6);
             openIndustryFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             openIndustryFolderButton.Name = "openIndustryFolderButton";
@@ -415,7 +415,7 @@
             importHistoryButton.HighEmphasis = true;
             importHistoryButton.Icon = null;
             importHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            importHistoryButton.Location = new Point(20, 75);
+            importHistoryButton.Location = new Point(20, 64);
             importHistoryButton.Margin = new Padding(6);
             importHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             importHistoryButton.Name = "importHistoryButton";
