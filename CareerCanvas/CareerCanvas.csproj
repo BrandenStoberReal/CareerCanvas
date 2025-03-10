@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspose.HTML" Version="25.2.0" />
+    <PackageReference Include="Aspose.HTML" Version="25.3.0" />
     <PackageReference Include="Aspose.PDF" Version="25.2.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.74" />
     <PackageReference Include="Markdig" Version="0.40.0" />
