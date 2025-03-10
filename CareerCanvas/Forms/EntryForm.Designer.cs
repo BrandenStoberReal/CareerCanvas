@@ -178,9 +178,9 @@
             identityEncryptionCheckbox.Name = "identityEncryptionCheckbox";
             identityEncryptionCheckbox.ReadOnly = false;
             identityEncryptionCheckbox.Ripple = true;
-            identityEncryptionCheckbox.Size = new Size(139, 37);
+            identityEncryptionCheckbox.Size = new Size(245, 37);
             identityEncryptionCheckbox.TabIndex = 2;
-            identityEncryptionCheckbox.Text = "Use encryption";
+            identityEncryptionCheckbox.Text = "Use encryption (experimental)";
             identityEncryptionCheckbox.UseAccentColor = false;
             identityEncryptionCheckbox.UseVisualStyleBackColor = true;
             identityEncryptionCheckbox.CheckedChanged += identityEncryptionCheckbox_CheckedChanged;
@@ -335,7 +335,7 @@
             historiesLabel.Name = "historiesLabel";
             historiesLabel.Size = new Size(340, 23);
             historiesLabel.TabIndex = 4;
-            historiesLabel.Text = "Histories";
+            historiesLabel.Text = "Industries";
             historiesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // historiesListBox
@@ -384,7 +384,7 @@
             newHistoryButton.Size = new Size(136, 36);
             newHistoryButton.TabIndex = 100;
             newHistoryButton.TabStop = false;
-            newHistoryButton.Text = "New History";
+            newHistoryButton.Text = "New Industry";
             newHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             newHistoryButton.UseAccentColor = false;
             newHistoryButton.UseVisualStyleBackColor = true;
@@ -408,7 +408,7 @@
             importHistoryButton.Size = new Size(136, 36);
             importHistoryButton.TabIndex = 101;
             importHistoryButton.TabStop = false;
-            importHistoryButton.Text = "Import History";
+            importHistoryButton.Text = "Import Industry";
             importHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             importHistoryButton.UseAccentColor = false;
             importHistoryButton.UseVisualStyleBackColor = true;
