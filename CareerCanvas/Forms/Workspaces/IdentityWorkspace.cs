@@ -188,8 +188,15 @@ namespace CareerCanvas.Forms
         {
             if (firstNameTextBox.Text != String.Empty && lastNameTextBox.Text != String.Empty)
             {
-                SaveIdentity();
+                DialogResult discardChanges = MessageBox.Show("First name and last name are empty! Discard changes?", "Discard", MessageBoxButtons.YesNo);
+                if (discardChanges == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
             }
+
+            SaveIdentity();
         }
 
         private void clearAllFieldsToolStripMenuItem_Click(object sender, EventArgs e)
