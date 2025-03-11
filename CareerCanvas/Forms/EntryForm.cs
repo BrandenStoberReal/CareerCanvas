@@ -266,5 +266,10 @@ namespace CareerCanvas
         {
             FolderUtils.OpenFolder(Path.GetFullPath("./data/industries"));
         }
+
+        private void industryPage_Click(object sender, EventArgs e)
+        {
+            historiesListBox.SelectedItem = null;
+        }
     }
 }

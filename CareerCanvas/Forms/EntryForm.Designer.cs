@@ -338,6 +338,7 @@
             industryPage.TabIndex = 5;
             industryPage.Text = "Industries";
             industryPage.UseVisualStyleBackColor = true;
+            industryPage.Click += industryPage_Click;
             // 
             // materialCard4
             // 
@@ -454,6 +455,7 @@
             historiesListBox.SelectedItem = null;
             historiesListBox.Size = new Size(391, 499);
             historiesListBox.TabIndex = 5;
+            historiesListBox.SelectedIndexChanged += historiesListBox_SelectedIndexChanged;
             // 
             // historiesLabel
             // 
@@ -569,7 +571,7 @@
             loadResumeButton.NoAccentTextColor = Color.Empty;
             loadResumeButton.Size = new Size(136, 36);
             loadResumeButton.TabIndex = 1;
-            loadResumeButton.Text = "Load Resume";
+            loadResumeButton.Text = "Import Resume";
             loadResumeButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             loadResumeButton.UseAccentColor = false;
             loadResumeButton.UseVisualStyleBackColor = true;
@@ -658,7 +660,7 @@
             librariesCreditTitleLabel.Depth = 0;
             librariesCreditTitleLabel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             librariesCreditTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
-            librariesCreditTitleLabel.Location = new Point(135, 0);
+            librariesCreditTitleLabel.Location = new Point(139, 0);
             librariesCreditTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             librariesCreditTitleLabel.Name = "librariesCreditTitleLabel";
             librariesCreditTitleLabel.Size = new Size(79, 24);
@@ -672,7 +674,7 @@
             googleCreditLabel.Depth = 0;
             googleCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             googleCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            googleCreditLabel.Location = new Point(95, 24);
+            googleCreditLabel.Location = new Point(100, 24);
             googleCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             googleCreditLabel.Name = "googleCreditLabel";
             googleCreditLabel.Size = new Size(158, 17);
@@ -686,7 +688,7 @@
             newtonsoftCreditLabel.Depth = 0;
             newtonsoftCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             newtonsoftCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            newtonsoftCreditLabel.Location = new Point(91, 41);
+            newtonsoftCreditLabel.Location = new Point(96, 41);
             newtonsoftCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             newtonsoftCreditLabel.Name = "newtonsoftCreditLabel";
             newtonsoftCreditLabel.Size = new Size(166, 17);
@@ -703,9 +705,9 @@
             microsoftCreditLabel.Location = new Point(3, 58);
             microsoftCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             microsoftCreditLabel.Name = "microsoftCreditLabel";
-            microsoftCreditLabel.Size = new Size(343, 17);
+            microsoftCreditLabel.Size = new Size(352, 17);
             microsoftCreditLabel.TabIndex = 3;
-            microsoftCreditLabel.Text = "Microsoft - WinForms Framework and DotNet Runtime";
+            microsoftCreditLabel.Text = "Microsoft - WinForms, DotNet, and WebView2 Runtimes";
             // 
             // asposeCreditLabel
             // 
@@ -714,7 +716,7 @@
             asposeCreditLabel.Depth = 0;
             asposeCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             asposeCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            asposeCreditLabel.Location = new Point(69, 75);
+            asposeCreditLabel.Location = new Point(74, 75);
             asposeCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             asposeCreditLabel.Name = "asposeCreditLabel";
             asposeCreditLabel.Size = new Size(210, 17);
@@ -728,7 +730,7 @@
             alexanderCreditLabel.Depth = 0;
             alexanderCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             alexanderCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            alexanderCreditLabel.Location = new Point(68, 92);
+            alexanderCreditLabel.Location = new Point(72, 92);
             alexanderCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             alexanderCreditLabel.Name = "alexanderCreditLabel";
             alexanderCreditLabel.Size = new Size(213, 17);
@@ -742,7 +744,7 @@
             taiizorCreditLabel.Depth = 0;
             taiizorCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             taiizorCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            taiizorCreditLabel.Location = new Point(83, 109);
+            taiizorCreditLabel.Location = new Point(88, 109);
             taiizorCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             taiizorCreditLabel.Name = "taiizorCreditLabel";
             taiizorCreditLabel.Size = new Size(182, 17);
@@ -756,7 +758,7 @@
             serilogCreditLabel.Depth = 0;
             serilogCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             serilogCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            serilogCreditLabel.Location = new Point(83, 126);
+            serilogCreditLabel.Location = new Point(87, 126);
             serilogCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             serilogCreditLabel.Name = "serilogCreditLabel";
             serilogCreditLabel.Size = new Size(183, 17);
@@ -770,7 +772,7 @@
             hapCreditLabel.Depth = 0;
             hapCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             hapCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            hapCreditLabel.Location = new Point(80, 143);
+            hapCreditLabel.Location = new Point(84, 143);
             hapCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             hapCreditLabel.Name = "hapCreditLabel";
             hapCreditLabel.Size = new Size(189, 17);

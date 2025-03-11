@@ -1,6 +1,7 @@
 ﻿using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Forms.Info;
 using CareerCanvas.Forms.InputDialogs;
 using ProtoBuf;
 using ReaLTaiizor.Child.Material;
@@ -41,6 +42,42 @@ namespace CareerCanvas.Forms
             {
                 LoadIndustry(filepath);
             }
+        }
+
+        private void DisableJobButtons()
+        {
+            removeJobButton.Enabled = false;
+            jobInfoButton.Enabled = false;
+        }
+
+        private void DisableEducationButtons()
+        {
+            removeEducationButton.Enabled = false;
+            educationInfoButton.Enabled = false;
+        }
+
+        private void DisableCertificateButtons()
+        {
+            removeCertificateButton.Enabled = false;
+            certificateInfoButton.Enabled = false;
+        }
+
+        private void EnableJobButtons()
+        {
+            removeJobButton.Enabled = true;
+            jobInfoButton.Enabled = true;
+        }
+
+        private void EnableEducationButtons()
+        {
+            removeEducationButton.Enabled = true;
+            educationInfoButton.Enabled = true;
+        }
+
+        private void EnableCertificateButtons()
+        {
+            removeCertificateButton.Enabled = true;
+            certificateInfoButton.Enabled = true;
         }
 
         public void SaveIndustry()
@@ -156,7 +193,7 @@ namespace CareerCanvas.Forms
         {
             if (employmentListBox.SelectedItem != null)
             {
-                removeJobButton.Enabled = true;
+                EnableJobButtons();
             }
         }
 
@@ -164,7 +201,7 @@ namespace CareerCanvas.Forms
         {
             if (educationListBox.SelectedItem != null)
             {
-                removeEducationButton.Enabled = true;
+                EnableEducationButtons();
             }
         }
 
@@ -172,7 +209,7 @@ namespace CareerCanvas.Forms
         {
             if (certificatesListBox.SelectedItem != null)
             {
-                removeCertificateButton.Enabled = true;
+                EnableCertificateButtons();
             }
         }
 
@@ -182,7 +219,8 @@ namespace CareerCanvas.Forms
             {
                 jobHistory.RemoveAt(employmentListBox.SelectedIndex);
                 employmentListBox.Items.RemoveAt(employmentListBox.SelectedIndex);
-                removeJobButton.Enabled = false;
+                DisableJobButtons();
+                employmentListBox.SelectedItem = null;
             }
         }
 
@@ -192,7 +230,7 @@ namespace CareerCanvas.Forms
             {
                 educationHistory.RemoveAt(educationListBox.SelectedIndex);
                 educationListBox.Items.RemoveAt(educationListBox.SelectedIndex);
-                removeEducationButton.Enabled = false;
+                DisableEducationButtons();
                 educationListBox.SelectedItem = null;
             }
         }
@@ -203,9 +241,28 @@ namespace CareerCanvas.Forms
             {
                 certificateHistory.RemoveAt(certificatesListBox.SelectedIndex);
                 certificatesListBox.Items.RemoveAt(certificatesListBox.SelectedIndex);
-                removeCertificateButton.Enabled = false;
+                DisableCertificateButtons();
                 certificatesListBox.SelectedItem = null;
             }
+        }
+
+        private void jobInfoButton_Click(object sender, EventArgs e)
+        {
+            if (employmentListBox.SelectedItem != null)
+            {
+                JobInfoViewer jobInfoViewer = new JobInfoViewer(jobHistory[employmentListBox.SelectedIndex]);
+                DisableJobButtons();
+                employmentListBox.SelectedItem = null;
+                jobInfoViewer.ShowDialog();
+            }
+        }
+
+        private void educationInfoButton_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void certificateInfoButton_Click(object sender, EventArgs e)
+        {
         }
 
         private void HistoryWorkspace_FormClosing(object sender, FormClosingEventArgs e)

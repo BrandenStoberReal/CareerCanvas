@@ -38,10 +38,13 @@
             addCertificateButton = new ReaLTaiizor.Controls.MaterialButton();
             certificatesListBox = new ReaLTaiizor.Controls.MaterialListBox();
             jobsExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
+            jobInfoButton = new ReaLTaiizor.Controls.MaterialButton();
             removeJobButton = new ReaLTaiizor.Controls.MaterialButton();
             educationExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
+            educationInfoButton = new ReaLTaiizor.Controls.MaterialButton();
             removeEducationButton = new ReaLTaiizor.Controls.MaterialButton();
             certificatesExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
+            certificateInfoButton = new ReaLTaiizor.Controls.MaterialButton();
             removeCertificateButton = new ReaLTaiizor.Controls.MaterialButton();
             updateEducationTimer = new System.Windows.Forms.Timer(components);
             updateCertificatesTimer = new System.Windows.Forms.Timer(components);
@@ -213,6 +216,7 @@
             // jobsExpansionPanel
             // 
             jobsExpansionPanel.BackColor = Color.FromArgb(255, 255, 255);
+            jobsExpansionPanel.Controls.Add(jobInfoButton);
             jobsExpansionPanel.Controls.Add(removeJobButton);
             jobsExpansionPanel.Controls.Add(employmentListBox);
             jobsExpansionPanel.Controls.Add(addEmploymentButton);
@@ -230,6 +234,30 @@
             jobsExpansionPanel.Size = new Size(592, 477);
             jobsExpansionPanel.TabIndex = 107;
             jobsExpansionPanel.Title = "Job History";
+            // 
+            // jobInfoButton
+            // 
+            jobInfoButton.AutoSize = false;
+            jobInfoButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            jobInfoButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            jobInfoButton.Depth = 0;
+            jobInfoButton.Enabled = false;
+            jobInfoButton.HighEmphasis = true;
+            jobInfoButton.Icon = null;
+            jobInfoButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            jobInfoButton.Location = new Point(492, 163);
+            jobInfoButton.Margin = new Padding(4, 6, 4, 6);
+            jobInfoButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            jobInfoButton.Name = "jobInfoButton";
+            jobInfoButton.NoAccentTextColor = Color.Empty;
+            jobInfoButton.Size = new Size(82, 36);
+            jobInfoButton.TabIndex = 102;
+            jobInfoButton.TabStop = false;
+            jobInfoButton.Text = "Info";
+            jobInfoButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            jobInfoButton.UseAccentColor = false;
+            jobInfoButton.UseVisualStyleBackColor = true;
+            jobInfoButton.Click += jobInfoButton_Click;
             // 
             // removeJobButton
             // 
@@ -257,6 +285,7 @@
             // educationExpansionPanel
             // 
             educationExpansionPanel.BackColor = Color.FromArgb(255, 255, 255);
+            educationExpansionPanel.Controls.Add(educationInfoButton);
             educationExpansionPanel.Controls.Add(removeEducationButton);
             educationExpansionPanel.Controls.Add(educationListBox);
             educationExpansionPanel.Controls.Add(addEducationButton);
@@ -274,6 +303,30 @@
             educationExpansionPanel.Size = new Size(590, 477);
             educationExpansionPanel.TabIndex = 108;
             educationExpansionPanel.Title = "Education History";
+            // 
+            // educationInfoButton
+            // 
+            educationInfoButton.AutoSize = false;
+            educationInfoButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            educationInfoButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            educationInfoButton.Depth = 0;
+            educationInfoButton.Enabled = false;
+            educationInfoButton.HighEmphasis = true;
+            educationInfoButton.Icon = null;
+            educationInfoButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            educationInfoButton.Location = new Point(492, 163);
+            educationInfoButton.Margin = new Padding(4, 6, 4, 6);
+            educationInfoButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            educationInfoButton.Name = "educationInfoButton";
+            educationInfoButton.NoAccentTextColor = Color.Empty;
+            educationInfoButton.Size = new Size(82, 36);
+            educationInfoButton.TabIndex = 103;
+            educationInfoButton.TabStop = false;
+            educationInfoButton.Text = "Info";
+            educationInfoButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            educationInfoButton.UseAccentColor = false;
+            educationInfoButton.UseVisualStyleBackColor = true;
+            educationInfoButton.Click += educationInfoButton_Click;
             // 
             // removeEducationButton
             // 
@@ -301,6 +354,7 @@
             // certificatesExpansionPanel
             // 
             certificatesExpansionPanel.BackColor = Color.FromArgb(255, 255, 255);
+            certificatesExpansionPanel.Controls.Add(certificateInfoButton);
             certificatesExpansionPanel.Controls.Add(removeCertificateButton);
             certificatesExpansionPanel.Controls.Add(certificatesListBox);
             certificatesExpansionPanel.Controls.Add(addCertificateButton);
@@ -318,6 +372,30 @@
             certificatesExpansionPanel.Size = new Size(592, 477);
             certificatesExpansionPanel.TabIndex = 2;
             certificatesExpansionPanel.Title = "Certificates";
+            // 
+            // certificateInfoButton
+            // 
+            certificateInfoButton.AutoSize = false;
+            certificateInfoButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            certificateInfoButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            certificateInfoButton.Depth = 0;
+            certificateInfoButton.Enabled = false;
+            certificateInfoButton.HighEmphasis = true;
+            certificateInfoButton.Icon = null;
+            certificateInfoButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            certificateInfoButton.Location = new Point(492, 163);
+            certificateInfoButton.Margin = new Padding(4, 6, 4, 6);
+            certificateInfoButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            certificateInfoButton.Name = "certificateInfoButton";
+            certificateInfoButton.NoAccentTextColor = Color.Empty;
+            certificateInfoButton.Size = new Size(82, 36);
+            certificateInfoButton.TabIndex = 104;
+            certificateInfoButton.TabStop = false;
+            certificateInfoButton.Text = "Info";
+            certificateInfoButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            certificateInfoButton.UseAccentColor = false;
+            certificateInfoButton.UseVisualStyleBackColor = true;
+            certificateInfoButton.Click += certificateInfoButton_Click;
             // 
             // removeCertificateButton
             // 
@@ -447,5 +525,8 @@
         private ReaLTaiizor.Controls.MaterialButton removeCertificateButton;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit descriptionBox;
+        private ReaLTaiizor.Controls.MaterialButton jobInfoButton;
+        private ReaLTaiizor.Controls.MaterialButton educationInfoButton;
+        private ReaLTaiizor.Controls.MaterialButton certificateInfoButton;
     }
 }

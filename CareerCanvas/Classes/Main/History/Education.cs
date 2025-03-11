@@ -44,5 +44,11 @@ namespace CareerCanvas.Classes.Main.History
 
         [ProtoMember(5)]
         public TimeSpan TotalTimeSpent { get; private set; }
+
+        [ProtoMember(6)]
+        public string City { get; set; } = string.Empty;
+
+        [ProtoMember(7)]
+        public string State { get; set; } = string.Empty;
     }
 }

@@ -186,12 +186,16 @@ namespace CareerCanvas.Forms
 
         private void IdentityWorkspace_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (firstNameTextBox.Text != String.Empty && lastNameTextBox.Text != String.Empty)
+            if (firstNameTextBox.Text == String.Empty || lastNameTextBox.Text == String.Empty)
             {
-                DialogResult discardChanges = MessageBox.Show("First name and last name are empty! Discard changes?", "Discard", MessageBoxButtons.YesNo);
+                DialogResult discardChanges = MessageBox.Show("First name and/or last name are empty! Discard changes?", "Discard", MessageBoxButtons.YesNo);
                 if (discardChanges == DialogResult.No)
                 {
                     e.Cancel = true;
+                    return;
+                }
+                else if (discardChanges == DialogResult.Yes)
+                {
                     return;
                 }
             }
