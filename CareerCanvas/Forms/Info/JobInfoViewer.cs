@@ -46,67 +46,12 @@ namespace CareerCanvas.Forms.Info
             this.ActiveControl = null;
         }
 
-        private void jobTitleBox_Click(object sender, EventArgs e)
+        private void textBox_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
         }
 
-        private void employerBox_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void cityBox_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void stateBox_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void startDateBox_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void endDateBox_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void jobTitleBox_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void employerBox_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void cityBox_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void stateBox_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void startDateBox_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void endDateBox_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void jobDescriptionBox_Enter(object sender, EventArgs e)
+        private void textBox_Enter(object sender, EventArgs e)
         {
             this.ActiveControl = null;
         }

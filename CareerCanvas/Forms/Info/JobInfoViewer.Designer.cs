@@ -80,7 +80,7 @@
             jobDescriptionBox.Size = new Size(304, 307);
             jobDescriptionBox.TabIndex = 2;
             jobDescriptionBox.Text = "None provided.";
-            jobDescriptionBox.Enter += jobDescriptionBox_Enter;
+            jobDescriptionBox.Enter += textBox_Enter;
             // 
             // materialLabel7
             // 
@@ -157,8 +157,8 @@
             jobTitleBox.TextAlign = HorizontalAlignment.Left;
             jobTitleBox.TrailingIcon = null;
             jobTitleBox.UseSystemPasswordChar = false;
-            jobTitleBox.Click += jobTitleBox_Click;
-            jobTitleBox.Enter += jobTitleBox_Enter;
+            jobTitleBox.Click += textBox_Click;
+            jobTitleBox.Enter += textBox_Enter;
             // 
             // materialLabel2
             // 
@@ -203,8 +203,8 @@
             employerBox.TextAlign = HorizontalAlignment.Left;
             employerBox.TrailingIcon = null;
             employerBox.UseSystemPasswordChar = false;
-            employerBox.Click += employerBox_Click;
-            employerBox.Enter += employerBox_Enter;
+            employerBox.Click += textBox_Click;
+            employerBox.Enter += textBox_Enter;
             // 
             // materialLabel3
             // 
@@ -249,8 +249,8 @@
             cityBox.TextAlign = HorizontalAlignment.Left;
             cityBox.TrailingIcon = null;
             cityBox.UseSystemPasswordChar = false;
-            cityBox.Click += cityBox_Click;
-            cityBox.Enter += cityBox_Enter;
+            cityBox.Click += textBox_Click;
+            cityBox.Enter += textBox_Enter;
             // 
             // materialLabel4
             // 
@@ -295,8 +295,8 @@
             stateBox.TextAlign = HorizontalAlignment.Left;
             stateBox.TrailingIcon = null;
             stateBox.UseSystemPasswordChar = false;
-            stateBox.Click += stateBox_Click;
-            stateBox.Enter += stateBox_Enter;
+            stateBox.Click += textBox_Click;
+            stateBox.Enter += textBox_Enter;
             // 
             // materialLabel5
             // 
@@ -341,8 +341,8 @@
             startDateBox.TextAlign = HorizontalAlignment.Left;
             startDateBox.TrailingIcon = null;
             startDateBox.UseSystemPasswordChar = false;
-            startDateBox.Click += startDateBox_Click;
-            startDateBox.Enter += startDateBox_Enter;
+            startDateBox.Click += textBox_Click;
+            startDateBox.Enter += textBox_Enter;
             // 
             // materialLabel6
             // 
@@ -387,8 +387,8 @@
             endDateBox.TextAlign = HorizontalAlignment.Left;
             endDateBox.TrailingIcon = null;
             endDateBox.UseSystemPasswordChar = false;
-            endDateBox.Click += endDateBox_Click;
-            endDateBox.Enter += endDateBox_Enter;
+            endDateBox.Click += textBox_Click;
+            endDateBox.Enter += textBox_Enter;
             // 
             // JobInfoViewer
             // 
