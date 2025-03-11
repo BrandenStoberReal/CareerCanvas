@@ -80,6 +80,8 @@ namespace CareerCanvas.Forms
             newJob.EndDate = endDate;
             newJob.CompanyName = companyBox.Text;
             newJob.JobTitle = jobTitleBox.Text;
+            newJob.City = cityBox.Text;
+            newJob.State = stateBox.Text;
             refMasterList.Add(newJob);
             this.Close();
         }

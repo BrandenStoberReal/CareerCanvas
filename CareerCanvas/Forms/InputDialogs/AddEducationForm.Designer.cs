@@ -39,6 +39,10 @@
             endDateBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             discardButton = new ReaLTaiizor.Controls.MaterialButton();
             addJobButton = new ReaLTaiizor.Controls.MaterialButton();
+            materialLabel5 = new ReaLTaiizor.Controls.MaterialLabel();
+            cityBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            materialLabel6 = new ReaLTaiizor.Controls.MaterialLabel();
+            stateBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,6 +52,10 @@
             flowLayoutPanel1.Controls.Add(schoolNameBox);
             flowLayoutPanel1.Controls.Add(materialLabel2);
             flowLayoutPanel1.Controls.Add(degreeComboBox);
+            flowLayoutPanel1.Controls.Add(materialLabel5);
+            flowLayoutPanel1.Controls.Add(cityBox);
+            flowLayoutPanel1.Controls.Add(materialLabel6);
+            flowLayoutPanel1.Controls.Add(stateBox);
             flowLayoutPanel1.Controls.Add(materialLabel3);
             flowLayoutPanel1.Controls.Add(startDateBox);
             flowLayoutPanel1.Controls.Add(materialLabel4);
@@ -55,7 +63,7 @@
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(8, 27);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(376, 369);
+            flowLayoutPanel1.Size = new Size(376, 489);
             flowLayoutPanel1.TabIndex = 1001;
             flowLayoutPanel1.Click += flowLayoutPanel1_Click;
             // 
@@ -150,7 +158,7 @@
             materialLabel3.Depth = 0;
             materialLabel3.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel3.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel3.Location = new Point(3, 161);
+            materialLabel3.Location = new Point(3, 315);
             materialLabel3.Margin = new Padding(3, 6, 3, 0);
             materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel3.Name = "materialLabel3";
@@ -170,7 +178,7 @@
             startDateBox.HideSelection = true;
             startDateBox.Hint = "MM/YYYY";
             startDateBox.LeadingIcon = null;
-            startDateBox.Location = new Point(3, 181);
+            startDateBox.Location = new Point(3, 335);
             startDateBox.MaxLength = 32767;
             startDateBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             startDateBox.Name = "startDateBox";
@@ -196,7 +204,7 @@
             materialLabel4.Depth = 0;
             materialLabel4.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel4.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel4.Location = new Point(3, 238);
+            materialLabel4.Location = new Point(3, 392);
             materialLabel4.Margin = new Padding(3, 6, 3, 0);
             materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel4.Name = "materialLabel4";
@@ -216,7 +224,7 @@
             endDateBox.HideSelection = true;
             endDateBox.Hint = "MM/YYYY";
             endDateBox.LeadingIcon = null;
-            endDateBox.Location = new Point(3, 258);
+            endDateBox.Location = new Point(3, 412);
             endDateBox.MaxLength = 32767;
             endDateBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             endDateBox.Name = "endDateBox";
@@ -245,7 +253,7 @@
             discardButton.HighEmphasis = true;
             discardButton.Icon = null;
             discardButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            discardButton.Location = new Point(309, 405);
+            discardButton.Location = new Point(309, 525);
             discardButton.Margin = new Padding(4, 6, 4, 6);
             discardButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             discardButton.Name = "discardButton";
@@ -269,7 +277,7 @@
             addJobButton.HighEmphasis = true;
             addJobButton.Icon = null;
             addJobButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            addJobButton.Location = new Point(8, 405);
+            addJobButton.Location = new Point(8, 525);
             addJobButton.Margin = new Padding(4, 6, 4, 6);
             addJobButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             addJobButton.Name = "addJobButton";
@@ -283,11 +291,103 @@
             addJobButton.UseVisualStyleBackColor = true;
             addJobButton.Click += addJobButton_Click;
             // 
+            // materialLabel5
+            // 
+            materialLabel5.Anchor = AnchorStyles.Left;
+            materialLabel5.AutoSize = true;
+            materialLabel5.Depth = 0;
+            materialLabel5.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel5.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel5.Location = new Point(3, 161);
+            materialLabel5.Margin = new Padding(3, 6, 3, 0);
+            materialLabel5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel5.Name = "materialLabel5";
+            materialLabel5.Size = new Size(30, 17);
+            materialLabel5.TabIndex = 12;
+            materialLabel5.Text = "City:";
+            // 
+            // cityBox
+            // 
+            cityBox.AnimateReadOnly = false;
+            cityBox.AutoCompleteMode = AutoCompleteMode.None;
+            cityBox.AutoCompleteSource = AutoCompleteSource.None;
+            cityBox.BackgroundImageLayout = ImageLayout.None;
+            cityBox.CharacterCasing = CharacterCasing.Normal;
+            cityBox.Depth = 0;
+            cityBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cityBox.HideSelection = true;
+            cityBox.Hint = "City or Town Name";
+            cityBox.LeadingIcon = null;
+            cityBox.Location = new Point(3, 181);
+            cityBox.MaxLength = 32767;
+            cityBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            cityBox.Name = "cityBox";
+            cityBox.PasswordChar = '\0';
+            cityBox.PrefixSuffixText = null;
+            cityBox.ReadOnly = false;
+            cityBox.RightToLeft = RightToLeft.No;
+            cityBox.SelectedText = "";
+            cityBox.SelectionLength = 0;
+            cityBox.SelectionStart = 0;
+            cityBox.ShortcutsEnabled = true;
+            cityBox.Size = new Size(250, 48);
+            cityBox.TabIndex = 10;
+            cityBox.TabStop = false;
+            cityBox.TextAlign = HorizontalAlignment.Center;
+            cityBox.TrailingIcon = null;
+            cityBox.UseSystemPasswordChar = false;
+            // 
+            // materialLabel6
+            // 
+            materialLabel6.Anchor = AnchorStyles.Left;
+            materialLabel6.AutoSize = true;
+            materialLabel6.Depth = 0;
+            materialLabel6.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel6.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel6.Location = new Point(3, 238);
+            materialLabel6.Margin = new Padding(3, 6, 3, 0);
+            materialLabel6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel6.Name = "materialLabel6";
+            materialLabel6.Size = new Size(39, 17);
+            materialLabel6.TabIndex = 13;
+            materialLabel6.Text = "State:";
+            // 
+            // stateBox
+            // 
+            stateBox.AnimateReadOnly = false;
+            stateBox.AutoCompleteMode = AutoCompleteMode.None;
+            stateBox.AutoCompleteSource = AutoCompleteSource.None;
+            stateBox.BackgroundImageLayout = ImageLayout.None;
+            stateBox.CharacterCasing = CharacterCasing.Normal;
+            stateBox.Depth = 0;
+            stateBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            stateBox.HideSelection = true;
+            stateBox.Hint = "State Name";
+            stateBox.LeadingIcon = null;
+            stateBox.Location = new Point(3, 258);
+            stateBox.MaxLength = 32767;
+            stateBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            stateBox.Name = "stateBox";
+            stateBox.PasswordChar = '\0';
+            stateBox.PrefixSuffixText = null;
+            stateBox.ReadOnly = false;
+            stateBox.RightToLeft = RightToLeft.No;
+            stateBox.SelectedText = "";
+            stateBox.SelectionLength = 0;
+            stateBox.SelectionStart = 0;
+            stateBox.ShortcutsEnabled = true;
+            stateBox.Size = new Size(250, 48);
+            stateBox.TabIndex = 11;
+            stateBox.TabStop = false;
+            stateBox.TextAlign = HorizontalAlignment.Center;
+            stateBox.TrailingIcon = null;
+            stateBox.UseSystemPasswordChar = false;
+            // 
             // AddEducationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(390, 450);
+            ClientSize = new Size(390, 570);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(discardButton);
             Controls.Add(addJobButton);
@@ -317,5 +417,9 @@
         private ReaLTaiizor.Controls.MaterialTextBoxEdit endDateBox;
         private ReaLTaiizor.Controls.MaterialButton discardButton;
         private ReaLTaiizor.Controls.MaterialButton addJobButton;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel5;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit cityBox;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel6;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit stateBox;
     }
 }

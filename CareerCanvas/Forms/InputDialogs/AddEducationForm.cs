@@ -79,6 +79,8 @@ namespace CareerCanvas.Forms.InputDialogs
             newEducation.EndDate = endDate;
             newEducation.SchoolName = schoolNameBox.Text;
             newEducation.Degree = (DegreeType)degreeComboBox.SelectedIndex;
+            newEducation.City = cityBox.Text;
+            newEducation.State = stateBox.Text;
             masterList.Add(newEducation);
             Close();
         }
