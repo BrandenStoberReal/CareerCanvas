@@ -146,6 +146,7 @@
             jobTitleBox.ShortcutsEnabled = true;
             jobTitleBox.Size = new Size(250, 48);
             jobTitleBox.TabIndex = 1;
+            jobTitleBox.TabStop = false;
             jobTitleBox.TextAlign = HorizontalAlignment.Center;
             jobTitleBox.TrailingIcon = null;
             jobTitleBox.UseSystemPasswordChar = false;
@@ -191,6 +192,7 @@
             companyBox.ShortcutsEnabled = true;
             companyBox.Size = new Size(250, 48);
             companyBox.TabIndex = 2;
+            companyBox.TabStop = false;
             companyBox.TextAlign = HorizontalAlignment.Center;
             companyBox.TrailingIcon = null;
             companyBox.UseSystemPasswordChar = false;
@@ -236,6 +238,7 @@
             startDateBox.ShortcutsEnabled = true;
             startDateBox.Size = new Size(109, 48);
             startDateBox.TabIndex = 3;
+            startDateBox.TabStop = false;
             startDateBox.TextAlign = HorizontalAlignment.Center;
             startDateBox.TrailingIcon = null;
             startDateBox.UseSystemPasswordChar = false;
@@ -281,6 +284,7 @@
             endDateBox.ShortcutsEnabled = true;
             endDateBox.Size = new Size(109, 48);
             endDateBox.TabIndex = 4;
+            endDateBox.TabStop = false;
             endDateBox.TextAlign = HorizontalAlignment.Center;
             endDateBox.TrailingIcon = null;
             endDateBox.UseSystemPasswordChar = false;
@@ -298,6 +302,7 @@
             Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
             Text = "Add New Job";
+            FormClosing += AddJobForm_FormClosing;
             Load += AddJobForm_Load;
             Shown += AddJobForm_Shown;
             Click += AddJobForm_Click;

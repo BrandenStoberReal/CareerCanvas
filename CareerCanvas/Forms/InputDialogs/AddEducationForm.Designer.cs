@@ -100,6 +100,7 @@
             schoolNameBox.ShortcutsEnabled = true;
             schoolNameBox.Size = new Size(250, 48);
             schoolNameBox.TabIndex = 1;
+            schoolNameBox.TabStop = false;
             schoolNameBox.TextAlign = HorizontalAlignment.Center;
             schoolNameBox.TrailingIcon = null;
             schoolNameBox.UseSystemPasswordChar = false;
@@ -183,6 +184,7 @@
             startDateBox.ShortcutsEnabled = true;
             startDateBox.Size = new Size(109, 48);
             startDateBox.TabIndex = 3;
+            startDateBox.TabStop = false;
             startDateBox.TextAlign = HorizontalAlignment.Center;
             startDateBox.TrailingIcon = null;
             startDateBox.UseSystemPasswordChar = false;
@@ -228,6 +230,7 @@
             endDateBox.ShortcutsEnabled = true;
             endDateBox.Size = new Size(109, 48);
             endDateBox.TabIndex = 4;
+            endDateBox.TabStop = false;
             endDateBox.TextAlign = HorizontalAlignment.Center;
             endDateBox.TrailingIcon = null;
             endDateBox.UseSystemPasswordChar = false;
@@ -292,6 +295,7 @@
             Name = "AddEducationForm";
             Padding = new Padding(3, 24, 3, 3);
             Text = "Add Education";
+            FormClosing += AddEducationForm_FormClosing;
             Load += AddEducationForm_Load;
             Shown += AddEducationForm_Shown;
             Click += AddEducationForm_Click;

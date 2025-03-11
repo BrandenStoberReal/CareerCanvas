@@ -253,7 +253,7 @@ namespace CareerCanvas.Forms
                 JobInfoViewer jobInfoViewer = new JobInfoViewer(jobHistory[employmentListBox.SelectedIndex]);
                 DisableJobButtons();
                 employmentListBox.SelectedItem = null;
-                jobInfoViewer.ShowDialog();
+                jobInfoViewer.Show();
             }
         }
 
@@ -264,19 +264,26 @@ namespace CareerCanvas.Forms
                 EducationInfoViewer educationInfoViewer = new EducationInfoViewer(educationHistory[educationListBox.SelectedIndex]);
                 DisableEducationButtons();
                 educationListBox.SelectedItem = null;
-                educationInfoViewer.ShowDialog();
+                educationInfoViewer.Show();
             }
         }
 
         private void certificateInfoButton_Click(object sender, EventArgs e)
         {
+            if (certificatesListBox.SelectedItem != null)
+            {
+                CertificateInfoViewer certificateInfoViewer = new CertificateInfoViewer(certificateHistory[certificatesListBox.SelectedIndex]);
+                DisableCertificateButtons();
+                certificatesListBox.SelectedItem = null;
+                certificateInfoViewer.Show();
+            }
         }
 
         private void HistoryWorkspace_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (titleBox.Text == "")
             {
-                DialogResult discardChanges = MessageBox.Show("No industry name found! Discard changes?", "Discard", MessageBoxButtons.YesNo);
+                DialogResult discardChanges = MessageBox.Show("No industry name found! Discard changes?", "Discard", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (discardChanges == DialogResult.No)
                 {
                     e.Cancel = true;

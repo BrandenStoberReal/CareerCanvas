@@ -401,6 +401,7 @@
             Name = "AddCertificateForm";
             Padding = new Padding(3, 24, 3, 3);
             Text = "Add Certificate Program";
+            FormClosing += AddCertificateForm_FormClosing;
             Load += AddCertificateForm_Load;
             Click += AddCertificateForm_Click;
             flowLayoutPanel1.ResumeLayout(false);

@@ -58,6 +58,15 @@ namespace CareerCanvas.Forms.InputDialogs
                 return;
             }
 
+            if (endDate != issueDate)
+            {
+                DialogResult result = MessageBox.Show("The issue date of the certificate is not the same as the end date of the program. Proceed anyway?", "Caution", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
             CertificateProgram certificateProgram = new CertificateProgram();
             certificateProgram.ProgramName = programNameBox.Text;
             certificateProgram.IssuingOrganization = issuerBox.Text;
@@ -86,6 +95,19 @@ namespace CareerCanvas.Forms.InputDialogs
         private void AddCertificateForm_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+        }
+
+        private void AddCertificateForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Changes not saved! Exit anyway?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

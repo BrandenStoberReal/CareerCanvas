@@ -101,5 +101,18 @@ namespace CareerCanvas.Forms.InputDialogs
         {
             this.ActiveControl = null;
         }
+
+        private void AddEducationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Changes not saved! Exit anyway?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                return;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
