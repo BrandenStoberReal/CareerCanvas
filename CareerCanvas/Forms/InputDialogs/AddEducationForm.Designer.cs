@@ -100,7 +100,6 @@
             schoolNameBox.ShortcutsEnabled = true;
             schoolNameBox.Size = new Size(250, 48);
             schoolNameBox.TabIndex = 1;
-            schoolNameBox.TabStop = false;
             schoolNameBox.TextAlign = HorizontalAlignment.Center;
             schoolNameBox.TrailingIcon = null;
             schoolNameBox.UseSystemPasswordChar = false;
@@ -141,7 +140,7 @@
             degreeComboBox.Name = "degreeComboBox";
             degreeComboBox.Size = new Size(250, 49);
             degreeComboBox.StartIndex = 0;
-            degreeComboBox.TabIndex = 8;
+            degreeComboBox.TabIndex = 2;
             // 
             // materialLabel3
             // 
@@ -183,8 +182,7 @@
             startDateBox.SelectionStart = 0;
             startDateBox.ShortcutsEnabled = true;
             startDateBox.Size = new Size(109, 48);
-            startDateBox.TabIndex = 5;
-            startDateBox.TabStop = false;
+            startDateBox.TabIndex = 3;
             startDateBox.TextAlign = HorizontalAlignment.Center;
             startDateBox.TrailingIcon = null;
             startDateBox.UseSystemPasswordChar = false;
@@ -229,8 +227,7 @@
             endDateBox.SelectionStart = 0;
             endDateBox.ShortcutsEnabled = true;
             endDateBox.Size = new Size(109, 48);
-            endDateBox.TabIndex = 7;
-            endDateBox.TabStop = false;
+            endDateBox.TabIndex = 4;
             endDateBox.TextAlign = HorizontalAlignment.Center;
             endDateBox.TrailingIcon = null;
             endDateBox.UseSystemPasswordChar = false;
@@ -251,7 +248,7 @@
             discardButton.Name = "discardButton";
             discardButton.NoAccentTextColor = Color.Empty;
             discardButton.Size = new Size(75, 36);
-            discardButton.TabIndex = 1003;
+            discardButton.TabIndex = 6;
             discardButton.TabStop = false;
             discardButton.Text = "Discard";
             discardButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -275,7 +272,7 @@
             addJobButton.Name = "addJobButton";
             addJobButton.NoAccentTextColor = Color.Empty;
             addJobButton.Size = new Size(75, 36);
-            addJobButton.TabIndex = 1002;
+            addJobButton.TabIndex = 5;
             addJobButton.TabStop = false;
             addJobButton.Text = "Add";
             addJobButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;

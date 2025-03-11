@@ -259,6 +259,13 @@ namespace CareerCanvas.Forms
 
         private void educationInfoButton_Click(object sender, EventArgs e)
         {
+            if (educationListBox.SelectedItem != null)
+            {
+                EducationInfoViewer educationInfoViewer = new EducationInfoViewer(educationHistory[educationListBox.SelectedIndex]);
+                DisableEducationButtons();
+                educationListBox.SelectedItem = null;
+                educationInfoViewer.ShowDialog();
+            }
         }
 
         private void certificateInfoButton_Click(object sender, EventArgs e)
