@@ -426,6 +426,7 @@
             importHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             importHistoryButton.UseAccentColor = false;
             importHistoryButton.UseVisualStyleBackColor = true;
+            importHistoryButton.Click += importHistoryButton_Click;
             // 
             // materialCard3
             // 

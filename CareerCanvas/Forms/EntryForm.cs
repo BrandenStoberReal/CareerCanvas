@@ -271,5 +271,30 @@ namespace CareerCanvas
         {
             historiesListBox.SelectedItem = null;
         }
+
+        private void importHistoryButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = Path.GetFullPath("./data/industries");
+            openFileDialog1.Filter = "Industry files (*.industry)|*.industry";
+            openFileDialog1.Title = "Import External Industry File";
+
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            string selectedFileName = openFileDialog1.FileName;
+            string realFileName = Path.GetFileNameWithoutExtension(selectedFileName).ToLower();
+
+            if (!File.Exists("./data/industries/" + realFileName + ".industry"))
+            {
+                File.Copy(selectedFileName, "./data/industries/" + realFileName + ".industry");
+            }
+
+            HistoryWorkspace industryWorkspace = new HistoryWorkspace(selectedFileName);
+            industryWorkspace.Show();
+        }
     }
 }
