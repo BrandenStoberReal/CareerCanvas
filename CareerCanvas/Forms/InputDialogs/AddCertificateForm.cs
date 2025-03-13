@@ -1,8 +1,7 @@
 ﻿using CareerCanvas.Classes.Main.History;
-using ReaLTaiizor.Colors;
+using CareerCanvas.Classes.Static;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
-using ReaLTaiizor.Util;
 using System.Globalization;
 
 namespace CareerCanvas.Forms.InputDialogs
@@ -28,7 +27,7 @@ namespace CareerCanvas.Forms.InputDialogs
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = new MaterialColorScheme(MaterialPrimary.Indigo500, MaterialPrimary.Indigo700, MaterialPrimary.Indigo100, MaterialAccent.Pink200, MaterialTextShade.LIGHT);
+            materialSkinManager.ColorScheme = Globals.AppColorScheme;
         }
 
         private void AddCertificateForm_Load(object sender, EventArgs e)

@@ -5,10 +5,8 @@ using CareerCanvas.Forms.Info;
 using CareerCanvas.Forms.InputDialogs;
 using ProtoBuf;
 using ReaLTaiizor.Child.Material;
-using ReaLTaiizor.Colors;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
-using ReaLTaiizor.Util;
 using System.Globalization;
 
 namespace CareerCanvas.Forms
@@ -36,7 +34,7 @@ namespace CareerCanvas.Forms
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = new MaterialColorScheme(MaterialPrimary.Indigo500, MaterialPrimary.Indigo700, MaterialPrimary.Indigo100, MaterialAccent.Pink200, MaterialTextShade.LIGHT);
+            materialSkinManager.ColorScheme = Globals.AppColorScheme;
 
             if (filepath != null)
             {
