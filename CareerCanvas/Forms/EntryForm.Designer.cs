@@ -52,12 +52,6 @@
             historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
             historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             resumePage = new TabPage();
-            recentResumesFlow = new FlowLayoutPanel();
-            recentResumesLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            recentResumesListBox = new ReaLTaiizor.Controls.MaterialListBox();
-            mainMenuButtonFlowPanel = new FlowLayoutPanel();
-            newResumeButton = new ReaLTaiizor.Controls.MaterialButton();
-            loadResumeButton = new ReaLTaiizor.Controls.MaterialButton();
             cvPage = new TabPage();
             creditsPage = new TabPage();
             creditsFlowPanel = new FlowLayoutPanel();
@@ -86,9 +80,6 @@
             industryPage.SuspendLayout();
             materialCard4.SuspendLayout();
             materialCard3.SuspendLayout();
-            resumePage.SuspendLayout();
-            recentResumesFlow.SuspendLayout();
-            mainMenuButtonFlowPanel.SuspendLayout();
             creditsPage.SuspendLayout();
             creditsFlowPanel.SuspendLayout();
             libraryCreditsFlowPanel.SuspendLayout();
@@ -473,109 +464,12 @@
             // 
             // resumePage
             // 
-            resumePage.Controls.Add(recentResumesFlow);
-            resumePage.Controls.Add(mainMenuButtonFlowPanel);
             resumePage.Location = new Point(4, 24);
             resumePage.Name = "resumePage";
             resumePage.Size = new Size(1274, 570);
             resumePage.TabIndex = 0;
             resumePage.Text = "Resume";
             resumePage.UseVisualStyleBackColor = true;
-            // 
-            // recentResumesFlow
-            // 
-            recentResumesFlow.Controls.Add(recentResumesLabel);
-            recentResumesFlow.Controls.Add(recentResumesListBox);
-            recentResumesFlow.Dock = DockStyle.Right;
-            recentResumesFlow.FlowDirection = FlowDirection.TopDown;
-            recentResumesFlow.Location = new Point(928, 0);
-            recentResumesFlow.Name = "recentResumesFlow";
-            recentResumesFlow.Size = new Size(346, 570);
-            recentResumesFlow.TabIndex = 2;
-            // 
-            // recentResumesLabel
-            // 
-            recentResumesLabel.Anchor = AnchorStyles.Top;
-            recentResumesLabel.Depth = 0;
-            recentResumesLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            recentResumesLabel.Location = new Point(3, 0);
-            recentResumesLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            recentResumesLabel.Name = "recentResumesLabel";
-            recentResumesLabel.Size = new Size(340, 23);
-            recentResumesLabel.TabIndex = 0;
-            recentResumesLabel.Text = "Recent Resumes";
-            recentResumesLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // recentResumesListBox
-            // 
-            recentResumesListBox.BackColor = Color.White;
-            recentResumesListBox.BorderColor = Color.LightGray;
-            recentResumesListBox.Depth = 0;
-            recentResumesListBox.Dock = DockStyle.Bottom;
-            recentResumesListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            recentResumesListBox.Location = new Point(6, 29);
-            recentResumesListBox.Margin = new Padding(6);
-            recentResumesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            recentResumesListBox.Name = "recentResumesListBox";
-            recentResumesListBox.SelectedIndex = -1;
-            recentResumesListBox.SelectedItem = null;
-            recentResumesListBox.Size = new Size(334, 534);
-            recentResumesListBox.TabIndex = 1;
-            // 
-            // mainMenuButtonFlowPanel
-            // 
-            mainMenuButtonFlowPanel.Controls.Add(newResumeButton);
-            mainMenuButtonFlowPanel.Controls.Add(loadResumeButton);
-            mainMenuButtonFlowPanel.Dock = DockStyle.Left;
-            mainMenuButtonFlowPanel.FlowDirection = FlowDirection.TopDown;
-            mainMenuButtonFlowPanel.Location = new Point(0, 0);
-            mainMenuButtonFlowPanel.Name = "mainMenuButtonFlowPanel";
-            mainMenuButtonFlowPanel.Size = new Size(181, 570);
-            mainMenuButtonFlowPanel.TabIndex = 1;
-            // 
-            // newResumeButton
-            // 
-            newResumeButton.Anchor = AnchorStyles.None;
-            newResumeButton.AutoSize = false;
-            newResumeButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            newResumeButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            newResumeButton.Depth = 0;
-            newResumeButton.HighEmphasis = true;
-            newResumeButton.Icon = null;
-            newResumeButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            newResumeButton.Location = new Point(6, 6);
-            newResumeButton.Margin = new Padding(6);
-            newResumeButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            newResumeButton.Name = "newResumeButton";
-            newResumeButton.NoAccentTextColor = Color.Empty;
-            newResumeButton.Size = new Size(136, 36);
-            newResumeButton.TabIndex = 0;
-            newResumeButton.Text = "New Resume";
-            newResumeButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            newResumeButton.UseAccentColor = false;
-            newResumeButton.UseVisualStyleBackColor = true;
-            // 
-            // loadResumeButton
-            // 
-            loadResumeButton.Anchor = AnchorStyles.None;
-            loadResumeButton.AutoSize = false;
-            loadResumeButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            loadResumeButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            loadResumeButton.Depth = 0;
-            loadResumeButton.HighEmphasis = true;
-            loadResumeButton.Icon = null;
-            loadResumeButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            loadResumeButton.Location = new Point(6, 54);
-            loadResumeButton.Margin = new Padding(6);
-            loadResumeButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            loadResumeButton.Name = "loadResumeButton";
-            loadResumeButton.NoAccentTextColor = Color.Empty;
-            loadResumeButton.Size = new Size(136, 36);
-            loadResumeButton.TabIndex = 1;
-            loadResumeButton.Text = "Import Resume";
-            loadResumeButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            loadResumeButton.UseAccentColor = false;
-            loadResumeButton.UseVisualStyleBackColor = true;
             // 
             // cvPage
             // 
@@ -816,9 +710,6 @@
             industryPage.ResumeLayout(false);
             materialCard4.ResumeLayout(false);
             materialCard3.ResumeLayout(false);
-            resumePage.ResumeLayout(false);
-            recentResumesFlow.ResumeLayout(false);
-            mainMenuButtonFlowPanel.ResumeLayout(false);
             creditsPage.ResumeLayout(false);
             creditsFlowPanel.ResumeLayout(false);
             creditsFlowPanel.PerformLayout();
@@ -832,18 +723,12 @@
         private ReaLTaiizor.Controls.MaterialTabControl materialTabControl1;
         private TabPage resumePage;
         private TabPage creditsPage;
-        private FlowLayoutPanel mainMenuButtonFlowPanel;
-        private ReaLTaiizor.Controls.MaterialButton newResumeButton;
-        private ReaLTaiizor.Controls.MaterialButton loadResumeButton;
         private TabPage welcomePage;
         private TabPage cvPage;
         private TabPage identityPage;
         private Microsoft.Web.WebView2.WinForms.WebView2 readMeView;
         private ReaLTaiizor.Controls.MaterialButton newIdentityButton;
         private ReaLTaiizor.Controls.MaterialListBox identitiesListBox;
-        private FlowLayoutPanel recentResumesFlow;
-        private ReaLTaiizor.Controls.MaterialLabel recentResumesLabel;
-        private ReaLTaiizor.Controls.MaterialListBox recentResumesListBox;
         private FlowLayoutPanel flowLayoutPanel1;
         private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
         private ReaLTaiizor.Controls.MaterialButton openIdentityButton;

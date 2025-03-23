@@ -108,10 +108,10 @@ namespace CareerCanvas
                         var html = Markdig.Markdown.ToHtml(reply);
                         readMeView.NavigateToString(html);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         // Display an error message if the changelog fails to load
-                        readMeView.NavigateToString("<h1>Failed to load changelog</h1>");
+                        readMeView.NavigateToString("<h1>Failed to load changelog</h1><p>" + ex.Message + "</p>");
                     }
                 }
             }
