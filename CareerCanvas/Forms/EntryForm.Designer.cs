@@ -31,6 +31,10 @@
             components = new System.ComponentModel.Container();
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
+            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            changeColorsButton = new ReaLTaiizor.Controls.MaterialButton();
+            entryTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityPage = new TabPage();
             identityConfigExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
             identityEncryptionCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
@@ -68,9 +72,9 @@
             hapCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
             historyRefreshTimer = new System.Windows.Forms.Timer(components);
-            entryTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             identityPage.SuspendLayout();
             identityConfigExpansionPanel.SuspendLayout();
             materialCard2.SuspendLayout();
@@ -103,6 +107,8 @@
             // 
             // welcomePage
             // 
+            welcomePage.Controls.Add(materialLabel1);
+            welcomePage.Controls.Add(flowLayoutPanel2);
             welcomePage.Controls.Add(entryTitleLabel);
             welcomePage.Location = new Point(4, 24);
             welcomePage.Name = "welcomePage";
@@ -110,6 +116,64 @@
             welcomePage.TabIndex = 2;
             welcomePage.Text = "Welcome";
             welcomePage.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel1.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
+            materialLabel1.Location = new Point(20, 46);
+            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(224, 23);
+            materialLabel1.TabIndex = 1;
+            materialLabel1.Text = "Settings";
+            materialLabel1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.Controls.Add(changeColorsButton);
+            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel2.Location = new Point(20, 72);
+            flowLayoutPanel2.Margin = new Padding(20, 3, 20, 20);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Padding = new Padding(10);
+            flowLayoutPanel2.Size = new Size(224, 478);
+            flowLayoutPanel2.TabIndex = 0;
+            // 
+            // changeColorsButton
+            // 
+            changeColorsButton.AutoSize = false;
+            changeColorsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            changeColorsButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            changeColorsButton.Depth = 0;
+            changeColorsButton.HighEmphasis = true;
+            changeColorsButton.Icon = null;
+            changeColorsButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            changeColorsButton.Location = new Point(14, 16);
+            changeColorsButton.Margin = new Padding(4, 6, 4, 6);
+            changeColorsButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            changeColorsButton.Name = "changeColorsButton";
+            changeColorsButton.NoAccentTextColor = Color.Empty;
+            changeColorsButton.Size = new Size(196, 36);
+            changeColorsButton.TabIndex = 0;
+            changeColorsButton.Text = "Change Color Scheme";
+            changeColorsButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            changeColorsButton.UseAccentColor = false;
+            changeColorsButton.UseVisualStyleBackColor = true;
+            // 
+            // entryTitleLabel
+            // 
+            entryTitleLabel.Depth = 0;
+            entryTitleLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
+            entryTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
+            entryTitleLabel.Location = new Point(3, 0);
+            entryTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            entryTitleLabel.Name = "entryTitleLabel";
+            entryTitleLabel.Size = new Size(1268, 46);
+            entryTitleLabel.TabIndex = 0;
+            entryTitleLabel.Text = "Welcome!";
+            entryTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // identityPage
             // 
@@ -671,19 +735,6 @@
             historyRefreshTimer.Interval = 1000;
             historyRefreshTimer.Tick += historyRefreshTimer_Tick;
             // 
-            // entryTitleLabel
-            // 
-            entryTitleLabel.Depth = 0;
-            entryTitleLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
-            entryTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
-            entryTitleLabel.Location = new Point(3, 0);
-            entryTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            entryTitleLabel.Name = "entryTitleLabel";
-            entryTitleLabel.Size = new Size(1268, 46);
-            entryTitleLabel.TabIndex = 0;
-            entryTitleLabel.Text = "Welcome!";
-            entryTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -698,6 +749,7 @@
             Load += EntryForm_Load;
             materialTabControl1.ResumeLayout(false);
             welcomePage.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
             identityPage.ResumeLayout(false);
             identityConfigExpansionPanel.ResumeLayout(false);
             identityConfigExpansionPanel.PerformLayout();
@@ -757,5 +809,8 @@
         private ReaLTaiizor.Controls.MaterialCard materialCard4;
         private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
         private ReaLTaiizor.Controls.MaterialLabel entryTitleLabel;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private ReaLTaiizor.Controls.MaterialButton changeColorsButton;
     }
 }
