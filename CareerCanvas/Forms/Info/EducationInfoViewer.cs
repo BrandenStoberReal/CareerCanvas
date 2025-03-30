@@ -3,49 +3,54 @@ using CareerCanvas.Classes.Static;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 
-namespace CareerCanvas.Forms.Info
+namespace CareerCanvas.Forms.Info;
+
+public partial class EducationInfoViewer : MaterialForm
 {
-    public partial class EducationInfoViewer : MaterialForm
+    private readonly Education _education;
+
+    public EducationInfoViewer(Education education)
     {
-        private readonly Education _education;
+        InitializeComponent();
 
-        public EducationInfoViewer(Education education)
-        {
-            InitializeComponent();
+        var materialSkinManager1 = MaterialSkinManager.Instance;
 
-            var materialSkinManager1 = MaterialSkinManager.Instance;
+        // Set this to false to disable backcolor enforcing on non-materialSkin components
+        // This HAS to be set before the AddFormToManage()
+        materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
-            // Set this to false to disable backcolor enforcing on non-materialSkin components
-            // This HAS to be set before the AddFormToManage()
-            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
+        // MaterialSkinManager properties
+        materialSkinManager1.AddFormToManage(this);
+        materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            // MaterialSkinManager properties
-            materialSkinManager1.AddFormToManage(this);
-            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
+        materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
 
-            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        _education = education;
+    }
 
-            this._education = education;
-        }
+    private void EducationInfoViewer_Load(object sender, EventArgs e)
+    {
+        schoolNameBox.Text = _education.SchoolName == string.Empty ? "None provided." : _education.SchoolName;
+        cityBox.Text = _education.City == string.Empty ? "None provided." : _education.City;
+        stateBox.Text = _education.State == string.Empty ? "None provided." : _education.State;
+        degreeBox.Text = EnumUtils.GetEnumDescription(_education.Degree) == string.Empty
+            ? "None provided."
+            : EnumUtils.GetEnumDescription(_education.Degree);
+        startDateBox.Text = _education.StartDate.ToShortDateString() == string.Empty
+            ? "None provided."
+            : _education.StartDate.ToShortDateString();
+        endDateBox.Text = _education.EndDate.ToShortDateString() == string.Empty
+            ? "None provided."
+            : _education.EndDate.ToShortDateString();
+    }
 
-        private void EducationInfoViewer_Load(object sender, EventArgs e)
-        {
-            schoolNameBox.Text = _education.SchoolName == String.Empty ? "None provided." : _education.SchoolName;
-            cityBox.Text = _education.City == String.Empty ? "None provided." : _education.City;
-            stateBox.Text = _education.State == String.Empty ? "None provided." : _education.State;
-            degreeBox.Text = EnumUtils.GetEnumDescription(_education.Degree) == String.Empty ? "None provided." : EnumUtils.GetEnumDescription(_education.Degree);
-            startDateBox.Text = _education.StartDate.ToShortDateString() == String.Empty ? "None provided." : _education.StartDate.ToShortDateString();
-            endDateBox.Text = _education.EndDate.ToShortDateString() == String.Empty ? "None provided." : _education.EndDate.ToShortDateString();
-        }
+    private void textBox_Click(object sender, EventArgs e)
+    {
+        ActiveControl = null;
+    }
 
-        private void textBox_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void textBox_Enter(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
+    private void textBox_Enter(object sender, EventArgs e)
+    {
+        ActiveControl = null;
     }
 }

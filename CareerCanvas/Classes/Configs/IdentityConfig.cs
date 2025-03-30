@@ -1,14 +1,11 @@
 ﻿using ProtoBuf;
 
-namespace CareerCanvas.Classes.Configs
-{
-    [ProtoContract]
-    public class IdentityConfig
-    {
-        [ProtoMember(1)]
-        public bool UseEncryption { get; set; } = false;
+namespace CareerCanvas.Classes.Configs;
 
-        [ProtoMember(2)]
-        public string? EncryptionKey { get; set; }
-    }
+[ProtoContract]
+public class IdentityConfig
+{
+    [ProtoMember(1)] public bool UseEncryption { get; set; }
+
+    [ProtoMember(2)] public string? EncryptionKey { get; set; }
 }

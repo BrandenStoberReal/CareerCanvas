@@ -1,142 +1,145 @@
 ﻿using System.Security.Cryptography;
 
-namespace CareerCanvas.Classes.Static
+namespace CareerCanvas.Classes.Static;
+
+public static class EncryptionUtils
 {
-    public static class EncryptionUtils
+    public static void EncryptFile(string inputFile, string outputFile, string key)
     {
-        public static void EncryptFile(string inputFile, string outputFile, string key)
-        {
-            byte[] plainBytes = File.ReadAllBytes(inputFile);
-            byte[] encryptedBytes = EncryptBytesToBytes(plainBytes, key);
-            File.WriteAllBytes(outputFile, encryptedBytes);
-        }
+        var plainBytes = File.ReadAllBytes(inputFile);
+        var encryptedBytes = EncryptBytesToBytes(plainBytes, key);
+        File.WriteAllBytes(outputFile, encryptedBytes);
+    }
 
-        public static void DecryptFile(string inputFile, string outputFile, string key)
-        {
-            byte[] encryptedBytes = File.ReadAllBytes(inputFile);
-            byte[] decryptedBytes = DecryptBytesFromBytes(encryptedBytes, key);
-            File.WriteAllBytes(outputFile, decryptedBytes);
-        }
+    public static void DecryptFile(string inputFile, string outputFile, string key)
+    {
+        var encryptedBytes = File.ReadAllBytes(inputFile);
+        var decryptedBytes = DecryptBytesFromBytes(encryptedBytes, key);
+        File.WriteAllBytes(outputFile, decryptedBytes);
+    }
 
-        public static byte[] EncryptFileToBytes(string inputFile, string key)
-        {
-            byte[] plainBytes = File.ReadAllBytes(inputFile);
-            return EncryptBytesToBytes(plainBytes, key);
-        }
+    public static byte[] EncryptFileToBytes(string inputFile, string key)
+    {
+        var plainBytes = File.ReadAllBytes(inputFile);
+        return EncryptBytesToBytes(plainBytes, key);
+    }
 
-        public static byte[] DecryptFileFromBytes(byte[] encryptedBytes, string key)
-        {
-            return DecryptBytesFromBytes(encryptedBytes, key);
-        }
+    public static byte[] DecryptFileFromBytes(byte[] encryptedBytes, string key)
+    {
+        return DecryptBytesFromBytes(encryptedBytes, key);
+    }
 
-        public static string Generate256BitKey()
+    public static string Generate256BitKey()
+    {
+        using (var aesAlg = Aes.Create())
         {
-            using (Aes aesAlg = Aes.Create())
+            aesAlg.KeySize = 256; // Set the key size to 256 bits
+            aesAlg.GenerateKey(); // Generate a random 256-bit key
+            return Convert.ToBase64String(aesAlg.Key);
+        }
+    }
+
+    public static byte[] EncryptStringToBytes(string plainText, string key)
+    {
+        byte[] encrypted;
+
+        using (var aesAlg = Aes.Create())
+        {
+            aesAlg.Key = Convert.FromBase64String(key);
+            aesAlg.IV = new byte[aesAlg.BlockSize / 8]; // IV should be the same size as the block size
+            aesAlg.Mode = CipherMode.CBC; // Set the mode to CBC
+            aesAlg.Padding = PaddingMode.PKCS7; // Use PKCS7 padding
+
+            var encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+            using (var msEncrypt = new MemoryStream())
             {
-                aesAlg.KeySize = 256; // Set the key size to 256 bits
-                aesAlg.GenerateKey(); // Generate a random 256-bit key
-                return Convert.ToBase64String(aesAlg.Key);
-            }
-        }
-
-        public static byte[] EncryptStringToBytes(string plainText, string key)
-        {
-            byte[] encrypted;
-
-            using (Aes aesAlg = Aes.Create())
-            {
-                aesAlg.Key = Convert.FromBase64String(key);
-                aesAlg.IV = new byte[aesAlg.BlockSize / 8]; // IV should be the same size as the block size
-                aesAlg.Mode = CipherMode.CBC; // Set the mode to CBC
-                aesAlg.Padding = PaddingMode.PKCS7; // Use PKCS7 padding
-
-                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-
-                using (MemoryStream msEncrypt = new MemoryStream())
+                using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                using (var swEncrypt = new StreamWriter(csEncrypt))
                 {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                    {
-                        swEncrypt.Write(plainText);
-                    }
-                    encrypted = msEncrypt.ToArray();
+                    swEncrypt.Write(plainText);
                 }
-            }
 
-            return encrypted;
+                encrypted = msEncrypt.ToArray();
+            }
         }
 
-        public static string DecryptStringFromBytes(byte[] cipherText, string key)
+        return encrypted;
+    }
+
+    public static string DecryptStringFromBytes(byte[] cipherText, string key)
+    {
+        string plaintext = null;
+
+        using (var aesAlg = Aes.Create())
         {
-            string plaintext = null;
+            aesAlg.Key = Convert.FromBase64String(key);
+            aesAlg.IV = new byte[aesAlg.BlockSize / 8]; // IV should be the same size as the block size
+            aesAlg.Mode = CipherMode.CBC; // Set the mode to CBC
+            aesAlg.Padding = PaddingMode.PKCS7; // Use PKCS7 padding
 
-            using (Aes aesAlg = Aes.Create())
+            var decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+            using (var msDecrypt = new MemoryStream(cipherText))
+            using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+            using (var srDecrypt = new StreamReader(csDecrypt))
             {
-                aesAlg.Key = Convert.FromBase64String(key);
-                aesAlg.IV = new byte[aesAlg.BlockSize / 8]; // IV should be the same size as the block size
-                aesAlg.Mode = CipherMode.CBC; // Set the mode to CBC
-                aesAlg.Padding = PaddingMode.PKCS7; // Use PKCS7 padding
-
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                {
-                    plaintext = srDecrypt.ReadToEnd();
-                }
+                plaintext = srDecrypt.ReadToEnd();
             }
-            return plaintext;
         }
 
-        public static byte[] EncryptBytesToBytes(byte[] plainBytes, string key)
+        return plaintext;
+    }
+
+    public static byte[] EncryptBytesToBytes(byte[] plainBytes, string key)
+    {
+        byte[] encrypted;
+
+        using (var aesAlg = Aes.Create())
         {
-            byte[] encrypted;
+            aesAlg.Key = Convert.FromBase64String(key);
+            aesAlg.IV = new byte[aesAlg.BlockSize / 8]; // IV should be the same size as the block size
+            aesAlg.Mode = CipherMode.CBC; // Set the mode to CBC
+            aesAlg.Padding = PaddingMode.PKCS7; // Use PKCS7 padding
 
-            using (Aes aesAlg = Aes.Create())
+            var encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+            using (var msEncrypt = new MemoryStream())
             {
-                aesAlg.Key = Convert.FromBase64String(key);
-                aesAlg.IV = new byte[aesAlg.BlockSize / 8]; // IV should be the same size as the block size
-                aesAlg.Mode = CipherMode.CBC; // Set the mode to CBC
-                aesAlg.Padding = PaddingMode.PKCS7; // Use PKCS7 padding
-
-                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-
-                using (MemoryStream msEncrypt = new MemoryStream())
+                using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
                 {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        csEncrypt.Write(plainBytes, 0, plainBytes.Length);
-                    }
-                    encrypted = msEncrypt.ToArray();
+                    csEncrypt.Write(plainBytes, 0, plainBytes.Length);
                 }
-            }
 
-            return encrypted;
+                encrypted = msEncrypt.ToArray();
+            }
         }
 
-        public static byte[] DecryptBytesFromBytes(byte[] cipherText, string key)
+        return encrypted;
+    }
+
+    public static byte[] DecryptBytesFromBytes(byte[] cipherText, string key)
+    {
+        byte[] plaintext;
+
+        using (var aesAlg = Aes.Create())
         {
-            byte[] plaintext;
+            aesAlg.Key = Convert.FromBase64String(key);
+            aesAlg.IV = new byte[aesAlg.BlockSize / 8];
+            aesAlg.Mode = CipherMode.CBC;
+            aesAlg.Padding = PaddingMode.PKCS7;
 
-            using (Aes aesAlg = Aes.Create())
+            var decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+            using (var msDecrypt = new MemoryStream(cipherText))
+            using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+            using (var msPlainText = new MemoryStream())
             {
-                aesAlg.Key = Convert.FromBase64String(key);
-                aesAlg.IV = new byte[aesAlg.BlockSize / 8];
-                aesAlg.Mode = CipherMode.CBC;
-                aesAlg.Padding = PaddingMode.PKCS7;
-
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                using (MemoryStream msPlainText = new MemoryStream())
-                {
-                    csDecrypt.CopyTo(msPlainText);
-                    plaintext = msPlainText.ToArray();
-                }
+                csDecrypt.CopyTo(msPlainText);
+                plaintext = msPlainText.ToArray();
             }
-            return plaintext;
         }
+
+        return plaintext;
     }
 }

@@ -1,31 +1,27 @@
 ﻿using System.Diagnostics;
 
-namespace CareerCanvas.Classes.Static
+namespace CareerCanvas.Classes.Static;
+
+public static class FolderUtils
 {
-    public static class FolderUtils
+    public static void CreateFolderIfNotExists(string folderPath)
     {
-        public static void CreateFolderIfNotExists(string folderPath)
-        {
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
-            }
-        }
+        if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
+    }
 
-        public static void CreateAppFolders()
-        {
-            CreateFolderIfNotExists("./data");
-            CreateFolderIfNotExists("./data/misc");
-            CreateFolderIfNotExists("./data/configs");
-            CreateFolderIfNotExists("./data/resumes");
-            CreateFolderIfNotExists("./data/coverletters");
-            CreateFolderIfNotExists("./data/identities");
-            CreateFolderIfNotExists("./data/industries");
-        }
+    public static void CreateAppFolders()
+    {
+        CreateFolderIfNotExists("./data");
+        CreateFolderIfNotExists("./data/misc");
+        CreateFolderIfNotExists("./data/configs");
+        CreateFolderIfNotExists("./data/resumes");
+        CreateFolderIfNotExists("./data/coverletters");
+        CreateFolderIfNotExists("./data/identities");
+        CreateFolderIfNotExists("./data/industries");
+    }
 
-        public static void OpenFolder(string folderPath)
-        {
-            Process.Start("explorer.exe", folderPath);
-        }
+    public static void OpenFolder(string folderPath)
+    {
+        Process.Start("explorer.exe", folderPath);
     }
 }

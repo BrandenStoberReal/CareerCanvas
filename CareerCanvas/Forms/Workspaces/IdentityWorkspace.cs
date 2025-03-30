@@ -4,212 +4,204 @@ using ProtoBuf;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 
-namespace CareerCanvas.Forms.Workspaces
+namespace CareerCanvas.Forms.Workspaces;
+
+public sealed partial class IdentityWorkspace : MaterialForm
 {
-    public sealed partial class IdentityWorkspace : MaterialForm
+    public IdentityWorkspace(string? file = null)
     {
-        /// <summary>
-        /// Flushes an identity to disk.
-        /// </summary>
-        private void SaveIdentity()
+        InitializeComponent();
+
+        var materialSkinManager1 = MaterialSkinManager.Instance;
+
+        // Set this to false to disable backcolor enforcing on non-materialSkin components
+        // This HAS to be set before the AddFormToManage()
+        materialSkinManager1.EnforceBackcolorOnAllComponents = true;
+
+        // MaterialSkinManager properties
+        materialSkinManager1.AddFormToManage(this);
+        materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
+
+        materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+
+        // Load identity if filename is provided
+        if (file != null)
         {
-            // Flush class to disk
-            ProfessionalIdentity identity = new ProfessionalIdentity
-            {
-                FirstName = firstNameTextBox.Text,
-                MiddleName = middleNametextBox.Text,
-                LastName = lastNameTextBox.Text,
-                Address = addressTextBox.Text,
-                City = cityTextBox.Text,
-                State = stateTextBox.Text,
-                ZipCode = zipTextBox.Text,
-                PhoneNumber = phoneTextBox.Text,
-                Email = emailTextBox.Text,
-                LinkedIn = linkedInTextBox.Text,
-                Portfolio = portfolioTextBox.Text
-            };
+            LoadIdentity(file);
+            if (firstNameTextBox.Text == string.Empty || lastNameTextBox.Text == string.Empty)
+                Text = "New Identity - Identity Workspace";
+        }
+        else
+        {
+            Text = "New Identity - Identity Workspace";
+        }
+    }
 
-            // Write identity to path
-            string identityPath = $"./data/identities/{identity.FirstName.ToLower()}_{identity.LastName.ToLower()}.identity";
-            using (FileStream file = File.Create(identityPath))
-            {
-                Serializer.Serialize(file, identity);
-            }
+    /// <summary>
+    ///     Flushes an identity to disk.
+    /// </summary>
+    private void SaveIdentity()
+    {
+        // Flush class to disk
+        var identity = new ProfessionalIdentity
+        {
+            FirstName = firstNameTextBox.Text,
+            MiddleName = middleNametextBox.Text,
+            LastName = lastNameTextBox.Text,
+            Address = addressTextBox.Text,
+            City = cityTextBox.Text,
+            State = stateTextBox.Text,
+            ZipCode = zipTextBox.Text,
+            PhoneNumber = phoneTextBox.Text,
+            Email = emailTextBox.Text,
+            LinkedIn = linkedInTextBox.Text,
+            Portfolio = portfolioTextBox.Text
+        };
 
-            // Encrypt file if enabled
-            if (Globals.IdentityConfig.UseEncryption)
-            {
-                Globals.IdentityConfig.EncryptionKey ??= EncryptionUtils.Generate256BitKey();
-                string key = Globals.IdentityConfig.EncryptionKey;
-                string encryptedPath = $"./data/identities/{identity.FirstName.ToLower()}_{identity.LastName.ToLower()}.enc.identity";
-                EncryptionUtils.EncryptFile(identityPath, encryptedPath, key);
-                File.Delete(identityPath);
-            }
-
-            // Update window title
-            this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
+        // Write identity to path
+        var identityPath = $"./data/identities/{identity.FirstName.ToLower()}_{identity.LastName.ToLower()}.identity";
+        using (var file = File.Create(identityPath))
+        {
+            Serializer.Serialize(file, identity);
         }
 
-        /// <summary>
-        /// Loads an identity from disk.
-        /// </summary>
-        /// <param name="file">The name of the file, not the path, to load.</param>
-        private void LoadIdentity(string file)
+        // Encrypt file if enabled
+        if (Globals.IdentityConfig.UseEncryption)
         {
-            string identityPath = Path.GetFullPath(file);
-            ProfessionalIdentity identity;
-
-            // Handle encrypted files
-            if (file.Contains(".enc"))
-            {
-                try
-                {
-                    string? key = Globals.IdentityConfig.EncryptionKey;
-                    string decryptedPath = file.Replace(".enc", "");
-                    if (key != null)
-                    {
-                        EncryptionUtils.DecryptFile(identityPath, decryptedPath, key);
-                        File.Delete(identityPath);
-                        identityPath = decryptedPath;   
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("An internal error occurred while decrypting the identity file. The key may be corrupt or missing.", "Encryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
-            // Load binary data
-            // ReSharper disable once IdentifierTypo
-            using (FileStream filey = File.OpenRead(identityPath))
-            {
-                identity = Serializer.Deserialize<ProfessionalIdentity>(filey);
-            }
-
-            // Populate fields
-            firstNameTextBox.Text = identity.FirstName;
-            middleNametextBox.Text = identity.MiddleName;
-            lastNameTextBox.Text = identity.LastName;
-            addressTextBox.Text = identity.Address;
-            cityTextBox.Text = identity.City;
-            stateTextBox.Text = identity.State;
-            zipTextBox.Text = identity.ZipCode;
-            phoneTextBox.Text = identity.PhoneNumber;
-            emailTextBox.Text = identity.Email;
-            linkedInTextBox.Text = identity.LinkedIn;
-            portfolioTextBox.Text = identity.Portfolio;
-
-            // Change window title
-            this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
+            Globals.IdentityConfig.EncryptionKey ??= EncryptionUtils.Generate256BitKey();
+            var key = Globals.IdentityConfig.EncryptionKey;
+            var encryptedPath =
+                $"./data/identities/{identity.FirstName.ToLower()}_{identity.LastName.ToLower()}.enc.identity";
+            EncryptionUtils.EncryptFile(identityPath, encryptedPath, key);
+            File.Delete(identityPath);
         }
 
-        public IdentityWorkspace(string? file = null)
-        {
-            InitializeComponent();
+        // Update window title
+        Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
+    }
 
-            var materialSkinManager1 = MaterialSkinManager.Instance;
+    /// <summary>
+    ///     Loads an identity from disk.
+    /// </summary>
+    /// <param name="file">The name of the file, not the path, to load.</param>
+    private void LoadIdentity(string file)
+    {
+        var identityPath = Path.GetFullPath(file);
+        ProfessionalIdentity identity;
 
-            // Set this to false to disable backcolor enforcing on non-materialSkin components
-            // This HAS to be set before the AddFormToManage()
-            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
-
-            // MaterialSkinManager properties
-            materialSkinManager1.AddFormToManage(this);
-            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
-
-            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
-
-            // Load identity if filename is provided
-            if (file != null)
+        // Handle encrypted files
+        if (file.Contains(".enc"))
+            try
             {
-                LoadIdentity(file);
-                if (firstNameTextBox.Text == String.Empty || lastNameTextBox.Text == String.Empty)
+                var key = Globals.IdentityConfig.EncryptionKey;
+                var decryptedPath = file.Replace(".enc", "");
+                if (key != null)
                 {
-                    this.Text = $"New Identity - Identity Workspace";
+                    EncryptionUtils.DecryptFile(identityPath, decryptedPath, key);
+                    File.Delete(identityPath);
+                    identityPath = decryptedPath;
                 }
             }
-            else
+            catch
             {
-                this.Text = "New Identity - Identity Workspace";
-            }
-        }
-
-        private void IdentityWorkspace_Load(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void IdentityWorkspace_Click(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void IdentityWorkspace_Shown(object sender, EventArgs e)
-        {
-            this.ActiveControl = null;
-        }
-
-        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            openFileDialog1.InitialDirectory = Path.GetFullPath("./data/identities");
-            openFileDialog1.Filter = "Identity files (*.identity)|*.identity";
-
-            if (openFileDialog1.ShowDialog() != DialogResult.OK)
-            {
+                MessageBox.Show(
+                    "An internal error occurred while decrypting the identity file. The key may be corrupt or missing.",
+                    "Encryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (firstNameTextBox.Text != String.Empty && lastNameTextBox.Text != String.Empty)
-            {
-                SaveIdentity();
-            }
-
-            string selectedFileName = openFileDialog1.FileName;
-            LoadIdentity(Path.GetFileNameWithoutExtension(selectedFileName).ToLower());
+        // Load binary data
+        // ReSharper disable once IdentifierTypo
+        using (var filey = File.OpenRead(identityPath))
+        {
+            identity = Serializer.Deserialize<ProfessionalIdentity>(filey);
         }
 
-        private void IdentityWorkspace_FormClosing(object sender, FormClosingEventArgs e)
+        // Populate fields
+        firstNameTextBox.Text = identity.FirstName;
+        middleNametextBox.Text = identity.MiddleName;
+        lastNameTextBox.Text = identity.LastName;
+        addressTextBox.Text = identity.Address;
+        cityTextBox.Text = identity.City;
+        stateTextBox.Text = identity.State;
+        zipTextBox.Text = identity.ZipCode;
+        phoneTextBox.Text = identity.PhoneNumber;
+        emailTextBox.Text = identity.Email;
+        linkedInTextBox.Text = identity.LinkedIn;
+        portfolioTextBox.Text = identity.Portfolio;
+
+        // Change window title
+        Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
+    }
+
+    private void IdentityWorkspace_Load(object sender, EventArgs e)
+    {
+        ActiveControl = null;
+    }
+
+    private void IdentityWorkspace_Click(object sender, EventArgs e)
+    {
+        ActiveControl = null;
+    }
+
+    private void IdentityWorkspace_Shown(object sender, EventArgs e)
+    {
+        ActiveControl = null;
+    }
+
+    private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var openFileDialog1 = new OpenFileDialog();
+
+        openFileDialog1.InitialDirectory = Path.GetFullPath("./data/identities");
+        openFileDialog1.Filter = "Identity files (*.identity)|*.identity";
+
+        if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
+
+        if (firstNameTextBox.Text != string.Empty && lastNameTextBox.Text != string.Empty) SaveIdentity();
+
+        var selectedFileName = openFileDialog1.FileName;
+        LoadIdentity(Path.GetFileNameWithoutExtension(selectedFileName).ToLower());
+    }
+
+    private void IdentityWorkspace_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        if (firstNameTextBox.Text == string.Empty || lastNameTextBox.Text == string.Empty)
         {
-            if (firstNameTextBox.Text == String.Empty || lastNameTextBox.Text == String.Empty)
+            var discardChanges = MessageBox.Show("First name and/or last name are empty! Discard changes?", "Discard",
+                MessageBoxButtons.YesNo);
+            if (discardChanges == DialogResult.No)
             {
-                DialogResult discardChanges = MessageBox.Show("First name and/or last name are empty! Discard changes?", "Discard", MessageBoxButtons.YesNo);
-                if (discardChanges == DialogResult.No)
-                {
-                    e.Cancel = true;
-                    return;
-                }
-                else if (discardChanges == DialogResult.Yes)
-                {
-                    return;
-                }
+                e.Cancel = true;
+                return;
             }
 
-            SaveIdentity();
+            if (discardChanges == DialogResult.Yes) return;
         }
 
-        private void clearAllFieldsToolStripMenuItem_Click(object sender, EventArgs e)
+        SaveIdentity();
+    }
+
+    private void clearAllFieldsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var dialogResult = MessageBox.Show("Are you sure you want to clear all fields?", "Clear Fields",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        if (dialogResult == DialogResult.Yes)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear all fields?", "Clear Fields", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            firstNameTextBox.Text = string.Empty;
+            middleNametextBox.Text = string.Empty;
+            lastNameTextBox.Text = string.Empty;
+            addressTextBox.Text = string.Empty;
+            cityTextBox.Text = string.Empty;
+            stateTextBox.Text = string.Empty;
+            zipTextBox.Text = string.Empty;
+            phoneTextBox.Text = string.Empty;
+            emailTextBox.Text = string.Empty;
+            linkedInTextBox.Text = string.Empty;
+            portfolioTextBox.Text = string.Empty;
 
-            if (dialogResult == DialogResult.Yes)
-            {
-                firstNameTextBox.Text = String.Empty;
-                middleNametextBox.Text = String.Empty;
-                lastNameTextBox.Text = String.Empty;
-                addressTextBox.Text = String.Empty;
-                cityTextBox.Text = String.Empty;
-                stateTextBox.Text = String.Empty;
-                zipTextBox.Text = String.Empty;
-                phoneTextBox.Text = String.Empty;
-                emailTextBox.Text = String.Empty;
-                linkedInTextBox.Text = String.Empty;
-                portfolioTextBox.Text = String.Empty;
-
-                this.Text = "New Identity - Identity Workspace";
-            }
+            Text = "New Identity - Identity Workspace";
         }
     }
 }

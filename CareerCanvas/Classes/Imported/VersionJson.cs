@@ -1,8 +1,7 @@
-﻿namespace CareerCanvas.Classes.Imported
+﻿namespace CareerCanvas.Classes.Imported;
+
+public class ManifestJson
 {
-    public class ManifestJson
-    {
-        public string? Version { get; set; }
-        public bool? Debug { get; set; }
-    }
+    public string? Version { get; set; }
+    public bool? Debug { get; set; }
 }
