@@ -101,7 +101,7 @@
             // clearAllFieldsToolStripMenuItem
             // 
             clearAllFieldsToolStripMenuItem.Name = "clearAllFieldsToolStripMenuItem";
-            clearAllFieldsToolStripMenuItem.Size = new Size(180, 22);
+            clearAllFieldsToolStripMenuItem.Size = new Size(147, 22);
             clearAllFieldsToolStripMenuItem.Text = "Clear all fields";
             clearAllFieldsToolStripMenuItem.Click += clearAllFieldsToolStripMenuItem_Click;
             // 
@@ -130,7 +130,7 @@
             firstNameTextBox.SelectionStart = 0;
             firstNameTextBox.ShortcutsEnabled = true;
             firstNameTextBox.Size = new Size(250, 48);
-            firstNameTextBox.TabIndex = 100;
+            firstNameTextBox.TabIndex = 1;
             firstNameTextBox.TabStop = false;
             firstNameTextBox.TextAlign = HorizontalAlignment.Left;
             firstNameTextBox.TrailingIcon = null;
@@ -187,7 +187,7 @@
             middleNametextBox.SelectionStart = 0;
             middleNametextBox.ShortcutsEnabled = true;
             middleNametextBox.Size = new Size(250, 48);
-            middleNametextBox.TabIndex = 102;
+            middleNametextBox.TabIndex = 2;
             middleNametextBox.TabStop = false;
             middleNametextBox.TextAlign = HorizontalAlignment.Left;
             middleNametextBox.TrailingIcon = null;
@@ -260,7 +260,7 @@
             lastNameTextBox.SelectionStart = 0;
             lastNameTextBox.ShortcutsEnabled = true;
             lastNameTextBox.Size = new Size(250, 48);
-            lastNameTextBox.TabIndex = 104;
+            lastNameTextBox.TabIndex = 3;
             lastNameTextBox.TabStop = false;
             lastNameTextBox.TextAlign = HorizontalAlignment.Left;
             lastNameTextBox.TrailingIcon = null;
@@ -304,7 +304,7 @@
             addressTextBox.SelectionStart = 0;
             addressTextBox.ShortcutsEnabled = true;
             addressTextBox.Size = new Size(250, 48);
-            addressTextBox.TabIndex = 106;
+            addressTextBox.TabIndex = 4;
             addressTextBox.TabStop = false;
             addressTextBox.TextAlign = HorizontalAlignment.Left;
             addressTextBox.TrailingIcon = null;
@@ -348,7 +348,7 @@
             cityTextBox.SelectionStart = 0;
             cityTextBox.ShortcutsEnabled = true;
             cityTextBox.Size = new Size(250, 48);
-            cityTextBox.TabIndex = 108;
+            cityTextBox.TabIndex = 5;
             cityTextBox.TabStop = false;
             cityTextBox.TextAlign = HorizontalAlignment.Left;
             cityTextBox.TrailingIcon = null;
@@ -392,7 +392,7 @@
             stateTextBox.SelectionStart = 0;
             stateTextBox.ShortcutsEnabled = true;
             stateTextBox.Size = new Size(250, 48);
-            stateTextBox.TabIndex = 110;
+            stateTextBox.TabIndex = 6;
             stateTextBox.TabStop = false;
             stateTextBox.TextAlign = HorizontalAlignment.Left;
             stateTextBox.TrailingIcon = null;
@@ -436,7 +436,7 @@
             zipTextBox.SelectionStart = 0;
             zipTextBox.ShortcutsEnabled = true;
             zipTextBox.Size = new Size(250, 48);
-            zipTextBox.TabIndex = 112;
+            zipTextBox.TabIndex = 7;
             zipTextBox.TabStop = false;
             zipTextBox.TextAlign = HorizontalAlignment.Left;
             zipTextBox.TrailingIcon = null;
@@ -480,7 +480,7 @@
             phoneTextBox.SelectionStart = 0;
             phoneTextBox.ShortcutsEnabled = true;
             phoneTextBox.Size = new Size(250, 48);
-            phoneTextBox.TabIndex = 114;
+            phoneTextBox.TabIndex = 8;
             phoneTextBox.TabStop = false;
             phoneTextBox.TextAlign = HorizontalAlignment.Left;
             phoneTextBox.TrailingIcon = null;
@@ -524,7 +524,7 @@
             emailTextBox.SelectionStart = 0;
             emailTextBox.ShortcutsEnabled = true;
             emailTextBox.Size = new Size(250, 48);
-            emailTextBox.TabIndex = 116;
+            emailTextBox.TabIndex = 9;
             emailTextBox.TabStop = false;
             emailTextBox.TextAlign = HorizontalAlignment.Left;
             emailTextBox.TrailingIcon = null;
@@ -568,7 +568,7 @@
             linkedInTextBox.SelectionStart = 0;
             linkedInTextBox.ShortcutsEnabled = true;
             linkedInTextBox.Size = new Size(250, 48);
-            linkedInTextBox.TabIndex = 118;
+            linkedInTextBox.TabIndex = 10;
             linkedInTextBox.TabStop = false;
             linkedInTextBox.TextAlign = HorizontalAlignment.Left;
             linkedInTextBox.TrailingIcon = null;
@@ -612,7 +612,7 @@
             portfolioTextBox.SelectionStart = 0;
             portfolioTextBox.ShortcutsEnabled = true;
             portfolioTextBox.Size = new Size(250, 48);
-            portfolioTextBox.TabIndex = 120;
+            portfolioTextBox.TabIndex = 11;
             portfolioTextBox.TabStop = false;
             portfolioTextBox.TextAlign = HorizontalAlignment.Left;
             portfolioTextBox.TrailingIcon = null;

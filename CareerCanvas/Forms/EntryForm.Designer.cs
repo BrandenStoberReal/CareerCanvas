@@ -171,9 +171,9 @@
             identityEncryptionCheckbox.Name = "identityEncryptionCheckbox";
             identityEncryptionCheckbox.ReadOnly = false;
             identityEncryptionCheckbox.Ripple = true;
-            identityEncryptionCheckbox.Size = new Size(245, 37);
+            identityEncryptionCheckbox.Size = new Size(388, 37);
             identityEncryptionCheckbox.TabIndex = 2;
-            identityEncryptionCheckbox.Text = "Use encryption (experimental)";
+            identityEncryptionCheckbox.Text = "Use encryption (experimental) (not recommended)";
             identityEncryptionCheckbox.UseAccentColor = false;
             identityEncryptionCheckbox.UseVisualStyleBackColor = true;
             identityEncryptionCheckbox.CheckedChanged += identityEncryptionCheckbox_CheckedChanged;
