@@ -8,26 +8,25 @@ namespace CareerCanvas.Forms.InputDialogs
 {
     public partial class AddJobForm : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        private List<Employment> refMasterList = new List<Employment>();
+        private readonly List<Employment> _refMasterList;
 
         public AddJobForm(List<Employment> masterList)
         {
             InitializeComponent();
 
-            refMasterList = masterList;
+            _refMasterList = masterList;
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
         }
 
         private void AddJobForm_Load(object sender, EventArgs e)
@@ -74,25 +73,23 @@ namespace CareerCanvas.Forms.InputDialogs
                 return;
             }
 
-            Employment newJob = new Employment();
-            newJob.StartDate = startDate;
-            newJob.EndDate = endDate;
-            newJob.CompanyName = companyBox.Text;
-            newJob.JobTitle = jobTitleBox.Text;
-            newJob.City = cityBox.Text;
-            newJob.State = stateBox.Text;
-            refMasterList.Add(newJob);
+            Employment newJob = new Employment
+            {
+                StartDate = startDate,
+                EndDate = endDate,
+                CompanyName = companyBox.Text,
+                JobTitle = jobTitleBox.Text,
+                City = cityBox.Text,
+                State = stateBox.Text
+            };
+            _refMasterList.Add(newJob);
             this.Close();
         }
 
         private void AddJobForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("Changes not saved! Exit anyway?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                return;
-            }
-            else
+            if (result == DialogResult.No)
             {
                 e.Cancel = true;
             }

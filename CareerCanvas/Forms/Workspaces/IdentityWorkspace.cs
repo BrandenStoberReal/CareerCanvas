@@ -6,10 +6,8 @@ using ReaLTaiizor.Manager;
 
 namespace CareerCanvas.Forms.Workspaces
 {
-    public partial class IdentityWorkspace : MaterialForm
+    public sealed partial class IdentityWorkspace : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-
         /// <summary>
         /// Flushes an identity to disk.
         /// </summary>
@@ -41,10 +39,7 @@ namespace CareerCanvas.Forms.Workspaces
             // Encrypt file if enabled
             if (Globals.IdentityConfig.UseEncryption)
             {
-                if (Globals.IdentityConfig.EncryptionKey == null)
-                {
-                    Globals.IdentityConfig.EncryptionKey = EncryptionUtils.Generate256BitKey();
-                }
+                Globals.IdentityConfig.EncryptionKey ??= EncryptionUtils.Generate256BitKey();
                 string key = Globals.IdentityConfig.EncryptionKey;
                 string encryptedPath = $"./data/identities/{identity.FirstName.ToLower()}_{identity.LastName.ToLower()}.enc.identity";
                 EncryptionUtils.EncryptFile(identityPath, encryptedPath, key);
@@ -69,13 +64,16 @@ namespace CareerCanvas.Forms.Workspaces
             {
                 try
                 {
-                    string key = Globals.IdentityConfig.EncryptionKey;
+                    string? key = Globals.IdentityConfig.EncryptionKey;
                     string decryptedPath = file.Replace(".enc", "");
-                    EncryptionUtils.DecryptFile(identityPath, decryptedPath, key);
-                    File.Delete(identityPath);
-                    identityPath = decryptedPath;
+                    if (key != null)
+                    {
+                        EncryptionUtils.DecryptFile(identityPath, decryptedPath, key);
+                        File.Delete(identityPath);
+                        identityPath = decryptedPath;   
+                    }
                 }
-                catch (Exception e)
+                catch
                 {
                     MessageBox.Show("An internal error occurred while decrypting the identity file. The key may be corrupt or missing.", "Encryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -83,6 +81,7 @@ namespace CareerCanvas.Forms.Workspaces
             }
 
             // Load binary data
+            // ReSharper disable once IdentifierTypo
             using (FileStream filey = File.OpenRead(identityPath))
             {
                 identity = Serializer.Deserialize<ProfessionalIdentity>(filey);
@@ -109,17 +108,17 @@ namespace CareerCanvas.Forms.Workspaces
         {
             InitializeComponent();
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
 
             // Load identity if filename is provided
             if (file != null)
@@ -149,19 +148,6 @@ namespace CareerCanvas.Forms.Workspaces
         private void IdentityWorkspace_Shown(object sender, EventArgs e)
         {
             this.ActiveControl = null;
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (firstNameLabel.Text == String.Empty || lastNameLabel.Text == String.Empty)
-            {
-                MessageBox.Show("First Name and Last Name are required fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            SaveIdentity();
-
-            MessageBox.Show("Identity saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)

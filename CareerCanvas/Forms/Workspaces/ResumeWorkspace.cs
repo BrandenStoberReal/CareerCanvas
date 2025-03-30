@@ -9,12 +9,13 @@ namespace CareerCanvas.Forms.Workspaces
         private Industry Industry { get; set; }
         private HtmlDocument Template { get; set; }
 
-        public ResumeWorkspace(ProfessionalIdentity identity, Industry industry)
+        public ResumeWorkspace(ProfessionalIdentity identity, Industry industry, HtmlDocument template)
         {
             InitializeComponent();
 
             Identity = identity;
             Industry = industry;
+            Template = template;
         }
 
         private void ResumeWorkspace_Load(object sender, EventArgs e)

@@ -12,27 +12,25 @@ namespace CareerCanvas.Forms.Workspaces
 {
     public partial class HistoryWorkspace : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-
-        private List<Employment> jobHistory = new List<Employment>();
-        private List<Education> educationHistory = new List<Education>();
-        private List<CertificateProgram> certificateHistory = new List<CertificateProgram>();
+        private List<Employment> _jobHistory = new List<Employment>();
+        private List<Education> _educationHistory = new List<Education>();
+        private List<CertificateProgram> _certificateHistory = new List<CertificateProgram>();
 
         public HistoryWorkspace(string? filepath = null)
         {
             InitializeComponent();
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
 
             if (filepath != null)
             {
@@ -76,24 +74,24 @@ namespace CareerCanvas.Forms.Workspaces
             certificateInfoButton.Enabled = true;
         }
 
-        public void SaveIndustry()
+        private void SaveIndustry()
         {
             // Flush class to disk
-            Industry industry = new Industry();
-            industry.Jobs = jobHistory;
-            industry.Schooling = educationHistory;
-            industry.Certificates = certificateHistory;
-            industry.Description = descriptionBox.Text;
+            Industry industry = new Industry
+            {
+                Jobs = _jobHistory,
+                Schooling = _educationHistory,
+                Certificates = _certificateHistory,
+                Description = descriptionBox.Text
+            };
 
             string industryPath = Path.Combine("./data/industries", titleBox.Text.ToLower().Replace(" ", "_") + ".industry");
 
-            using (var file = File.Create(industryPath))
-            {
-                Serializer.Serialize(file, industry);
-            }
+            using var file = File.Create(industryPath);
+            Serializer.Serialize(file, industry);
         }
 
-        public void LoadIndustry(string filepath)
+        private void LoadIndustry(string filepath)
         {
             Industry industry;
 
@@ -105,9 +103,9 @@ namespace CareerCanvas.Forms.Workspaces
 
             // Load data into workspace
             titleBox.Text = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(filepath).Replace("_", " "));
-            jobHistory = industry.Jobs;
-            educationHistory = industry.Schooling;
-            certificateHistory = industry.Certificates;
+            _jobHistory = industry.Jobs;
+            _educationHistory = industry.Schooling;
+            _certificateHistory = industry.Certificates;
             descriptionBox.Text = industry.Description;
         }
 
@@ -122,29 +120,29 @@ namespace CareerCanvas.Forms.Workspaces
 
         private void addEmploymentButton_Click(object sender, EventArgs e)
         {
-            AddJobForm addJobForm = new AddJobForm(jobHistory);
+            AddJobForm addJobForm = new AddJobForm(_jobHistory);
             addJobForm.Show();
         }
 
         private void addEducationButton_Click(object sender, EventArgs e)
         {
-            AddEducationForm addEducationForm = new AddEducationForm(educationHistory);
+            AddEducationForm addEducationForm = new AddEducationForm(_educationHistory);
             addEducationForm.Show();
         }
 
         private void addCertificateButton_Click(object sender, EventArgs e)
         {
-            AddCertificateForm addCertificateForm = new AddCertificateForm(certificateHistory);
+            AddCertificateForm addCertificateForm = new AddCertificateForm(_certificateHistory);
             addCertificateForm.Show();
         }
 
         private void updateJobsTimer_Tick(object sender, EventArgs e)
         {
             // Save some CPU cycles and only update if count changes
-            if (employmentListBox.Items.Count != jobHistory.Count)
+            if (employmentListBox.Items.Count != _jobHistory.Count)
             {
                 employmentListBox.Items.Clear();
-                foreach (Employment job in jobHistory)
+                foreach (Employment job in _jobHistory)
                 {
                     employmentListBox.AddItem(job.CompanyName + " - " + job.JobTitle);
                 }
@@ -155,10 +153,10 @@ namespace CareerCanvas.Forms.Workspaces
         private void updateEducationTimer_Tick(object sender, EventArgs e)
         {
             // Save some CPU cycles and only update if count changes
-            if (educationListBox.Items.Count != educationHistory.Count)
+            if (educationListBox.Items.Count != _educationHistory.Count)
             {
                 educationListBox.Items.Clear();
-                foreach (Education education in educationHistory)
+                foreach (Education education in _educationHistory)
                 {
                     educationListBox.AddItem(education.SchoolName + " - " + EnumUtils.GetEnumDescription(education.Degree));
                 }
@@ -169,10 +167,10 @@ namespace CareerCanvas.Forms.Workspaces
         private void updateCertificatesTimer_Tick(object sender, EventArgs e)
         {
             // Save some CPU cycles and only update if count changes
-            if (certificatesListBox.Items.Count != certificateHistory.Count)
+            if (certificatesListBox.Items.Count != _certificateHistory.Count)
             {
                 certificatesListBox.Items.Clear();
-                foreach (CertificateProgram program in certificateHistory)
+                foreach (CertificateProgram program in _certificateHistory)
                 {
                     certificatesListBox.AddItem(program.IssuingOrganization + " - " + program.Certificate.CertificateName);
                 }
@@ -213,7 +211,7 @@ namespace CareerCanvas.Forms.Workspaces
         {
             if (employmentListBox.SelectedItem != null)
             {
-                jobHistory.RemoveAt(employmentListBox.SelectedIndex);
+                _jobHistory.RemoveAt(employmentListBox.SelectedIndex);
                 employmentListBox.Items.RemoveAt(employmentListBox.SelectedIndex);
                 DisableJobButtons();
                 employmentListBox.SelectedItem = null;
@@ -224,7 +222,7 @@ namespace CareerCanvas.Forms.Workspaces
         {
             if (educationListBox.SelectedItem != null)
             {
-                educationHistory.RemoveAt(educationListBox.SelectedIndex);
+                _educationHistory.RemoveAt(educationListBox.SelectedIndex);
                 educationListBox.Items.RemoveAt(educationListBox.SelectedIndex);
                 DisableEducationButtons();
                 educationListBox.SelectedItem = null;
@@ -235,7 +233,7 @@ namespace CareerCanvas.Forms.Workspaces
         {
             if (certificatesListBox.SelectedItem != null)
             {
-                certificateHistory.RemoveAt(certificatesListBox.SelectedIndex);
+                _certificateHistory.RemoveAt(certificatesListBox.SelectedIndex);
                 certificatesListBox.Items.RemoveAt(certificatesListBox.SelectedIndex);
                 DisableCertificateButtons();
                 certificatesListBox.SelectedItem = null;
@@ -246,7 +244,7 @@ namespace CareerCanvas.Forms.Workspaces
         {
             if (employmentListBox.SelectedItem != null)
             {
-                JobInfoViewer jobInfoViewer = new JobInfoViewer(jobHistory[employmentListBox.SelectedIndex]);
+                JobInfoViewer jobInfoViewer = new JobInfoViewer(_jobHistory[employmentListBox.SelectedIndex]);
                 DisableJobButtons();
                 employmentListBox.SelectedItem = null;
                 jobInfoViewer.Show();
@@ -257,7 +255,7 @@ namespace CareerCanvas.Forms.Workspaces
         {
             if (educationListBox.SelectedItem != null)
             {
-                EducationInfoViewer educationInfoViewer = new EducationInfoViewer(educationHistory[educationListBox.SelectedIndex]);
+                EducationInfoViewer educationInfoViewer = new EducationInfoViewer(_educationHistory[educationListBox.SelectedIndex]);
                 DisableEducationButtons();
                 educationListBox.SelectedItem = null;
                 educationInfoViewer.Show();
@@ -268,7 +266,7 @@ namespace CareerCanvas.Forms.Workspaces
         {
             if (certificatesListBox.SelectedItem != null)
             {
-                CertificateInfoViewer certificateInfoViewer = new CertificateInfoViewer(certificateHistory[certificatesListBox.SelectedIndex]);
+                CertificateInfoViewer certificateInfoViewer = new CertificateInfoViewer(_certificateHistory[certificatesListBox.SelectedIndex]);
                 DisableCertificateButtons();
                 certificatesListBox.SelectedItem = null;
                 certificateInfoViewer.Show();

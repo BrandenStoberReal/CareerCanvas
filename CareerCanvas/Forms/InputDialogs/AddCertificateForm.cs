@@ -8,26 +8,25 @@ namespace CareerCanvas.Forms.InputDialogs
 {
     public partial class AddCertificateForm : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        public List<CertificateProgram> masterList = new List<CertificateProgram>();
+        private readonly List<CertificateProgram> _masterList;
 
         public AddCertificateForm(List<CertificateProgram> masterList)
         {
             InitializeComponent();
 
-            this.masterList = masterList;
+            this._masterList = masterList;
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
         }
 
         private void AddCertificateForm_Load(object sender, EventArgs e)
@@ -66,18 +65,22 @@ namespace CareerCanvas.Forms.InputDialogs
                 }
             }
 
-            CertificateProgram certificateProgram = new CertificateProgram();
-            certificateProgram.ProgramName = programNameBox.Text;
-            certificateProgram.IssuingOrganization = issuerBox.Text;
-            certificateProgram.StartDate = startDate;
-            certificateProgram.EndDate = endDate;
+            CertificateProgram certificateProgram = new CertificateProgram
+            {
+                ProgramName = programNameBox.Text,
+                IssuingOrganization = issuerBox.Text,
+                StartDate = startDate,
+                EndDate = endDate
+            };
 
-            Certificate certificate = new Certificate();
-            certificate.CertificateName = certificateTitleBox.Text;
-            certificate.IssueDate = issueDate;
+            Certificate certificate = new Certificate
+            {
+                CertificateName = certificateTitleBox.Text,
+                IssueDate = issueDate
+            };
 
             certificateProgram.Certificate = certificate;
-            masterList.Add(certificateProgram);
+            _masterList.Add(certificateProgram);
             this.Close();
         }
 
@@ -99,11 +102,7 @@ namespace CareerCanvas.Forms.InputDialogs
         private void AddCertificateForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("Changes not saved! Exit anyway?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                return;
-            }
-            else
+            if (result == DialogResult.No)
             {
                 e.Cancel = true;
             }

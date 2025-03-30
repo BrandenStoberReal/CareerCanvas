@@ -7,37 +7,36 @@ namespace CareerCanvas.Forms.Info
 {
     public partial class JobInfoViewer : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        private Employment job;
+        private readonly Employment _job;
 
         public JobInfoViewer(Employment job)
         {
             InitializeComponent();
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
 
-            this.job = job;
+            this._job = job;
         }
 
         private void JobInfoViewer_Load(object sender, EventArgs e)
         {
-            jobTitleBox.Text = job.JobTitle == String.Empty ? "None provided." : job.JobTitle;
-            employerBox.Text = job.CompanyName == String.Empty ? "None provided." : job.CompanyName;
-            cityBox.Text = job.City == String.Empty ? "None provided." : job.City;
-            stateBox.Text = job.State == String.Empty ? "None provided." : job.State;
-            startDateBox.Text = job.StartDate.ToShortDateString() == String.Empty ? "None provided." : job.StartDate.ToShortDateString();
-            endDateBox.Text = job.EndDate.ToShortDateString() == String.Empty ? "None provided." : job.EndDate.ToShortDateString();
-            jobDescriptionBox.Text = job.JobDescription == String.Empty ? "None provided." : job.JobDescription;
+            jobTitleBox.Text = _job.JobTitle == String.Empty ? "None provided." : _job.JobTitle;
+            employerBox.Text = _job.CompanyName == String.Empty ? "None provided." : _job.CompanyName;
+            cityBox.Text = _job.City == String.Empty ? "None provided." : _job.City;
+            stateBox.Text = _job.State == String.Empty ? "None provided." : _job.State;
+            startDateBox.Text = _job.StartDate.ToShortDateString() == String.Empty ? "None provided." : _job.StartDate.ToShortDateString();
+            endDateBox.Text = _job.EndDate.ToShortDateString() == String.Empty ? "None provided." : _job.EndDate.ToShortDateString();
+            jobDescriptionBox.Text = _job.JobDescription == String.Empty ? "None provided." : _job.JobDescription;
         }
 
         private void JobInfoViewer_Shown(object sender, EventArgs e)

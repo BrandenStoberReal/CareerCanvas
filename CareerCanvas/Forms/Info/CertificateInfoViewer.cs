@@ -7,36 +7,35 @@ namespace CareerCanvas.Forms.Info
 {
     public partial class CertificateInfoViewer : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        private CertificateProgram certificateProgram;
+        private readonly CertificateProgram _certificateProgram;
 
         public CertificateInfoViewer(CertificateProgram certificateProgram)
         {
             InitializeComponent();
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
 
-            this.certificateProgram = certificateProgram;
+            this._certificateProgram = certificateProgram;
         }
 
         private void CertificateInfoViewer_Load(object sender, EventArgs e)
         {
-            certificateNameBox.Text = certificateProgram.Certificate.CertificateName == String.Empty ? "None provided." : certificateProgram.Certificate.CertificateName;
-            issuerBox.Text = certificateProgram.IssuingOrganization == String.Empty ? "None provided." : certificateProgram.IssuingOrganization;
-            issueDateBox.Text = certificateProgram.Certificate.IssueDate.ToShortDateString() == String.Empty ? "None provided." : certificateProgram.Certificate.IssueDate.ToShortDateString();
-            programNameBox.Text = certificateProgram.ProgramName == String.Empty ? "None provided." : certificateProgram.ProgramName;
-            startDateBox.Text = certificateProgram.StartDate.ToShortDateString() == String.Empty ? "None provided." : certificateProgram.StartDate.ToShortDateString();
-            endDateBox.Text = certificateProgram.EndDate.ToShortDateString() == String.Empty ? "None provided." : certificateProgram.EndDate.ToShortDateString();
+            certificateNameBox.Text = _certificateProgram.Certificate.CertificateName == String.Empty ? "None provided." : _certificateProgram.Certificate.CertificateName;
+            issuerBox.Text = _certificateProgram.IssuingOrganization == String.Empty ? "None provided." : _certificateProgram.IssuingOrganization;
+            issueDateBox.Text = _certificateProgram.Certificate.IssueDate.ToShortDateString() == String.Empty ? "None provided." : _certificateProgram.Certificate.IssueDate.ToShortDateString();
+            programNameBox.Text = _certificateProgram.ProgramName == String.Empty ? "None provided." : _certificateProgram.ProgramName;
+            startDateBox.Text = _certificateProgram.StartDate.ToShortDateString() == String.Empty ? "None provided." : _certificateProgram.StartDate.ToShortDateString();
+            endDateBox.Text = _certificateProgram.EndDate.ToShortDateString() == String.Empty ? "None provided." : _certificateProgram.EndDate.ToShortDateString();
         }
 
         private void textBox_Click(object sender, EventArgs e)

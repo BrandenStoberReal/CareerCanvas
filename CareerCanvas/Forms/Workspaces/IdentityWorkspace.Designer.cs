@@ -1,6 +1,6 @@
 ﻿namespace CareerCanvas.Forms.Workspaces
 {
-    partial class IdentityWorkspace
+    sealed partial class IdentityWorkspace
     {
         /// <summary>
         /// Required designer variable.

@@ -7,36 +7,35 @@ namespace CareerCanvas.Forms.Info
 {
     public partial class EducationInfoViewer : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        private Education education;
+        private readonly Education _education;
 
         public EducationInfoViewer(Education education)
         {
             InitializeComponent();
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
 
-            this.education = education;
+            this._education = education;
         }
 
         private void EducationInfoViewer_Load(object sender, EventArgs e)
         {
-            schoolNameBox.Text = education.SchoolName == String.Empty ? "None provided." : education.SchoolName;
-            cityBox.Text = education.City == String.Empty ? "None provided." : education.City;
-            stateBox.Text = education.State == String.Empty ? "None provided." : education.State;
-            degreeBox.Text = EnumUtils.GetEnumDescription(education.Degree) == String.Empty ? "None provided." : EnumUtils.GetEnumDescription(education.Degree);
-            startDateBox.Text = education.StartDate.ToShortDateString() == String.Empty ? "None provided." : education.StartDate.ToShortDateString();
-            endDateBox.Text = education.EndDate.ToShortDateString() == String.Empty ? "None provided." : education.EndDate.ToShortDateString();
+            schoolNameBox.Text = _education.SchoolName == String.Empty ? "None provided." : _education.SchoolName;
+            cityBox.Text = _education.City == String.Empty ? "None provided." : _education.City;
+            stateBox.Text = _education.State == String.Empty ? "None provided." : _education.State;
+            degreeBox.Text = EnumUtils.GetEnumDescription(_education.Degree) == String.Empty ? "None provided." : EnumUtils.GetEnumDescription(_education.Degree);
+            startDateBox.Text = _education.StartDate.ToShortDateString() == String.Empty ? "None provided." : _education.StartDate.ToShortDateString();
+            endDateBox.Text = _education.EndDate.ToShortDateString() == String.Empty ? "None provided." : _education.EndDate.ToShortDateString();
         }
 
         private void textBox_Click(object sender, EventArgs e)

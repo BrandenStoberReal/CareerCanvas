@@ -59,10 +59,8 @@ namespace CareerCanvas.Forms
                 EncryptionUtils.DecryptFile(Globals.IdentityConfigPath, Globals.IdentityConfigPath, File.ReadAllText("./data/misc/encryption.key"));
 
                 // Read and deserialize the identity configuration file
-                using (FileStream file = File.OpenRead(Globals.IdentityConfigPath))
-                {
-                    Globals.IdentityConfig = Serializer.Deserialize<IdentityConfig>(file);
-                }
+                using FileStream file = File.OpenRead(Globals.IdentityConfigPath);
+                Globals.IdentityConfig = Serializer.Deserialize<IdentityConfig>(file);
             }
 
             // Generate an encryption key for identity files if encryption is enabled and no key exists
@@ -153,13 +151,14 @@ namespace CareerCanvas.Forms
                     string identityName = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " ").Replace(".enc", " (Encrypted)"));
 
                     // Check if the identity name is not already in the list box
-                    if (!identitiesListBox.Items.Any(x => x.Text == identityName))
+                    if (identitiesListBox.Items.All(x => x.Text != identityName))
                     {
                         // Create a new list box item with the identity name
-                        MaterialListBoxItem item = new MaterialListBoxItem(identityName);
-
-                        // Set the secondary text to the last modified date of the file
-                        item.SecondaryText = "Last Modified: " + File.GetLastWriteTime(file).ToString("MM/dd/yyyy HH:mm:ss");
+                        MaterialListBoxItem item = new MaterialListBoxItem(identityName)
+                        {
+                            // Set the secondary text to the last modified date of the file
+                            SecondaryText = "Last Modified: " + File.GetLastWriteTime(file).ToString("MM/dd/yyyy HH:mm:ss")
+                        };
 
                         // Add the item to the list box and refresh the display
                         identitiesListBox.Items.Add(item);
@@ -189,13 +188,14 @@ namespace CareerCanvas.Forms
                     string historyName = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " "));
 
                     // Check if the item is not already in the list box
-                    if (!historiesListBox.Items.Any(x => x.Text == historyName))
+                    if (historiesListBox.Items.All(x => x.Text != historyName))
                     {
                         // Create a new list box item with the history name
-                        MaterialListBoxItem item = new MaterialListBoxItem(historyName);
-
-                        // Set the secondary text to the last modified date of the file
-                        item.SecondaryText = "Last Modified: " + File.GetLastWriteTime(file).ToString("MM/dd/yyyy HH:mm:ss");
+                        MaterialListBoxItem item = new MaterialListBoxItem(historyName)
+                        {
+                            // Set the secondary text to the last modified date of the file
+                            SecondaryText = "Last Modified: " + File.GetLastWriteTime(file).ToString("MM/dd/yyyy HH:mm:ss")
+                        };
 
                         // Add the item to the list box and refresh the display
                         historiesListBox.Items.Add(item);
@@ -270,14 +270,7 @@ namespace CareerCanvas.Forms
         private void identityEncryptionCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             // Dynamic save button enable/disable
-            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked)
-            {
-                identityConfigExpansionPanel.ValidationButtonEnable = true;
-            }
-            else
-            {
-                identityConfigExpansionPanel.ValidationButtonEnable = false;
-            }
+            identityConfigExpansionPanel.ValidationButtonEnable = Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked;
         }
 
         /// <summary>

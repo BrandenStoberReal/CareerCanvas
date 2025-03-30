@@ -8,26 +8,25 @@ namespace CareerCanvas.Forms.InputDialogs
 {
     public partial class AddEducationForm : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        private List<Education> masterList = new List<Education>();
+        private readonly List<Education> _masterList;
 
         public AddEducationForm(List<Education> masterList)
         {
             InitializeComponent();
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
 
-            this.masterList = masterList;
+            this._masterList = masterList;
         }
 
         private void AddEducationForm_Load(object sender, EventArgs e)
@@ -73,14 +72,16 @@ namespace CareerCanvas.Forms.InputDialogs
                 return;
             }
 
-            Education newEducation = new Education();
-            newEducation.StartDate = startDate;
-            newEducation.EndDate = endDate;
-            newEducation.SchoolName = schoolNameBox.Text;
-            newEducation.Degree = (DegreeType)degreeComboBox.SelectedIndex;
-            newEducation.City = cityBox.Text;
-            newEducation.State = stateBox.Text;
-            masterList.Add(newEducation);
+            Education newEducation = new Education
+            {
+                StartDate = startDate,
+                EndDate = endDate,
+                SchoolName = schoolNameBox.Text,
+                Degree = (DegreeType)degreeComboBox.SelectedIndex,
+                City = cityBox.Text,
+                State = stateBox.Text
+            };
+            _masterList.Add(newEducation);
             Close();
         }
 
@@ -106,11 +107,7 @@ namespace CareerCanvas.Forms.InputDialogs
         private void AddEducationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("Changes not saved! Exit anyway?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                return;
-            }
-            else
+            if (result == DialogResult.No)
             {
                 e.Cancel = true;
             }
