@@ -25,7 +25,7 @@ namespace CareerCanvas.Forms.InputDialogs
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppColorScheme;
+            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
 
             this.masterList = masterList;
         }

@@ -27,7 +27,7 @@ namespace CareerCanvas.Forms
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppColorScheme;
+            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
         }
 
         private void AddJobForm_Load(object sender, EventArgs e)
