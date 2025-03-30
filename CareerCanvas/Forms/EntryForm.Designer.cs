@@ -31,7 +31,6 @@
             components = new System.ComponentModel.Container();
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
-            readMeView = new Microsoft.Web.WebView2.WinForms.WebView2();
             identityPage = new TabPage();
             identityConfigExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
             identityEncryptionCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
@@ -69,9 +68,9 @@
             hapCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
             historyRefreshTimer = new System.Windows.Forms.Timer(components);
+            entryTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)readMeView).BeginInit();
             identityPage.SuspendLayout();
             identityConfigExpansionPanel.SuspendLayout();
             materialCard2.SuspendLayout();
@@ -104,27 +103,13 @@
             // 
             // welcomePage
             // 
-            welcomePage.Controls.Add(readMeView);
+            welcomePage.Controls.Add(entryTitleLabel);
             welcomePage.Location = new Point(4, 24);
             welcomePage.Name = "welcomePage";
             welcomePage.Size = new Size(1274, 570);
             welcomePage.TabIndex = 2;
             welcomePage.Text = "Welcome";
             welcomePage.UseVisualStyleBackColor = true;
-            // 
-            // readMeView
-            // 
-            readMeView.AllowExternalDrop = true;
-            readMeView.BackColor = SystemColors.Desktop;
-            readMeView.CreationProperties = null;
-            readMeView.DefaultBackgroundColor = Color.White;
-            readMeView.Dock = DockStyle.Fill;
-            readMeView.ForeColor = SystemColors.Control;
-            readMeView.Location = new Point(0, 0);
-            readMeView.Name = "readMeView";
-            readMeView.Size = new Size(1274, 570);
-            readMeView.TabIndex = 1;
-            readMeView.ZoomFactor = 1D;
             // 
             // identityPage
             // 
@@ -686,6 +671,19 @@
             historyRefreshTimer.Interval = 1000;
             historyRefreshTimer.Tick += historyRefreshTimer_Tick;
             // 
+            // entryTitleLabel
+            // 
+            entryTitleLabel.Depth = 0;
+            entryTitleLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
+            entryTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
+            entryTitleLabel.Location = new Point(3, 0);
+            entryTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            entryTitleLabel.Name = "entryTitleLabel";
+            entryTitleLabel.Size = new Size(1268, 46);
+            entryTitleLabel.TabIndex = 0;
+            entryTitleLabel.Text = "Welcome!";
+            entryTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -700,7 +698,6 @@
             Load += EntryForm_Load;
             materialTabControl1.ResumeLayout(false);
             welcomePage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)readMeView).EndInit();
             identityPage.ResumeLayout(false);
             identityConfigExpansionPanel.ResumeLayout(false);
             identityConfigExpansionPanel.PerformLayout();
@@ -726,7 +723,6 @@
         private TabPage welcomePage;
         private TabPage cvPage;
         private TabPage identityPage;
-        private Microsoft.Web.WebView2.WinForms.WebView2 readMeView;
         private ReaLTaiizor.Controls.MaterialButton newIdentityButton;
         private ReaLTaiizor.Controls.MaterialListBox identitiesListBox;
         private FlowLayoutPanel flowLayoutPanel1;
@@ -760,5 +756,6 @@
         private ReaLTaiizor.Controls.MaterialCard materialCard3;
         private ReaLTaiizor.Controls.MaterialCard materialCard4;
         private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
+        private ReaLTaiizor.Controls.MaterialLabel entryTitleLabel;
     }
 }

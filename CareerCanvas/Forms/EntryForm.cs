@@ -5,8 +5,6 @@ using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
-using System.Net.Security;
-using System.Security.Authentication;
 
 namespace CareerCanvas
 {
@@ -48,9 +46,6 @@ namespace CareerCanvas
             // Set the active control to null to prevent any control from being focused initially
             this.ActiveControl = null;
 
-            // Ensure the WebView2 component is initialized and ready
-            await readMeView.EnsureCoreWebView2Async();
-
             // Create necessary application folders if they do not exist
             FolderUtils.CreateAppFolders();
 
@@ -77,37 +72,6 @@ namespace CareerCanvas
             if (Globals.IdentityConfig.UseEncryption && Globals.IdentityConfig.EncryptionKey == null)
             {
                 Globals.IdentityConfig.EncryptionKey = EncryptionUtils.Generate256BitKey();
-            }
-
-            // Load the changelog from a remote source
-            using (SocketsHttpHandler handler = new SocketsHttpHandler())
-            {
-                handler.AllowAutoRedirect = true;
-                handler.EnableMultipleHttp3Connections = true;
-                handler.UseProxy = false;
-                handler.AllowAutoRedirect = true;
-                handler.AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate;
-                handler.SslOptions = new SslClientAuthenticationOptions
-                {
-                    EnabledSslProtocols = SslProtocols.Tls13 | SslProtocols.Tls12
-                };
-                using (HttpClient httpClient = new HttpClient(handler))
-                {
-                    httpClient.DefaultRequestHeaders.Add("User-Agent", "CareerCanvas");
-                    httpClient.DefaultRequestVersion = new Version(3, 0);
-                    try
-                    {
-                        // Fetch the changelog markdown file and convert it to HTML
-                        string reply = await httpClient.GetStringAsync("https://raw.githubusercontent.com/BrandenStoberReal/CareerCanvas/refs/heads/main/CHANGELOG.md");
-                        var html = Markdig.Markdown.ToHtml(reply);
-                        readMeView.NavigateToString(html);
-                    }
-                    catch (Exception ex)
-                    {
-                        // Display an error message if the changelog fails to load
-                        readMeView.NavigateToString("<h1>Failed to load changelog</h1><p>" + ex.Message + "</p>");
-                    }
-                }
             }
 
             // Set the identity encryption checkbox based on the loaded configuration
