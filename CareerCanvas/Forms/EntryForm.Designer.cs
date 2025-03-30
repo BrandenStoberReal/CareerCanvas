@@ -1,4 +1,4 @@
-﻿namespace CareerCanvas
+﻿namespace CareerCanvas.Forms
 {
     partial class EntryForm
     {

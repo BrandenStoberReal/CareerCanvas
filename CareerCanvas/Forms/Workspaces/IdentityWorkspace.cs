@@ -4,7 +4,7 @@ using ProtoBuf;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 
-namespace CareerCanvas.Forms
+namespace CareerCanvas.Forms.Workspaces
 {
     public partial class IdentityWorkspace : MaterialForm
     {

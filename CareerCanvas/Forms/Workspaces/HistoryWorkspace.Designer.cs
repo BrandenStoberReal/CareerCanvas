@@ -1,4 +1,4 @@
-﻿namespace CareerCanvas.Forms
+﻿namespace CareerCanvas.Forms.Workspaces
 {
     partial class HistoryWorkspace
     {

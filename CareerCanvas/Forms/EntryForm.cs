@@ -1,18 +1,15 @@
 using CareerCanvas.Classes.Configs;
 using CareerCanvas.Classes.Static;
-using CareerCanvas.Forms;
+using CareerCanvas.Forms.Workspaces;
 using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 
-namespace CareerCanvas
+namespace CareerCanvas.Forms
 {
     public partial class EntryForm : MaterialForm
     {
-        // Instances
-        private readonly MaterialSkinManager materialSkinManager;
-
         /// <summary>
         /// Constructor for the EntryForm class.
         /// Initializes the form components and configures the MaterialSkinManager settings.
@@ -21,27 +18,27 @@ namespace CareerCanvas
         {
             InitializeComponent();
 
-            materialSkinManager = MaterialSkinManager.Instance;
+            var materialSkinManager1 = MaterialSkinManager.Instance;
 
             // Set this to false to disable backcolor enforcing on non-materialSkin components
             // This HAS to be set before the AddFormToManage()
-            materialSkinManager.EnforceBackcolorOnAllComponents = true;
+            materialSkinManager1.EnforceBackcolorOnAllComponents = true;
 
             // MaterialSkinManager properties
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+            materialSkinManager1.AddFormToManage(this);
+            materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
-            materialSkinManager.ColorScheme = Globals.AppConfig.ColorScheme;
+            materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
         }
 
         /// <summary>
         /// Load event handler for the EntryForm. Initializes the form by setting up necessary configurations,
         /// ensuring the WebView2 component is ready, creating application folders, handling encryption keys,
-        /// loading identity settings, and fetching the changelog.
+        /// and loading identity settings.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The event data.</param>
-        private async void EntryForm_Load(object sender, EventArgs e)
+        private void EntryForm_Load(object sender, EventArgs e)
         {
             // Set the active control to null to prevent any control from being focused initially
             this.ActiveControl = null;
@@ -271,24 +268,6 @@ namespace CareerCanvas
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">An EventArgs that contains the event data.</param>
         private void identityEncryptionCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            // Dynamic save button enable/disable
-            if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked)
-            {
-                identityConfigExpansionPanel.ValidationButtonEnable = true;
-            }
-            else
-            {
-                identityConfigExpansionPanel.ValidationButtonEnable = false;
-            }
-        }
-
-        /// <summary>
-        /// Handles the text changed event for the identity encryption password box.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">An EventArgs that contains the event data.</param>
-        private void identityEncryptionPasswordBox_TextChanged(object sender, EventArgs e)
         {
             // Dynamic save button enable/disable
             if (Globals.IdentityConfig.UseEncryption != identityEncryptionCheckbox.Checked)

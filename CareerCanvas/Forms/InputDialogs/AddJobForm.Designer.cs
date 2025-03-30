@@ -1,4 +1,4 @@
-﻿namespace CareerCanvas.Forms
+﻿namespace CareerCanvas.Forms.InputDialogs
 {
     partial class AddJobForm
     {

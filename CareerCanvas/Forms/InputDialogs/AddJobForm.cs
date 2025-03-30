@@ -1,10 +1,10 @@
-﻿using CareerCanvas.Classes.Main.History;
+﻿using System.Globalization;
+using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Static;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
-using System.Globalization;
 
-namespace CareerCanvas.Forms
+namespace CareerCanvas.Forms.InputDialogs
 {
     public partial class AddJobForm : MaterialForm
     {
