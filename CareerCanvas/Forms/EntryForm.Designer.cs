@@ -116,6 +116,7 @@
             welcomePage.TabIndex = 2;
             welcomePage.Text = "Welcome";
             welcomePage.UseVisualStyleBackColor = true;
+            welcomePage.Click += welcomePage_Click;
             // 
             // materialLabel1
             // 

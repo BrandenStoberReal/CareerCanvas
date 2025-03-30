@@ -401,5 +401,10 @@ namespace CareerCanvas
             HistoryWorkspace industryWorkspace = new HistoryWorkspace(selectedFileName);
             industryWorkspace.Show();
         }
+
+        private void welcomePage_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
     }
 }
