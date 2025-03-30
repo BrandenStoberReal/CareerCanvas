@@ -26,12 +26,4 @@ jobs:
       run: dotnet build --configuration Debug
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Upload Debug App
-      uses: actions/upload-artifact@v4.6.1
-      with:
-        # Artifact name
-        name: Debug Package
-        # A file, directory or wildcard pattern that describes what to upload
-        path: ${{ github.workspace }}\CareerCanvas\bin\Debug\net9.0-windows
-        # The desired behavior if no files are found using the provided path.
           
