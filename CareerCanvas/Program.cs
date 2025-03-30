@@ -14,8 +14,15 @@ namespace CareerCanvas
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new EntryForm());
 
+            // Run code on program close
+            Application.ApplicationExit += OnApplicationExit;
+
+            Application.Run(new EntryForm());
+        }
+
+        private static void OnApplicationExit(object? sender, EventArgs e)
+        {
             // Save identity settings
             using (FileStream file = File.Create(Globals.IdentityConfigPath))
             {
