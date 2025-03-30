@@ -18,9 +18,6 @@ namespace CareerCanvas
 
         private readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
-        // Config paths
-        private readonly string identityConfigPath = $"./data/configs/identity.careerconfig";
-
         /// <summary>
         /// Constructor for the EntryForm class.
         /// Initializes the form components and configures the MaterialSkinManager settings.
@@ -67,13 +64,13 @@ namespace CareerCanvas
             }
 
             // Load identity settings if the configuration file exists
-            if (File.Exists(identityConfigPath))
+            if (File.Exists(Globals.IdentityConfigPath))
             {
                 // Decrypt the identity settings file using the encryption key
-                EncryptionUtils.DecryptFile(identityConfigPath, identityConfigPath, File.ReadAllText("./data/misc/encryption.key"));
+                EncryptionUtils.DecryptFile(Globals.IdentityConfigPath, Globals.IdentityConfigPath, File.ReadAllText("./data/misc/encryption.key"));
 
                 // Read and deserialize the identity configuration file
-                using (FileStream file = File.OpenRead(identityConfigPath))
+                using (FileStream file = File.OpenRead(Globals.IdentityConfigPath))
                 {
                     Globals.IdentityConfig = Serializer.Deserialize<IdentityConfig>(file);
                 }
@@ -363,14 +360,6 @@ namespace CareerCanvas
         /// <param name="e">A FormClosingEventArgs that contains the event data.</param>
         private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Save identity settings
-            using (FileStream file = File.Create(identityConfigPath))
-            {
-                Serializer.Serialize(file, Globals.IdentityConfig);
-            }
-
-            // Encrypt identity settings
-            EncryptionUtils.EncryptFile(identityConfigPath, identityConfigPath, File.ReadAllText("./data/misc/encryption.key"));
         }
 
         /// <summary>

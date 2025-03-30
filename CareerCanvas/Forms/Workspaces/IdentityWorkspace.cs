@@ -30,6 +30,8 @@ namespace CareerCanvas.Forms
                 LinkedIn = linkedInTextBox.Text,
                 Portfolio = portfolioTextBox.Text
             };
+
+            // Write identity to path
             string identityPath = $"./data/identities/{identity.FirstName.ToLower()}_{identity.LastName.ToLower()}.identity";
             using (FileStream file = File.Create(identityPath))
             {
@@ -56,34 +58,34 @@ namespace CareerCanvas.Forms
         /// <summary>
         /// Loads an identity from disk.
         /// </summary>
-        /// <param name="filename">The name of the file, not the path, to load.</param>
-        private void LoadIdentity(string filename)
+        /// <param name="file">The name of the file, not the path, to load.</param>
+        private void LoadIdentity(string file)
         {
-            string identityPath = Path.Combine("./data/identities", filename.ToLower() + ".identity");
+            string identityPath = Path.GetFullPath(file);
             ProfessionalIdentity identity;
 
             // Handle encrypted files
-            if (filename.Contains(".enc"))
+            if (file.Contains(".enc"))
             {
                 try
                 {
                     string key = Globals.IdentityConfig.EncryptionKey;
-                    string decryptedPath = $"./data/identities/{filename.Replace(".enc", "")}.identity";
+                    string decryptedPath = file.Replace(".enc", "");
                     EncryptionUtils.DecryptFile(identityPath, decryptedPath, key);
                     File.Delete(identityPath);
                     identityPath = decryptedPath;
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("An error occurred while decrypting the identity file. Only self-encrypted files are supported at this time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An internal error occurred while decrypting the identity file. The key may be corrupt or missing.", "Encryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
             // Load binary data
-            using (FileStream file = File.OpenRead(identityPath))
+            using (FileStream filey = File.OpenRead(identityPath))
             {
-                identity = Serializer.Deserialize<ProfessionalIdentity>(file);
+                identity = Serializer.Deserialize<ProfessionalIdentity>(filey);
             }
 
             // Populate fields
@@ -103,7 +105,7 @@ namespace CareerCanvas.Forms
             this.Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
         }
 
-        public IdentityWorkspace(string? filename = null)
+        public IdentityWorkspace(string? file = null)
         {
             InitializeComponent();
 
@@ -119,9 +121,10 @@ namespace CareerCanvas.Forms
 
             materialSkinManager.ColorScheme = Globals.AppColorScheme;
 
-            if (filename != null)
+            // Load identity if filename is provided
+            if (file != null)
             {
-                LoadIdentity(filename);
+                LoadIdentity(file);
                 if (firstNameTextBox.Text == String.Empty || lastNameTextBox.Text == String.Empty)
                 {
                     this.Text = $"New Identity - Identity Workspace";
