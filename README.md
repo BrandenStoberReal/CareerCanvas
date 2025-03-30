@@ -4,7 +4,7 @@
  # Features
  - [x] Material UI
  - [ ] Material UI - Change Color Scheme
- - [ ] Material UI - Improve UI/UX
+ - [ ] Material UI - Not Terrible UI/UX
  - [ ] Resume Builder
  - [ ] Cover Letter Builder
  - [ ] Cover Letter Builder - Google Gemini Integration
