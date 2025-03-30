@@ -7,14 +7,12 @@ using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
-using System.Globalization;
 
 namespace CareerCanvas.Forms
 {
     public partial class HistoryWorkspace : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        private readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
         private List<Employment> jobHistory = new List<Employment>();
         private List<Education> educationHistory = new List<Education>();
@@ -106,7 +104,7 @@ namespace CareerCanvas.Forms
             }
 
             // Load data into workspace
-            titleBox.Text = textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(filepath).Replace("_", " "));
+            titleBox.Text = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(filepath).Replace("_", " "));
             jobHistory = industry.Jobs;
             educationHistory = industry.Schooling;
             certificateHistory = industry.Certificates;

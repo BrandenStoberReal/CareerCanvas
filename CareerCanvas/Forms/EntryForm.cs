@@ -5,7 +5,6 @@ using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
-using System.Globalization;
 using System.Net.Security;
 using System.Security.Authentication;
 
@@ -15,8 +14,6 @@ namespace CareerCanvas
     {
         // Instances
         private readonly MaterialSkinManager materialSkinManager;
-
-        private readonly TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
         /// <summary>
         /// Constructor for the EntryForm class.
@@ -192,7 +189,7 @@ namespace CareerCanvas
                 if (file.EndsWith(".identity"))
                 {
                     // Format the identity name by converting underscores to spaces and marking encrypted files
-                    string identityName = textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " ").Replace(".enc", " (Encrypted)"));
+                    string identityName = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " ").Replace(".enc", " (Encrypted)"));
 
                     // Check if the identity name is not already in the list box
                     if (!identitiesListBox.Items.Any(x => x.Text == identityName))
@@ -228,7 +225,7 @@ namespace CareerCanvas
                 if (file.EndsWith(".industry"))
                 {
                     // Convert the file name to a title case string without the extension and underscores
-                    string historyName = textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " "));
+                    string historyName = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " "));
 
                     // Check if the item is not already in the list box
                     if (!historiesListBox.Items.Any(x => x.Text == historyName))
