@@ -43,7 +43,6 @@
             openIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
             newIdentityButton = new ReaLTaiizor.Controls.MaterialButton();
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             identitiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identitiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
             industryPage = new TabPage();
@@ -72,6 +71,7 @@
             hapCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
             historyRefreshTimer = new System.Windows.Forms.Timer(components);
+            tabPage1 = new TabPage();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -79,7 +79,6 @@
             identityConfigExpansionPanel.SuspendLayout();
             materialCard2.SuspendLayout();
             materialCard1.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             industryPage.SuspendLayout();
             materialCard4.SuspendLayout();
             materialCard3.SuspendLayout();
@@ -97,12 +96,14 @@
             materialTabControl1.Controls.Add(cvPage);
             materialTabControl1.Controls.Add(creditsPage);
             materialTabControl1.Depth = 0;
-            materialTabControl1.Location = new Point(6, 67);
+            materialTabControl1.Dock = DockStyle.Right;
+            materialTabControl1.HotTrack = true;
+            materialTabControl1.Location = new Point(206, 24);
             materialTabControl1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialTabControl1.Multiline = true;
             materialTabControl1.Name = "materialTabControl1";
             materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(1282, 598);
+            materialTabControl1.Size = new Size(1085, 644);
             materialTabControl1.TabIndex = 0;
             // 
             // welcomePage
@@ -112,11 +113,10 @@
             welcomePage.Controls.Add(entryTitleLabel);
             welcomePage.Location = new Point(4, 24);
             welcomePage.Name = "welcomePage";
-            welcomePage.Size = new Size(1274, 570);
+            welcomePage.Size = new Size(1077, 616);
             welcomePage.TabIndex = 2;
             welcomePage.Text = "Welcome";
             welcomePage.UseVisualStyleBackColor = true;
-            welcomePage.Click += welcomePage_Click;
             // 
             // materialLabel1
             // 
@@ -165,13 +165,14 @@
             // 
             // entryTitleLabel
             // 
+            entryTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             entryTitleLabel.Depth = 0;
             entryTitleLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
             entryTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
             entryTitleLabel.Location = new Point(3, 0);
             entryTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             entryTitleLabel.Name = "entryTitleLabel";
-            entryTitleLabel.Size = new Size(1268, 46);
+            entryTitleLabel.Size = new Size(1071, 46);
             entryTitleLabel.TabIndex = 0;
             entryTitleLabel.Text = "Welcome!";
             entryTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -183,7 +184,7 @@
             identityPage.Controls.Add(materialCard1);
             identityPage.Location = new Point(4, 24);
             identityPage.Name = "identityPage";
-            identityPage.Size = new Size(1274, 570);
+            identityPage.Size = new Size(1077, 616);
             identityPage.TabIndex = 4;
             identityPage.Text = "Identities";
             identityPage.UseVisualStyleBackColor = true;
@@ -204,7 +205,7 @@
             identityConfigExpansionPanel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             identityConfigExpansionPanel.Name = "identityConfigExpansionPanel";
             identityConfigExpansionPanel.Padding = new Padding(24, 64, 24, 16);
-            identityConfigExpansionPanel.Size = new Size(663, 48);
+            identityConfigExpansionPanel.Size = new Size(457, 48);
             identityConfigExpansionPanel.TabIndex = 6;
             identityConfigExpansionPanel.Title = "Options";
             identityConfigExpansionPanel.SaveClick += identityConfigExpansionPanel_SaveClick;
@@ -241,7 +242,7 @@
             materialCard2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard2.Name = "materialCard2";
             materialCard2.Padding = new Padding(14);
-            materialCard2.Size = new Size(167, 542);
+            materialCard2.Size = new Size(167, 588);
             materialCard2.TabIndex = 5;
             // 
             // openIdentityFolderButton
@@ -317,36 +318,27 @@
             // materialCard1
             // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard1.Controls.Add(flowLayoutPanel1);
+            materialCard1.Controls.Add(identitiesLabel);
+            materialCard1.Controls.Add(identitiesListBox);
             materialCard1.Depth = 0;
             materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard1.Location = new Point(878, 14);
+            materialCard1.Location = new Point(685, 14);
             materialCard1.Margin = new Padding(14);
             materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard1.Name = "materialCard1";
             materialCard1.Padding = new Padding(14);
-            materialCard1.Size = new Size(382, 542);
+            materialCard1.Size = new Size(382, 588);
             materialCard1.TabIndex = 4;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Controls.Add(identitiesLabel);
-            flowLayoutPanel1.Controls.Add(identitiesListBox);
-            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(17, 17);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(350, 508);
-            flowLayoutPanel1.TabIndex = 3;
             // 
             // identitiesLabel
             // 
             identitiesLabel.Anchor = AnchorStyles.Top;
             identitiesLabel.Depth = 0;
             identitiesLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            identitiesLabel.Location = new Point(3, 0);
+            identitiesLabel.Location = new Point(20, 14);
             identitiesLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             identitiesLabel.Name = "identitiesLabel";
-            identitiesLabel.Size = new Size(340, 23);
+            identitiesLabel.Size = new Size(342, 23);
             identitiesLabel.TabIndex = 4;
             identitiesLabel.Text = "Identities";
             identitiesLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -356,15 +348,14 @@
             identitiesListBox.BackColor = Color.White;
             identitiesListBox.BorderColor = Color.LightGray;
             identitiesListBox.Depth = 0;
-            identitiesListBox.Dock = DockStyle.Bottom;
             identitiesListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            identitiesListBox.Location = new Point(6, 29);
+            identitiesListBox.Location = new Point(20, 43);
             identitiesListBox.Margin = new Padding(6);
             identitiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             identitiesListBox.Name = "identitiesListBox";
             identitiesListBox.SelectedIndex = -1;
             identitiesListBox.SelectedItem = null;
-            identitiesListBox.Size = new Size(334, 470);
+            identitiesListBox.Size = new Size(342, 525);
             identitiesListBox.TabIndex = 200;
             identitiesListBox.TabStop = false;
             identitiesListBox.SelectedIndexChanged += identitiesListBox_SelectedIndexChanged;
@@ -375,7 +366,7 @@
             industryPage.Controls.Add(materialCard3);
             industryPage.Location = new Point(4, 24);
             industryPage.Name = "industryPage";
-            industryPage.Size = new Size(1274, 570);
+            industryPage.Size = new Size(1077, 616);
             industryPage.TabIndex = 5;
             industryPage.Text = "Industries";
             industryPage.UseVisualStyleBackColor = true;
@@ -394,7 +385,7 @@
             materialCard4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard4.Name = "materialCard4";
             materialCard4.Padding = new Padding(14);
-            materialCard4.Size = new Size(176, 556);
+            materialCard4.Size = new Size(176, 588);
             materialCard4.TabIndex = 103;
             // 
             // newHistoryButton
@@ -407,7 +398,7 @@
             newHistoryButton.HighEmphasis = true;
             newHistoryButton.Icon = null;
             newHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            newHistoryButton.Location = new Point(10, 11);
+            newHistoryButton.Location = new Point(10, 7);
             newHistoryButton.Margin = new Padding(6);
             newHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             newHistoryButton.Name = "newHistoryButton";
@@ -431,7 +422,7 @@
             openIndustryFolderButton.HighEmphasis = true;
             openIndustryFolderButton.Icon = null;
             openIndustryFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openIndustryFolderButton.Location = new Point(10, 107);
+            openIndustryFolderButton.Location = new Point(10, 103);
             openIndustryFolderButton.Margin = new Padding(6);
             openIndustryFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             openIndustryFolderButton.Name = "openIndustryFolderButton";
@@ -455,7 +446,7 @@
             importHistoryButton.HighEmphasis = true;
             importHistoryButton.Icon = null;
             importHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            importHistoryButton.Location = new Point(10, 59);
+            importHistoryButton.Location = new Point(10, 55);
             importHistoryButton.Margin = new Padding(6);
             importHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             importHistoryButton.Name = "importHistoryButton";
@@ -476,12 +467,12 @@
             materialCard3.Controls.Add(historiesLabel);
             materialCard3.Depth = 0;
             materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard3.Location = new Point(849, 14);
+            materialCard3.Location = new Point(638, 14);
             materialCard3.Margin = new Padding(14);
             materialCard3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard3.Name = "materialCard3";
             materialCard3.Padding = new Padding(14);
-            materialCard3.Size = new Size(425, 556);
+            materialCard3.Size = new Size(425, 588);
             materialCard3.TabIndex = 6;
             // 
             // historiesListBox
@@ -495,7 +486,7 @@
             historiesListBox.Name = "historiesListBox";
             historiesListBox.SelectedIndex = -1;
             historiesListBox.SelectedItem = null;
-            historiesListBox.Size = new Size(391, 499);
+            historiesListBox.Size = new Size(391, 531);
             historiesListBox.TabIndex = 5;
             historiesListBox.SelectedIndexChanged += historiesListBox_SelectedIndexChanged;
             // 
@@ -516,7 +507,7 @@
             // 
             resumePage.Location = new Point(4, 24);
             resumePage.Name = "resumePage";
-            resumePage.Size = new Size(1274, 570);
+            resumePage.Size = new Size(1077, 616);
             resumePage.TabIndex = 0;
             resumePage.Text = "Resume";
             resumePage.UseVisualStyleBackColor = true;
@@ -525,7 +516,7 @@
             // 
             cvPage.Location = new Point(4, 24);
             cvPage.Name = "cvPage";
-            cvPage.Size = new Size(1274, 570);
+            cvPage.Size = new Size(1077, 616);
             cvPage.TabIndex = 3;
             cvPage.Text = "Cover Letter";
             cvPage.UseVisualStyleBackColor = true;
@@ -536,7 +527,7 @@
             creditsPage.Controls.Add(libraryCreditsFlowPanel);
             creditsPage.Location = new Point(4, 24);
             creditsPage.Name = "creditsPage";
-            creditsPage.Size = new Size(1274, 570);
+            creditsPage.Size = new Size(1077, 616);
             creditsPage.TabIndex = 1;
             creditsPage.Text = "Credits";
             creditsPage.UseVisualStyleBackColor = true;
@@ -549,7 +540,7 @@
             creditsFlowPanel.FlowDirection = FlowDirection.TopDown;
             creditsFlowPanel.Location = new Point(0, 0);
             creditsFlowPanel.Name = "creditsFlowPanel";
-            creditsFlowPanel.Size = new Size(261, 570);
+            creditsFlowPanel.Size = new Size(261, 616);
             creditsFlowPanel.TabIndex = 0;
             // 
             // peopleCreditTitleLabel
@@ -593,9 +584,9 @@
             libraryCreditsFlowPanel.Controls.Add(hapCreditLabel);
             libraryCreditsFlowPanel.Dock = DockStyle.Right;
             libraryCreditsFlowPanel.FlowDirection = FlowDirection.TopDown;
-            libraryCreditsFlowPanel.Location = new Point(913, 0);
+            libraryCreditsFlowPanel.Location = new Point(716, 0);
             libraryCreditsFlowPanel.Name = "libraryCreditsFlowPanel";
-            libraryCreditsFlowPanel.Size = new Size(361, 570);
+            libraryCreditsFlowPanel.Size = new Size(361, 616);
             libraryCreditsFlowPanel.TabIndex = 4;
             // 
             // librariesCreditTitleLabel
@@ -736,14 +727,31 @@
             historyRefreshTimer.Interval = 1000;
             historyRefreshTimer.Tick += historyRefreshTimer_Tick;
             // 
+            // tabPage1
+            // 
+            tabPage1.Location = new Point(0, 0);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(200, 100);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Test";
+            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1294, 671);
             Controls.Add(materialTabControl1);
+            DrawerAutoHide = false;
+            DrawerHamburgerCursor = Cursors.No;
+            DrawerIsOpen = true;
+            DrawerNonClickTabPage = new TabPage[]
+    {
+    tabPage1
+    };
             DrawerTabControl = materialTabControl1;
+            FormStyle = ReaLTaiizor.Enum.Material.FormStyles.ActionBar_None;
             Name = "EntryForm";
+            Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
             Text = "Career Canvas";
             FormClosing += EntryForm_FormClosing;
@@ -756,7 +764,6 @@
             identityConfigExpansionPanel.PerformLayout();
             materialCard2.ResumeLayout(false);
             materialCard1.ResumeLayout(false);
-            flowLayoutPanel1.ResumeLayout(false);
             industryPage.ResumeLayout(false);
             materialCard4.ResumeLayout(false);
             materialCard3.ResumeLayout(false);
@@ -778,7 +785,6 @@
         private TabPage identityPage;
         private ReaLTaiizor.Controls.MaterialButton newIdentityButton;
         private ReaLTaiizor.Controls.MaterialListBox identitiesListBox;
-        private FlowLayoutPanel flowLayoutPanel1;
         private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
         private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
         private TabPage industryPage;
@@ -813,5 +819,6 @@
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private FlowLayoutPanel flowLayoutPanel2;
         private ReaLTaiizor.Controls.MaterialButton changeColorsButton;
+        private TabPage tabPage1;
     }
 }

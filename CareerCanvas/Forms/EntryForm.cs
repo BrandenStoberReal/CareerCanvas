@@ -89,7 +89,6 @@ public partial class EntryForm : MaterialForm
     private void identityPage_Click(object sender, EventArgs e)
     {
         // Deselect active controls
-        ActiveControl = null;
         identitiesListBox.SelectedItem = null;
     }
 
