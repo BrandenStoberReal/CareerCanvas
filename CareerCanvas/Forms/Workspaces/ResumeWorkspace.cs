@@ -107,42 +107,40 @@ public partial class ResumeWorkspace : MaterialForm
                 HtmlNode jobNode = jobTemplate.Clone();
                 jobTemplate.ParentNode.AppendChild(jobNode);
 
-                switch (jobNode.InnerHtml)
+                if (jobNode.InnerHtml.Contains("jobtitle"))
                 {
-                    case string title when title.Contains("jobtitle"):
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobtitle", job.JobTitle);
-                        break;
-
-                    case string company when company.Contains("jobcompany"):
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobcompany", job.CompanyName);
-                        break;
-
-                    case string startMonth when startMonth.Contains("jobstartmonth"):
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobstartmonth", job.StartDate.ToString("MMMM"));
-                        break;
-
-                    case string endMonth when endMonth.Contains("jobendmonth"):
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobendmonth", job.EndDate.ToString("MMMM"));
-                        break;
-
-                    case string startYear when startYear.Contains("jobstartyear"):
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobstartyear", job.StartDate.ToString("yyyy"));
-                        break;
-
-                    case string endYear when endYear.Contains("jobendyear"):
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobendyear", job.EndDate.ToString("yyyy"));
-                        break;
-
-                    case string summary when summary.Contains("jobsummary"):
-                        if (job.JobDescription != String.Empty)
-                        {
-                            jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobsummary", job.JobDescription);
-                        }
-                        else
-                        {
-                            jobNode.Descendants().Where(n => n.InnerText == "jobsummary").First().Remove();
-                        }
-                        break;
+                    jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobtitle", job.JobTitle);
+                }
+                if (jobNode.InnerHtml.Contains("jobcompany"))
+                {
+                    jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobcompany", job.CompanyName);
+                }
+                if (jobNode.InnerHtml.Contains("jobstartmonth"))
+                {
+                    jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobstartmonth", job.StartDate.ToString("MMMM"));
+                }
+                if (jobNode.InnerHtml.Contains("jobendmonth"))
+                {
+                    jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobendmonth", job.EndDate.ToString("MMMM"));
+                }
+                if (jobNode.InnerHtml.Contains("jobstartyear"))
+                {
+                    jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobstartyear", job.StartDate.ToString("yyyy"));
+                }
+                if (jobNode.InnerHtml.Contains("jobendyear"))
+                {
+                    jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobendyear", job.EndDate.ToString("yyyy"));
+                }
+                if (jobNode.InnerHtml.Contains("jobsummary"))
+                {
+                    if (job.JobDescription != String.Empty)
+                    {
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobsummary", job.JobDescription);
+                    }
+                    else
+                    {
+                        jobNode.Descendants().Where(n => n.InnerText == "jobsummary").First().Remove();
+                    }
                 }
             }
             jobTemplate.Remove();
@@ -161,34 +159,36 @@ public partial class ResumeWorkspace : MaterialForm
                 HtmlNode eduNode = educationTemplate.Clone();
                 educationTemplate.ParentNode.AppendChild(eduNode);
 
-                switch (eduNode.InnerHtml)
+                if (eduNode.InnerHtml.Contains("degree"))
                 {
-                    case string degree when degree.Contains("degree"):
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("degree", EnumUtils.GetEnumDescription(education.Degree));
-                        break;
-
-                    case string school when school.Contains("schoolname"):
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolname", education.SchoolName);
-                        break;
-
-                    case string startMonth when startMonth.Contains("schoolstartmonth"):
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolstartmonth", education.StartDate.ToString("MMMM"));
-                        break;
-
-                    case string endMonth when endMonth.Contains("schoolendmonth"):
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolendmonth", education.EndDate.ToString("MMMM"));
-                        break;
-
-                    case string startYear when startYear.Contains("schoolstartyear"):
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolstartyear", education.StartDate.ToString("yyyy"));
-                        break;
-
-                    case string endYear when endYear.Contains("schoolendyear"):
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolendyear", education.EndDate.ToString("yyyy"));
-                        break;
+                    eduNode.InnerHtml = eduNode.InnerHtml.Replace("degree", EnumUtils.GetEnumDescription(education.Degree));
                 }
+                if (eduNode.InnerHtml.Contains("schoolname"))
+                {
+                    eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolname", education.SchoolName);
+                }
+
+                if (eduNode.InnerHtml.Contains("schoolstartmonth"))
+                {
+                    eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolstartmonth", education.StartDate.ToString("MMMM"));
+                }
+
+                if (eduNode.InnerHtml.Contains("schoolendmonth"))
+                {
+                    eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolendmonth", education.EndDate.ToString("MMMM"));
+                }
+
+                if (eduNode.InnerHtml.Contains("schoolstartyear"))
+                {
+                    eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolstartyear", education.StartDate.ToString("yyyy"));
+                }
+
+                if (eduNode.InnerHtml.Contains("schoolendyear"))
+                {
+                    eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolendyear", education.EndDate.ToString("yyyy"));
+                }
+                educationTemplate.Remove();
             }
-            jobTemplate.Remove();
         }
 
         // Load the template into the webview
