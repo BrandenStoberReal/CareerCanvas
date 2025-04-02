@@ -1,5 +1,7 @@
-﻿using CareerCanvas.Classes.Main.Protobuf;
+﻿using CareerCanvas.Classes.Main.History;
+using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
+using HtmlAgilityPack;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
@@ -90,6 +92,61 @@ public partial class ResumeWorkspace : MaterialForm
         else
         {
             Template.GetElementbyId("linkedin").Remove();
+        }
+
+        // Job experience fill
+        HtmlNode jobTemplate = Template.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
+
+        if (Industry.Jobs.Count == 0)
+        {
+            jobTemplate.Remove();
+        }
+        else
+        {
+            foreach (Employment job in Industry.Jobs)
+            {
+                HtmlNode jobNode = jobTemplate.Clone();
+                jobTemplate.ParentNode.AppendChild(jobNode);
+
+                switch (jobNode.InnerHtml)
+                {
+                    case string title when title.Contains("jobtitle"):
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobtitle", job.JobTitle);
+                        break;
+
+                    case string company when company.Contains("jobcompany"):
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobcompany", job.CompanyName);
+                        break;
+
+                    case string startMonth when startMonth.Contains("jobstartmonth"):
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobstartmonth", job.StartDate.ToString("MMMM"));
+                        break;
+
+                    case string endMonth when endMonth.Contains("jobendmonth"):
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobendmonth", job.EndDate.ToString("MMMM"));
+                        break;
+
+                    case string startYear when startYear.Contains("jobstartyear"):
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobstartyear", job.StartDate.ToString("yyyy"));
+                        break;
+
+                    case string endYear when endYear.Contains("jobendyear"):
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobendyear", job.EndDate.ToString("yyyy"));
+                        break;
+
+                    case string summary when summary.Contains("jobsummary"):
+                        if (job.JobDescription != String.Empty)
+                        {
+                            jobNode.InnerHtml = jobNode.InnerHtml.Replace("jobsummary", job.JobDescription);
+                        }
+                        else
+                        {
+                            jobNode.Descendants().Where(n => n.InnerText == "jobsummary").First().Remove();
+                        }
+                        break;
+                }
+            }
+            jobTemplate.Remove();
         }
 
         // Load the template into the webview
