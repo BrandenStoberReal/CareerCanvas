@@ -34,68 +34,58 @@ public partial class ResumeWorkspace : MaterialForm
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
     }
 
-    private void ResumeWorkspace_Load(object sender, EventArgs e)
+    /// <summary>
+    /// Fills the provided HTML document with identity data, including name, address, email, phone number,
+    /// LinkedIn profile, job experience, and education details.
+    /// </summary>
+    /// <param name="doc">The HtmlDocument to be filled with identity data.</param>
+    private void FillDocumentData(HtmlDocument doc)
     {
-        // Load the webview runtime
-        resumeViewer.EnsureCoreWebView2Async();
-    }
-
-    private void openTemplateFolderButton_Click(object sender, EventArgs e)
-    {
-        FolderUtils.OpenFolder(Path.GetFullPath("./templates/resume"));
-    }
-
-    private void resumeViewer_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
-    {
-        // Load default template
-        Template = new HtmlDocument();
-        Template.LoadHtml(File.ReadAllText("./templates/resume/default.html"));
-
         // Replace placeholders with identity data
-        Template.GetElementbyId("name").InnerHtml = $"{Identity.FirstName} {Identity.MiddleName} {Identity.LastName}";
+        doc.GetElementbyId("name").InnerHtml = $"{Identity.FirstName} {Identity.MiddleName} {Identity.LastName}";
 
         // Address fill
         if (Identity.Address != String.Empty)
         {
-            Template.GetElementbyId("address").InnerHtml = "Address: " + Identity.Address;
+            doc.GetElementbyId("address").InnerHtml = "Address: " + Identity.Address;
         }
         else
         {
-            Template.GetElementbyId("address").Remove();
+            doc.GetElementbyId("address").Remove();
         }
 
         // Email fill
         if (Identity.Email != String.Empty)
         {
-            Template.GetElementbyId("email").InnerHtml = "Email: " + Identity.Email;
+            doc.GetElementbyId("email").InnerHtml = "Email: " + Identity.Email;
         }
         else
         {
-            Template.GetElementbyId("email").Remove();
+            doc.GetElementbyId("email").Remove();
         }
 
         // Phone number fill
         if (Identity.PhoneNumber != String.Empty)
         {
-            Template.GetElementbyId("phonenumber").InnerHtml = "Phone: " + Identity.PhoneNumber;
+            doc.GetElementbyId("phonenumber").InnerHtml = "Phone: " + Identity.PhoneNumber;
         }
         else
         {
-            Template.GetElementbyId("phonenumber").Remove();
+            doc.GetElementbyId("phonenumber").Remove();
         }
 
         // Linkedin fill
         if (Identity.LinkedIn != String.Empty)
         {
-            Template.GetElementbyId("linkedin").InnerHtml = "LinkedIn: " + Identity.LinkedIn;
+            doc.GetElementbyId("linkedin").InnerHtml = "LinkedIn: " + Identity.LinkedIn;
         }
         else
         {
-            Template.GetElementbyId("linkedin").Remove();
+            doc.GetElementbyId("linkedin").Remove();
         }
 
         // Job experience fill
-        HtmlNode jobTemplate = Template.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
+        HtmlNode jobTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
         if (Industry.Jobs.Count == 0)
         {
             jobTemplate.Remove();
@@ -147,7 +137,7 @@ public partial class ResumeWorkspace : MaterialForm
         }
 
         // Job education fill
-        HtmlNode educationTemplate = Template.DocumentNode.Descendants(0).Where(n => n.HasClass("educationentry")).First();
+        HtmlNode educationTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("educationentry")).First();
         if (Industry.Schooling.Count == 0)
         {
             educationTemplate.Remove();
@@ -190,6 +180,27 @@ public partial class ResumeWorkspace : MaterialForm
                 educationTemplate.Remove();
             }
         }
+    }
+
+    private void ResumeWorkspace_Load(object sender, EventArgs e)
+    {
+        // Load the webview runtime
+        resumeViewer.EnsureCoreWebView2Async();
+    }
+
+    private void openTemplateFolderButton_Click(object sender, EventArgs e)
+    {
+        FolderUtils.OpenFolder(Path.GetFullPath("./templates/resume"));
+    }
+
+    private void resumeViewer_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
+    {
+        // Load default template
+        Template = new HtmlDocument();
+        Template.LoadHtml(File.ReadAllText("./templates/resume/default.html"));
+
+        // Replace placeholders with identity data
+        FillDocumentData(Template);
 
         // Load the template into the webview
         resumeViewer.NavigateToString(Template.DocumentNode.OuterHtml);
