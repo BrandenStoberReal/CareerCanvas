@@ -1,4 +1,5 @@
 using CareerCanvas.Classes.Configs;
+using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Forms.Workspaces;
 using ProtoBuf;
@@ -42,13 +43,6 @@ public partial class EntryForm : MaterialForm
     {
         // Set the active control to null to prevent any control from being focused initially
         ActiveControl = null;
-
-        // Create necessary application folders if they do not exist
-        FolderUtils.CreateAppFolders();
-
-        // Create an encryption key if it does not exist
-        if (!File.Exists("./data/misc/encryption.key"))
-            File.WriteAllText("./data/misc/encryption.key", EncryptionUtils.Generate256BitKey());
 
         // Load identity settings if the configuration file exists
         if (File.Exists(Globals.IdentityConfigPath))
@@ -361,6 +355,70 @@ public partial class EntryForm : MaterialForm
     }
 
     private void welcomePage_Click(object sender, EventArgs e)
+    {
+        ActiveControl = null;
+    }
+
+    /// <summary>
+    /// Event handler for the button click event to open the resume workspace.
+    /// Prompts the user to select an identity file and an industry file,
+    /// then initializes and displays the resume workspace with the selected files.
+    /// </summary>
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">The event data.</param>
+    private void openResumeWorkspaceButton_Click(object sender, EventArgs e)
+    {
+        var identity = new ProfessionalIdentity();
+        var industry = new Industry();
+
+        OpenFileDialog identityPicker = new OpenFileDialog();
+        identityPicker.Title = "Select an identity file";
+        identityPicker.Filter = "Identity files (*.identity)|*.identity";
+        identityPicker.InitialDirectory = Path.GetFullPath("./data/identities");
+
+        if (identityPicker.ShowDialog() == DialogResult.OK)
+        {
+            var identityPath = identityPicker.FileName;
+            var identityName = Path.GetFileNameWithoutExtension(identityPath).ToLower();
+            using (var file = File.OpenRead(identityPath))
+            {
+                identity = Serializer.Deserialize<ProfessionalIdentity>(file);
+            }
+        }
+        else
+        {
+            return;
+        }
+
+        OpenFileDialog industryPicker = new OpenFileDialog();
+        industryPicker.Title = "Select an industry file";
+        industryPicker.Filter = "Industry files (*.industry)|*.industry";
+        industryPicker.InitialDirectory = Path.GetFullPath("./data/industries");
+
+        if (industryPicker.ShowDialog() == DialogResult.OK)
+        {
+            var industryPath = industryPicker.FileName;
+            var industryName = Path.GetFileNameWithoutExtension(industryPath).ToLower();
+            using (var file = File.OpenRead(industryPath))
+            {
+                industry = Serializer.Deserialize<Industry>(file);
+            }
+        }
+        else
+        {
+            return;
+        }
+
+        var resumeWorkspace = new ResumeWorkspace(identity, industry);
+        resumeWorkspace.Show();
+    }
+
+    private void resumePage_Click(object sender, EventArgs e)
+    {
+        ActiveControl = null;
+    }
+
+    private void materialCard5_Click(object sender, EventArgs e)
     {
         ActiveControl = null;
     }

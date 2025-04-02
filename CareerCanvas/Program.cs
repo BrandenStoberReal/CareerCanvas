@@ -19,6 +19,13 @@ internal static class Program
         // Run code on program close
         Application.ApplicationExit += OnApplicationExit;
 
+        // Create necessary application folders if they do not exist
+        FolderUtils.CreateAppFolders();
+
+        // Create an encryption key if it does not exist
+        if (!File.Exists("./data/misc/encryption.key"))
+            File.WriteAllText("./data/misc/encryption.key", EncryptionUtils.Generate256BitKey());
+
         Application.Run(new EntryForm());
     }
 

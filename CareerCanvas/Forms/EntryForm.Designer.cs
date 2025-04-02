@@ -54,6 +54,8 @@
             historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
             historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             resumePage = new TabPage();
+            materialCard5 = new ReaLTaiizor.Controls.MaterialCard();
+            openResumeWorkspaceButton = new ReaLTaiizor.Controls.MaterialButton();
             cvPage = new TabPage();
             creditsPage = new TabPage();
             creditsFlowPanel = new FlowLayoutPanel();
@@ -82,6 +84,8 @@
             industryPage.SuspendLayout();
             materialCard4.SuspendLayout();
             materialCard3.SuspendLayout();
+            resumePage.SuspendLayout();
+            materialCard5.SuspendLayout();
             creditsPage.SuspendLayout();
             creditsFlowPanel.SuspendLayout();
             libraryCreditsFlowPanel.SuspendLayout();
@@ -505,12 +509,51 @@
             // 
             // resumePage
             // 
+            resumePage.Controls.Add(materialCard5);
             resumePage.Location = new Point(4, 24);
             resumePage.Name = "resumePage";
             resumePage.Size = new Size(1077, 616);
             resumePage.TabIndex = 0;
             resumePage.Text = "Resume";
             resumePage.UseVisualStyleBackColor = true;
+            resumePage.Click += resumePage_Click;
+            // 
+            // materialCard5
+            // 
+            materialCard5.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard5.Controls.Add(openResumeWorkspaceButton);
+            materialCard5.Depth = 0;
+            materialCard5.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard5.Location = new Point(14, 14);
+            materialCard5.Margin = new Padding(14);
+            materialCard5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard5.Name = "materialCard5";
+            materialCard5.Padding = new Padding(14);
+            materialCard5.Size = new Size(211, 588);
+            materialCard5.TabIndex = 0;
+            materialCard5.Click += materialCard5_Click;
+            // 
+            // openResumeWorkspaceButton
+            // 
+            openResumeWorkspaceButton.AutoSize = false;
+            openResumeWorkspaceButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openResumeWorkspaceButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openResumeWorkspaceButton.Depth = 0;
+            openResumeWorkspaceButton.HighEmphasis = true;
+            openResumeWorkspaceButton.Icon = null;
+            openResumeWorkspaceButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openResumeWorkspaceButton.Location = new Point(18, 20);
+            openResumeWorkspaceButton.Margin = new Padding(4, 6, 4, 6);
+            openResumeWorkspaceButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openResumeWorkspaceButton.Name = "openResumeWorkspaceButton";
+            openResumeWorkspaceButton.NoAccentTextColor = Color.Empty;
+            openResumeWorkspaceButton.Size = new Size(175, 36);
+            openResumeWorkspaceButton.TabIndex = 0;
+            openResumeWorkspaceButton.Text = "Open Resume Builder";
+            openResumeWorkspaceButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openResumeWorkspaceButton.UseAccentColor = false;
+            openResumeWorkspaceButton.UseVisualStyleBackColor = true;
+            openResumeWorkspaceButton.Click += openResumeWorkspaceButton_Click;
             // 
             // cvPage
             // 
@@ -767,6 +810,8 @@
             industryPage.ResumeLayout(false);
             materialCard4.ResumeLayout(false);
             materialCard3.ResumeLayout(false);
+            resumePage.ResumeLayout(false);
+            materialCard5.ResumeLayout(false);
             creditsPage.ResumeLayout(false);
             creditsFlowPanel.ResumeLayout(false);
             creditsFlowPanel.PerformLayout();
@@ -820,5 +865,7 @@
         private FlowLayoutPanel flowLayoutPanel2;
         private ReaLTaiizor.Controls.MaterialButton changeColorsButton;
         private TabPage tabPage1;
+        private ReaLTaiizor.Controls.MaterialCard materialCard5;
+        private ReaLTaiizor.Controls.MaterialButton openResumeWorkspaceButton;
     }
 }
