@@ -45,9 +45,12 @@
         </EmbeddedResource>
     </ItemGroup>
 
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="copy &quot;$(ProjectDir)Export\version.json&quot; &quot;$(TargetDir)&quot;&#xA;" />
-    </Target>
+	<ItemGroup>
+		<ContentWithTargetPath Include="Export\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<TargetPath>%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
+		</ContentWithTargetPath>
+	</ItemGroup>
 
     <ProjectExtensions>
         <VisualStudio>

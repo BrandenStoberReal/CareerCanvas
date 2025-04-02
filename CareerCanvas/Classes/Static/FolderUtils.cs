@@ -16,9 +16,6 @@ public static class FolderUtils
         "./data/coverletters",
         "./data/identities",
         "./data/industries",
-        "./templates",
-        "./templates/resume",
-        "./templates/coverletter"
     };
 
     /// <summary>

@@ -49,6 +49,7 @@
             resumeViewer.Size = new Size(812, 872);
             resumeViewer.TabIndex = 0;
             resumeViewer.ZoomFactor = 1D;
+            resumeViewer.CoreWebView2InitializationCompleted += resumeViewer_CoreWebView2InitializationCompleted;
             // 
             // materialCard1
             // 
@@ -65,6 +66,7 @@
             materialCard1.Padding = new Padding(14);
             materialCard1.Size = new Size(459, 898);
             materialCard1.TabIndex = 1;
+            materialCard1.Click += materialCard1_Click;
             // 
             // openTemplateFolderButton
             // 
@@ -122,13 +124,14 @@
             materialCard2.Padding = new Padding(14);
             materialCard2.Size = new Size(459, 898);
             materialCard2.TabIndex = 2;
+            materialCard2.Click += materialCard2_Click;
             // 
             // logLabel
             // 
             logLabel.Depth = 0;
             logLabel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             logLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
-            logLabel.Location = new Point(479, 24);
+            logLabel.Location = new Point(479, 25);
             logLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             logLabel.Name = "logLabel";
             logLabel.Size = new Size(826, 23);
