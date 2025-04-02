@@ -96,7 +96,6 @@ public partial class ResumeWorkspace : MaterialForm
 
         // Job experience fill
         HtmlNode jobTemplate = Template.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
-
         if (Industry.Jobs.Count == 0)
         {
             jobTemplate.Remove();
@@ -143,6 +142,49 @@ public partial class ResumeWorkspace : MaterialForm
                         {
                             jobNode.Descendants().Where(n => n.InnerText == "jobsummary").First().Remove();
                         }
+                        break;
+                }
+            }
+            jobTemplate.Remove();
+        }
+
+        // Job education fill
+        HtmlNode educationTemplate = Template.DocumentNode.Descendants(0).Where(n => n.HasClass("educationentry")).First();
+        if (Industry.Schooling.Count == 0)
+        {
+            educationTemplate.Remove();
+        }
+        else
+        {
+            foreach (Education education in Industry.Schooling)
+            {
+                HtmlNode eduNode = educationTemplate.Clone();
+                educationTemplate.ParentNode.AppendChild(eduNode);
+
+                switch (eduNode.InnerHtml)
+                {
+                    case string degree when degree.Contains("degree"):
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("degree", EnumUtils.GetEnumDescription(education.Degree));
+                        break;
+
+                    case string school when school.Contains("schoolname"):
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolname", education.SchoolName);
+                        break;
+
+                    case string startMonth when startMonth.Contains("schoolstartmonth"):
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolstartmonth", education.StartDate.ToString("MMMM"));
+                        break;
+
+                    case string endMonth when endMonth.Contains("schoolendmonth"):
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolendmonth", education.EndDate.ToString("MMMM"));
+                        break;
+
+                    case string startYear when startYear.Contains("schoolstartyear"):
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolstartyear", education.StartDate.ToString("yyyy"));
+                        break;
+
+                    case string endYear when endYear.Contains("schoolendyear"):
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("schoolendyear", education.EndDate.ToString("yyyy"));
                         break;
                 }
             }
