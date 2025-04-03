@@ -110,6 +110,7 @@
             loadTemplateButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             loadTemplateButton.UseAccentColor = false;
             loadTemplateButton.UseVisualStyleBackColor = true;
+            loadTemplateButton.Click += loadTemplateButton_Click;
             // 
             // materialCard2
             // 

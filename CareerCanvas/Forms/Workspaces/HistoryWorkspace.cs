@@ -1,6 +1,7 @@
 ﻿using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Forms.Info;
 using CareerCanvas.Forms.InputDialogs;
 using ProtoBuf;

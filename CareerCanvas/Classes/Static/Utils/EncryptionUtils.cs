@@ -1,6 +1,6 @@
 ﻿using System.Security.Cryptography;
 
-namespace CareerCanvas.Classes.Static;
+namespace CareerCanvas.Classes.Static.Utils;
 
 public static class EncryptionUtils
 {

@@ -89,36 +89,34 @@
     <div class="section" id="summarycontainer">
         <h2>Summary</h2>
         <ul class="experience">
-            <li id="summary">A brief summary about yourself, your skills, and what you are looking for in your next role.</li>
+            <li id="summary">{{resumeSummary}}</li>
         </ul>
     </div>
 
     <div class="section">
         <h2>Skills</h2>
         <ul class="skills" id="skills">
-            <li>Skill 1</li>
-            <li>Skill 2</li>
-            <li>Skill 3</li>
+            <li class="skillentry">{{skillName}}</li>
         </ul>
     </div>
 
     <div class="section">
         <h2>Experience</h2>
-        <ul class="experience" id="jobs">
+        <ul class="experience">
             <li class="jobentry">
-                <h3>jobtitle - jobcompany</h3>
-                <p>jobstartmonth jobstartyear - jobendmonth jobendyear</p>
-                <p>jobsummary</p>
+                <h3>{{jobTitle}} - {{jobCompanyName}}</h3>
+                <p>{{jobStartMonth}} {{jobStartYear}} - {{jobEndMonth}} {{jobEndYear}}</p>
+                <p>{{jobDescription}}</p>
             </li>
         </ul>
     </div>
 
     <div class="section">
         <h2>Education</h2>
-        <ul class="education" id="education">
+        <ul class="education">
             <li class="educationentry">
-                <h3>degree - schoolname</h3>
-                <p>schoolstartmonth schoolstartyear - schoolendmonth schoolendyear</p>
+                <h3>{{degreeType}} - {{schoolName}}</h3>
+                <p>{{schoolStartMonth}} {{schoolStartYear}} - {{schoolEndMonth}} {{schoolEndYear}}</p>
             </li>
         </ul>
     </div>

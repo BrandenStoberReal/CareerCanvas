@@ -1,5 +1,6 @@
 ﻿using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 

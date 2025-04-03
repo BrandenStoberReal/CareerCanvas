@@ -1,5 +1,6 @@
 ﻿using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using ProtoBuf;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;

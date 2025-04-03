@@ -1,6 +1,7 @@
 using CareerCanvas.Classes.Configs;
 using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Forms.Workspaces;
 using ProtoBuf;
 using ReaLTaiizor.Child.Material;

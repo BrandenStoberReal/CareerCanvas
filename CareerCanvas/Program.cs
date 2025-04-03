@@ -1,4 +1,5 @@
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Forms;
 using ProtoBuf;
 

@@ -10,15 +10,16 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
             color: #333;
         }
 
         .container {
             display: flex;
-            height: 100%; /* Full height */
-            width: 100%; /* Full width */
+            height: 100%;
+            width: 100%;
             background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
 
         .sidebar {
@@ -26,21 +27,43 @@
             background: #333;
             color: white;
             padding: 20px;
+            position: relative;
         }
 
             .sidebar h2 {
                 text-align: center;
                 margin-bottom: 20px;
+                font-size: 24px;
+                border-bottom: 2px solid #fff;
+                padding-bottom: 10px;
             }
 
             .sidebar p {
                 margin: 10px 0;
+                font-size: 14px;
             }
+
+            .sidebar .skills {
+                margin-top: 20px; /* Add some space above skills */
+            }
+
+                .sidebar .skills ul {
+                    padding-left: 0; /* Remove default padding */
+                    list-style-type: none; /* Remove bullet points */
+                }
+
+        .skills li {
+            background: #606060; /* Background for skills */
+            border-radius: 5px;
+            padding: 5px;
+            display: inline-block; /* Display skills inline */
+            margin-right: 5px; /* Space between skills */
+        }
 
         .main {
             flex: 1;
             padding: 20px;
-            overflow-y: auto; /* Allow scrolling if content overflows */
+            overflow-y: auto;
         }
 
         .section {
@@ -50,6 +73,7 @@
             .section h3 {
                 border-bottom: 2px solid #333;
                 padding-bottom: 5px;
+                font-size: 20px;
             }
 
         .experience, .education, .skills {
@@ -59,7 +83,19 @@
 
             .experience li, .education li, .skills li {
                 margin-bottom: 10px;
+                font-size: 14px;
             }
+
+                .experience li strong, .education li strong {
+                    color: #333;
+                }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -71,30 +107,28 @@
             <p id="email">Email: your.email@example.com</p>
             <p id="phonenumber">Phone: (123) 456-7890</p>
             <p id="linkedin">LinkedIn: your-linkedin-profile</p>
+            <div class="skills">
+                <h3>Skills</h3>
+                <ul id="skills" style="padding-left: 0; list-style-type: none;">
+                    <li class="skillentry">{{skillName}}</li>
+                </ul>
+            </div>
         </div>
         <div class="main">
             <div class="section" id="summarycontainer">
                 <h3>Summary</h3>
-                <p id="summary">A brief summary about yourself, your skills, and what you are looking for in your next role.</p>
+                <p id="summary">{{resumeSummary}}</p>
             </div>
             <div class="section">
                 <h3>Experience</h3>
                 <ul class="experience" id="jobs">
-                    <li class="jobentry"><strong>jobtitle</strong> - jobcompany (jobstartyear - jobendyear)</li>
+                    <li class="jobentry"><strong>{{jobTitle}}</strong> - {{jobCompanyName}} ({{jobStartYear}} - {{jobEndYear}})</li>
                 </ul>
             </div>
             <div class="section">
                 <h3>Education</h3>
                 <ul class="education" id="education">
-                    <li class="educationentry"><strong>degree</strong> - schoolname (schoolstartyear - schoolendyear)</li>
-                </ul>
-            </div>
-            <div class="section">
-                <h3>Skills</h3>
-                <ul class="skills" id="skills">
-                    <li class="skill">Skill 1</li>
-                    <li class="skill">Skill 2</li>
-                    <li class="skill">Skill 3</li>
+                    <li class="educationentry"><strong>{{degreeType}}</strong> - {{schoolName}} ({{schoolStartYear}} - {{schoolEndYear}})</li>
                 </ul>
             </div>
         </div>
