@@ -102,11 +102,13 @@
 
     <div class="container">
         <div class="sidebar">
-            <h2 id="name">Your Name</h2>
-            <p id="address">Address: Your Address</p>
-            <p id="email">Email: your.email@example.com</p>
-            <p id="phonenumber">Phone: (123) 456-7890</p>
-            <p id="linkedin">LinkedIn: your-linkedin-profile</p>
+            <div id="contact-info">
+                <h2 id="name">{{fullName}}</h2>
+                <p id="address">{{homeAddress}}</p>
+                <p id="email">{{emailAddress}}</p>
+                <p id="phonenumber">{{phoneNumber}}</p>
+                <p id="linkedin">{{linkedIn}}</p>
+            </div>
             <div class="skills">
                 <h3>Skills</h3>
                 <ul id="skills" style="padding-left: 0; list-style-type: none;">
@@ -117,7 +119,7 @@
         <div class="main">
             <div class="section" id="summarycontainer">
                 <h3>Summary</h3>
-                <p id="summary">{{resumeSummary}}</p>
+                <p id="professionalsummary">{{resumeSummary}}</p>
             </div>
             <div class="section">
                 <h3>Experience</h3>

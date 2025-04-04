@@ -7,6 +7,20 @@ namespace CareerCanvas.Classes.Static.Utils
 {
     public static class ResumeUtils
     {
+        private static readonly List<string> FillerSkillNames = new()
+        {
+            "Teamwork",
+            "Communication",
+            "Problem Solving",
+            "Leadership",
+            "Time Management",
+            "Adaptability",
+            "Critical Thinking",
+            "Creativity",
+            "Interpersonal Skills",
+            "Attention to Detail"
+        };
+
         /// <summary>
         /// Fills the provided HTML document with identity data, including name, address, email, phone number,
         /// LinkedIn profile, job experience, and education details.
@@ -15,12 +29,12 @@ namespace CareerCanvas.Classes.Static.Utils
         public static void FillDocumentData(HtmlDocument doc, ProfessionalIdentity identity, Industry industry)
         {
             // Replace placeholders with identity data
-            doc.GetElementbyId("name").InnerHtml = $"{identity.FirstName} {identity.MiddleName} {identity.LastName}";
+            doc.GetElementbyId("name").InnerHtml.Replace("{{fullName}}", $"{identity.FirstName} {identity.MiddleName} {identity.LastName}");
 
             // Address fill
             if (identity.Address != String.Empty)
             {
-                doc.GetElementbyId("address").InnerHtml = "Address: " + identity.Address;
+                doc.GetElementbyId("address").InnerHtml.Replace("{{homeAddress}}", "Address: " + identity.Address);
             }
             else
             {
@@ -30,7 +44,7 @@ namespace CareerCanvas.Classes.Static.Utils
             // Email fill
             if (identity.Email != String.Empty)
             {
-                doc.GetElementbyId("email").InnerHtml = "Email: " + identity.Email;
+                doc.GetElementbyId("email").InnerHtml.Replace("{{emailAddress}}", "Email: " + identity.Email);
             }
             else
             {
@@ -40,7 +54,7 @@ namespace CareerCanvas.Classes.Static.Utils
             // Phone number fill
             if (identity.PhoneNumber != String.Empty)
             {
-                doc.GetElementbyId("phonenumber").InnerHtml = "Phone: " + identity.PhoneNumber;
+                doc.GetElementbyId("phonenumber").InnerHtml.Replace("{{phoneNumber}}", "Phone: " + identity.PhoneNumber);
             }
             else
             {
@@ -50,20 +64,62 @@ namespace CareerCanvas.Classes.Static.Utils
             // Linkedin fill
             if (identity.LinkedIn != String.Empty)
             {
-                doc.GetElementbyId("linkedin").InnerHtml = "LinkedIn: " + identity.LinkedIn;
+                doc.GetElementbyId("linkedin").InnerHtml.Replace("{{linkedIn}}", "LinkedIn: " + identity.LinkedIn);
             }
             else
             {
                 doc.GetElementbyId("linkedin").Remove();
             }
 
-            // Job experience fill
-            HtmlNode jobTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
-            if (industry.Jobs.Count == 0)
+            // Summary fill
+            if (industry.ProfessionalSummary != String.Empty)
             {
-                jobTemplate.Remove();
+                doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", industry.ProfessionalSummary);
             }
             else
+            {
+                doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", "A summary of my professional experiences is available upon request.");
+            }
+
+            // Skills fill
+            HtmlNode skillTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("skillentry")).First();
+            if (industry.Skills.Count == 0)
+            {
+                List<int> usedNumbers = new List<int>();
+                for (int i = 0; i < 5; i++)
+                {
+                    Random rng = new Random();
+                    HtmlNode skillNode = skillTemplate.Clone();
+                    skillTemplate.ParentNode.AppendChild(skillNode);
+                    if (skillNode.InnerHtml.Contains("{{skillName}}"))
+                    {
+                        int randomNumber = rng.Next(0, FillerSkillNames.Count);
+                        while (usedNumbers.Contains(randomNumber))
+                        {
+                            randomNumber = rng.Next(0, FillerSkillNames.Count);
+                        }
+                        skillNode.InnerHtml = skillNode.InnerHtml.Replace("{{skillName}}", FillerSkillNames[randomNumber]);
+                        usedNumbers.Add(randomNumber);
+                    }
+                }
+            }
+            else
+            {
+                foreach (ProfessionalSkill skill in industry.Skills)
+                {
+                    HtmlNode skillNode = skillTemplate.Clone();
+                    skillTemplate.ParentNode.AppendChild(skillNode);
+                    if (skillNode.InnerHtml.Contains("{{skillName}}"))
+                    {
+                        skillNode.InnerHtml = skillNode.InnerHtml.Replace("{{skillName}}", skill.SkillName);
+                    }
+                }
+            }
+            skillTemplate.Remove();
+
+            // Job experience fill
+            HtmlNode jobTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
+            if (industry.Jobs.Count != 0)
             {
                 foreach (Employment job in industry.Jobs)
                 {
@@ -106,8 +162,8 @@ namespace CareerCanvas.Classes.Static.Utils
                         }
                     }
                 }
-                jobTemplate.Remove();
             }
+            jobTemplate.Remove();
 
             // Job education fill
             HtmlNode educationTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("educationentry")).First();
