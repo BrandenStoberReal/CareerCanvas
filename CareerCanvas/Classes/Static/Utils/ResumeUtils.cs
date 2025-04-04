@@ -29,12 +29,12 @@ namespace CareerCanvas.Classes.Static.Utils
         public static void FillDocumentData(HtmlDocument doc, ProfessionalIdentity identity, Industry industry)
         {
             // Replace placeholders with identity data
-            doc.GetElementbyId("name").InnerHtml.Replace("{{fullName}}", $"{identity.FirstName} {identity.MiddleName} {identity.LastName}");
+            doc.GetElementbyId("name").InnerHtml = doc.GetElementbyId("name").InnerHtml.Replace("{{fullName}}", $"{identity.FirstName} {identity.MiddleName} {identity.LastName}");
 
             // Address fill
             if (identity.Address != String.Empty)
             {
-                doc.GetElementbyId("address").InnerHtml.Replace("{{homeAddress}}", "Address: " + identity.Address);
+                doc.GetElementbyId("address").InnerHtml = doc.GetElementbyId("address").InnerHtml.Replace("{{homeAddress}}", "Address: " + identity.Address);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace CareerCanvas.Classes.Static.Utils
             // Email fill
             if (identity.Email != String.Empty)
             {
-                doc.GetElementbyId("email").InnerHtml.Replace("{{emailAddress}}", "Email: " + identity.Email);
+                doc.GetElementbyId("email").InnerHtml = doc.GetElementbyId("email").InnerHtml.Replace("{{emailAddress}}", "Email: " + identity.Email);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace CareerCanvas.Classes.Static.Utils
             // Phone number fill
             if (identity.PhoneNumber != String.Empty)
             {
-                doc.GetElementbyId("phonenumber").InnerHtml.Replace("{{phoneNumber}}", "Phone: " + identity.PhoneNumber);
+                doc.GetElementbyId("phonenumber").InnerHtml = doc.GetElementbyId("phonenumber").InnerHtml.Replace("{{phoneNumber}}", "Phone: " + identity.PhoneNumber);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace CareerCanvas.Classes.Static.Utils
             // Linkedin fill
             if (identity.LinkedIn != String.Empty)
             {
-                doc.GetElementbyId("linkedin").InnerHtml.Replace("{{linkedIn}}", "LinkedIn: " + identity.LinkedIn);
+                doc.GetElementbyId("linkedin").InnerHtml = doc.GetElementbyId("linkedin").InnerHtml.Replace("{{linkedIn}}", "LinkedIn: " + identity.LinkedIn);
             }
             else
             {
@@ -74,11 +74,11 @@ namespace CareerCanvas.Classes.Static.Utils
             // Summary fill
             if (industry.ProfessionalSummary != String.Empty)
             {
-                doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", industry.ProfessionalSummary);
+                doc.GetElementbyId("professionalsummary").InnerHtml = doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", industry.ProfessionalSummary);
             }
             else
             {
-                doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", "A summary of my professional experiences is available upon request.");
+                doc.GetElementbyId("professionalsummary").InnerHtml = doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", "A summary of my professional experiences is available upon request.");
             }
 
             // Skills fill
