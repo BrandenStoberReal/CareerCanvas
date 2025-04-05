@@ -76,17 +76,17 @@
                 font-size: 20px;
             }
 
-        .experience, .education, .skills {
+        .experience, .education, .certificates, .skills {
             list-style-type: none;
             padding: 0;
         }
 
-            .experience li, .education li, .skills li {
+            .experience li, .education li, .certificates li, .skills li {
                 margin-bottom: 10px;
                 font-size: 14px;
             }
 
-                .experience li strong, .education li strong {
+                .experience li strong, .education li strong, .certificates li strong {
                     color: #333;
                 }
 
@@ -131,6 +131,12 @@
                 <h3>Education</h3>
                 <ul class="education" id="education">
                     <li class="educationentry"><strong>{{degreeType}}</strong> - {{schoolName}} ({{schoolStartYear}} - {{schoolEndYear}})</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Certificates</h3>
+                <ul class="certificates" id="certificates">
+                    <li class="certificateentry"><strong>{{certificateName}}</strong> - {{certificateIssuingOrganization}} ({{certificateDate}})</li>
                 </ul>
             </div>
         </div>
