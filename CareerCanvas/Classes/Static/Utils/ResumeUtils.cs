@@ -7,6 +7,9 @@ namespace CareerCanvas.Classes.Static.Utils
 {
     public static class ResumeUtils
     {
+        /// <summary>
+        /// Placeholder skill names for filling in the resume template when no skills are provided.
+        /// </summary>
         private static readonly List<string> FillerSkillNames = new()
         {
             "Teamwork",
@@ -119,7 +122,13 @@ namespace CareerCanvas.Classes.Static.Utils
 
             // Job experience fill
             HtmlNode jobTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
-            if (industry.Jobs.Count != 0)
+            if (industry.Jobs.Count == 0)
+            {
+                HtmlNode jobSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("experiencesection")).First();
+                jobTemplate.Remove();
+                jobSection.Remove();
+            }
+            else
             {
                 foreach (Employment job in industry.Jobs)
                 {
@@ -161,15 +170,16 @@ namespace CareerCanvas.Classes.Static.Utils
                             jobNode.Descendants().Where(n => n.InnerText == "{{jobDescription}}").First().Remove();
                         }
                     }
+                    jobTemplate.Remove();
                 }
             }
-            jobTemplate.Remove();
-
-            // Job education fill
+            // Education fill
             HtmlNode educationTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("educationentry")).First();
             if (industry.Schooling.Count == 0)
             {
+                HtmlNode educationSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("educationsection")).First();
                 educationTemplate.Remove();
+                educationSection.Remove();
             }
             else
             {
@@ -207,6 +217,37 @@ namespace CareerCanvas.Classes.Static.Utils
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndYear}}", education.EndDate.ToString("yyyy"));
                     }
                     educationTemplate.Remove();
+                }
+            }
+
+            // Certificates fill
+            HtmlNode certificatesTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("certificateentry")).First();
+            if (industry.Certificates.Count == 0)
+            {
+                HtmlNode certificatesSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("certificatesection")).First();
+                certificatesTemplate.Remove();
+                certificatesSection.Remove();
+            }
+            else
+            {
+                foreach (CertificateProgram certificate in industry.Certificates)
+                {
+                    HtmlNode certNode = certificatesTemplate.Clone();
+                    certificatesTemplate.ParentNode.AppendChild(certNode);
+
+                    if (certNode.InnerHtml.Contains("{{certificateName}}"))
+                    {
+                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateName}}", certificate.Certificate.CertificateName);
+                    }
+                    if (certNode.InnerHtml.Contains("{{certificateIssuingOrganization}}"))
+                    {
+                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateIssuingOrganization}}", certificate.IssuingOrganization);
+                    }
+                    if (certNode.InnerHtml.Contains("{{certificateDate}}"))
+                    {
+                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateDate}}", certificate.Certificate.IssueDate.ToString("MMMM") + " " + certificate.Certificate.IssueDate.ToString("yyyy"));
+                    }
+                    certificatesTemplate.Remove();
                 }
             }
         }

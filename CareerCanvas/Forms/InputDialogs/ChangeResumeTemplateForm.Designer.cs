@@ -94,7 +94,7 @@
             saveChangeButton.NoAccentTextColor = Color.Empty;
             saveChangeButton.Size = new Size(200, 36);
             saveChangeButton.TabIndex = 2;
-            saveChangeButton.Text = "Save Changes";
+            saveChangeButton.Text = "Load Selected Template";
             saveChangeButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             saveChangeButton.UseAccentColor = false;
             saveChangeButton.UseVisualStyleBackColor = true;

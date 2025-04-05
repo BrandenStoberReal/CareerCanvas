@@ -50,12 +50,12 @@
             margin-bottom: 15px;
         }
 
-        .skills, .experience, .education {
+        .skills, .experience, .education, .certificates {
             list-style-type: none;
             padding: 0;
         }
 
-            .skills li, .experience li, .education li {
+            .skills li, .experience li, .education li, .certificates li {
                 margin-bottom: 10px;
                 padding: 10px;
                 border-left: 4px solid #2980b9;
@@ -63,13 +63,13 @@
                 border-radius: 4px;
             }
 
-            .experience h3, .education h3 {
+            .experience h3, .education h3, .certificates h3 {
                 margin: 0;
                 font-size: 1.2em;
                 color: #34495e;
             }
 
-            .experience p, .education p {
+            .experience p, .education p, .certificates p {
                 margin: 5px 0;
                 color: #7f8c8d;
             }
@@ -100,7 +100,7 @@
         </ul>
     </div>
 
-    <div class="section">
+    <div class="section" id="experiencesection">
         <h2>Experience</h2>
         <ul class="experience">
             <li class="jobentry">
@@ -111,12 +111,22 @@
         </ul>
     </div>
 
-    <div class="section">
+    <div class="section" id="educationsection">
         <h2>Education</h2>
         <ul class="education">
             <li class="educationentry">
                 <h3>{{degreeType}} - {{schoolName}}</h3>
                 <p>{{schoolStartMonth}} {{schoolStartYear}} - {{schoolEndMonth}} {{schoolEndYear}}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section" id="certificatesection">
+        <h2>Certificates</h2>
+        <ul class="certificates">
+            <li class="certificateentry">
+                <h3>{{certificateName}}</h3>
+                <p>{{certificateIssuingOrganization}} - Issued {{certificateDate}}</p>
             </li>
         </ul>
     </div>
