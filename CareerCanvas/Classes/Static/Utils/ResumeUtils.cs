@@ -173,6 +173,7 @@ namespace CareerCanvas.Classes.Static.Utils
                     jobTemplate.Remove();
                 }
             }
+
             // Education fill
             HtmlNode educationTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("educationentry")).First();
             if (industry.Schooling.Count == 0)
