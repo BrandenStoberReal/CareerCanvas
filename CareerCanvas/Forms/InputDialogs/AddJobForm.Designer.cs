@@ -43,11 +43,9 @@
             startDateBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
             endDateBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
             jobDescriptionBox = new ReaLTaiizor.Controls.MaterialRichTextBox();
             materialLabel7 = new ReaLTaiizor.Controls.MaterialLabel();
             flowLayoutPanel1.SuspendLayout();
-            materialCard1.SuspendLayout();
             SuspendLayout();
             // 
             // addJobButton
@@ -60,14 +58,14 @@
             addJobButton.HighEmphasis = true;
             addJobButton.Icon = null;
             addJobButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            addJobButton.Location = new Point(7, 525);
+            addJobButton.Location = new Point(13, 525);
             addJobButton.Margin = new Padding(4, 6, 4, 6);
             addJobButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             addJobButton.Name = "addJobButton";
             addJobButton.NoAccentTextColor = Color.Empty;
-            addJobButton.Size = new Size(75, 36);
+            addJobButton.Size = new Size(112, 36);
             addJobButton.TabIndex = 7;
-            addJobButton.Text = "Add";
+            addJobButton.Text = "Save Job";
             addJobButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             addJobButton.UseAccentColor = false;
             addJobButton.UseVisualStyleBackColor = true;
@@ -83,14 +81,14 @@
             discardButton.HighEmphasis = true;
             discardButton.Icon = null;
             discardButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            discardButton.Location = new Point(724, 525);
+            discardButton.Location = new Point(637, 525);
             discardButton.Margin = new Padding(4, 6, 4, 6);
             discardButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             discardButton.Name = "discardButton";
             discardButton.NoAccentTextColor = Color.Empty;
-            discardButton.Size = new Size(75, 36);
+            discardButton.Size = new Size(156, 36);
             discardButton.TabIndex = 8;
-            discardButton.Text = "Discard";
+            discardButton.Text = "Discard Changes";
             discardButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             discardButton.UseAccentColor = false;
             discardButton.UseVisualStyleBackColor = true;
@@ -111,9 +109,10 @@
             flowLayoutPanel1.Controls.Add(materialLabel4);
             flowLayoutPanel1.Controls.Add(endDateBox);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(7, 27);
+            flowLayoutPanel1.Location = new Point(13, 34);
+            flowLayoutPanel1.Margin = new Padding(10);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(307, 489);
+            flowLayoutPanel1.Size = new Size(301, 482);
             flowLayoutPanel1.TabIndex = 2;
             flowLayoutPanel1.Click += flowLayoutPanel1_Click;
             // 
@@ -156,7 +155,7 @@
             jobTitleBox.SelectionLength = 0;
             jobTitleBox.SelectionStart = 0;
             jobTitleBox.ShortcutsEnabled = true;
-            jobTitleBox.Size = new Size(250, 48);
+            jobTitleBox.Size = new Size(285, 48);
             jobTitleBox.TabIndex = 1;
             jobTitleBox.TabStop = false;
             jobTitleBox.TextAlign = HorizontalAlignment.Center;
@@ -202,7 +201,7 @@
             companyBox.SelectionLength = 0;
             companyBox.SelectionStart = 0;
             companyBox.ShortcutsEnabled = true;
-            companyBox.Size = new Size(250, 48);
+            companyBox.Size = new Size(285, 48);
             companyBox.TabIndex = 2;
             companyBox.TabStop = false;
             companyBox.TextAlign = HorizontalAlignment.Center;
@@ -248,7 +247,7 @@
             cityBox.SelectionLength = 0;
             cityBox.SelectionStart = 0;
             cityBox.ShortcutsEnabled = true;
-            cityBox.Size = new Size(250, 48);
+            cityBox.Size = new Size(285, 48);
             cityBox.TabIndex = 3;
             cityBox.TabStop = false;
             cityBox.TextAlign = HorizontalAlignment.Center;
@@ -283,6 +282,7 @@
             stateBox.Hint = "State Name";
             stateBox.LeadingIcon = null;
             stateBox.Location = new Point(3, 257);
+            stateBox.Margin = new Padding(3, 3, 10, 3);
             stateBox.MaxLength = 32767;
             stateBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             stateBox.Name = "stateBox";
@@ -294,7 +294,7 @@
             stateBox.SelectionLength = 0;
             stateBox.SelectionStart = 0;
             stateBox.ShortcutsEnabled = true;
-            stateBox.Size = new Size(250, 48);
+            stateBox.Size = new Size(285, 48);
             stateBox.TabIndex = 4;
             stateBox.TabStop = false;
             stateBox.TextAlign = HorizontalAlignment.Center;
@@ -393,37 +393,22 @@
             endDateBox.TrailingIcon = null;
             endDateBox.UseSystemPasswordChar = false;
             // 
-            // materialCard1
-            // 
-            materialCard1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard1.Controls.Add(jobDescriptionBox);
-            materialCard1.Controls.Add(materialLabel7);
-            materialCard1.Depth = 0;
-            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard1.Location = new Point(331, 33);
-            materialCard1.Margin = new Padding(14);
-            materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard1.Name = "materialCard1";
-            materialCard1.Padding = new Padding(14);
-            materialCard1.Size = new Size(458, 483);
-            materialCard1.TabIndex = 9;
-            // 
             // jobDescriptionBox
             // 
             jobDescriptionBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             jobDescriptionBox.BackColor = Color.FromArgb(255, 255, 255);
-            jobDescriptionBox.BorderStyle = BorderStyle.FixedSingle;
+            jobDescriptionBox.BorderStyle = BorderStyle.None;
             jobDescriptionBox.Depth = 0;
             jobDescriptionBox.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             jobDescriptionBox.ForeColor = Color.FromArgb(222, 0, 0, 0);
             jobDescriptionBox.Hint = "Optional job description here";
-            jobDescriptionBox.Location = new Point(17, 40);
+            jobDescriptionBox.Location = new Point(334, 73);
+            jobDescriptionBox.Margin = new Padding(10);
             jobDescriptionBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             jobDescriptionBox.Name = "jobDescriptionBox";
             jobDescriptionBox.ScrollBars = RichTextBoxScrollBars.Vertical;
-            jobDescriptionBox.Size = new Size(424, 426);
-            jobDescriptionBox.TabIndex = 1;
+            jobDescriptionBox.Size = new Size(459, 443);
+            jobDescriptionBox.TabIndex = 7;
             jobDescriptionBox.Text = "";
             // 
             // materialLabel7
@@ -432,10 +417,10 @@
             materialLabel7.Depth = 0;
             materialLabel7.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel7.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
-            materialLabel7.Location = new Point(17, 14);
+            materialLabel7.Location = new Point(334, 40);
             materialLabel7.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel7.Name = "materialLabel7";
-            materialLabel7.Size = new Size(424, 23);
+            materialLabel7.Size = new Size(459, 23);
             materialLabel7.TabIndex = 0;
             materialLabel7.Text = "Job Description:";
             materialLabel7.TextAlign = ContentAlignment.MiddleCenter;
@@ -445,7 +430,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(806, 570);
-            Controls.Add(materialCard1);
+            Controls.Add(jobDescriptionBox);
+            Controls.Add(materialLabel7);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(discardButton);
             Controls.Add(addJobButton);
@@ -460,7 +446,6 @@
             Click += AddJobForm_Click;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            materialCard1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -481,7 +466,6 @@
         private ReaLTaiizor.Controls.MaterialTextBoxEdit cityBox;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel6;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit stateBox;
-        private ReaLTaiizor.Controls.MaterialCard materialCard1;
         private ReaLTaiizor.Controls.MaterialRichTextBox jobDescriptionBox;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel7;
     }
