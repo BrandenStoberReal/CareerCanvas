@@ -80,7 +80,8 @@ public partial class AddJobForm : MaterialForm
             CompanyName = companyBox.Text,
             JobTitle = jobTitleBox.Text,
             City = cityBox.Text,
-            State = stateBox.Text
+            State = stateBox.Text,
+            JobDescription = jobDescriptionBox.Text
         };
         _refMasterList.Add(newJob);
         Close();
