@@ -1,10 +1,20 @@
 ﻿using System.Globalization;
 using CareerCanvas.Classes.Configs;
+using Serilog;
+using ILogger = Serilog.ILogger;
 
 namespace CareerCanvas.Classes.Static;
 
 public static class Globals
 {
+    /// <summary>
+    ///    The logger for the application.
+    /// </summary>
+    public static ILogger AppLogger { get; private set; } = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.File("logs/app.log", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
     /// <summary>
     ///     The text info object for the application.
     /// </summary>
