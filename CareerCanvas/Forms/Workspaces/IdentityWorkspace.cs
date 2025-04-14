@@ -24,6 +24,7 @@ public sealed partial class IdentityWorkspace : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to IdentityWorkspace: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
 
         // Load identity if filename is provided
         if (file != null)

@@ -34,6 +34,7 @@ namespace CareerCanvas.Forms.InputDialogs
             materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
             materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+            Globals.AppLogger.Debug("Applied global color scheme to ChangeResumeTemplateForm: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
         }
 
         private void ChangeResumeTemplateForm_Load(object sender, EventArgs e)

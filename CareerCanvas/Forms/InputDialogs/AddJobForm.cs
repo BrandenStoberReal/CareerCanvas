@@ -27,6 +27,7 @@ public partial class AddJobForm : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to AddJobForm: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
     }
 
     private void AddJobForm_Load(object sender, EventArgs e)
@@ -56,7 +57,7 @@ public partial class AddJobForm : MaterialForm
     {
         if (companyBox.Text == "" || jobTitleBox.Text == "" || startDateBox.Text == "" || endDateBox.Text == "")
         {
-            MessageBox.Show("Please fill out all fields.");
+            MessageBox.Show("Please fill out all required fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
@@ -69,7 +70,7 @@ public partial class AddJobForm : MaterialForm
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Invalid date format. Please use MM/yyyy.");
+            MessageBox.Show("Invalid date format. Please use MM/yyyy.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
@@ -83,6 +84,7 @@ public partial class AddJobForm : MaterialForm
             State = stateBox.Text,
             JobDescription = jobDescriptionBox.Text
         };
+        Globals.AppLogger.Information("Created new job class with title: {JobTitle}", newJob.JobTitle);
         _refMasterList.Add(newJob);
         Close();
     }

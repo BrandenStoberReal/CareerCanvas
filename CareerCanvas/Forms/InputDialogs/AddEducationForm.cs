@@ -25,6 +25,7 @@ public partial class AddEducationForm : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to AddEducationForm: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
 
         _masterList = masterList;
     }
@@ -81,6 +82,7 @@ public partial class AddEducationForm : MaterialForm
             City = cityBox.Text,
             State = stateBox.Text
         };
+        Globals.AppLogger.Information("Created new Education class with school: {0}", newEducation.SchoolName);
         _masterList.Add(newEducation);
         Close();
     }

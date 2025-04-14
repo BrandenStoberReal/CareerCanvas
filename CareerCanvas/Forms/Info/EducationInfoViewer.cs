@@ -25,6 +25,7 @@ public partial class EducationInfoViewer : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to EducationInfoViewer: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
 
         _education = education;
     }

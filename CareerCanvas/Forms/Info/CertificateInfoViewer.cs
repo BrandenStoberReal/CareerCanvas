@@ -24,6 +24,7 @@ public partial class CertificateInfoViewer : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to CertificateInfoViewer: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
 
         _certificateProgram = certificateProgram;
     }

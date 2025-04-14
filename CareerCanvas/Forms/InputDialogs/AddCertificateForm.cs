@@ -27,6 +27,7 @@ public partial class AddCertificateForm : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to AddCertificateForm: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
     }
 
     private void AddCertificateForm_Load(object sender, EventArgs e)

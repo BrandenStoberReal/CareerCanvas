@@ -35,6 +35,7 @@ public partial class ResumeWorkspace : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to ResumeWorkspace: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
     }
 
     private void ResumeWorkspace_Load(object sender, EventArgs e)

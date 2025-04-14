@@ -29,6 +29,7 @@ public partial class JobInfoViewer : MaterialForm
         materialSkinManager1.Theme = MaterialSkinManager.Themes.DARK;
 
         materialSkinManager1.ColorScheme = Globals.AppConfig.ColorScheme;
+        Globals.AppLogger.Debug("Applied global color scheme to JobInfoViewer: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
 
         _job = job;
     }
