@@ -35,7 +35,7 @@
             materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
             logLabel = new ReaLTaiizor.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)resumeViewer).BeginInit();
-            materialCard1.SuspendLayout();
+            materialCard2.SuspendLayout();
             SuspendLayout();
             // 
             // resumeViewer
@@ -54,8 +54,6 @@
             // materialCard1
             // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard1.Controls.Add(openTemplateFolderButton);
-            materialCard1.Controls.Add(loadTemplateButton);
             materialCard1.Depth = 0;
             materialCard1.Dock = DockStyle.Left;
             materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
@@ -115,6 +113,8 @@
             // materialCard2
             // 
             materialCard2.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard2.Controls.Add(loadTemplateButton);
+            materialCard2.Controls.Add(openTemplateFolderButton);
             materialCard2.Depth = 0;
             materialCard2.Dock = DockStyle.Right;
             materialCard2.ForeColor = Color.FromArgb(222, 0, 0, 0);
@@ -157,7 +157,7 @@
             Text = "Resume Workspace";
             Load += ResumeWorkspace_Load;
             ((System.ComponentModel.ISupportInitialize)resumeViewer).EndInit();
-            materialCard1.ResumeLayout(false);
+            materialCard2.ResumeLayout(false);
             ResumeLayout(false);
         }
 

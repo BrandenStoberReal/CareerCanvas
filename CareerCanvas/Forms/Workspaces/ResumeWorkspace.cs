@@ -42,11 +42,13 @@ public partial class ResumeWorkspace : MaterialForm
     {
         // Load the webview runtime
         resumeViewer.EnsureCoreWebView2Async();
+        Globals.AppLogger.Debug("WebView2 runtime loaded asyncronously in ResumeWorkspace.");
     }
 
     private void openTemplateFolderButton_Click(object sender, EventArgs e)
     {
         FolderUtils.OpenFolder(Path.GetFullPath("./templates/resume"));
+        Globals.AppLogger.Debug("Opened template folder in ResumeWorkspace.");
     }
 
     private void resumeViewer_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
@@ -54,12 +56,15 @@ public partial class ResumeWorkspace : MaterialForm
         // Load default template
         Template = new HtmlDocument();
         Template.LoadHtml(File.ReadAllText("./templates/resume/default.html"));
+        Globals.AppLogger.Information("Loaded default resume template into HtmlAgilityPack.");
 
         // Replace placeholders with identity data
         ResumeUtils.FillDocumentData(Template, Identity, Industry);
+        Globals.AppLogger.Information("Filled placeholder resume template with identity data.");
 
         // Load the template into the webview
         resumeViewer.NavigateToString(Template.DocumentNode.OuterHtml);
+        Globals.AppLogger.Information("Loaded resume template into WebView2.");
     }
 
     private void materialCard1_Click(object sender, EventArgs e)
@@ -74,8 +79,11 @@ public partial class ResumeWorkspace : MaterialForm
 
     private void loadTemplateButton_Click(object sender, EventArgs e)
     {
+        Globals.AppLogger.Information("User requested to change the active resume template.");
         ChangeResumeTemplateForm changeResumeTemplateForm = new ChangeResumeTemplateForm(this, Identity, Industry);
         changeResumeTemplateForm.ShowDialog();
+
+        Globals.AppLogger.Information("User selected a new resume template. Refreshing WebView2 to reflect changes.");
         resumeViewer.NavigateToString(Template.DocumentNode.OuterHtml);
     }
 }

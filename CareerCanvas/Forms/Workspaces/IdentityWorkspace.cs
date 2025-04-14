@@ -80,6 +80,8 @@ public sealed partial class IdentityWorkspace : MaterialForm
 
         // Update window title
         Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
+
+        Globals.AppLogger.Information("Saved identity to {Path}", identityPath);
     }
 
     /// <summary>
@@ -134,6 +136,8 @@ public sealed partial class IdentityWorkspace : MaterialForm
 
         // Change window title
         Text = $"{identity.FirstName} {identity.LastName} - Identity Workspace";
+
+        Globals.AppLogger.Information("Loaded identity from {Path}", identityPath);
     }
 
     private void IdentityWorkspace_Load(object sender, EventArgs e)
@@ -178,7 +182,11 @@ public sealed partial class IdentityWorkspace : MaterialForm
                 return;
             }
 
-            if (discardChanges == DialogResult.Yes) return;
+            if (discardChanges == DialogResult.Yes)
+            {
+                Globals.AppLogger.Warning("User discarded changes to identity due to missing required fields.");
+                return;
+            }
         }
 
         SaveIdentity();
@@ -204,6 +212,7 @@ public sealed partial class IdentityWorkspace : MaterialForm
             portfolioTextBox.Text = string.Empty;
 
             Text = "New Identity - Identity Workspace";
+            Globals.AppLogger.Debug("Cleared all fields in Identity Workspace.");
         }
     }
 }
