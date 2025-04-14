@@ -34,7 +34,9 @@
             loadTemplateButton = new ReaLTaiizor.Controls.MaterialButton();
             materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
             logLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            exportPdfButton = new ReaLTaiizor.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)resumeViewer).BeginInit();
+            materialCard1.SuspendLayout();
             materialCard2.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,6 +56,7 @@
             // materialCard1
             // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(exportPdfButton);
             materialCard1.Depth = 0;
             materialCard1.Dock = DockStyle.Left;
             materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
@@ -140,6 +143,26 @@
             logLabel.Text = "Preview:";
             logLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // exportPdfButton
+            // 
+            exportPdfButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            exportPdfButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            exportPdfButton.Depth = 0;
+            exportPdfButton.HighEmphasis = true;
+            exportPdfButton.Icon = null;
+            exportPdfButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            exportPdfButton.Location = new Point(18, 20);
+            exportPdfButton.Margin = new Padding(4, 6, 4, 6);
+            exportPdfButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            exportPdfButton.Name = "exportPdfButton";
+            exportPdfButton.NoAccentTextColor = Color.Empty;
+            exportPdfButton.Size = new Size(130, 36);
+            exportPdfButton.TabIndex = 0;
+            exportPdfButton.Text = "Export to PDF";
+            exportPdfButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            exportPdfButton.UseAccentColor = false;
+            exportPdfButton.UseVisualStyleBackColor = true;
+            // 
             // ResumeWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,6 +180,8 @@
             Text = "Resume Workspace";
             Load += ResumeWorkspace_Load;
             ((System.ComponentModel.ISupportInitialize)resumeViewer).EndInit();
+            materialCard1.ResumeLayout(false);
+            materialCard1.PerformLayout();
             materialCard2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -169,5 +194,6 @@
         private ReaLTaiizor.Controls.MaterialButton openTemplateFolderButton;
         private ReaLTaiizor.Controls.MaterialButton loadTemplateButton;
         private ReaLTaiizor.Controls.MaterialLabel logLabel;
+        private ReaLTaiizor.Controls.MaterialButton exportPdfButton;
     }
 }
