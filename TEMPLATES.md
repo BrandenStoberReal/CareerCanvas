@@ -69,6 +69,8 @@ For these macros to function properly, a template developer needs to explicitly 
 
 There are currently four categories for dynamic macros: `education`, `work`, `certification`, and `skills`. Each category has its own set of macros that are used to identify the parent element of the macro.
 
+Dynamic macros are always replaced `recursively` as long as the criteria for the parent element is met. This means that if a dynamic macro is nested inside another dynamic macro, both macros would be filled.
+
 ### Education Container
 An example is provided below from one of the default templates:
 ```html
