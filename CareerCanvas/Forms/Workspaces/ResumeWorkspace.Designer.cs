@@ -30,11 +30,12 @@
         {
             resumeViewer = new Microsoft.Web.WebView2.WinForms.WebView2();
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
+            exportPdfButton = new ReaLTaiizor.Controls.MaterialButton();
             openTemplateFolderButton = new ReaLTaiizor.Controls.MaterialButton();
             loadTemplateButton = new ReaLTaiizor.Controls.MaterialButton();
             materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
             logLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            exportPdfButton = new ReaLTaiizor.Controls.MaterialButton();
+            exportHtmlButton = new ReaLTaiizor.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)resumeViewer).BeginInit();
             materialCard1.SuspendLayout();
             materialCard2.SuspendLayout();
@@ -56,6 +57,7 @@
             // materialCard1
             // 
             materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(exportHtmlButton);
             materialCard1.Controls.Add(exportPdfButton);
             materialCard1.Depth = 0;
             materialCard1.Dock = DockStyle.Left;
@@ -68,6 +70,26 @@
             materialCard1.Size = new Size(459, 898);
             materialCard1.TabIndex = 1;
             materialCard1.Click += materialCard1_Click;
+            // 
+            // exportPdfButton
+            // 
+            exportPdfButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            exportPdfButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            exportPdfButton.Depth = 0;
+            exportPdfButton.HighEmphasis = true;
+            exportPdfButton.Icon = null;
+            exportPdfButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            exportPdfButton.Location = new Point(18, 20);
+            exportPdfButton.Margin = new Padding(4, 6, 4, 6);
+            exportPdfButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            exportPdfButton.Name = "exportPdfButton";
+            exportPdfButton.NoAccentTextColor = Color.Empty;
+            exportPdfButton.Size = new Size(130, 36);
+            exportPdfButton.TabIndex = 0;
+            exportPdfButton.Text = "Export to PDF";
+            exportPdfButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            exportPdfButton.UseAccentColor = false;
+            exportPdfButton.UseVisualStyleBackColor = true;
             // 
             // openTemplateFolderButton
             // 
@@ -143,25 +165,25 @@
             logLabel.Text = "Preview:";
             logLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // exportPdfButton
+            // exportHtmlButton
             // 
-            exportPdfButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            exportPdfButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            exportPdfButton.Depth = 0;
-            exportPdfButton.HighEmphasis = true;
-            exportPdfButton.Icon = null;
-            exportPdfButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            exportPdfButton.Location = new Point(18, 20);
-            exportPdfButton.Margin = new Padding(4, 6, 4, 6);
-            exportPdfButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            exportPdfButton.Name = "exportPdfButton";
-            exportPdfButton.NoAccentTextColor = Color.Empty;
-            exportPdfButton.Size = new Size(130, 36);
-            exportPdfButton.TabIndex = 0;
-            exportPdfButton.Text = "Export to PDF";
-            exportPdfButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            exportPdfButton.UseAccentColor = false;
-            exportPdfButton.UseVisualStyleBackColor = true;
+            exportHtmlButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            exportHtmlButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            exportHtmlButton.Depth = 0;
+            exportHtmlButton.HighEmphasis = true;
+            exportHtmlButton.Icon = null;
+            exportHtmlButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            exportHtmlButton.Location = new Point(18, 68);
+            exportHtmlButton.Margin = new Padding(4, 6, 4, 6);
+            exportHtmlButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            exportHtmlButton.Name = "exportHtmlButton";
+            exportHtmlButton.NoAccentTextColor = Color.Empty;
+            exportHtmlButton.Size = new Size(143, 36);
+            exportHtmlButton.TabIndex = 1;
+            exportHtmlButton.Text = "Export to HTML";
+            exportHtmlButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            exportHtmlButton.UseAccentColor = false;
+            exportHtmlButton.UseVisualStyleBackColor = true;
             // 
             // ResumeWorkspace
             // 
@@ -195,5 +217,6 @@
         private ReaLTaiizor.Controls.MaterialButton loadTemplateButton;
         private ReaLTaiizor.Controls.MaterialLabel logLabel;
         private ReaLTaiizor.Controls.MaterialButton exportPdfButton;
+        private ReaLTaiizor.Controls.MaterialButton exportHtmlButton;
     }
 }
