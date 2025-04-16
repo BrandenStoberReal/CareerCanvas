@@ -5,7 +5,8 @@
  - [x] Material UI
  - [ ] Material UI - Change Color Scheme
  - [ ] Material UI - Not Terrible UI/UX
- - [ ] Resume Builder
+ - [x] Resume Builder
+ - [x] Macro parsing and documentation
  - [ ] Cover Letter Builder
  - [ ] Cover Letter Builder - Google Gemini Integration
  - [ ] Cover Letter Builder - OpenAI Integration
