@@ -8,13 +8,17 @@ Macros are used to mark the information that needs to be replaced. They are defi
 ```
 Where `macro_name` is the name of the macro. The macro names should be `unique`. For macros that are used to replace list information, see the [dynamic macros](#dynamic-macro-implementation) section below.
 
-These can be defined anywhere in the document. For example, the following is a valid macro:
+There are two types of macro types: `static` and `dynamic`.
+A `static macro` is a macro that will be replaced with a `static value`. For example, the `{{fullName}}` macro will be replaced with the full name of the resume's owner. `These macros can be defined anywhere in the document without issue`.
+A `dynamic macro` is a macro that will be replaced with a `dynamic value`. For example, the `{{jobTitle}}` macro's parent element will be duplicated for every job in the users work history. `The parent elements of these macros require special element IDs`. Read the section on [dynamic macros](#dynamic-macro-implementation) further in this document for details.
+
+Static macros can be defined anywhere in the document. For example, the following is a valid macro:
 ```html
 <p>{{fullName}}</p>
 ```
 This will be replaced with the full name of the resume's owner.
 
-These macros can also be defined anywhere in the HTML element. For example, the following is a valid, albeit useless macro:
+Both macro types can also be defined anywhere in the HTML element. For example, the following is a valid, albeit useless, macro:
 ```html
 <div class="resume">
     <h1 class="{{fullName}}">{{homeAddress}}</h1>
@@ -22,10 +26,13 @@ These macros can also be defined anywhere in the HTML element. For example, the 
 ```
 This will replace the `h1` element's class with the user's full name.
 
-
-There are two types of macro types: `static` and `dynamic`.
-A `static macro` is a macro that will be replaced with a `static value`. For example, the `{{fullName}}` macro will be replaced with the full name of the resume's owner. `These macros can be defined anywhere in the document without issue`.
-A `dynamic macro` is a macro that will be replaced with a `dynamic value`. For example, the `{{jobTitle}}` macro's parent element will be duplicated for every job in the users work history. `The parent elements of these macros require special element IDs`. Read the section on [dynamic macros](#dynamic-macro-implementation) further in this document for details.
+Lastly, dynamic macros can be defined anywhere in an element's descendancy. For example, the following is a valid macro:
+```html
+<li class="educationentry">
+    <h3>{{degreeType}} - <strong>{{schoolName}}</strong></h3>
+</li>
+```
+This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the former being nested inside the `strong` element.
 
 
 ## List of Macros
@@ -81,7 +88,7 @@ Also, note that the `education` class is not relevant. This is used to style the
 
 Lastly, the `educationsection` ID is used in case a user does not provide any data to fill. In this case, the elements are removed from the document, basing off the children of the `educationsection` element.
 
-## Work Container
+### Work Container
 An example is provided below from one of the default templates:
 ```html
     <div class="section" id="experiencesection">
@@ -101,7 +108,7 @@ Also, note that the `experience` class is not relevant. This is used to style th
 
 Lastly, the `experiencesection` ID is used in case a user does not provide any data to fill. In this case, the elements are removed from the document, basing off the children of the `experiencesection` element.
 
-## Certification Container
+### Certification Container
 An example is provided below from one of the default templates:
 ```html
 <div class="section" id="certificatesection">
@@ -120,7 +127,7 @@ Also, note that the `certificates` class is not relevant. This is used to style 
 
 Lastly, the `certificatesection` ID is used in case a user does not provide any data to fill. In this case, the elements are removed from the document, basing off the children of the `certificatesection` element.
 
-## Skills Container
+### Skills Container
 An example is provided below from one of the default templates:
 ```html
 <div class="section">
@@ -135,3 +142,16 @@ Note in the above example, the `section` class is not relevant. Take note of `sk
 Also, note that the `skills` class is not relevant. This is used to style the list of skills.
 
 Lastly, the `skills` ID is used in case a user does not provide any data to fill. In this case, the elements are replaced with placeholder skills.
+
+### Example Template Output
+Assuming 3 skills are provided, named `HTML`, `CSS`, and `JavaScript`, the application would process them into the following output:
+```html
+<div class="section">
+    <h2>Skills</h2>
+    <ul class="skills" id="skills">
+        <li class="skillentry">HTML</li>
+        <li class="skillentry">CSS</li>
+        <li class="skillentry">JavaScript</li>
+    </ul>
+</div>
+```
