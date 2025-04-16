@@ -37,7 +37,7 @@ This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the f
 
 ## List of Macros
 | Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
-| :------------: | :-------------: | :----------: | : ----------: | :----------: |
+| :---: | :---: | :---: | :---: | :---: |
 | `{{fullName}}` | The full name of the resume's owner. | Yes | No | No |
 | `{{homeAddress}}` | The resume owner's legal residence. | No | No | No |
 | `{{emailAddress}}` | The resume owner's email address. | No | No | No |
