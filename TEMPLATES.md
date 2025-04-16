@@ -59,8 +59,8 @@ This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the f
 | `{{schoolEndMonth}}` | A placeholder for the month the degree was obtained. | Yes | Yes | No |
 | `{{schoolEndYear}}` | A placeholder for the year the degree was obtained. | Yes | Yes | No |
 | `{{certificationName}}` | A placeholder for the name of a certification obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
-| `{{certificationDate}}` | A placeholder for the date the certification was issued to the user. | Yes | Yes | No |
-| `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certification. | Yes | Yes | No |
+| `{{certificationDate}}` | A placeholder for the date the certificate was issued to the user. | Yes | Yes | No |
+| `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
 
 ## Dynamic Macro Implementation
 Dynamic macros are used to create a list of items that are repeated for each item in the list. For example, the `{{jobTitle}}` macro will be replaced with the job title of each job in the user's work history.
