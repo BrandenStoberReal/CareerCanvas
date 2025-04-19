@@ -7,7 +7,7 @@ public static class FolderUtils
     /// <summary>
     /// Folders that are expected to exist in the application directory.
     /// </summary>
-    private static readonly List<string> expectedFolders = new List<string>
+    private static readonly List<string> appFolders = new List<string>
     {
         "./data",
         "./data/misc",
@@ -28,12 +28,22 @@ public static class FolderUtils
     }
 
     /// <summary>
+    /// Creates a folder at the specified path if it does not already exist with multithreading.
+    /// </summary>
+    /// <param name="folderPath"></param>
+    public static void CreateFolderThreaded(string folderPath)
+    {
+        Thread thread = new Thread(() => CreateFolderIfNotExists(folderPath));
+        thread.Start();
+    }
+
+    /// <summary>
     /// Creates the necessary application folders if they do not already exist.
     /// This includes folders for data storage and templates for resumes and cover letters.
     /// </summary>
     public static void CreateAppFolders()
     {
-        foreach (string folder in expectedFolders)
+        foreach (string folder in appFolders)
         {
             CreateFolderIfNotExists(folder);
         }

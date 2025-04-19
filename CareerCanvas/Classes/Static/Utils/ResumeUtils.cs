@@ -31,6 +31,8 @@ namespace CareerCanvas.Classes.Static.Utils
         /// <param name="doc">The HtmlDocument to be filled with identity data.</param>
         public static void FillDocumentData(HtmlDocument doc, ProfessionalIdentity identity, Industry industry)
         {
+            Globals.AppLogger.Debug("Filling document data with information! Placeholder skills: " + string.Join(", ", FillerSkillNames));
+
             // Replace placeholders with identity data
             doc.GetElementbyId("name").InnerHtml = doc.GetElementbyId("name").InnerHtml.Replace("{{fullName}}", $"{identity.FirstName} {identity.MiddleName} {identity.LastName}");
             Globals.AppLogger.Debug("Name macro successfully located and replaced with user's full name.");

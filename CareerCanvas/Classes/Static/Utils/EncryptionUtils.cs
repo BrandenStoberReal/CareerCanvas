@@ -4,6 +4,12 @@ namespace CareerCanvas.Classes.Static.Utils;
 
 public static class EncryptionUtils
 {
+    /// <summary>
+    /// Encrypts a file using AES encryption and writes the encrypted data to a new file.
+    /// </summary>
+    /// <param name="inputFile"></param>
+    /// <param name="outputFile"></param>
+    /// <param name="key"></param>
     public static void EncryptFile(string inputFile, string outputFile, string key)
     {
         var plainBytes = File.ReadAllBytes(inputFile);
@@ -11,6 +17,12 @@ public static class EncryptionUtils
         File.WriteAllBytes(outputFile, encryptedBytes);
     }
 
+    /// <summary>
+    /// Decrypts a file using AES encryption and writes the decrypted data to a new file.
+    /// </summary>
+    /// <param name="inputFile"></param>
+    /// <param name="outputFile"></param>
+    /// <param name="key"></param>
     public static void DecryptFile(string inputFile, string outputFile, string key)
     {
         var encryptedBytes = File.ReadAllBytes(inputFile);
@@ -18,17 +30,33 @@ public static class EncryptionUtils
         File.WriteAllBytes(outputFile, decryptedBytes);
     }
 
+    /// <summary>
+    /// Encrypts a file and returns the encrypted data as a byte array.
+    /// </summary>
+    /// <param name="inputFile"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static byte[] EncryptFileToBytes(string inputFile, string key)
     {
         var plainBytes = File.ReadAllBytes(inputFile);
         return EncryptBytesToBytes(plainBytes, key);
     }
 
+    /// <summary>
+    /// Decrypts a file from a byte array and returns the decrypted data as a byte array.
+    /// </summary>
+    /// <param name="encryptedBytes"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static byte[] DecryptFileFromBytes(byte[] encryptedBytes, string key)
     {
         return DecryptBytesFromBytes(encryptedBytes, key);
     }
 
+    /// <summary>
+    /// Generates a random 256-bit key for AES encryption.
+    /// </summary>
+    /// <returns></returns>
     public static string Generate256BitKey()
     {
         using (var aesAlg = Aes.Create())
@@ -39,6 +67,12 @@ public static class EncryptionUtils
         }
     }
 
+    /// <summary>
+    /// Encrypts a string using AES encryption and returns the encrypted data as a byte array.
+    /// </summary>
+    /// <param name="plainText"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static byte[] EncryptStringToBytes(string plainText, string key)
     {
         byte[] encrypted;
@@ -67,6 +101,12 @@ public static class EncryptionUtils
         return encrypted;
     }
 
+    /// <summary>
+    /// Decrypts a byte array using AES encryption and returns the decrypted data as a string.
+    /// </summary>
+    /// <param name="cipherText"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static string DecryptStringFromBytes(byte[] cipherText, string key)
     {
         string plaintext = null;
@@ -91,6 +131,12 @@ public static class EncryptionUtils
         return plaintext;
     }
 
+    /// <summary>
+    /// Encrypts a byte array using AES encryption and returns the encrypted data as a byte array.
+    /// </summary>
+    /// <param name="plainBytes"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static byte[] EncryptBytesToBytes(byte[] plainBytes, string key)
     {
         byte[] encrypted;
@@ -118,6 +164,12 @@ public static class EncryptionUtils
         return encrypted;
     }
 
+    /// <summary>
+    /// Decrypts a byte array using AES encryption and returns the decrypted data as a byte array.
+    /// </summary>
+    /// <param name="cipherText"></param>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static byte[] DecryptBytesFromBytes(byte[] cipherText, string key)
     {
         byte[] plaintext;
