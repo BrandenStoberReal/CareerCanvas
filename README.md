@@ -1,4 +1,7 @@
-# Career Canvas
+<h1 align="center">Career Canvas</h1>
+
+![GitHub commit activity](https://img.shields.io/github/commit-activity/:m/:brandenstoberreal/:careercanvas)
+
  A robust and extensible C# job-hunting utility designed to provide free access to basic job application QoL tools.
 
  # Features
