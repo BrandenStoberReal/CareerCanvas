@@ -32,7 +32,7 @@
  # Roadmap
  - [x] Material UI
  - [ ] Material UI - Application Themes
- - [x] Material UI - Not Terrible UI/UX
+ - [ ] Material UI - Not Terrible UI
  - [ ] Cover Letter Builder
  - [ ] Cover Letter Builder - Export cover letter to PDF
  - [ ] Cover Letter Builder - Export cover letter to HTML
@@ -52,12 +52,15 @@
  - [ ] Resume Builder - Export resume to HTML
  - [x] Cross-builder Integration
  - [x] Persistent Storage
- - [x] Macro parsing and documentation
- - [ ] Custom macros & softcoded macros
- - [ ] Update notifier
- - [ ] Application installer (.msi)
+ - [x] Macro Parsing & Documentation
+ - [ ] Custom Macros & Softcoded Macros
+ - [ ] Update Notification System
+ - [ ] Application Installer (.msi)
  - [ ] Keybinds
  - [ ] Improve Application UX
+ - [ ] Robust & Organized Logging
+ - [ ] Debug Mode
+ - [ ] Application Refinement/Polishing
 
 
 # Installation
@@ -65,6 +68,15 @@ Take a look at the [releases](https://github.com/BrandenStoberReal/CareerCanvas/
 
 # Custom Templates
 If you are savvy with HTML and CSS, please read [the documentation](TEMPLATES.md) for more information on how to create custom templates. A few templates come pre-loaded with the application and can be used as bases without issue.
+
+# Building
+You will need the `.NET 9` SDK installed to build the application. You can download it from the [.NET website](https://dotnet.microsoft.com/download/dotnet/9.0). Once you have the SDK installed, you can clone the repository and run the following command in the root directory of the project:
+```bash
+dotnet build
+```
+This will build the application and create an executable in the `bin/Debug/net9.0-windows` directory. You can then run the application by double-clicking on the `CareerCanvas.exe` executable.
+
+Keep in mind that if you decide to make any changes to UI elements, sometimes the build process bugs and does not apply the changes. Simply rebuild the project to resolve this.
 
 # Liability
 The creator(s) of this software is/are not liable if the program provides faulty, missing, or impartial output. This software is not a replacement for professional job-hunting services, and should be used as a supplement to a job-hunting strategy.

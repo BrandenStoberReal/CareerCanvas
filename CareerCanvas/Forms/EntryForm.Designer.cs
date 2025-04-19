@@ -128,7 +128,7 @@
             materialLabel2.Name = "materialLabel2";
             materialLabel2.Size = new Size(1071, 23);
             materialLabel2.TabIndex = 2;
-            materialLabel2.Text = "Looking to get started? Check out the identities page and go in order from there!";
+            materialLabel2.Text = "Looking to get started? Check out the identities page and go down the list!";
             materialLabel2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // entryTitleLabel
