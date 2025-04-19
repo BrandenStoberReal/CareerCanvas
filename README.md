@@ -17,7 +17,7 @@
 
  This project started due to my own personal frustrations with the job application process. I wanted to create a tool that would help me and others streamline the process of applying for jobs, and make it easier to keep track of resumes and cover letters.
 
- [![Pre-Alpha Screenshot](https://files.catbox.moe/vukk0c.png)](#)
+ [![Pre-Alpha Screenshot](https://files.catbox.moe/j8bdge.png)](#)
  <p align="center">
   <i>Screenshot of a pre-alpha build. Many features are missing and subject to change.</i>
  </p>

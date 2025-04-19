@@ -31,9 +31,7 @@
             components = new System.ComponentModel.Container();
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
-            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
-            flowLayoutPanel2 = new FlowLayoutPanel();
-            changeColorsButton = new ReaLTaiizor.Controls.MaterialButton();
+            materialLabel2 = new ReaLTaiizor.Controls.MaterialLabel();
             entryTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityPage = new TabPage();
             identityConfigExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
@@ -76,7 +74,6 @@
             tabPage1 = new TabPage();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
             identityPage.SuspendLayout();
             identityConfigExpansionPanel.SuspendLayout();
             materialCard2.SuspendLayout();
@@ -112,8 +109,7 @@
             // 
             // welcomePage
             // 
-            welcomePage.Controls.Add(materialLabel1);
-            welcomePage.Controls.Add(flowLayoutPanel2);
+            welcomePage.Controls.Add(materialLabel2);
             welcomePage.Controls.Add(entryTitleLabel);
             welcomePage.Location = new Point(4, 24);
             welcomePage.Name = "welcomePage";
@@ -122,50 +118,18 @@
             welcomePage.Text = "Welcome";
             welcomePage.UseVisualStyleBackColor = true;
             // 
-            // materialLabel1
+            // materialLabel2
             // 
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel1.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
-            materialLabel1.Location = new Point(20, 46);
-            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(224, 23);
-            materialLabel1.TabIndex = 1;
-            materialLabel1.Text = "Settings";
-            materialLabel1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // flowLayoutPanel2
-            // 
-            flowLayoutPanel2.Controls.Add(changeColorsButton);
-            flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel2.Location = new Point(20, 72);
-            flowLayoutPanel2.Margin = new Padding(20, 3, 20, 20);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Padding = new Padding(10);
-            flowLayoutPanel2.Size = new Size(224, 478);
-            flowLayoutPanel2.TabIndex = 0;
-            // 
-            // changeColorsButton
-            // 
-            changeColorsButton.AutoSize = false;
-            changeColorsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            changeColorsButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            changeColorsButton.Depth = 0;
-            changeColorsButton.HighEmphasis = true;
-            changeColorsButton.Icon = null;
-            changeColorsButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            changeColorsButton.Location = new Point(14, 16);
-            changeColorsButton.Margin = new Padding(4, 6, 4, 6);
-            changeColorsButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            changeColorsButton.Name = "changeColorsButton";
-            changeColorsButton.NoAccentTextColor = Color.Empty;
-            changeColorsButton.Size = new Size(196, 36);
-            changeColorsButton.TabIndex = 0;
-            changeColorsButton.Text = "Change Color Scheme";
-            changeColorsButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            changeColorsButton.UseAccentColor = false;
-            changeColorsButton.UseVisualStyleBackColor = true;
+            materialLabel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.Location = new Point(3, 46);
+            materialLabel2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(1071, 23);
+            materialLabel2.TabIndex = 2;
+            materialLabel2.Text = "Looking to get started? Check out the identities page and go in order from there!";
+            materialLabel2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // entryTitleLabel
             // 
@@ -202,7 +166,7 @@
             identityConfigExpansionPanel.Depth = 0;
             identityConfigExpansionPanel.Description = "Settings related to how identities are stored and handled";
             identityConfigExpansionPanel.ExpandHeight = 542;
-            identityConfigExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            identityConfigExpansionPanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             identityConfigExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
             identityConfigExpansionPanel.Location = new Point(198, 14);
             identityConfigExpansionPanel.Margin = new Padding(16, 1, 16, 0);
@@ -352,7 +316,7 @@
             identitiesListBox.BackColor = Color.White;
             identitiesListBox.BorderColor = Color.LightGray;
             identitiesListBox.Depth = 0;
-            identitiesListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            identitiesListBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             identitiesListBox.Location = new Point(20, 43);
             identitiesListBox.Margin = new Padding(6);
             identitiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
@@ -484,7 +448,7 @@
             historiesListBox.BackColor = Color.White;
             historiesListBox.BorderColor = Color.LightGray;
             historiesListBox.Depth = 0;
-            historiesListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            historiesListBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             historiesListBox.Location = new Point(17, 40);
             historiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             historiesListBox.Name = "historiesListBox";
@@ -801,7 +765,6 @@
             Load += EntryForm_Load;
             materialTabControl1.ResumeLayout(false);
             welcomePage.ResumeLayout(false);
-            flowLayoutPanel2.ResumeLayout(false);
             identityPage.ResumeLayout(false);
             identityConfigExpansionPanel.ResumeLayout(false);
             identityConfigExpansionPanel.PerformLayout();
@@ -861,11 +824,9 @@
         private ReaLTaiizor.Controls.MaterialCard materialCard4;
         private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
         private ReaLTaiizor.Controls.MaterialLabel entryTitleLabel;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
-        private FlowLayoutPanel flowLayoutPanel2;
-        private ReaLTaiizor.Controls.MaterialButton changeColorsButton;
         private TabPage tabPage1;
         private ReaLTaiizor.Controls.MaterialCard materialCard5;
         private ReaLTaiizor.Controls.MaterialButton openResumeWorkspaceButton;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel2;
     }
 }
