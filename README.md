@@ -19,7 +19,7 @@
 
  [![Pre-Alpha Screenshot](https://files.catbox.moe/vukk0c.png)](#)
  <p align="center">
-  <i>Screenshot of the application based on a pre-alpha build.</i>
+  <i>Screenshot of a pre-alpha build. Many features are missing and subject to change.</i>
  </p>
 
  # Features
