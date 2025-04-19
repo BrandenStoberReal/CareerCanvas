@@ -39,7 +39,7 @@
  - [ ] Keybinds
 
  # Custom Templates
- Please see [the documentation](CustomTemplates.md) for more information on how to create custom templates.
+ Please see [the documentation](TEMPLATES.md) for more information on how to create custom templates.
 
 # Liability
 The creator(s) of this software is/are not liable if the program provides faulty, missing, or impartial output. This software is not a replacement for professional job-hunting services, and should be used as a supplement to a job-hunting strategy.
