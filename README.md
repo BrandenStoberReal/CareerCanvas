@@ -3,7 +3,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/brandenstoberreal/careercanvas)](#)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/brandenstoberreal/careercanvas)](#)
 [![GitHub commits since latest release](https://img.shields.io/github/commits-since/brandenstoberreal/careercanvas/latest)](#)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/brandenstoberreal/careercanvas/DotNet)](#)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/brandenstoberreal/careercanvas/dotnet)](#)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/brandenstoberreal/careercanvas)](#)
 
 
