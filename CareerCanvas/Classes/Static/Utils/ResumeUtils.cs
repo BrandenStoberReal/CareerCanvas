@@ -202,14 +202,14 @@ namespace CareerCanvas.Classes.Static.Utils
                     // Job starting date
                     if (jobNode.InnerHtml.Contains("{{jobStartDate}}"))
                     {
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobStartDate}}", job.StartDate.ToString("MMM yyyy"));
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobStartDate}}", job.StartDate.ToString("MMMM yyyy"));
                         Globals.AppLogger.Debug("jobStartDate macro located and replaced with proper data.");
                     }
 
                     // Job ending date
                     if (jobNode.InnerHtml.Contains("{{jobEndDate}}"))
                     {
-                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobEndDate}}", job.EndDate.ToString("MMM yyyy"));
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobEndDate}}", job.EndDate.ToString("MMMM yyyy"));
                         Globals.AppLogger.Debug("jobEndDate macro located and replaced with proper data.");
                     }
 
@@ -294,14 +294,14 @@ namespace CareerCanvas.Classes.Static.Utils
                     // Degree starting date
                     if (eduNode.InnerHtml.Contains("{{schoolStartDate}}"))
                     {
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolStartDate}}", education.StartDate.ToString("MMM yyyy"));
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolStartDate}}", education.StartDate.ToString("MMMM yyyy"));
                         Globals.AppLogger.Debug("SchoolStartDate macro located and replaced with proper data.");
                     }
 
                     // Degree ending date
                     if (eduNode.InnerHtml.Contains("{{schoolEndDate}}"))
                     {
-                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndDate}}", education.EndDate.ToString("MMM yyyy"));
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndDate}}", education.EndDate.ToString("MMMM yyyy"));
                         Globals.AppLogger.Debug("SchoolEndDate macro located and replaced with proper data.");
                     }
 

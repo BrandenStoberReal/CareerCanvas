@@ -91,8 +91,5 @@ public partial class AddJobForm : MaterialForm
 
     private void AddJobForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-        var result = MessageBox.Show("Changes not saved! Exit anyway?", "Warning", MessageBoxButtons.YesNo,
-            MessageBoxIcon.Warning);
-        if (result == DialogResult.No) e.Cancel = true;
     }
 }
