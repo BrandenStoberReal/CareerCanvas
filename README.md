@@ -29,9 +29,9 @@
   <i>Screenshot of a pre-alpha build. Many features are missing and subject to change.</i>
  </p>
 
- # Features
+ # Roadmap
  - [x] Material UI
- - [ ] Material UI - Change Color Scheme
+ - [ ] Material UI - Application Themes
  - [x] Material UI - Not Terrible UI/UX
  - [ ] Cover Letter Builder
  - [ ] Cover Letter Builder - Export cover letter to PDF
@@ -57,6 +57,8 @@
  - [ ] Update notifier
  - [ ] Application installer (.msi)
  - [ ] Keybinds
+ - [ ] Improve Application UX
+
 
 # Installation
 Take a look at the [releases](https://github.com/BrandenStoberReal/CareerCanvas/releases) page for the latest version of the application. The application comes bundled with the .NET 9 runtime, so you do not need to install it separately. Simply download the latest release and extract the files to a folder of your choice. You can then run the application by double-clicking on the `CareerCanvas.exe` executable.
