@@ -35,6 +35,8 @@ namespace CareerCanvas.Classes.Static.Utils
             doc.GetElementbyId("name").InnerHtml = doc.GetElementbyId("name").InnerHtml.Replace("{{fullName}}", $"{identity.FirstName} {identity.MiddleName} {identity.LastName}");
             Globals.AppLogger.Debug("Name macro successfully located and replaced with user's full name.");
 
+            #region Static Macros
+
             // Address fill
             if (identity.Address != String.Empty)
             {
@@ -94,6 +96,10 @@ namespace CareerCanvas.Classes.Static.Utils
                 doc.GetElementbyId("professionalsummary").InnerHtml = doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", "A summary of my professional experiences is available upon request.");
                 Globals.AppLogger.Debug("Summary macro successfully located and replaced with default summary.");
             }
+
+            #endregion Static Macros
+
+            #region Dynamic Macros
 
             // Skills fill
             HtmlNode skillTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("skillentry")).First();
@@ -178,11 +184,25 @@ namespace CareerCanvas.Classes.Static.Utils
                         Globals.AppLogger.Debug("JobStartMonth macro located and replaced with proper data.");
                     }
 
+                    // Job starting month (short)
+                    if (jobNode.InnerHtml.Contains("{{jobStartMonthShort}}"))
+                    {
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobStartMonthShort}}", job.StartDate.ToString("MMM"));
+                        Globals.AppLogger.Debug("JobStartMonthShort macro located and replaced with proper data.");
+                    }
+
                     // Job ending month
                     if (jobNode.InnerHtml.Contains("{{jobEndMonth}}"))
                     {
                         jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobEndMonth}}", job.EndDate.ToString("MMMM"));
                         Globals.AppLogger.Debug("JobEndMonth macro located and replaced with proper data.");
+                    }
+
+                    // Job ending month (short)
+                    if (jobNode.InnerHtml.Contains("{{jobEndMonthShort}}"))
+                    {
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobEndMonthShort}}", job.EndDate.ToString("MMM"));
+                        Globals.AppLogger.Debug("JobEndMonthShort macro located and replaced with proper data.");
                     }
 
                     // Job starting year
@@ -270,11 +290,25 @@ namespace CareerCanvas.Classes.Static.Utils
                         Globals.AppLogger.Debug("SchoolStartMonth macro located and replaced with proper data.");
                     }
 
+                    // Degree starting month (short)
+                    if (eduNode.InnerHtml.Contains("{{schoolStartMonthShort}}"))
+                    {
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolStartMonthShort}}", education.StartDate.ToString("MMM"));
+                        Globals.AppLogger.Debug("SchoolStartMonthShort macro located and replaced with proper data.");
+                    }
+
                     // Degree ending month
                     if (eduNode.InnerHtml.Contains("{{schoolEndMonth}}"))
                     {
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndMonth}}", education.EndDate.ToString("MMMM"));
                         Globals.AppLogger.Debug("SchoolEndMonth macro located and replaced with proper data.");
+                    }
+
+                    // Degree ending month (short)
+                    if (eduNode.InnerHtml.Contains("{{schoolEndMonthShort}}"))
+                    {
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndMonthShort}}", education.EndDate.ToString("MMM"));
+                        Globals.AppLogger.Debug("SchoolEndMonthShort macro located and replaced with proper data.");
                     }
 
                     // Degree starting year
@@ -348,6 +382,13 @@ namespace CareerCanvas.Classes.Static.Utils
                         Globals.AppLogger.Debug("CertificateStartMonth macro located and replaced with proper data.");
                     }
 
+                    // Certificate issue month
+                    if (certNode.InnerHtml.Contains("{{certificateMonthShort}}"))
+                    {
+                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateMonthShort}}", certificate.Certificate.IssueDate.ToString("MMM"));
+                        Globals.AppLogger.Debug("CertificateStartMonthShort macro located and replaced with proper data.");
+                    }
+
                     // Certificate issue year
                     if (certNode.InnerHtml.Contains("{{certificateYear}}"))
                     {
@@ -365,6 +406,8 @@ namespace CareerCanvas.Classes.Static.Utils
                     Globals.AppLogger.Debug("Certificates field template removed successfully. This is intended behavior.");
                 }
             }
+
+            #endregion Dynamic Macros
         }
     }
 }

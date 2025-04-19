@@ -34,6 +34,9 @@ Lastly, dynamic macros can be defined anywhere in an element's descendancy. For 
 ```
 This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the former being nested inside the `strong` element.
 
+## 'Required' Macro Foreword
+Some macros are listed as `required` in the table below. Despite the name, these macros are not inherently forced to be in the resume; however, macros marked with the `required` entry are strongly recommended to include, as they typically compose the foundation of the document or are otherwise integral information. The application `will still load your template` if a required macro remains undefined, however, your template will likely look very bad.
+
 
 ## List of Macros
 | Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
@@ -48,8 +51,10 @@ This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the f
 | `{{jobTitle}}` | A placeholder for the job title defined in the owner's work history. | Yes | Yes | No |
 | `{{jobDescription}}` | A placeholder for the job description defined in the owner's work history. | No | Yes | No |
 | `{{jobStartMonth}}` | A placeholder for the job's starting month as defined in the owner's work history. | No | Yes | No |
+| `{{jobStartMonthShort}}` | A placeholder for the job's starting month as defined in the owner's work history (shortened month name). | No | Yes | No |
 | `{{jobStartYear}}` | A placeholder for the job's starting year as defined in the owner's work history. | No | Yes | No |
 | `{{jobEndMonth}}` | A placeholder for the job's ending month as defined in the owner's work history. | No | Yes | No |
+| `{{jobEndMonthShort}}` | A placeholder for the job's ending month as defined in the owner's work history (shortened month name). | No | Yes | No |
 | `{{jobEndYear}}` | A placeholder for the job's ending year as defined in the owner's work history. | No | Yes | No |
 | `{{jobStartDate}}` | A placeholder for the job's starting date (MMM yyyy) as defined in the owner's work history. | No | Yes | No |
 | `{{jobEndDate}}` | A placeholder for the job's ending date (MMM yyyy) as defined in the owner's work history. | No | Yes | No |
@@ -57,13 +62,16 @@ This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the f
 | `{{degreeType}}` | A placeholder for a degree obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
 | `{{schoolName}}` | A placeholder for the name of the school where the degree was obtained or is currently being obtained. | Yes | Yes | No |
 | `{{schoolStartMonth}}` | A placeholder for the month the degree was started. | No | Yes | No |
+| `{{schoolStartMonthShort}}` | A placeholder for the month the degree was started (shortened month name). | No | Yes | No |
 | `{{schoolStartYear}}` | A placeholder for the year the degree was started. | No | Yes | No |
 | `{{schoolEndMonth}}` | A placeholder for the month the degree was obtained. | No | Yes | No |
+| `{{schoolEndMonthShort}}` | A placeholder for the month the degree was obtained (shortened month name). | No | Yes | No |
 | `{{schoolEndYear}}` | A placeholder for the year the degree was obtained. | No | Yes | No |
 | `{{schoolStartDate}}` | A placeholder for the date the degree was started (MMM yyyy). | No | Yes | No |
 | `{{schoolEndDate}}` | A placeholder for the date the degree was obtained (MMM yyyy). | No | Yes | No |
 | `{{certificationName}}` | A placeholder for the name of a certification obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
 | `{{certificateMonth}}` | A placeholder for the month the certificate was issued. | No | Yes | No |
+| `{{certificateMonthShort}}` | A placeholder for the month the certificate was issued (shortened month name). | No | Yes | No |
 | `{{certificateYear}}` | A placeholder for the year the certificate was issued. | No | Yes | No |
 | `{{certificateDate}}` | A placeholder for the date the certificate was issued to the user. | No | Yes | No |
 | `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
