@@ -12,7 +12,6 @@
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/brandenstoberreal/careercanvas)](#)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr-closed/brandenstoberreal/careercanvas)](#)
 [![GitHub Repo Size](https://img.shields.io/github/languages/top/brandenstoberreal/careercanvas)](#)
-[![GitHub License](https://img.shields.io/github/license/brandenstoberreal/careercanvas)](#)
 
 </div>
 
