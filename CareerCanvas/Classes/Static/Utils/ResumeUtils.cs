@@ -106,6 +106,8 @@ namespace CareerCanvas.Classes.Static.Utils
                     Random rng = new Random();
                     HtmlNode skillNode = skillTemplate.Clone();
                     skillTemplate.ParentNode.AppendChild(skillNode);
+
+                    // Skill name
                     if (skillNode.InnerHtml.Contains("{{skillName}}"))
                     {
                         int randomNumber = rng.Next(0, FillerSkillNames.Count);
@@ -126,6 +128,8 @@ namespace CareerCanvas.Classes.Static.Utils
                     Globals.AppLogger.Debug("Processing skill \"{0}\"...", skill.SkillName);
                     HtmlNode skillNode = skillTemplate.Clone();
                     skillTemplate.ParentNode.AppendChild(skillNode);
+
+                    // Skill name
                     if (skillNode.InnerHtml.Contains("{{skillName}}"))
                     {
                         skillNode.InnerHtml = skillNode.InnerHtml.Replace("{{skillName}}", skill.SkillName);
@@ -153,36 +157,63 @@ namespace CareerCanvas.Classes.Static.Utils
                     HtmlNode jobNode = jobTemplate.Clone();
                     jobTemplate.ParentNode.AppendChild(jobNode);
 
+                    // Job title
                     if (jobNode.InnerHtml.Contains("{{jobTitle}}"))
                     {
                         jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobTitle}}", job.JobTitle);
                         Globals.AppLogger.Debug("JobTitle macro located and replaced with proper data.");
                     }
+
+                    // Job company name
                     if (jobNode.InnerHtml.Contains("{{jobCompanyName}}"))
                     {
                         jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobCompanyName}}", job.CompanyName);
                         Globals.AppLogger.Debug("JobCompanyName macro located and replaced with proper data.");
                     }
+
+                    // Job starting month
                     if (jobNode.InnerHtml.Contains("{{jobStartMonth}}"))
                     {
                         jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobStartMonth}}", job.StartDate.ToString("MMMM"));
                         Globals.AppLogger.Debug("JobStartMonth macro located and replaced with proper data.");
                     }
+
+                    // Job ending month
                     if (jobNode.InnerHtml.Contains("{{jobEndMonth}}"))
                     {
                         jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobEndMonth}}", job.EndDate.ToString("MMMM"));
                         Globals.AppLogger.Debug("JobEndMonth macro located and replaced with proper data.");
                     }
+
+                    // Job starting year
                     if (jobNode.InnerHtml.Contains("{{jobStartYear}}"))
                     {
                         jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobStartYear}}", job.StartDate.ToString("yyyy"));
                         Globals.AppLogger.Debug("JobStartYear macro located and replaced with proper data.");
                     }
+
+                    // Job ending year
                     if (jobNode.InnerHtml.Contains("{{jobEndYear}}"))
                     {
                         jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobEndYear}}", job.EndDate.ToString("yyyy"));
                         Globals.AppLogger.Debug("JobEndYear macro located and replaced with proper data.");
                     }
+
+                    // Job starting date
+                    if (jobNode.InnerHtml.Contains("{{jobStartDate}}"))
+                    {
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobStartDate}}", job.StartDate.ToString("MMM yyyy"));
+                        Globals.AppLogger.Debug("jobStartDate macro located and replaced with proper data.");
+                    }
+
+                    // Job ending date
+                    if (jobNode.InnerHtml.Contains("{{jobEndDate}}"))
+                    {
+                        jobNode.InnerHtml = jobNode.InnerHtml.Replace("{{jobEndDate}}", job.EndDate.ToString("MMM yyyy"));
+                        Globals.AppLogger.Debug("jobEndDate macro located and replaced with proper data.");
+                    }
+
+                    // Job description
                     if (jobNode.InnerHtml.Contains("{{jobDescription}}"))
                     {
                         if (job.JobDescription != String.Empty)
@@ -218,40 +249,62 @@ namespace CareerCanvas.Classes.Static.Utils
                     HtmlNode eduNode = educationTemplate.Clone();
                     educationTemplate.ParentNode.AppendChild(eduNode);
 
+                    // Degree type
                     if (eduNode.InnerHtml.Contains("{{degreeType}}"))
                     {
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{degreeType}}", EnumUtils.GetEnumDescription(education.Degree));
                         Globals.AppLogger.Debug("DegreeType macro located and replaced with proper data.");
                     }
+
+                    // School name
                     if (eduNode.InnerHtml.Contains("{{schoolName}}"))
                     {
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolName}}", education.SchoolName);
                         Globals.AppLogger.Debug("SchoolName macro located and replaced with proper data.");
                     }
 
+                    // Degree starting month
                     if (eduNode.InnerHtml.Contains("{{schoolStartMonth}}"))
                     {
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolStartMonth}}", education.StartDate.ToString("MMMM"));
                         Globals.AppLogger.Debug("SchoolStartMonth macro located and replaced with proper data.");
                     }
 
+                    // Degree ending month
                     if (eduNode.InnerHtml.Contains("{{schoolEndMonth}}"))
                     {
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndMonth}}", education.EndDate.ToString("MMMM"));
                         Globals.AppLogger.Debug("SchoolEndMonth macro located and replaced with proper data.");
                     }
 
+                    // Degree starting year
                     if (eduNode.InnerHtml.Contains("{{schoolStartYear}}"))
                     {
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolStartYear}}", education.StartDate.ToString("yyyy"));
                         Globals.AppLogger.Debug("SchoolStartYear macro located and replaced with proper data.");
                     }
 
+                    // Degree ending year
                     if (eduNode.InnerHtml.Contains("{{schoolEndYear}}"))
                     {
                         eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndYear}}", education.EndDate.ToString("yyyy"));
                         Globals.AppLogger.Debug("SchoolEndYear macro located and replaced with proper data.");
                     }
+
+                    // Degree starting date
+                    if (eduNode.InnerHtml.Contains("{{schoolStartDate}}"))
+                    {
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolStartDate}}", education.StartDate.ToString("MMM yyyy"));
+                        Globals.AppLogger.Debug("SchoolStartDate macro located and replaced with proper data.");
+                    }
+
+                    // Degree ending date
+                    if (eduNode.InnerHtml.Contains("{{schoolEndDate}}"))
+                    {
+                        eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndDate}}", education.EndDate.ToString("MMM yyyy"));
+                        Globals.AppLogger.Debug("SchoolEndDate macro located and replaced with proper data.");
+                    }
+
                     educationTemplate.Remove();
                     Globals.AppLogger.Debug("Education field template removed successfully. This is intended behavior.");
                 }

@@ -51,6 +51,8 @@ This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the f
 | `{{jobStartYear}}` | A placeholder for the job's starting year as defined in the owner's work history. | Yes | Yes | No |
 | `{{jobEndMonth}}` | A placeholder for the job's ending month as defined in the owner's work history. | Yes | Yes | No |
 | `{{jobEndYear}}` | A placeholder for the job's ending year as defined in the owner's work history. | Yes | Yes | No |
+| `{{jobStartDate}}` | A placeholder for the job's starting date (MMM yyyy) as defined in the owner's work history. | No | Yes | No |
+| `{{jobEndDate}}` | A placeholder for the job's ending date (MMM yyyy) as defined in the owner's work history. | No | Yes | No |
 | `{{jobCompanyName}}` | A placeholder for the job company defined in the owner's work history. | Yes | Yes | No |
 | `{{degreeType}}` | A placeholder for a degree obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
 | `{{schoolName}}` | A placeholder for the name of the school where the degree was obtained or is currently being obtained. | Yes | Yes | No |
@@ -58,6 +60,8 @@ This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the f
 | `{{schoolStartYear}}` | A placeholder for the year the degree was started. | Yes | Yes | No |
 | `{{schoolEndMonth}}` | A placeholder for the month the degree was obtained. | Yes | Yes | No |
 | `{{schoolEndYear}}` | A placeholder for the year the degree was obtained. | Yes | Yes | No |
+| `{{schoolStartDate}}` | A placeholder for the date the degree was started (MMM yyyy). | No | Yes | No |
+| `{{schoolEndDate}}` | A placeholder for the date the degree was obtained (MMM yyyy). | No | Yes | No |
 | `{{certificationName}}` | A placeholder for the name of a certification obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
 | `{{certificationDate}}` | A placeholder for the date the certificate was issued to the user. | Yes | Yes | No |
 | `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
