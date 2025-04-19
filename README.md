@@ -4,6 +4,11 @@
 
 [![GitHub Stars](https://img.shields.io/github/stars/brandenstoberreal/careercanvas)](#)
 [![GitHub Forks](https://img.shields.io/github/forks/brandenstoberreal/careercanvas)](#)
+
+</div>
+
+<div align="center">
+
 [![GitHub last commit](https://img.shields.io/github/last-commit/brandenstoberreal/careercanvas)](#)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/brandenstoberreal/careercanvas)](#)
 [![GitHub commits since latest release](https://img.shields.io/github/commits-since/brandenstoberreal/careercanvas/latest)](#)
