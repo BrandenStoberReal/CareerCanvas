@@ -9,6 +9,8 @@
 
  A robust and extensible C# job-hunting utility designed to provide free access to basic job application QoL tools.
 
+ This projected started due to my own personal frustrations with the job application process. I wanted to create a tool that would help me and others streamline the process of applying for jobs, and make it easier to keep track of resumes and cover letters.
+
  # Features
  - [x] Material UI
  - [ ] Material UI - Change Color Scheme
@@ -26,14 +28,18 @@
  - [x] Industry Builder - Certificates GUI
  - [ ] Industry Builder - Skills GUI
  - [x] Resume Builder
+ - [x] Resume Builder - Custom template support
  - [ ] Resume Builder - Export resume to PDF
  - [ ] Resume Builder - Export resume to HTML
  - [x] Cross-builder Integration
  - [x] Persistent Storage
  - [x] Macro parsing and documentation
  - [ ] Custom macros & softcoded macros
+ - [ ] Automatic updater
+ - [ ] Keybinds
 
-
+ # Custom Templates
+ Please see [the documentation](CustomTemplates.md) for more information on how to create custom templates.
 
 # Liability
 The creator(s) of this software is/are not liable if the program provides faulty, missing, or impartial output. This software is not a replacement for professional job-hunting services, and should be used as a supplement to a job-hunting strategy.
