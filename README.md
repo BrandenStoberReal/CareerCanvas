@@ -3,7 +3,7 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/brandenstoberreal/careercanvas)](#)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/brandenstoberreal/careercanvas)](#)
 [![GitHub commits since latest release](https://img.shields.io/github/commits-since/brandenstoberreal/careercanvas/latest)](#)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/brandenstoberreal/careercanvas/dotnet)](#)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/brandenstoberreal/careercanvas/dotnet.yml)](#)
 [![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/brandenstoberreal/careercanvas)](#)
 
 
@@ -36,11 +36,15 @@
  - [x] Persistent Storage
  - [x] Macro parsing and documentation
  - [ ] Custom macros & softcoded macros
- - [ ] Automatic updater
+ - [ ] Update notifier
+ - [ ] Application installer (.msi)
  - [ ] Keybinds
 
+# Installation
+Take a look at the [releases](https://github.com/BrandenStoberReal/CareerCanvas/releases) page for the latest version of the application. The application comes bundled with the .NET 9 runtime, so you do not need to install it separately. Simply download the latest release and extract the files to a folder of your choice. You can then run the application by double-clicking on the `CareerCanvas.exe` executable.
+
 # Custom Templates
-If you are savvy with HTML and CSS, please read [the documentation](TEMPLATES.md) for more information on how to create custom templates.
+If you are savvy with HTML and CSS, please read [the documentation](TEMPLATES.md) for more information on how to create custom templates. A few templates come pre-loaded with the application and can be used as bases without issue.
 
 # Liability
 The creator(s) of this software is/are not liable if the program provides faulty, missing, or impartial output. This software is not a replacement for professional job-hunting services, and should be used as a supplement to a job-hunting strategy.
