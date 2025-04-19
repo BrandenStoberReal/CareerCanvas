@@ -1,7 +1,6 @@
 <h1 align="center">Career Canvas</h1>
 
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/:interval/:user/:repo">
-
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/:m/:brandenstoberreal/:careercanvas)](#)
 
  A robust and extensible C# job-hunting utility designed to provide free access to basic job application QoL tools.
 
