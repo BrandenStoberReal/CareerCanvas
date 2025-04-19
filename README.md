@@ -4,21 +4,26 @@
  # Features
  - [x] Material UI
  - [ ] Material UI - Change Color Scheme
- - [ ] Material UI - Not Terrible UI/UX
- - [x] Resume Builder
- - [x] Macro parsing and documentation
+ - [x] Material UI - Not Terrible UI/UX
  - [ ] Cover Letter Builder
+ - [ ] Cover Letter Builder - Export cover letter to PDF
+ - [ ] Cover Letter Builder - Export cover letter to HTML
  - [ ] Cover Letter Builder - Google Gemini Integration
  - [ ] Cover Letter Builder - OpenAI Integration
  - [x] Identity Builder
- - [x] Work History Builder
- - [x] Builder Integration (identities can be used for the resume builder, etc.)
+ - [x] Identity Builder - Information Encryption (AES-256)
+ - [x] Industry Builder
+ - [x] Industry Builder - Employment history GUI
+ - [x] Industry Builder - Education history GUI
+ - [x] Industry Builder - Certificates GUI
+ - [ ] Industry Builder - Skills GUI
+ - [x] Resume Builder
+ - [ ] Resume Builder - Export resume to PDF
+ - [ ] Resume Builder - Export resume to HTML
+ - [x] Cross-builder Integration
  - [x] Persistent Storage
- - [x] Information Encryption (AES-256)
- - [ ] Export resume to PDF
- - [ ] Export resume to HTML
- - [ ] Export cover letter to PDF
- - [ ] Export cover letter to HTML
+ - [x] Macro parsing and documentation
+ - [ ] Custom macros & softcoded macros
 
 
 
