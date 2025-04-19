@@ -1,11 +1,17 @@
 <h1 align="center">Career Canvas</h1>
 
+<div align="center">
+
 [![GitHub last commit](https://img.shields.io/github/last-commit/brandenstoberreal/careercanvas)](#)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/brandenstoberreal/careercanvas)](#)
 [![GitHub commits since latest release](https://img.shields.io/github/commits-since/brandenstoberreal/careercanvas/latest)](#)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/brandenstoberreal/careercanvas/dotnet.yml)](#)
-[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/brandenstoberreal/careercanvas)](#)
+[![GitHub Issues](https://img.shields.io/github/issues-raw/brandenstoberreal/careercanvas)](#)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/brandenstoberreal/careercanvas)](#)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr-closed/brandenstoberreal/careercanvas)](#)
+[![GitHub Repo Size](https://img.shields.io/github/languages/top/brandenstoberreal/careercanvas)](#)
 
+</div>
 
  A robust and extensible C# job-hunting utility designed to provide free access to basic job application QoL tools.
 
