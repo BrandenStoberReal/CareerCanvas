@@ -63,7 +63,9 @@ This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the f
 | `{{schoolStartDate}}` | A placeholder for the date the degree was started (MMM yyyy). | No | Yes | No |
 | `{{schoolEndDate}}` | A placeholder for the date the degree was obtained (MMM yyyy). | No | Yes | No |
 | `{{certificationName}}` | A placeholder for the name of a certification obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
-| `{{certificationDate}}` | A placeholder for the date the certificate was issued to the user. | Yes | Yes | No |
+| `{{certificateMonth}}` | A placeholder for the month the certificate was issued. | Yes | Yes | No |
+| `{{certificateYear}}` | A placeholder for the year the certificate was issued. | Yes | Yes | No |
+| `{{certificateDate}}` | A placeholder for the date the certificate was issued to the user. | Yes | Yes | No |
 | `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
 
 ## Dynamic Macro Implementation

@@ -327,19 +327,38 @@ namespace CareerCanvas.Classes.Static.Utils
                     HtmlNode certNode = certificatesTemplate.Clone();
                     certificatesTemplate.ParentNode.AppendChild(certNode);
 
+                    // Certificate name
                     if (certNode.InnerHtml.Contains("{{certificateName}}"))
                     {
                         certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateName}}", certificate.Certificate.CertificateName);
                         Globals.AppLogger.Debug("CertificateName macro located and replaced with proper data.");
                     }
+
+                    // Certificate issuer
                     if (certNode.InnerHtml.Contains("{{certificateIssuingOrganization}}"))
                     {
                         certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateIssuingOrganization}}", certificate.IssuingOrganization);
                         Globals.AppLogger.Debug("CertificateIssuingOrganization macro located and replaced with proper data.");
                     }
+
+                    // Certificate issue month
+                    if (certNode.InnerHtml.Contains("{{certificateMonth}}"))
+                    {
+                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateMonth}}", certificate.Certificate.IssueDate.ToString("MMMM"));
+                        Globals.AppLogger.Debug("CertificateStartMonth macro located and replaced with proper data.");
+                    }
+
+                    // Certificate issue year
+                    if (certNode.InnerHtml.Contains("{{certificateYear}}"))
+                    {
+                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateYear}}", certificate.Certificate.IssueDate.ToString("yyyy"));
+                        Globals.AppLogger.Debug("CertificateStartYear macro located and replaced with proper data.");
+                    }
+
+                    // Certificate issue date
                     if (certNode.InnerHtml.Contains("{{certificateDate}}"))
                     {
-                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateDate}}", certificate.Certificate.IssueDate.ToString("MMMM") + " " + certificate.Certificate.IssueDate.ToString("yyyy"));
+                        certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateDate}}", certificate.Certificate.IssueDate.ToString("MMMM yyyy"));
                         Globals.AppLogger.Debug("CertificateDate macro located and replaced with proper data.");
                     }
                     certificatesTemplate.Remove();
