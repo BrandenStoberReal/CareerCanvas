@@ -2,6 +2,8 @@
 
 <div align="center">
 
+[![GitHub Stars](https://img.shields.io/github/stars/brandenstoberreal/careercanvas)](#)
+[![GitHub Forks](https://img.shields.io/github/forks/brandenstoberreal/careercanvas)](#)
 [![GitHub last commit](https://img.shields.io/github/last-commit/brandenstoberreal/careercanvas)](#)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/brandenstoberreal/careercanvas)](#)
 [![GitHub commits since latest release](https://img.shields.io/github/commits-since/brandenstoberreal/careercanvas/latest)](#)
@@ -10,6 +12,7 @@
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/brandenstoberreal/careercanvas)](#)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr-closed/brandenstoberreal/careercanvas)](#)
 [![GitHub Repo Size](https://img.shields.io/github/languages/top/brandenstoberreal/careercanvas)](#)
+[![GitHub License](https://img.shields.io/github/license/brandenstoberreal/careercanvas)](#)
 
 </div>
 
