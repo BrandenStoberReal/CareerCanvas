@@ -48,8 +48,8 @@
  - [x] Resume Builder
  - [x] Resume Builder - Custom template support
  - [x] Resume Builder - Template switcher
- - [ ] Resume Builder - Export resume to PDF
- - [ ] Resume Builder - Export resume to HTML
+ - [x] Resume Builder - Export resume to PDF
+ - [x] Resume Builder - Export resume to HTML
  - [x] Cross-builder Integration
  - [x] Persistent Storage
  - [x] Macro Parsing & Documentation
