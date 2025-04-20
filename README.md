@@ -84,3 +84,10 @@ The creator(s) of this software is/are not liable if the program provides faulty
 
 # Credits
 Please view the "credits" section of the application for a full list of contributors and resources.
+
+This project contains mild use of AI:
+- Partial use of Claude 3.7 for generating the README.md file.
+- Partial use of Claude 3.7 for generation documentation files.
+- Partial use of Claude 3.7 for generating code comments.
+- Partial use of Claude 3.7 for formatting html-converted PDFs during export (JS, CSS, and HTML).
+- Partial use of Claude 3.7 for generating commit messages.
