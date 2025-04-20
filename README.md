@@ -50,6 +50,7 @@
  - [x] Resume Builder - Template switcher
  - [x] Resume Builder - Export resume to PDF
  - [x] Resume Builder - Export resume to HTML
+ - [ ] Resume Builder - Misc Utilities
  - [x] Cross-builder Integration
  - [x] Persistent Storage
  - [x] Macro Parsing & Documentation
@@ -58,7 +59,7 @@
  - [ ] Application Installer (.msi)
  - [ ] Keybinds
  - [ ] Improve Application UX
- - [ ] Robust & Organized Logging
+ - [x] Robust & Organized Logging
  - [ ] Debug Mode
  - [ ] Application Refinement/Polishing
 
