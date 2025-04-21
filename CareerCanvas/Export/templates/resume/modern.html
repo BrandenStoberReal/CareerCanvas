@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-            color: #333;
+            background-color: #f5f7fa;
+            font-family: 'Poppins', sans-serif;
+            color: #2d3436;
+            line-height: 1.6;
         }
 
         .container {
@@ -19,82 +21,129 @@
             height: 100%;
             width: 100%;
             background: white;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar {
-            width: 250px;
-            background: #333;
+            width: 280px;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
             color: white;
-            padding: 20px;
+            padding: 30px;
             position: relative;
         }
 
             .sidebar h2 {
                 text-align: center;
-                margin-bottom: 20px;
-                font-size: 24px;
-                border-bottom: 2px solid #fff;
-                padding-bottom: 10px;
+                margin-bottom: 25px;
+                font-size: 26px;
+                border-bottom: 2px solid rgba(255,255,255,0.3);
+                padding-bottom: 15px;
+                font-weight: 600;
+                letter-spacing: 1px;
             }
 
             .sidebar p {
-                margin: 10px 0;
+                margin: 15px 0;
                 font-size: 14px;
+                color: rgba(255,255,255,0.9);
+                letter-spacing: 0.5px;
             }
 
             .sidebar .skills {
-                margin-top: 20px; /* Add some space above skills */
+                margin-top: 30px;
             }
 
+                .sidebar .skills h3 {
+                    color: rgba(255,255,255,0.9);
+                    font-size: 18px;
+                    margin-bottom: 15px;
+                    font-weight: 600;
+                }
+
                 .sidebar .skills ul {
-                    padding-left: 0; /* Remove default padding */
-                    list-style-type: none; /* Remove bullet points */
+                    padding-left: 0;
+                    list-style-type: none;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
                 }
 
         .skills li {
-            background: #606060; /* Background for skills */
-            border-radius: 5px;
-            padding: 5px;
-            display: inline-block; /* Display skills inline */
-            margin-right: 5px; /* Space between skills */
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 300;
+            transition: all 0.3s ease;
         }
+
+            .skills li:hover {
+                background: rgba(255,255,255,0.25);
+                transform: translateY(-2px);
+            }
 
         .main {
             flex: 1;
-            padding: 20px;
+            padding: 40px;
             overflow-y: auto;
         }
 
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 35px;
         }
 
             .section h3 {
-                border-bottom: 2px solid #333;
-                padding-bottom: 5px;
-                font-size: 20px;
+                position: relative;
+                padding-bottom: 10px;
+                font-size: 22px;
+                font-weight: 600;
+                color: #2c3e50;
+                margin-bottom: 20px;
             }
+
+                .section h3::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 50px;
+                    height: 3px;
+                    background-color: #3498db;
+                }
 
         .experience, .education, .certificates, .skills {
             list-style-type: none;
             padding: 0;
         }
 
-            .experience li, .education li, .certificates li, .skills li {
-                margin-bottom: 10px;
-                font-size: 14px;
+            .experience li, .education li, .certificates li {
+                margin-bottom: 20px;
+                font-size: 15px;
+                padding: 15px;
+                border-radius: 8px;
+                background-color: #f8f9fa;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                transition: transform 0.3s ease;
             }
 
-                .experience li strong, .education li strong, .certificates li strong {
-                    color: #333;
+                .experience li:hover, .education li:hover, .certificates li:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
                 }
 
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #777;
+                .experience li strong, .education li strong, .certificates li strong {
+                    color: #2980b9;
+                    font-weight: 600;
+                }
+
+        #professionalsummary {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f0f7ff;
+            border-left: 4px solid #3498db;
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 1.8;
         }
     </style>
 </head>
@@ -111,32 +160,42 @@
             </div>
             <div class="skills">
                 <h3>Skills</h3>
-                <ul id="skills" style="padding-left: 0; list-style-type: none;">
+                <ul id="skills">
                     <li class="skillentry">{{skillName}}</li>
                 </ul>
             </div>
         </div>
         <div class="main">
             <div class="section" id="summarycontainer">
-                <h3>Summary</h3>
+                <h3>Professional Summary</h3>
                 <p id="professionalsummary">{{resumeSummary}}</p>
             </div>
-            <div class="section">
-                <h3>Experience</h3>
+            <div class="section" id="experiencesection">
+                <h3>Professional Experience</h3>
                 <ul class="experience" id="jobs">
-                    <li class="jobentry"><strong>{{jobTitle}}</strong> - {{jobCompanyName}} ({{jobStartYear}} - {{jobEndYear}})</li>
+                    <li class="jobentry">
+                        <strong>{{jobTitle}}</strong> - {{jobCompanyName}}
+                        <p><strong>{{jobStartDate}} - {{jobEndDate}}</strong></p>
+                        <p>{{jobDescription}}</p>
+                    </li>
                 </ul>
             </div>
-            <div class="section">
+            <div class="section" id="educationsection">
                 <h3>Education</h3>
                 <ul class="education" id="education">
-                    <li class="educationentry"><strong>{{degreeType}}</strong> - {{schoolName}} ({{schoolStartYear}} - {{schoolEndYear}})</li>
+                    <li class="educationentry">
+                        <strong>{{degreeType}}</strong> - {{schoolName}}
+                        <p><strong>{{schoolStartDate}} - {{schoolEndDate}}</strong></p>
+                    </li>
                 </ul>
             </div>
-            <div class="section">
-                <h3>Certificates</h3>
+            <div class="section" id="certificatesection">
+                <h3>Certifications</h3>
                 <ul class="certificates" id="certificates">
-                    <li class="certificateentry"><strong>{{certificateName}}</strong> - {{certificateIssuingOrganization}} ({{certificateDate}})</li>
+                    <li class="certificateentry">
+                        <strong>{{certificateName}}</strong>
+                        <p>{{certificateIssuingOrganization}} • {{certificateDate}}</p>
+                    </li>
                 </ul>
             </div>
         </div>

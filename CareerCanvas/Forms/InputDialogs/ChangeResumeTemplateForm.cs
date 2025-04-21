@@ -52,6 +52,17 @@ namespace CareerCanvas.Forms.InputDialogs
                     templateListBox.Items.Add(item);
                 }
             }
+
+            // Select the current template
+            string currentTemplateName = Path.GetFileNameWithoutExtension(parentForm.TemplatePath);
+            foreach (MaterialListBoxItem item in templateListBox.Items)
+            {
+                if (item.Tag.ToString() == currentTemplateName)
+                {
+                    templateListBox.SelectedItem = item;
+                    break;
+                }
+            }
         }
 
         private void templateListBox_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
@@ -76,6 +87,7 @@ namespace CareerCanvas.Forms.InputDialogs
             ResumeUtils.FillDocumentData(template, identity, industry);
 
             parentForm.Template = template;
+            parentForm.TemplatePath = templatePath;
             Close();
         }
 

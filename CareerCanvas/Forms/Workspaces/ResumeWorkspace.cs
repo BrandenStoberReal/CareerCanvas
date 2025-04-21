@@ -20,6 +20,9 @@ public partial class ResumeWorkspace : MaterialForm
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public HtmlDocument Template { get; set; }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public string TemplatePath { get; set; } = Path.Combine("./templates/resume", "default.html");
+
     public ResumeWorkspace(ProfessionalIdentity identity, Industry industry)
     {
         InitializeComponent();
