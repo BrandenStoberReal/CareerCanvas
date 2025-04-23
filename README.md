@@ -44,7 +44,7 @@
  - [x] Industry Builder - Employment history GUI
  - [x] Industry Builder - Education history GUI
  - [x] Industry Builder - Certificates GUI
- - [ ] Industry Builder - Skills GUI
+ - [x] Industry Builder - Skills GUI
  - [x] Resume Builder
  - [x] Resume Builder - Custom template support
  - [x] Resume Builder - Template switcher
