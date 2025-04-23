@@ -16,6 +16,7 @@ public partial class HistoryWorkspace : MaterialForm
     private List<CertificateProgram> _certificateHistory = new();
     private List<Education> _educationHistory = new();
     private List<Employment> _jobHistory = new();
+    private List<ProfessionalSkill> _skillsHistory = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="HistoryWorkspace"/> class.
@@ -94,6 +95,15 @@ public partial class HistoryWorkspace : MaterialForm
     }
 
     /// <summary>
+    /// Disables the skill-related buttons in the user interface.
+    /// </summary>
+    private void DisableSkillButtons()
+    {
+        removeSkillButton.Enabled = false;
+        skillInfoButton.Enabled = false;
+    }
+
+    /// <summary>
     /// Enables the job-related buttons in the user interface.
     /// </summary>
     /// <remarks>
@@ -139,6 +149,15 @@ public partial class HistoryWorkspace : MaterialForm
     }
 
     /// <summary>
+    /// Enables the skill-related buttons in the user interface.
+    /// </summary>
+    private void EnableSkillButtons()
+    {
+        removeSkillButton.Enabled = true;
+        skillInfoButton.Enabled = true;
+    }
+
+    /// <summary>
     /// Saves the current industry data to a file on disk.
     /// </summary>
     /// <remarks>
@@ -155,6 +174,7 @@ public partial class HistoryWorkspace : MaterialForm
             Jobs = _jobHistory,
             Schooling = _educationHistory,
             Certificates = _certificateHistory,
+            Skills = _skillsHistory,
             Description = descriptionBox.Text
         };
 
@@ -189,6 +209,7 @@ public partial class HistoryWorkspace : MaterialForm
         _jobHistory = industry.Jobs;
         _educationHistory = industry.Schooling;
         _certificateHistory = industry.Certificates;
+        _skillsHistory = industry.Skills;
         descriptionBox.Text = industry.Description;
         Globals.AppLogger.Information("Loaded industry {Industry} from {Path}.", titleBox.Text, filepath);
     }
@@ -274,6 +295,18 @@ public partial class HistoryWorkspace : MaterialForm
     }
 
     /// <summary>
+    /// Event handler for the Click event of the add skill button.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void addSkillButton_Click(object sender, EventArgs e)
+    {
+        Globals.AppLogger.Debug("User requested to add a new skill to their industry.");
+        var addSkillForm = new AddSkillForm(_skillsHistory);
+        addSkillForm.Show();
+    }
+
+    /// <summary>
     /// Event handler for the Tick event of the jobs update timer.
     /// </summary>
     /// <param name="sender">The source of the event, typically the timer that triggered the event.</param>
@@ -351,6 +384,23 @@ public partial class HistoryWorkspace : MaterialForm
     }
 
     /// <summary>
+    /// Event handler for the Tick event of the skills update timer.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void updateSkillsTimer_Tick(object sender, EventArgs e)
+    {
+        Globals.AppLogger.Debug("Updating skills list box with {Count} items.", _skillsHistory.Count);
+        // Save some CPU cycles and only update if count changes
+        if (skillsListBox.Items.Count != _skillsHistory.Count)
+        {
+            skillsListBox.Items.Clear();
+            foreach (var skill in _skillsHistory) skillsListBox.AddItem(skill.SkillName);
+            skillsListBox.Refresh();
+        }
+    }
+
+    /// <summary>
     /// Event handler for the Click event of the history workspace.
     /// </summary>
     /// <param name="sender">The source of the event, typically the control that was clicked.</param>
@@ -412,6 +462,16 @@ public partial class HistoryWorkspace : MaterialForm
     private void certificatesListBox_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
     {
         if (certificatesListBox.SelectedItem != null) EnableCertificateButtons();
+    }
+
+    /// <summary>
+    /// Event handler for the SelectedIndexChanged event of the skills list box.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="selectedItem"></param>
+    private void skillsListBox_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
+    {
+        if (skillsListBox.SelectedItem != null) EnableSkillButtons();
     }
 
     /// <summary>
@@ -482,6 +542,24 @@ public partial class HistoryWorkspace : MaterialForm
             certificatesListBox.Items.RemoveAt(certificatesListBox.SelectedIndex);
             DisableCertificateButtons();
             certificatesListBox.SelectedItem = null;
+        }
+    }
+
+
+    /// <summary>
+    /// Event handler for the Click event of the remove skill button.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void removeSkillButton_Click(object sender, EventArgs e)
+    {
+        if (skillsListBox.SelectedItem != null)
+        {
+            Globals.AppLogger.Debug("Removing skill {Skill} from skills history.", _skillsHistory[skillsListBox.SelectedIndex].SkillName);
+            _skillsHistory.RemoveAt(skillsListBox.SelectedIndex);
+            skillsListBox.Items.RemoveAt(skillsListBox.SelectedIndex);
+            DisableSkillButtons();
+            skillsListBox.SelectedItem = null;
         }
     }
 
@@ -560,6 +638,23 @@ public partial class HistoryWorkspace : MaterialForm
     }
 
     /// <summary>
+    /// Event handler for the Click event of the skill info button.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void skillInfoButton_Click(object sender, EventArgs e)
+    {
+        if (skillsListBox.SelectedItem != null)
+        {
+            Globals.AppLogger.Debug("Showing skill info for {Skill} in skills history.", _skillsHistory[skillsListBox.SelectedIndex].SkillName);
+            var skillInfoViewer = new SkillInfoViewer(_skillsHistory[skillsListBox.SelectedIndex]);
+            DisableSkillButtons();
+            skillsListBox.SelectedItem = null;
+            skillInfoViewer.Show();
+        }
+    }
+
+    /// <summary>
     /// Event handler for the FormClosing event of the HistoryWorkspace form.
     /// </summary>
     /// <param name="sender">The source of the event, typically the form being closed.</param>
@@ -593,5 +688,45 @@ public partial class HistoryWorkspace : MaterialForm
 
         Globals.AppLogger.Information("Saving industry \"{0}\" to disk.", titleBox.Text);
         SaveIndustry();
+    }
+
+    /// <summary>
+    /// Event handler for the Click event of the jobs expansion panel.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void jobsExpansionPanel_Click(object sender, EventArgs e)
+    {
+        this.ActiveControl = null;
+    }
+
+    /// <summary>
+    /// Event handler for the Click event of the education expansion panel.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void educationExpansionPanel_Click(object sender, EventArgs e)
+    {
+        this.ActiveControl = null;
+    }
+
+    /// <summary>
+    /// Event handler for the Click event of the certificates expansion panel.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void certificatesExpansionPanel_Click(object sender, EventArgs e)
+    {
+        this.ActiveControl = null;
+    }
+
+    /// <summary>
+    /// Event handler for the Click event of the skills expansion panel.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void skillsExpansionPanel_Click(object sender, EventArgs e)
+    {
+        this.ActiveControl = null;
     }
 }

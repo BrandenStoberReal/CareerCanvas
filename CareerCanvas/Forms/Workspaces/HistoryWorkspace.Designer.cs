@@ -50,9 +50,16 @@
             updateCertificatesTimer = new System.Windows.Forms.Timer(components);
             materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
             descriptionBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            skillsExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
+            skillInfoButton = new ReaLTaiizor.Controls.MaterialButton();
+            removeSkillButton = new ReaLTaiizor.Controls.MaterialButton();
+            skillsListBox = new ReaLTaiizor.Controls.MaterialListBox();
+            addSkillButton = new ReaLTaiizor.Controls.MaterialButton();
+            updateSkillsTimer = new System.Windows.Forms.Timer(components);
             jobsExpansionPanel.SuspendLayout();
             educationExpansionPanel.SuspendLayout();
             certificatesExpansionPanel.SuspendLayout();
+            skillsExpansionPanel.SuspendLayout();
             SuspendLayout();
             // 
             // employmentListBox
@@ -61,7 +68,7 @@
             employmentListBox.BackColor = Color.White;
             employmentListBox.BorderColor = Color.LightGray;
             employmentListBox.Depth = 0;
-            employmentListBox.Font = new Font("Roboto", 16F);
+            employmentListBox.Font = new Font("Microsoft Sans Serif", 16F);
             employmentListBox.Location = new Point(27, 67);
             employmentListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             employmentListBox.Name = "employmentListBox";
@@ -107,7 +114,7 @@
             educationListBox.BackColor = Color.White;
             educationListBox.BorderColor = Color.LightGray;
             educationListBox.Depth = 0;
-            educationListBox.Font = new Font("Roboto", 16F);
+            educationListBox.Font = new Font("Microsoft Sans Serif", 16F);
             educationListBox.Location = new Point(27, 67);
             educationListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             educationListBox.Name = "educationListBox";
@@ -143,14 +150,13 @@
             // 
             // titleBox
             // 
-            titleBox.Anchor = AnchorStyles.Left;
             titleBox.AnimateReadOnly = false;
             titleBox.AutoCompleteMode = AutoCompleteMode.None;
             titleBox.AutoCompleteSource = AutoCompleteSource.None;
             titleBox.BackgroundImageLayout = ImageLayout.None;
             titleBox.CharacterCasing = CharacterCasing.Normal;
             titleBox.Depth = 0;
-            titleBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            titleBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             titleBox.HideSelection = true;
             titleBox.Hint = "Industry Name";
             titleBox.LeadingIcon = null;
@@ -202,7 +208,7 @@
             certificatesListBox.BackColor = Color.White;
             certificatesListBox.BorderColor = Color.LightGray;
             certificatesListBox.Depth = 0;
-            certificatesListBox.Font = new Font("Roboto", 16F);
+            certificatesListBox.Font = new Font("Microsoft Sans Serif", 16F);
             certificatesListBox.Location = new Point(27, 67);
             certificatesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             certificatesListBox.Name = "certificatesListBox";
@@ -223,7 +229,7 @@
             jobsExpansionPanel.Depth = 0;
             jobsExpansionPanel.Description = "Relevant job history";
             jobsExpansionPanel.ExpandHeight = 477;
-            jobsExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            jobsExpansionPanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             jobsExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
             jobsExpansionPanel.Location = new Point(17, 109);
             jobsExpansionPanel.Margin = new Padding(14, 16, 3, 16);
@@ -234,6 +240,7 @@
             jobsExpansionPanel.Size = new Size(592, 477);
             jobsExpansionPanel.TabIndex = 107;
             jobsExpansionPanel.Title = "Job History";
+            jobsExpansionPanel.Click += jobsExpansionPanel_Click;
             // 
             // jobInfoButton
             // 
@@ -292,7 +299,7 @@
             educationExpansionPanel.Depth = 0;
             educationExpansionPanel.Description = "Relevant degrees or higher education";
             educationExpansionPanel.ExpandHeight = 477;
-            educationExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            educationExpansionPanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             educationExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
             educationExpansionPanel.Location = new Point(615, 109);
             educationExpansionPanel.Margin = new Padding(3, 16, 3, 16);
@@ -303,6 +310,7 @@
             educationExpansionPanel.Size = new Size(590, 477);
             educationExpansionPanel.TabIndex = 108;
             educationExpansionPanel.Title = "Education History";
+            educationExpansionPanel.Click += educationExpansionPanel_Click;
             // 
             // educationInfoButton
             // 
@@ -361,7 +369,7 @@
             certificatesExpansionPanel.Depth = 0;
             certificatesExpansionPanel.Description = "Relevant certificate programs";
             certificatesExpansionPanel.ExpandHeight = 477;
-            certificatesExpansionPanel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            certificatesExpansionPanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             certificatesExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
             certificatesExpansionPanel.Location = new Point(1211, 109);
             certificatesExpansionPanel.Margin = new Padding(3, 16, 3, 16);
@@ -372,6 +380,7 @@
             certificatesExpansionPanel.Size = new Size(592, 477);
             certificatesExpansionPanel.TabIndex = 2;
             certificatesExpansionPanel.Title = "Certificates";
+            certificatesExpansionPanel.Click += certificatesExpansionPanel_Click;
             // 
             // certificateInfoButton
             // 
@@ -453,7 +462,7 @@
             descriptionBox.BackgroundImageLayout = ImageLayout.None;
             descriptionBox.CharacterCasing = CharacterCasing.Normal;
             descriptionBox.Depth = 0;
-            descriptionBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            descriptionBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             descriptionBox.HideSelection = true;
             descriptionBox.Hint = "Description (optional)";
             descriptionBox.LeadingIcon = null;
@@ -476,13 +485,130 @@
             descriptionBox.TrailingIcon = null;
             descriptionBox.UseSystemPasswordChar = false;
             // 
+            // skillsExpansionPanel
+            // 
+            skillsExpansionPanel.BackColor = Color.FromArgb(255, 255, 255);
+            skillsExpansionPanel.Controls.Add(skillInfoButton);
+            skillsExpansionPanel.Controls.Add(removeSkillButton);
+            skillsExpansionPanel.Controls.Add(skillsListBox);
+            skillsExpansionPanel.Controls.Add(addSkillButton);
+            skillsExpansionPanel.Depth = 0;
+            skillsExpansionPanel.Description = "Relevant professional skills";
+            skillsExpansionPanel.ExpandHeight = 477;
+            skillsExpansionPanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            skillsExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            skillsExpansionPanel.Location = new Point(17, 597);
+            skillsExpansionPanel.Margin = new Padding(14, 16, 3, 16);
+            skillsExpansionPanel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            skillsExpansionPanel.Name = "skillsExpansionPanel";
+            skillsExpansionPanel.Padding = new Padding(24, 64, 24, 16);
+            skillsExpansionPanel.ShowValidationButtons = false;
+            skillsExpansionPanel.Size = new Size(592, 477);
+            skillsExpansionPanel.TabIndex = 108;
+            skillsExpansionPanel.Title = "Skills";
+            skillsExpansionPanel.Click += skillsExpansionPanel_Click;
+            // 
+            // skillInfoButton
+            // 
+            skillInfoButton.AutoSize = false;
+            skillInfoButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            skillInfoButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            skillInfoButton.Depth = 0;
+            skillInfoButton.Enabled = false;
+            skillInfoButton.HighEmphasis = true;
+            skillInfoButton.Icon = null;
+            skillInfoButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            skillInfoButton.Location = new Point(492, 163);
+            skillInfoButton.Margin = new Padding(4, 6, 4, 6);
+            skillInfoButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            skillInfoButton.Name = "skillInfoButton";
+            skillInfoButton.NoAccentTextColor = Color.Empty;
+            skillInfoButton.Size = new Size(82, 36);
+            skillInfoButton.TabIndex = 102;
+            skillInfoButton.TabStop = false;
+            skillInfoButton.Text = "Info";
+            skillInfoButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            skillInfoButton.UseAccentColor = false;
+            skillInfoButton.UseVisualStyleBackColor = true;
+            skillInfoButton.Click += skillInfoButton_Click;
+            // 
+            // removeSkillButton
+            // 
+            removeSkillButton.AutoSize = false;
+            removeSkillButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            removeSkillButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            removeSkillButton.Depth = 0;
+            removeSkillButton.Enabled = false;
+            removeSkillButton.HighEmphasis = true;
+            removeSkillButton.Icon = null;
+            removeSkillButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            removeSkillButton.Location = new Point(492, 115);
+            removeSkillButton.Margin = new Padding(4, 6, 4, 6);
+            removeSkillButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            removeSkillButton.Name = "removeSkillButton";
+            removeSkillButton.NoAccentTextColor = Color.Empty;
+            removeSkillButton.Size = new Size(82, 36);
+            removeSkillButton.TabIndex = 101;
+            removeSkillButton.Text = "Remove";
+            removeSkillButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            removeSkillButton.UseAccentColor = false;
+            removeSkillButton.UseVisualStyleBackColor = true;
+            removeSkillButton.Click += removeSkillButton_Click;
+            // 
+            // skillsListBox
+            // 
+            skillsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            skillsListBox.BackColor = Color.White;
+            skillsListBox.BorderColor = Color.LightGray;
+            skillsListBox.Depth = 0;
+            skillsListBox.Font = new Font("Microsoft Sans Serif", 16F);
+            skillsListBox.Location = new Point(27, 67);
+            skillsListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            skillsListBox.Name = "skillsListBox";
+            skillsListBox.SelectedIndex = -1;
+            skillsListBox.SelectedItem = null;
+            skillsListBox.ShowScrollBar = true;
+            skillsListBox.Size = new Size(458, 391);
+            skillsListBox.TabIndex = 0;
+            skillsListBox.SelectedIndexChanged += skillsListBox_SelectedIndexChanged;
+            // 
+            // addSkillButton
+            // 
+            addSkillButton.AutoSize = false;
+            addSkillButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            addSkillButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            addSkillButton.Depth = 0;
+            addSkillButton.HighEmphasis = true;
+            addSkillButton.Icon = null;
+            addSkillButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            addSkillButton.Location = new Point(492, 67);
+            addSkillButton.Margin = new Padding(4, 6, 4, 6);
+            addSkillButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            addSkillButton.Name = "addSkillButton";
+            addSkillButton.NoAccentTextColor = Color.Empty;
+            addSkillButton.Size = new Size(82, 36);
+            addSkillButton.TabIndex = 100;
+            addSkillButton.TabStop = false;
+            addSkillButton.Text = "Add";
+            addSkillButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            addSkillButton.UseAccentColor = false;
+            addSkillButton.UseVisualStyleBackColor = true;
+            addSkillButton.Click += addSkillButton_Click;
+            // 
+            // updateSkillsTimer
+            // 
+            updateSkillsTimer.Enabled = true;
+            updateSkillsTimer.Interval = 200;
+            updateSkillsTimer.Tick += updateSkillsTimer_Tick;
+            // 
             // HistoryWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1820, 605);
+            ClientSize = new Size(1820, 1092);
             Controls.Add(descriptionBox);
             Controls.Add(materialLabel1);
+            Controls.Add(skillsExpansionPanel);
             Controls.Add(titleBox);
             Controls.Add(certificatesExpansionPanel);
             Controls.Add(educationExpansionPanel);
@@ -502,6 +628,8 @@
             educationExpansionPanel.PerformLayout();
             certificatesExpansionPanel.ResumeLayout(false);
             certificatesExpansionPanel.PerformLayout();
+            skillsExpansionPanel.ResumeLayout(false);
+            skillsExpansionPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -528,5 +656,11 @@
         private ReaLTaiizor.Controls.MaterialButton jobInfoButton;
         private ReaLTaiizor.Controls.MaterialButton educationInfoButton;
         private ReaLTaiizor.Controls.MaterialButton certificateInfoButton;
+        private ReaLTaiizor.Controls.MaterialExpansionPanel skillsExpansionPanel;
+        private ReaLTaiizor.Controls.MaterialButton skillInfoButton;
+        private ReaLTaiizor.Controls.MaterialButton removeSkillButton;
+        private ReaLTaiizor.Controls.MaterialListBox skillsListBox;
+        private ReaLTaiizor.Controls.MaterialButton addSkillButton;
+        private System.Windows.Forms.Timer updateSkillsTimer;
     }
 }

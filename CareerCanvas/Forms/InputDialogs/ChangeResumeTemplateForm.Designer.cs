@@ -49,13 +49,14 @@
             materialCard1.Padding = new Padding(14);
             materialCard1.Size = new Size(200, 641);
             materialCard1.TabIndex = 0;
+            materialCard1.Click += materialCard1_Click;
             // 
             // templateListBox
             // 
             templateListBox.BackColor = Color.White;
             templateListBox.BorderColor = Color.LightGray;
             templateListBox.Depth = 0;
-            templateListBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            templateListBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             templateListBox.Location = new Point(17, 17);
             templateListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             templateListBox.Name = "templateListBox";

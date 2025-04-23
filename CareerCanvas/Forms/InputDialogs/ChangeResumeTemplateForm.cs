@@ -39,6 +39,7 @@ namespace CareerCanvas.Forms.InputDialogs
 
         private void ChangeResumeTemplateForm_Load(object sender, EventArgs e)
         {
+            // Ensure previewer is loaded
             previewWebView.EnsureCoreWebView2Async();
 
             // Load templates into list
@@ -94,6 +95,10 @@ namespace CareerCanvas.Forms.InputDialogs
         private void previewWebView_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
             previewWebView.NavigateToString(parentForm.Template.DocumentNode.OuterHtml);
+        }
+
+        private void materialCard1_Click(object sender, EventArgs e)
+        {
         }
     }
 }
