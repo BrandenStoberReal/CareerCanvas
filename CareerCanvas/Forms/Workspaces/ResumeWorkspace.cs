@@ -23,6 +23,11 @@ public partial class ResumeWorkspace : MaterialForm
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string TemplatePath { get; set; } = Path.Combine("./templates/resume", "default.html");
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ResumeWorkspace"/> class.
+    /// </summary>
+    /// <param name="identity"></param>
+    /// <param name="industry"></param>
     public ResumeWorkspace(ProfessionalIdentity identity, Industry industry)
     {
         InitializeComponent();
@@ -262,7 +267,11 @@ public partial class ResumeWorkspace : MaterialForm
         }
     }
 
-
+    /// <summary>
+    /// Event handler for the ResumeWorkspace form load event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void ResumeWorkspace_Load(object sender, EventArgs e)
     {
         // Load the webview runtime
@@ -270,12 +279,22 @@ public partial class ResumeWorkspace : MaterialForm
         Globals.AppLogger.Debug("WebView2 runtime loaded asyncronously in ResumeWorkspace.");
     }
 
+    /// <summary>
+    /// Event handler for the open template folder button click event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void openTemplateFolderButton_Click(object sender, EventArgs e)
     {
         FolderUtils.OpenFolder(Path.GetFullPath("./templates/resume"));
         Globals.AppLogger.Debug("Opened template folder in ResumeWorkspace.");
     }
 
+    /// <summary>
+    /// Event handler for the WebView2 initialization completed event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void resumeViewer_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
     {
         // Load default template
@@ -292,16 +311,31 @@ public partial class ResumeWorkspace : MaterialForm
         Globals.AppLogger.Information("Loaded resume template into WebView2.");
     }
 
+    /// <summary>
+    /// Event handler for material card clicking.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void materialCard1_Click(object sender, EventArgs e)
     {
         ActiveControl = null;
     }
 
+    /// <summary>
+    /// Event handler for material card clicking.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void materialCard2_Click(object sender, EventArgs e)
     {
         ActiveControl = null;
     }
 
+    /// <summary>
+    /// Event handler for the load template button click event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void loadTemplateButton_Click(object sender, EventArgs e)
     {
         Globals.AppLogger.Information("User requested to change the active resume template.");
@@ -312,23 +346,43 @@ public partial class ResumeWorkspace : MaterialForm
         resumeViewer.NavigateToString(Template.DocumentNode.OuterHtml);
     }
 
+    /// <summary>
+    /// Event handler for the export HTML button click event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void exportHtmlButton_Click(object sender, EventArgs e)
     {
         ExportToHtml();
         Globals.AppLogger.Information("User exported resume to HTML format.");
     }
 
+    /// <summary>
+    /// Event handler for the export PDF button click event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void exportPdfButton_Click(object sender, EventArgs e)
     {
         ExportToPDF();
         Globals.AppLogger.Information("User exported resume to PDF format.");
     }
 
+    /// <summary>
+    /// Event handler for the table layout click event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void tableLayoutPanel1_Click(object sender, EventArgs e)
     {
         this.ActiveControl = null;
     }
 
+    /// <summary>
+    /// Event handler for the table layout click event.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void tableLayoutPanel2_Click(object sender, EventArgs e)
     {
         this.ActiveControl = null;
