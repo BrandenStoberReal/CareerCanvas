@@ -77,16 +77,16 @@ Some macros are listed as `required` in the table below. Despite the name, these
 | `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
 
 ## Static Macro Implementation
-Static macros are used to replace a single value in the document. For example, the `{{fullName}}` macro will be replaced with the full name of the resume's owner. These macros can be defined anywhere in the document without issue. However, you must provide each static macro with an assigned unique ID, documented below.
+Static macros are required to be assigned a unique ID. This is used to delete the macro's parent element if the user does not provide relevant data. Each static macro has its own ID, which is used to identify the parent element of the macro and delete it if needed.
 
-### Static Macro IDs
-| Macro Name | ID | Description |
-| :---: | :---: | :---: |
-| `{{fullName}}` | `name` | The full name of the resume's owner. |
-| `{{homeAddress}}` | `address` | The resume owner's legal residence. |
-| `{{emailAddress}}` | `email` | The resume owner's email address. |
-| `{{phoneNumber}}` | `phonenumber` | The resume owner's phone number. |
-| `{{linkedIn}}` | `linkedin` | The resume owner's LinkedIn profile. |
+## Static Macro IDs
+| Macro Name | ID |
+| :---: | :---: |
+| `{{fullName}}` | `name` |
+| `{{homeAddress}}` | `address` |
+| `{{emailAddress}}` | `email` |
+| `{{phoneNumber}}` | `phonenumber` |
+| `{{linkedIn}}` | `linkedin` |
 
 ## Dynamic Macro Implementation
 Dynamic macros are used to create a list of items that are repeated for each item in the list. For example, the `{{jobTitle}}` macro will be replaced with the job title of each job in the user's work history.
