@@ -164,44 +164,62 @@ public partial class ResumeWorkspace : MaterialForm
                 await page.GoToAsync(Path.GetFullPath(tempHtmlPath));
 
                 // Extract background color from the document using JavaScript
-                string colormatchCode = File.ReadAllText(Path.GetFullPath("./js/colormatch.js"));
-                var backgroundColor = await page.EvaluateFunctionAsync<string>(colormatchCode);
-
-                // Add custom CSS for optimal PDF rendering while preserving original styling
-                await page.AddStyleTagAsync(new AddTagOptions
+                if (backgroundToggle.Checked)
                 {
-                    Content = $@"
-                    @page {{
-                        size: letter;
-                        margin: 0.25in;
-                        background-color: {backgroundColor} !important;
-                    }}
-                    html {{
-                        background-color: {backgroundColor} !important;
-                        margin: 0;
-                        padding: 0;
-                    }}
-                    h1, h2, h3, h4, h5, h6 {{
-                        margin-top: 0.3em;
-                        margin-bottom: 0.3em;
-                    }}
-                    ul, ol {{
-                        margin-bottom: 0.2em;
-                        padding-left: 1.8em;
-                    }}
-                "
-                });
+                    string colormatchCode = File.ReadAllText(Path.GetFullPath("./js/colormatch.js"));
+                    var backgroundColor = await page.EvaluateFunctionAsync<string>(colormatchCode);
+
+                    // Add custom CSS for optimal PDF rendering while preserving original styling
+                    await page.AddStyleTagAsync(new AddTagOptions
+                    {
+                        Content = $@"
+                        @page {{
+                            size: letter;
+                            margin: 0.25in;
+                            background-color: {backgroundColor} !important;
+                        }}
+                        html {{
+                            background-color: {backgroundColor} !important;
+                            margin: 0;
+                            padding: 0;
+                        }}
+                        h1, h2, h3, h4, h5, h6 {{
+                            margin-top: 0.3em;
+                            margin-bottom: 0.3em;
+                        }}
+                        ul, ol {{
+                            margin-bottom: 0.2em;
+                            padding-left: 1.8em;
+                        }}
+                    "
+                    });
+                }
 
                 // Apply final document optimizations before PDF generation
-                string optimizationCode = File.ReadAllText(Path.GetFullPath("./js/finalize.js"));
-                await page.EvaluateFunctionAsync(optimizationCode);
+                if (optimizeToggle.Checked)
+                {
+                    string optimizationCode = File.ReadAllText(Path.GetFullPath("./js/finalize.js"));
+                    await page.EvaluateFunctionAsync(optimizationCode);
+                }
+
+                // Remove shadows from elements to prevent rendering issues
+                if (!useShadowsToggle.Checked)
+                {
+                    // Remove shadows if the toggle is unchecked
+                    string removeShadowsCode = File.ReadAllText(Path.GetFullPath("./js/noshadows.js"));
+                    await page.EvaluateFunctionAsync(removeShadowsCode);
+                }
 
 
                 // Analyze content and calculate optimal scale to maximize use of page
-                string scaleCode = File.ReadAllText(Path.GetFullPath("./js/optimize.js"));
-                var optimizedScale = await page.EvaluateFunctionAsync<decimal>(scaleCode);
+                var optimizedScale = 0.95M;
 
-
+                if (scaleToggle.Checked)
+                {
+                    // Calculate optimal scale based on content size
+                    string scaleCode = File.ReadAllText(Path.GetFullPath("./js/rescale.js"));
+                    optimizedScale = await page.EvaluateFunctionAsync<decimal>(scaleCode);
+                }
 
                 // Generate the PDF with optimized formatting
                 await page.PdfAsync(saveFileDialog.FileName, new PdfOptions

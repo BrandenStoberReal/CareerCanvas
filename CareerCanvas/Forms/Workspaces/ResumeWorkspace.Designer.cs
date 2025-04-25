@@ -38,6 +38,10 @@
             loadTemplateButton = new ReaLTaiizor.Controls.MaterialButton();
             materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
             tableLayoutPanel1 = new TableLayoutPanel();
+            useShadowsToggle = new ReaLTaiizor.Controls.MaterialSwitch();
+            scaleToggle = new ReaLTaiizor.Controls.MaterialSwitch();
+            optimizeToggle = new ReaLTaiizor.Controls.MaterialSwitch();
+            backgroundToggle = new ReaLTaiizor.Controls.MaterialSwitch();
             materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)resumeViewer).BeginInit();
             materialCard1.SuspendLayout();
@@ -228,6 +232,10 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(loadTemplateButton, 0, 0);
             tableLayoutPanel1.Controls.Add(openTemplateFolderButton, 1, 0);
+            tableLayoutPanel1.Controls.Add(useShadowsToggle, 0, 1);
+            tableLayoutPanel1.Controls.Add(scaleToggle, 0, 2);
+            tableLayoutPanel1.Controls.Add(optimizeToggle, 0, 3);
+            tableLayoutPanel1.Controls.Add(backgroundToggle, 0, 4);
             tableLayoutPanel1.Location = new Point(17, 53);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 8;
@@ -241,6 +249,80 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.Size = new Size(437, 828);
             tableLayoutPanel1.TabIndex = 3;
+            // 
+            // useShadowsToggle
+            // 
+            useShadowsToggle.Anchor = AnchorStyles.Left;
+            useShadowsToggle.AutoSize = true;
+            useShadowsToggle.Depth = 0;
+            useShadowsToggle.Location = new Point(0, 56);
+            useShadowsToggle.Margin = new Padding(0);
+            useShadowsToggle.MouseLocation = new Point(-1, -1);
+            useShadowsToggle.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            useShadowsToggle.Name = "useShadowsToggle";
+            useShadowsToggle.Ripple = true;
+            useShadowsToggle.Size = new Size(124, 37);
+            useShadowsToggle.TabIndex = 2;
+            useShadowsToggle.Text = "Shadows";
+            useShadowsToggle.UseAccentColor = false;
+            useShadowsToggle.UseVisualStyleBackColor = true;
+            // 
+            // scaleToggle
+            // 
+            scaleToggle.Anchor = AnchorStyles.Left;
+            scaleToggle.AutoSize = true;
+            scaleToggle.Checked = true;
+            scaleToggle.CheckState = CheckState.Indeterminate;
+            scaleToggle.Depth = 0;
+            scaleToggle.Location = new Point(0, 106);
+            scaleToggle.Margin = new Padding(0);
+            scaleToggle.MouseLocation = new Point(-1, -1);
+            scaleToggle.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            scaleToggle.Name = "scaleToggle";
+            scaleToggle.Ripple = true;
+            scaleToggle.Size = new Size(137, 37);
+            scaleToggle.TabIndex = 3;
+            scaleToggle.Text = "Scale to Fit";
+            scaleToggle.UseAccentColor = false;
+            scaleToggle.UseVisualStyleBackColor = true;
+            // 
+            // optimizeToggle
+            // 
+            optimizeToggle.Anchor = AnchorStyles.Left;
+            optimizeToggle.AutoSize = true;
+            optimizeToggle.Checked = true;
+            optimizeToggle.CheckState = CheckState.Indeterminate;
+            optimizeToggle.Depth = 0;
+            optimizeToggle.Location = new Point(0, 156);
+            optimizeToggle.Margin = new Padding(0);
+            optimizeToggle.MouseLocation = new Point(-1, -1);
+            optimizeToggle.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            optimizeToggle.Name = "optimizeToggle";
+            optimizeToggle.Ripple = true;
+            optimizeToggle.Size = new Size(169, 37);
+            optimizeToggle.TabIndex = 4;
+            optimizeToggle.Text = "Optimize HTML";
+            optimizeToggle.UseAccentColor = false;
+            optimizeToggle.UseVisualStyleBackColor = true;
+            // 
+            // backgroundToggle
+            // 
+            backgroundToggle.Anchor = AnchorStyles.Left;
+            backgroundToggle.AutoSize = true;
+            backgroundToggle.Checked = true;
+            backgroundToggle.CheckState = CheckState.Checked;
+            backgroundToggle.Depth = 0;
+            backgroundToggle.Location = new Point(0, 206);
+            backgroundToggle.Margin = new Padding(0);
+            backgroundToggle.MouseLocation = new Point(-1, -1);
+            backgroundToggle.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            backgroundToggle.Name = "backgroundToggle";
+            backgroundToggle.Ripple = true;
+            backgroundToggle.Size = new Size(162, 37);
+            backgroundToggle.TabIndex = 5;
+            backgroundToggle.Text = "Colormatching";
+            backgroundToggle.UseAccentColor = false;
+            backgroundToggle.UseVisualStyleBackColor = true;
             // 
             // materialLabel1
             // 
@@ -293,5 +375,9 @@
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private TableLayoutPanel tableLayoutPanel2;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel2;
+        private ReaLTaiizor.Controls.MaterialSwitch useShadowsToggle;
+        private ReaLTaiizor.Controls.MaterialSwitch scaleToggle;
+        private ReaLTaiizor.Controls.MaterialSwitch optimizeToggle;
+        private ReaLTaiizor.Controls.MaterialSwitch backgroundToggle;
     }
 }
