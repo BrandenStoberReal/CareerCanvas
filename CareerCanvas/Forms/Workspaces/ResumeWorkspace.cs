@@ -159,24 +159,24 @@ public partial class ResumeWorkspace : MaterialForm
                 // Extract background color from the document using JavaScript
                 // The function tries to find the most appropriate background color from various elements
                 var backgroundColor = await page.EvaluateFunctionAsync<string>(@"() => {
-                // Try to get the background color from various elements
-                const bodyBg = window.getComputedStyle(document.body).backgroundColor;
-                if (bodyBg && bodyBg !== 'rgba(0, 0, 0, 0)' && bodyBg !== 'transparent') {
-                    return bodyBg;
-                }
-
-                // Check if there's a main container with background
-                const mainContainers = document.querySelectorAll('main, .container, .content, #content, #main');
-                for (const container of mainContainers) {
-                    const containerBg = window.getComputedStyle(container).backgroundColor;
-                    if (containerBg && containerBg !== 'rgba(0, 0, 0, 0)' && containerBg !== 'transparent') {
-                        return containerBg;
+                    // Try to get the background color from various elements
+                    const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+                    if (bodyBg && bodyBg !== 'rgba(0, 0, 0, 0)' && bodyBg !== 'transparent') {
+                        return bodyBg;
                     }
-                }
 
-                // Default to white if no background found
-                return 'rgb(255, 255, 255)';
-            }");
+                    // Check if there's a main container with background
+                    const mainContainers = document.querySelectorAll('main, .container, .content, #content, #main');
+                    for (const container of mainContainers) {
+                        const containerBg = window.getComputedStyle(container).backgroundColor;
+                        if (containerBg && containerBg !== 'rgba(0, 0, 0, 0)' && containerBg !== 'transparent') {
+                            return containerBg;
+                        }
+                    }
+
+                    // Default to white if no background found
+                    return 'rgb(255, 255, 255)';
+                }");
 
                 // Add custom CSS to ensure consistent PDF rendering
                 // This CSS handles page formatting, prevents awkward page breaks,
@@ -245,27 +245,60 @@ public partial class ResumeWorkspace : MaterialForm
                 // Apply additional dynamic styles using JavaScript
                 // This ensures consistent background color and helps identify and format resume sections
                 await page.EvaluateFunctionAsync($@"() => {{
-                // Apply consistent background color to all top-level elements
-                document.body.style.backgroundColor = '{backgroundColor}';
-                document.documentElement.style.backgroundColor = '{backgroundColor}';
+                    // Apply consistent background color to all top-level elements
+                    document.body.style.backgroundColor = '{backgroundColor}';
+                    document.documentElement.style.backgroundColor = '{backgroundColor}';
 
-                // Apply page-break-inside: avoid to all div elements with children
-                document.querySelectorAll('div').forEach(div => {{
-                    if (div.children.length > 0 && div.children.length < 5) {{
-                        div.style.pageBreakInside = 'avoid';
-                    }}
-                }});
+                    // Apply page-break-inside: avoid to all div elements with children
+                    document.querySelectorAll('div').forEach(div => {{
+                        if (div.children.length > 0 && div.children.length < 5) {{
+                            div.style.pageBreakInside = 'avoid';
+                        }}
+                    }});
 
-                // Find resume sections by identifying groups of elements
-                const sections = Array.from(document.body.children).filter(el =>
-                    el.tagName !== 'SCRIPT' &&
-                    el.tagName !== 'STYLE' &&
-                    el.offsetHeight > 10);
+                    // Find resume sections by identifying groups of elements
+                    const sections = Array.from(document.body.children).filter(el =>
+                        el.tagName !== 'SCRIPT' &&
+                        el.tagName !== 'STYLE' &&
+                        el.offsetHeight > 10);
 
-                sections.forEach(section => {{
-                    section.style.pageBreakInside = 'avoid';
-                }});
-            }}");
+                    sections.forEach(section => {{
+                        section.style.pageBreakInside = 'avoid';
+                    }});
+                }}");
+
+                // Check if content overflows a single page and calculate appropriate scale
+                var scale = await page.EvaluateExpressionAsync<decimal>(@"
+                    function getScaleFactor() {
+                        // Get the total height of the content
+                        const body = document.body;
+                        const html = document.documentElement;
+                        const contentHeight = Math.max(
+                            body.scrollHeight, body.offsetHeight,
+                            html.clientHeight, html.scrollHeight, html.offsetHeight
+                        );
+                
+                        // Calculate available height for Letter size with margins
+                        // Letter size is 8.5 x 11 inches, convert to pixels at 96 DPI
+                        const letterHeightInches = 11;
+                        const dpi = 96;
+                        const marginInches = 0.5 * 2; // 0.5 inch margins top and bottom
+                        const availableHeightPixels = (letterHeightInches - marginInches) * dpi;
+                
+                        // Calculate the scale needed to fit content on one page
+                        // Start with 0.95 as the default scale
+                        let scale = 0.95;
+                
+                        // If content is too tall, calculate the scale needed
+                        if (contentHeight > availableHeightPixels) {
+                            scale = Math.max(0.7, (availableHeightPixels / contentHeight) * 0.95);
+                        }
+                
+                        return scale;
+                    }
+                    getScaleFactor();
+                ");
+
 
                 // Generate the PDF with specific formatting options
                 await page.PdfAsync(saveFileDialog.FileName, new PdfOptions
@@ -280,7 +313,7 @@ public partial class ResumeWorkspace : MaterialForm
                         Right = "0.5in"
                     },
                     PreferCSSPageSize = true,
-                    Scale = 0.95M  // Slightly scale down to ensure content fits
+                    Scale = scale  // Slightly scale down to ensure content fits
                 });
 
                 // Clean up browser resources

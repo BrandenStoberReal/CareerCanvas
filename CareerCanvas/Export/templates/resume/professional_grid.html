@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .resume-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background: #2a3d45;
+            color: white;
+            padding: 40px 25px;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 20px;
+        }
+
+            .profile h1 {
+                margin: 0;
+                font-size: 28px;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+            .contact-info p {
+                margin: 10px 0;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+            }
+
+                .contact-info p:before {
+                    content: "•";
+                    margin-right: 10px;
+                    color: #ddd;
+                }
+
+        .skills-section h2 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+            .skills-section h2:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 40px;
+                height: 3px;
+                background: #84a98c;
+            }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+            .skill-item:hover {
+                background: rgba(255,255,255,0.2);
+                transform: translateY(-2px);
+            }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            color: #2a3d45;
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #84a98c;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+            .timeline:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 5px;
+                height: calc(100% - 10px);
+                width: 2px;
+                background: #eee;
+            }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+
+            .timeline-item:before {
+                content: '';
+                position: absolute;
+                left: -6px;
+                top: 4px;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: #84a98c;
+            }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 17px;
+            color: #2a3d45;
+        }
+
+        .timeline-subtitle {
+            font-size: 15px;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .timeline-content {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        #professionalsummary {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #444;
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 4px;
+            border-left: 3px solid #84a98c;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                padding: 25px;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="sidebar">
+            <div class="profile">
+                <h1 id="name">{{fullName}}</h1>
+            </div>
+
+            <div class="contact-info" id="contact-info">
+                <p id="address">{{homeAddress}}</p>
+                <p id="email">{{emailAddress}}</p>
+                <p id="phonenumber">{{phoneNumber}}</p>
+                <p id="linkedin">{{linkedIn}}</p>
+            </div>
+
+            <div class="skills-section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid" id="skills">
+                    <div class="skill-item skillentry">{{skillName}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section" id="summarycontainer">
+                <h2 class="section-title">About Me</h2>
+                <p id="professionalsummary">{{resumeSummary}}</p>
+            </div>
+
+            <div class="section" id="experiencesection">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item jobentry">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">{{jobTitle}}</div>
+                                <div class="timeline-subtitle">{{jobCompanyName}}</div>
+                            </div>
+                            <div class="timeline-date">{{jobStartDate}} - {{jobEndDate}}</div>
+                        </div>
+                        <div class="timeline-content">{{jobDescription}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="educationsection">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item educationentry">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">{{degreeType}}</div>
+                                <div class="timeline-subtitle">{{schoolName}}</div>
+                            </div>
+                            <div class="timeline-date">{{schoolStartDate}} - {{schoolEndDate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="certificatesection">
+                <h2 class="section-title">Certifications</h2>
+                <div class="timeline">
+                    <div class="timeline-item certificateentry">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">{{certificateName}}</div>
+                                <div class="timeline-subtitle">{{certificateIssuingOrganization}}</div>
+                            </div>
+                            <div class="timeline-date">{{certificateDate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

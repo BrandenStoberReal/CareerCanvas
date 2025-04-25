@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a3d66;
+            --secondary: #8d99ae;
+            --accent: #ef476f;
+            --background: #f8f9fa;
+            --text: #212529;
+            --light: #ffffff;
+            --border: #dee2e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 30px 0;
+        }
+
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--light);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--primary);
+            color: var(--light);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+        }
+
+            .header h1 {
+                font-family: 'Merriweather', serif;
+                font-size: 2.8rem;
+                margin-bottom: 20px;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            font-weight: 700;
+        }
+
+        .card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .card-date {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 300;
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        #professionalsummary {
+            font-family: 'Merriweather', serif;
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--text);
+            padding: 20px;
+            background: var(--background);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: var(--background);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--primary);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+            .skill-card:hover {
+                background: var(--primary);
+                color: var(--light);
+                transform: scale(1.05);
+            }
+
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header, .content {
+                padding: 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <h1 id="name">{{fullName}}</h1>
+            <div class="contact-grid" id="contact-info">
+                <div class="contact-item" id="address">{{homeAddress}}</div>
+                <div class="contact-item" id="email">{{emailAddress}}</div>
+                <div class="contact-item" id="phonenumber">{{phoneNumber}}</div>
+                <div class="contact-item" id="linkedin">{{linkedIn}}</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section full-width" id="summarycontainer">
+                <h2 class="section-title">Professional Overview</h2>
+                <p id="professionalsummary">{{resumeSummary}}</p>
+            </div>
+
+            <div class="section" id="experiencesection">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="card jobentry">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">{{jobTitle}}</div>
+                            <div class="card-subtitle">{{jobCompanyName}}</div>
+                        </div>
+                        <div class="card-date">{{jobStartDate}} - {{jobEndDate}}</div>
+                    </div>
+                    <div class="card-content">{{jobDescription}}</div>
+                </div>
+            </div>
+
+            <div class="section" id="educationsection">
+                <h2 class="section-title">Education</h2>
+                <div class="card educationentry">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">{{degreeType}}</div>
+                            <div class="card-subtitle">{{schoolName}}</div>
+                        </div>
+                        <div class="card-date">{{schoolStartDate}} - {{schoolEndDate}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" id="certificatesection">
+                <h2 class="section-title">Certifications</h2>
+                <div class="card certificateentry">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">{{certificateName}}</div>
+                            <div class="card-subtitle">{{certificateIssuingOrganization}}</div>
+                        </div>
+                        <div class="card-date">{{certificateDate}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section full-width">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="skills-grid" id="skills">
+                    <div class="skill-card skillentry">{{skillName}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
