@@ -153,11 +153,17 @@ public partial class ResumeWorkspace : MaterialForm
                 // Create a new page in the browser
                 var page = await browser.NewPageAsync();
 
+                // Set viewport size to match US Letter size (8.5 x 11 inches at 96 DPI)
+                await page.SetViewportAsync(new ViewPortOptions
+                {
+                    Width = 816, // 8.5 inches * 96 DPI
+                    Height = 1056 // 11 inches * 96 DPI
+                });
+
                 // Navigate to the temporary HTML file
                 await page.GoToAsync(Path.GetFullPath(tempHtmlPath));
 
                 // Extract background color from the document using JavaScript
-                // The function tries to find the most appropriate background color from various elements
                 var backgroundColor = await page.EvaluateFunctionAsync<string>(@"() => {
                     // Try to get the background color from various elements
                     const bodyBg = window.getComputedStyle(document.body).backgroundColor;
@@ -178,142 +184,267 @@ public partial class ResumeWorkspace : MaterialForm
                     return 'rgb(255, 255, 255)';
                 }");
 
-                // Add custom CSS to ensure consistent PDF rendering
-                // This CSS handles page formatting, prevents awkward page breaks,
-                // and maintains consistent styling across different templates
+                // Add custom CSS for optimal PDF rendering while preserving original styling
                 await page.AddStyleTagAsync(new AddTagOptions
                 {
                     Content = $@"
-                    /* Ensure consistent background color */
                     @page {{
                         size: letter;
-                        margin: 0.3in;
-                        background-color: {backgroundColor};
-                    }}
-
-                    body {{
-                        font-size: 11px;
-                        line-height: 1.3;
+                        margin: 0.25in;
                         background-color: {backgroundColor} !important;
-                        margin: 0;
-                        padding: 0.4in;
                     }}
-
-                    /* Ensure the html element has the background as well */
                     html {{
                         background-color: {backgroundColor} !important;
+                        margin: 0;
+                        padding: 0;
                     }}
-
-                    /* Universal selectors to prevent page breaks within elements */
-                    div, section, article, aside, nav, header, footer {{
-                        page-break-inside: avoid;
-                    }}
-
-                    /* Headings should keep content with them */
                     h1, h2, h3, h4, h5, h6 {{
-                        page-break-after: avoid;
-                        margin-top: 5px;
-                        margin-bottom: 5px;
+                        margin-top: 0.3em;
+                        margin-bottom: 0.3em;
                     }}
-
-                    /* Paragraphs and list items should not break */
-                    p, li, dt, dd, tr, th, td {{
-                        page-break-inside: avoid;
-                    }}
-
-                    /* Lists should stay with their headers */
-                    ul, ol, dl, table {{
-                        page-break-before: avoid;
-                        page-break-inside: avoid;
-                    }}
-
-                    /* Anchor common resume section containers by common attributes */
-                    [class*='section'], [class*='entry'], [class*='item'],
-                    [id*='section'], [id*='entry'], [id*='item'],
-                    [class*='experience'], [class*='education'], [class*='skill'], [class*='certificate'],
-                    [id*='experience'], [id*='education'], [id*='skill'], [id*='certificate'] {{
-                        page-break-inside: avoid;
-                    }}
-
-                    /* Images should not break */
-                    img {{
-                        page-break-inside: avoid;
+                    ul, ol {{
+                        margin-bottom: 0.2em;
+                        padding-left: 1.8em;
                     }}
                 "
                 });
 
-                // Apply additional dynamic styles using JavaScript
-                // This ensures consistent background color and helps identify and format resume sections
-                await page.EvaluateFunctionAsync($@"() => {{
-                    // Apply consistent background color to all top-level elements
-                    document.body.style.backgroundColor = '{backgroundColor}';
-                    document.documentElement.style.backgroundColor = '{backgroundColor}';
-
-                    // Apply page-break-inside: avoid to all div elements with children
-                    document.querySelectorAll('div').forEach(div => {{
-                        if (div.children.length > 0 && div.children.length < 5) {{
-                            div.style.pageBreakInside = 'avoid';
-                        }}
-                    }});
-
-                    // Find resume sections by identifying groups of elements
-                    const sections = Array.from(document.body.children).filter(el =>
-                        el.tagName !== 'SCRIPT' &&
-                        el.tagName !== 'STYLE' &&
-                        el.offsetHeight > 10);
-
-                    sections.forEach(section => {{
-                        section.style.pageBreakInside = 'avoid';
-                    }});
-                }}");
-
-                // Check if content overflows a single page and calculate appropriate scale
-                var scale = await page.EvaluateExpressionAsync<decimal>(@"
-                    function getScaleFactor() {
-                        // Get the total height of the content
-                        const body = document.body;
-                        const html = document.documentElement;
-                        const contentHeight = Math.max(
-                            body.scrollHeight, body.offsetHeight,
-                            html.clientHeight, html.scrollHeight, html.offsetHeight
-                        );
-                
-                        // Calculate available height for Letter size with margins
-                        // Letter size is 8.5 x 11 inches, convert to pixels at 96 DPI
-                        const letterHeightInches = 11;
-                        const dpi = 96;
-                        const marginInches = 0.5 * 2; // 0.5 inch margins top and bottom
-                        const availableHeightPixels = (letterHeightInches - marginInches) * dpi;
-                
-                        // Calculate the scale needed to fit content on one page
-                        // Start with 0.95 as the default scale
-                        let scale = 0.95;
-                
-                        // If content is too tall, calculate the scale needed
-                        if (contentHeight > availableHeightPixels) {
-                            scale = Math.max(0.7, (availableHeightPixels / contentHeight) * 0.95);
+                // Apply final document optimizations before PDF generation
+                await page.EvaluateFunctionAsync(@"
+                    () => {
+                        // Get header element once
+                        const header = document.querySelector('header');
+        
+                        // Remove all shadow effects throughout the document
+                        document.querySelectorAll('*').forEach(element => {
+                            // Remove box-shadow from all elements
+                            element.style.boxShadow = 'none';
+            
+                            // Remove text-shadow from all elements
+                            element.style.textShadow = 'none';
+            
+                            // Remove filter shadows (drop-shadow)
+                            if (element.style.filter) {
+                                element.style.filter = element.style.filter.replace(/drop-shadow\([^)]*\)/g, '');
+                            }
+            
+                            // Remove -webkit-box-shadow for Safari compatibility
+                            element.style.webkitBoxShadow = 'none';
+                        });
+        
+                        // Ensure the header and page container have no shadows
+                        if (header) {
+                            header.style.boxShadow = 'none';
+                            header.style.webkitBoxShadow = 'none';
                         }
+        
+                        document.querySelectorAll('.page, .container, main, .content').forEach(container => {
+                            container.style.boxShadow = 'none';
+                            container.style.webkitBoxShadow = 'none';
+                        });
+        
+                        // Remove any shadow-related classes
+                        document.querySelectorAll('.shadow, .box-shadow, .card-shadow').forEach(element => {
+                            element.classList.remove('shadow', 'box-shadow', 'card-shadow');
+                        });
+        
+                        // Special handling for elegant_cards template
+                        const isElegantCardsTemplate = document.body.innerHTML.includes('elegant_cards') || 
+                                                      document.querySelector('link[href*=""elegant_cards""]') !== null ||
+                                                      document.documentElement.outerHTML.includes('elegant_cards');
+        
+                        // Fix header spacing issues - using the already declared header variable
+                        if (header) {
+                            header.style.marginBottom = isElegantCardsTemplate ? '0' : '5px';
+                            header.style.paddingBottom = isElegantCardsTemplate ? '0' : '5px';
+                            header.style.pageBreakAfter = 'avoid';
+                        }
+
+                        // For elegant_cards template, directly select main content container
+                        if (isElegantCardsTemplate) {
+                            // Specific targeting for elegant_cards template
+                            const mainContent = document.querySelector('.resume-body, .content-area, main');
+                            if (mainContent) {
+                                mainContent.style.marginTop = '0';
+                                mainContent.style.paddingTop = '0';
+                                // Use negative margin to eliminate any gap
+                                mainContent.style.marginTop = '-10px';
+                                mainContent.style.pageBreakBefore = 'avoid';
+                            }
+            
+                            // Target card elements in elegant_cards template
+                            document.querySelectorAll('.card, .section-card, .content-card').forEach(card => {
+                                card.style.marginBottom = '8px';
+                                card.style.pageBreakInside = 'avoid';
+                            });
+                        } else {
+                            // Standard handling for other templates
+                            const firstSectionSelectors = [
+                                '.main-content:first-child', 
+                                '.section:first-child',
+                                'main > section:first-child',
+                                'main > div:first-child',
+                                '.container > section:first-child',
+                                '.container > div:first-child',
+                                'body > section:first-child',
+                                'body > div:not(header):first-of-type'
+                            ];
+            
+                            firstSectionSelectors.forEach(selector => {
+                                const element = document.querySelector(selector);
+                                if (element) {
+                                    element.style.marginTop = '5px';
+                                    element.style.paddingTop = '5px';
+                                }
+                            });
+                        }
+
+                        // Aggressive gap reduction for all templates
+                        document.querySelectorAll('section, article, div, main').forEach(element => {
+                            // Skip elements with position:absolute as they don't affect normal flow
+                            const position = window.getComputedStyle(element).position;
+                            if (position === 'absolute' || position === 'fixed') {
+                                return;
+                            }
+            
+                            // Reduce excessive margins and paddings
+                            if (parseFloat(window.getComputedStyle(element).marginTop) > 15) {
+                                element.style.marginTop = isElegantCardsTemplate ? '5px' : '10px';
+                            }
+                            if (parseFloat(window.getComputedStyle(element).marginBottom) > 15) {
+                                element.style.marginBottom = isElegantCardsTemplate ? '5px' : '10px';
+                            }
+                            if (parseFloat(window.getComputedStyle(element).paddingTop) > 20) {
+                                element.style.paddingTop = isElegantCardsTemplate ? '10px' : '15px';
+                            }
+                            if (parseFloat(window.getComputedStyle(element).paddingBottom) > 20) {
+                                element.style.paddingBottom = isElegantCardsTemplate ? '10px' : '15px';
+                            }
+                        });
+
+                        // Real-time gap detection and fixing
+                        const allVisibleElements = Array.from(document.body.querySelectorAll('*')).filter(el => {
+                            const style = window.getComputedStyle(el);
+                            return style.display !== 'none' && 
+                                   style.visibility !== 'hidden' && 
+                                   style.opacity !== '0' &&
+                                   el.offsetParent !== null;
+                        });
+        
+                        // Sort elements by their vertical position
+                        allVisibleElements.sort((a, b) => {
+                            return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+                        });
+        
+                        // Check for gaps between consecutive elements
+                        for (let i = 0; i < allVisibleElements.length - 1; i++) {
+                            const current = allVisibleElements[i];
+                            const next = allVisibleElements[i + 1];
+            
+                            // Skip elements that are not in the normal flow
+                            if (window.getComputedStyle(current).position === 'absolute' || 
+                                window.getComputedStyle(next).position === 'absolute') {
+                                continue;
+                            }
+            
+                            const currentRect = current.getBoundingClientRect();
+                            const nextRect = next.getBoundingClientRect();
+            
+                            // Check if next element is actually below and not a child
+                            if (nextRect.top > currentRect.bottom && !current.contains(next) && !next.contains(current)) {
+                                const gap = nextRect.top - currentRect.bottom;
                 
-                        return scale;
+                                // If gap is excessive (>20px), reduce it
+                                if (gap > 20) {
+                                    // Apply margin adjustment based on computed styles
+                                    const currentMarginBottom = parseFloat(window.getComputedStyle(current).marginBottom);
+                                    const nextMarginTop = parseFloat(window.getComputedStyle(next).marginTop);
+                    
+                                    if (currentMarginBottom > 0) {
+                                        current.style.marginBottom = Math.max(0, currentMarginBottom - (gap/2)) + 'px';
+                                    }
+                                    if (nextMarginTop > 0) {
+                                        next.style.marginTop = Math.max(0, nextMarginTop - (gap/2)) + 'px';
+                                    }
+                                }
+                            }
+                        }
+
+                        // Make sure all images have appropriate sizing
+                        document.querySelectorAll('img').forEach(img => {
+                            img.style.maxWidth = '100%';
+                            img.style.height = 'auto';
+                        });
+
+                        // Page break controls that work with any template
+                        document.querySelectorAll('section, article, .card, .section-card, .content-card').forEach(element => {
+                            if (element.textContent.trim().length > 0 || element.querySelector('img')) {
+                                element.style.pageBreakInside = 'avoid';
+                            }
+                        });
+        
+                        // Keep headings with their content
+                        document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
+                            heading.style.pageBreakAfter = 'avoid';
+            
+                            // Also ensure the next element stays with its heading
+                            const nextElement = heading.nextElementSibling;
+                            if (nextElement) {
+                                nextElement.style.pageBreakBefore = 'avoid';
+                            }
+                        });
                     }
-                    getScaleFactor();
                 ");
 
 
-                // Generate the PDF with specific formatting options
+                // Analyze content and calculate optimal scale to maximize use of page
+                var optimizedScale = await page.EvaluateFunctionAsync<decimal>(@"
+                    () => {
+                        // Get the content dimensions
+                        const body = document.body;
+                        const html = document.documentElement;
+                        const contentHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+                        const contentWidth = Math.max(body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth);
+
+                        // Letter size dimensions in pixels at 96 DPI
+                        const letterHeight = 1056; // 11 inches
+                        const letterWidth = 816; // 8.5 inches
+
+                        // Account for margins (0.25 inch on each side)
+                        const marginPixels = 24; // 0.25 inches * 96 DPI
+                        const availableHeight = letterHeight - (marginPixels * 2);
+                        const availableWidth = letterWidth - (marginPixels * 2);
+
+                        // Vertical and horizontal scaling factor
+                        const heightScale = availableHeight / contentHeight;
+                        const widthScale = availableWidth / contentWidth;
+
+                        // Use the smaller scale to ensure content fits in both dimensions
+                        let optimalScale = Math.min(heightScale, widthScale);
+
+                        // Cap the scale to reasonable limits
+                        optimalScale = Math.min(1.0, optimalScale); // Don't scale up beyond 100%
+                        optimalScale = Math.max(0.75, optimalScale); // Don't scale down below 75%
+        
+                        return optimalScale;
+                    }
+                ");
+
+
+                // Generate the PDF with optimized formatting
                 await page.PdfAsync(saveFileDialog.FileName, new PdfOptions
                 {
                     Format = PaperFormat.Letter,
                     PrintBackground = true,
                     MarginOptions = new MarginOptions
                     {
-                        Left = "0.5in",
-                        Top = "0.5in",
-                        Bottom = "0.5in",
-                        Right = "0.5in"
+                        Left = "0.25in",
+                        Top = "0.25in",
+                        Bottom = "0.25in",
+                        Right = "0.25in"
                     },
                     PreferCSSPageSize = true,
-                    Scale = scale  // Slightly scale down to ensure content fits
+                    Scale = optimizedScale
                 });
 
                 // Clean up browser resources
@@ -340,6 +471,7 @@ public partial class ResumeWorkspace : MaterialForm
             }
         }
     }
+
 
     private void ResumeWorkspace_Load(object sender, EventArgs e)
     {

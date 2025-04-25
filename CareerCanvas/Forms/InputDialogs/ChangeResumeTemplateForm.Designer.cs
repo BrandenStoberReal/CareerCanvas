@@ -47,7 +47,7 @@
             materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard1.Name = "materialCard1";
             materialCard1.Padding = new Padding(14);
-            materialCard1.Size = new Size(200, 877);
+            materialCard1.Size = new Size(297, 877);
             materialCard1.TabIndex = 0;
             materialCard1.Click += materialCard1_Click;
             // 
@@ -62,7 +62,7 @@
             templateListBox.Name = "templateListBox";
             templateListBox.SelectedIndex = -1;
             templateListBox.SelectedItem = null;
-            templateListBox.Size = new Size(166, 843);
+            templateListBox.Size = new Size(263, 843);
             templateListBox.TabIndex = 0;
             templateListBox.SelectedIndexChanged += templateListBox_SelectedIndexChanged;
             // 
@@ -72,7 +72,7 @@
             previewWebView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             previewWebView.CreationProperties = null;
             previewWebView.DefaultBackgroundColor = Color.White;
-            previewWebView.Location = new Point(245, 38);
+            previewWebView.Location = new Point(342, 38);
             previewWebView.Margin = new Padding(14);
             previewWebView.Name = "previewWebView";
             previewWebView.Size = new Size(892, 920);
@@ -94,7 +94,7 @@
             saveChangeButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             saveChangeButton.Name = "saveChangeButton";
             saveChangeButton.NoAccentTextColor = Color.Empty;
-            saveChangeButton.Size = new Size(200, 36);
+            saveChangeButton.Size = new Size(297, 36);
             saveChangeButton.TabIndex = 2;
             saveChangeButton.Text = "Load Selected Template";
             saveChangeButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -106,7 +106,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1154, 975);
+            ClientSize = new Size(1251, 975);
             Controls.Add(saveChangeButton);
             Controls.Add(previewWebView);
             Controls.Add(materialCard1);
