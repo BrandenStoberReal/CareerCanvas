@@ -323,4 +323,14 @@ public partial class ResumeWorkspace : MaterialForm
         ExportToPDF();
         Globals.AppLogger.Information("User exported resume to PDF format.");
     }
+
+    private void tableLayoutPanel1_Click(object sender, EventArgs e)
+    {
+        this.ActiveControl = null;
+    }
+
+    private void tableLayoutPanel2_Click(object sender, EventArgs e)
+    {
+        this.ActiveControl = null;
+    }
 }

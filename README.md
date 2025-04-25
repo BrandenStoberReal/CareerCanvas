@@ -50,7 +50,7 @@
  - [x] Resume Builder - Template switcher
  - [x] Resume Builder - Export resume to PDF
  - [x] Resume Builder - Export resume to HTML
- - [ ] Resume Builder - Misc Utilities
+ - [x] Resume Builder - Misc Utilities
  - [x] Cross-builder Integration
  - [x] Persistent Storage
  - [x] Macro Parsing & Documentation

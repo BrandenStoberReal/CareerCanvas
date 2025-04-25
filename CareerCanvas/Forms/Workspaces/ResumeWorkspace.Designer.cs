@@ -104,6 +104,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel2.Size = new Size(437, 828);
             tableLayoutPanel2.TabIndex = 4;
+            tableLayoutPanel2.Click += tableLayoutPanel2_Click;
             // 
             // exportHtmlButton
             // 
@@ -249,6 +250,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.Size = new Size(437, 828);
             tableLayoutPanel1.TabIndex = 3;
+            tableLayoutPanel1.Click += tableLayoutPanel1_Click;
             // 
             // useShadowsToggle
             // 
