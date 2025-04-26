@@ -43,6 +43,10 @@
             optimizeToggle = new ReaLTaiizor.Controls.MaterialSwitch();
             backgroundToggle = new ReaLTaiizor.Controls.MaterialSwitch();
             materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel3 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel5 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel6 = new ReaLTaiizor.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)resumeViewer).BeginInit();
             materialCard1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -231,12 +235,16 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(materialLabel6, 1, 4);
+            tableLayoutPanel1.Controls.Add(materialLabel5, 1, 3);
+            tableLayoutPanel1.Controls.Add(materialLabel4, 1, 2);
             tableLayoutPanel1.Controls.Add(loadTemplateButton, 0, 0);
             tableLayoutPanel1.Controls.Add(openTemplateFolderButton, 1, 0);
             tableLayoutPanel1.Controls.Add(useShadowsToggle, 0, 1);
             tableLayoutPanel1.Controls.Add(scaleToggle, 0, 2);
             tableLayoutPanel1.Controls.Add(optimizeToggle, 0, 3);
             tableLayoutPanel1.Controls.Add(backgroundToggle, 0, 4);
+            tableLayoutPanel1.Controls.Add(materialLabel3, 1, 1);
             tableLayoutPanel1.Location = new Point(17, 53);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 8;
@@ -339,6 +347,58 @@
             materialLabel1.Text = "Customization";
             materialLabel1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // materialLabel3
+            // 
+            materialLabel3.Anchor = AnchorStyles.Right;
+            materialLabel3.AutoSize = true;
+            materialLabel3.Depth = 0;
+            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel3.Location = new Point(296, 65);
+            materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.Size = new Size(138, 19);
+            materialLabel3.TabIndex = 6;
+            materialLabel3.Text = "Recommended: Off";
+            // 
+            // materialLabel4
+            // 
+            materialLabel4.Anchor = AnchorStyles.Right;
+            materialLabel4.AutoSize = true;
+            materialLabel4.Depth = 0;
+            materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel4.Location = new Point(299, 115);
+            materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel4.Name = "materialLabel4";
+            materialLabel4.Size = new Size(135, 19);
+            materialLabel4.TabIndex = 7;
+            materialLabel4.Text = "Recommended: On";
+            // 
+            // materialLabel5
+            // 
+            materialLabel5.Anchor = AnchorStyles.Right;
+            materialLabel5.AutoSize = true;
+            materialLabel5.Depth = 0;
+            materialLabel5.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel5.Location = new Point(299, 165);
+            materialLabel5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel5.Name = "materialLabel5";
+            materialLabel5.Size = new Size(135, 19);
+            materialLabel5.TabIndex = 8;
+            materialLabel5.Text = "Recommended: On";
+            // 
+            // materialLabel6
+            // 
+            materialLabel6.Anchor = AnchorStyles.Right;
+            materialLabel6.AutoSize = true;
+            materialLabel6.Depth = 0;
+            materialLabel6.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel6.Location = new Point(299, 215);
+            materialLabel6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel6.Name = "materialLabel6";
+            materialLabel6.Size = new Size(135, 19);
+            materialLabel6.TabIndex = 9;
+            materialLabel6.Text = "Recommended: On";
+            // 
             // ResumeWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -381,5 +441,9 @@
         private ReaLTaiizor.Controls.MaterialSwitch scaleToggle;
         private ReaLTaiizor.Controls.MaterialSwitch optimizeToggle;
         private ReaLTaiizor.Controls.MaterialSwitch backgroundToggle;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel6;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel5;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel4;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel3;
     }
 }

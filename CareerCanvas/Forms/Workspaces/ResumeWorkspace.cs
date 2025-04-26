@@ -277,6 +277,20 @@ public partial class ResumeWorkspace : MaterialForm
         // Load the webview runtime
         resumeViewer.EnsureCoreWebView2Async();
         Globals.AppLogger.Debug("WebView2 runtime loaded asyncronously in ResumeWorkspace.");
+
+        // Set up tooltips
+        ToolTip toolTip = new ToolTip();
+
+        toolTip.SetToolTip(loadTemplateButton, "Change the active resume template.");
+        toolTip.SetToolTip(openTemplateFolderButton, "Open the template folder in Windows explorer.");
+        toolTip.SetToolTip(exportHtmlButton, "Export the resume to HTML format.");
+        toolTip.SetToolTip(exportPdfButton, "Export the resume to PDF format.");
+        toolTip.SetToolTip(backgroundToggle, "Enable or disable background color matching in the PDF.");
+        toolTip.SetToolTip(optimizeToggle, "Enable or disable final document optimizations. (EXPERIMENTAL)");
+        toolTip.SetToolTip(scaleToggle, "Enable or disable automatic scaling of the resume to fit the page.");
+        toolTip.SetToolTip(useShadowsToggle, "Enable or disable shadows in the resume template.");
+
+        Globals.AppLogger.Debug("Tooltips successfully bound in ResumeWorkspace.");
     }
 
     /// <summary>

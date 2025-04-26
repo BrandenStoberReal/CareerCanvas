@@ -59,6 +59,7 @@
  - [ ] Application Installer (.msi)
  - [ ] Keybinds
  - [ ] Improve Application UX
+ - [ ] Applicationwide Tooltips
  - [x] Robust & Organized Logging
  - [ ] Debug Mode
  - [ ] Application Refinement/Polishing
