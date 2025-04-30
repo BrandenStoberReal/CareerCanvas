@@ -2,20 +2,22 @@
 <!--TOC-->
 - [Template Options](#template-options)
   - [Macros](#macros)
-  - ['Required' Macro Foreword](#required-macro-foreword)
-  - [List of Macros](#list-of-macros)
-  - [Static Macro Implementation](#static-macro-implementation)
-  - [Static Macro IDs](#static-macro-ids)
-  - [Dynamic Macro Implementation](#dynamic-macro-implementation)
-  - [Dynamic Macro IDs](#dynamic-macro-ids)
-    - [Dynamic Macro Section IDs](#dynamic-macro-section-ids)
-    - [Dynamic Macro Entry IDs](#dynamic-macro-entry-ids)
-  - [Examples](#examples)
-    - [Education Container](#education-container)
-    - [Work Container](#work-container)
-    - [Certification Container](#certification-container)
-    - [Skills Container](#skills-container)
-    - [Example Template Output](#example-template-output)
+      - ['Required' Macro Foreword](#required-macro-foreword)
+      - [List of Macros](#list-of-macros)
+      - [Static Macros](#static-macros)
+        - [Static Macro Implementation](#static-macro-implementation)
+        - [Static Macro IDs](#static-macro-ids)
+      - [Dynamic Macros](#dynamic-macros)
+        - [Dynamic Macro Implementation](#dynamic-macro-implementation)
+        - [Dynamic Macro IDs](#dynamic-macro-ids)
+          - [Section IDs](#section-ids)
+          - [Entry IDs](#entry-ids)
+      - [Examples](#examples)
+        - [Education Container](#education-container)
+        - [Work Container](#work-container)
+        - [Certification Container](#certification-container)
+        - [Skills Container](#skills-container)
+        - [Example Template Output](#example-template-output)
 <!--/TOC-->
 
 # Template Options
@@ -96,10 +98,12 @@ Some macros are listed as `required` in the table below. Despite the name, these
 | `{{certificateDate}}` | A placeholder for the date the certificate was issued to the user. | No | Yes | No |
 | `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
 
-## Static Macro Implementation
+## Static Macros
+
+### Static Macro Implementation
 Static macros are required to be assigned a unique ID. This is used to delete the macro's parent element if the user does not provide relevant data. Each static macro has its own ID, which is used to identify the parent element of the macro and delete/modify it if needed.
 
-## Static Macro IDs
+### Static Macro IDs
 | Macro Name | ID |
 | :---: | :---: |
 | `{{fullName}}` | `name` |
@@ -109,7 +113,9 @@ Static macros are required to be assigned a unique ID. This is used to delete th
 | `{{linkedIn}}` | `linkedin` |
 | `{{resumeSummary}}` | `professional-summary` |
 
-## Dynamic Macro Implementation
+## Dynamic Macros
+
+### Dynamic Macro Implementation
 Dynamic macros are used to create a list of items that are repeated for each item in the list. For example, the `{{jobTitle}}` macro will be replaced with the job title of each job in the user's work history.
 
 For these macros to function properly, a template developer needs to explicitly mark the parent element of the macro with a [unique ID](#dynamic-macro-ids).
@@ -118,12 +124,12 @@ There are currently four categories for dynamic macros: `education`, `work`, `ce
 
 Dynamic macros are always replaced `recursively` as long as the criteria for the parent element is met. This means that if a dynamic macro's element is nested inside another dynamic macro's element, both macros would be filled regardless of the hierarchy.
 
-## Dynamic Macro IDs
+### Dynamic Macro IDs
 Some hardcoded HTML element IDs are required to be present in the template. These IDs are used to identify the parent element of the macro and are used to duplicate the element for each item in the list. The IDs are also used to delete the parent element if the user does not provide relevant data, and other assorted things.
 
 Please note that any ID marked as 'required' `must be present` in the template. If the ID is not present, the application will not correctly replace the macros and the template will not be valid. The application will still load the template, but it will not be able to replace the macros.
 
-### Dynamic Macro Section IDs
+#### Section IDs
 These IDs are used to delete an applicable section if the user has no data pertaining to that section. This allows the final document to be cleaner, more readable, and more professional.
 
 Optional sections serve no purpose besides for consistency and can be removed/excluded from the template if desired. The application will still function correctly without them.
@@ -137,7 +143,7 @@ Optional sections serve no purpose besides for consistency and can be removed/ex
 | Skills Section | `skills-section` | No |
 | Contact Information Section | `contact-section` | No |
 
-### Dynamic Macro Entry IDs
+#### Entry IDs
 These IDs are used to replace the macros located as a descendant of the element with the ID.
 
 | Entry Name | ID | Required? |
