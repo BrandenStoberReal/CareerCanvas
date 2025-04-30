@@ -81,14 +81,14 @@
             // loadToolStripMenuItem
             // 
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            loadToolStripMenuItem.Size = new Size(153, 22);
+            loadToolStripMenuItem.Size = new Size(152, 22);
             loadToolStripMenuItem.Text = "Load";
             loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // exportToToolStripMenuItem
             // 
             exportToToolStripMenuItem.Name = "exportToToolStripMenuItem";
-            exportToToolStripMenuItem.Size = new Size(153, 22);
+            exportToToolStripMenuItem.Size = new Size(152, 22);
             exportToToolStripMenuItem.Text = "Export to JSON";
             // 
             // editToolStripMenuItem
@@ -114,7 +114,7 @@
             firstNameTextBox.BackgroundImageLayout = ImageLayout.None;
             firstNameTextBox.CharacterCasing = CharacterCasing.Normal;
             firstNameTextBox.Depth = 0;
-            firstNameTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            firstNameTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             firstNameTextBox.HideSelection = true;
             firstNameTextBox.LeadingIcon = null;
             firstNameTextBox.Location = new Point(96, 3);
@@ -171,7 +171,7 @@
             middleNametextBox.BackgroundImageLayout = ImageLayout.None;
             middleNametextBox.CharacterCasing = CharacterCasing.Normal;
             middleNametextBox.Depth = 0;
-            middleNametextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            middleNametextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             middleNametextBox.HideSelection = true;
             middleNametextBox.LeadingIcon = null;
             middleNametextBox.Location = new Point(113, 57);
@@ -244,7 +244,7 @@
             lastNameTextBox.BackgroundImageLayout = ImageLayout.None;
             lastNameTextBox.CharacterCasing = CharacterCasing.Normal;
             lastNameTextBox.Depth = 0;
-            lastNameTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lastNameTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             lastNameTextBox.HideSelection = true;
             lastNameTextBox.LeadingIcon = null;
             lastNameTextBox.Location = new Point(96, 111);
@@ -288,7 +288,7 @@
             addressTextBox.BackgroundImageLayout = ImageLayout.None;
             addressTextBox.CharacterCasing = CharacterCasing.Normal;
             addressTextBox.Depth = 0;
-            addressTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            addressTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             addressTextBox.HideSelection = true;
             addressTextBox.LeadingIcon = null;
             addressTextBox.Location = new Point(96, 165);
@@ -332,7 +332,7 @@
             cityTextBox.BackgroundImageLayout = ImageLayout.None;
             cityTextBox.CharacterCasing = CharacterCasing.Normal;
             cityTextBox.Depth = 0;
-            cityTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cityTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             cityTextBox.HideSelection = true;
             cityTextBox.LeadingIcon = null;
             cityTextBox.Location = new Point(96, 219);
@@ -376,7 +376,7 @@
             stateTextBox.BackgroundImageLayout = ImageLayout.None;
             stateTextBox.CharacterCasing = CharacterCasing.Normal;
             stateTextBox.Depth = 0;
-            stateTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            stateTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             stateTextBox.HideSelection = true;
             stateTextBox.LeadingIcon = null;
             stateTextBox.Location = new Point(96, 273);
@@ -420,7 +420,7 @@
             zipTextBox.BackgroundImageLayout = ImageLayout.None;
             zipTextBox.CharacterCasing = CharacterCasing.Normal;
             zipTextBox.Depth = 0;
-            zipTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            zipTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             zipTextBox.HideSelection = true;
             zipTextBox.LeadingIcon = null;
             zipTextBox.Location = new Point(96, 327);
@@ -464,7 +464,7 @@
             phoneTextBox.BackgroundImageLayout = ImageLayout.None;
             phoneTextBox.CharacterCasing = CharacterCasing.Normal;
             phoneTextBox.Depth = 0;
-            phoneTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            phoneTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             phoneTextBox.HideSelection = true;
             phoneTextBox.LeadingIcon = null;
             phoneTextBox.Location = new Point(96, 381);
@@ -508,7 +508,7 @@
             emailTextBox.BackgroundImageLayout = ImageLayout.None;
             emailTextBox.CharacterCasing = CharacterCasing.Normal;
             emailTextBox.Depth = 0;
-            emailTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            emailTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             emailTextBox.HideSelection = true;
             emailTextBox.LeadingIcon = null;
             emailTextBox.Location = new Point(96, 435);
@@ -552,7 +552,7 @@
             linkedInTextBox.BackgroundImageLayout = ImageLayout.None;
             linkedInTextBox.CharacterCasing = CharacterCasing.Normal;
             linkedInTextBox.Depth = 0;
-            linkedInTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            linkedInTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             linkedInTextBox.HideSelection = true;
             linkedInTextBox.LeadingIcon = null;
             linkedInTextBox.Location = new Point(96, 489);
@@ -596,7 +596,7 @@
             portfolioTextBox.BackgroundImageLayout = ImageLayout.None;
             portfolioTextBox.CharacterCasing = CharacterCasing.Normal;
             portfolioTextBox.Depth = 0;
-            portfolioTextBox.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            portfolioTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             portfolioTextBox.HideSelection = true;
             portfolioTextBox.LeadingIcon = null;
             portfolioTextBox.Location = new Point(96, 543);
@@ -625,12 +625,12 @@
             saveOnCloseLabel.Depth = 0;
             saveOnCloseLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             saveOnCloseLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            saveOnCloseLabel.Location = new Point(542, 54);
+            saveOnCloseLabel.Location = new Point(538, 54);
             saveOnCloseLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             saveOnCloseLabel.Name = "saveOnCloseLabel";
-            saveOnCloseLabel.Size = new Size(252, 17);
+            saveOnCloseLabel.Size = new Size(256, 17);
             saveOnCloseLabel.TabIndex = 106;
-            saveOnCloseLabel.Text = "Identity is automatically saved on close";
+            saveOnCloseLabel.Text = "Identity is automatically saved on close!";
             // 
             // IdentityWorkspace
             // 

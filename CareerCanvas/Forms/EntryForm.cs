@@ -199,7 +199,7 @@ public partial class EntryForm : MaterialForm
         if (identitiesListBox.SelectedItem != null)
         {
             // Retrieve and format the identity name from the selected item
-            var identityName = identitiesListBox.SelectedItem.Text.Replace(" (Encrypted)", ".enc").Replace(" ", "_");
+            var identityName = Path.GetFullPath(Path.Combine("./data/identities", identitiesListBox.SelectedItem.Text.Replace(" (Encrypted)", ".enc").Replace(" ", "_") + ".identity"));
 
             // Create a new IdentityWorkspace instance with the formatted identity name
             var identityWorkspace = new IdentityWorkspace(identityName.ToLower());
