@@ -236,3 +236,5 @@ Assuming 3 skills are provided, named `HTML`, `CSS`, and `JavaScript`, the appli
     </ul>
 </div>
 ```
+
+This would be the final HTML of the skills section rendered by the application given the previous input data.
