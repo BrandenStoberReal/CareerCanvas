@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntryForm));
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
             welcomePage = new TabPage();
             materialLabel2 = new ReaLTaiizor.Controls.MaterialLabel();
@@ -757,6 +758,7 @@
     };
             DrawerTabControl = materialTabControl1;
             FormStyle = ReaLTaiizor.Enum.Material.FormStyles.ActionBar_None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EntryForm";
             Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
