@@ -115,9 +115,9 @@
     </style>
 </head>
 <body>
-    <header>
+    <header id="contact-section">
         <h1 id="name">{{fullName}}</h1>
-        <div class="contact-info" id="contact-info">
+        <div class="contact-info">
             <p id="address">{{homeAddress}}</p>
             <p id="email">{{emailAddress}}</p>
             <p id="phonenumber">{{phoneNumber}}</p>
@@ -125,22 +125,22 @@
         </div>
     </header>
 
-    <div class="section" id="summarycontainer">
+    <div class="section" id="summary-section">
         <h2>Professional Summary</h2>
-        <p id="professionalsummary">{{resumeSummary}}</p>
+        <p id="professional-summary">{{resumeSummary}}</p>
     </div>
 
-    <div class="section">
+    <div class="section" id="skills-section">
         <h2>Skills</h2>
-        <ul class="skills" id="skills">
-            <li class="skillentry">{{skillName}}</li>
+        <ul class="skills">
+            <li class="skill-entry">{{skillName}}</li>
         </ul>
     </div>
 
-    <div class="section" id="experiencesection">
+    <div class="section" id="experience-section">
         <h2>Professional Experience</h2>
         <ul class="experience">
-            <li class="jobentry">
+            <li class="job-entry">
                 <h3>{{jobTitle}} - {{jobCompanyName}}</h3>
                 <p><strong>{{jobStartDate}} - {{jobEndDate}}</strong></p>
                 <p>{{jobDescription}}</p>
@@ -148,20 +148,20 @@
         </ul>
     </div>
 
-    <div class="section" id="educationsection">
+    <div class="section" id="education-section">
         <h2>Education</h2>
         <ul class="education">
-            <li class="educationentry">
+            <li class="education-entry">
                 <h3>{{degreeType}} - {{schoolName}}</h3>
                 <p><strong>{{schoolStartDate}} - {{schoolEndDate}}</strong></p>
             </li>
         </ul>
     </div>
 
-    <div class="section" id="certificatesection">
+    <div class="section" id="certificate-section">
         <h2>Certifications</h2>
         <ul class="certificates">
-            <li class="certificateentry">
+            <li class="certificate-entry">
                 <h3>{{certificateName}}</h3>
                 <p>{{certificateIssuingOrganization}} • <strong>{{certificateDate}}</strong></p>
             </li>

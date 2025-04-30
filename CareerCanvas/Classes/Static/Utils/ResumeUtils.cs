@@ -90,12 +90,12 @@ namespace CareerCanvas.Classes.Static.Utils
             // Summary fill
             if (industry.ProfessionalSummary != String.Empty)
             {
-                doc.GetElementbyId("professionalsummary").InnerHtml = doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", industry.ProfessionalSummary);
+                doc.GetElementbyId("professional-summary").InnerHtml = doc.GetElementbyId("professional-summary").InnerHtml.Replace("{{resumeSummary}}", industry.ProfessionalSummary);
                 Globals.AppLogger.Debug("Summary macro successfully located and replaced with user's professional summary.");
             }
             else
             {
-                doc.GetElementbyId("professionalsummary").InnerHtml = doc.GetElementbyId("professionalsummary").InnerHtml.Replace("{{resumeSummary}}", "A summary of my professional experiences is available upon request.");
+                doc.GetElementbyId("professional-summary").InnerHtml = doc.GetElementbyId("professional-summary").InnerHtml.Replace("{{resumeSummary}}", "A summary of my professional experiences is available upon request.");
                 Globals.AppLogger.Debug("Summary macro successfully located and replaced with default summary.");
             }
 
@@ -104,7 +104,7 @@ namespace CareerCanvas.Classes.Static.Utils
             #region Dynamic Macros
 
             // Skills fill
-            HtmlNode skillTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("skillentry")).First();
+            HtmlNode skillTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("skill-entry")).First();
             if (industry.Skills.Count == 0)
             {
                 Globals.AppLogger.Warning("User did not provide any skills! A default set has been provided.");
@@ -149,10 +149,10 @@ namespace CareerCanvas.Classes.Static.Utils
             Globals.AppLogger.Debug("Original skill template removed successfully.");
 
             // Job experience fill
-            HtmlNode jobTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("jobentry")).First();
+            HtmlNode jobTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("job-entry")).First();
             if (industry.Jobs.Count == 0)
             {
-                HtmlNode jobSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("experiencesection")).First();
+                HtmlNode jobSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("experience-section")).First();
                 jobTemplate.Remove();
                 jobSection.Remove();
                 Globals.AppLogger.Warning("User did not provide any job information! This section has been removed from the template. Providing employment history for a resume is strongly advised.");
@@ -255,10 +255,10 @@ namespace CareerCanvas.Classes.Static.Utils
             }
 
             // Education fill
-            HtmlNode educationTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("educationentry")).First();
+            HtmlNode educationTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("education-entry")).First();
             if (industry.Schooling.Count == 0)
             {
-                HtmlNode educationSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("educationsection")).First();
+                HtmlNode educationSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("education-section")).First();
                 educationTemplate.Remove();
                 educationSection.Remove();
                 Globals.AppLogger.Warning("User did not provide any education history! This section has been removed from the template. Providing education history on a resume is strongly advised.");
@@ -347,10 +347,10 @@ namespace CareerCanvas.Classes.Static.Utils
             }
 
             // Certificates fill
-            HtmlNode certificatesTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("certificateentry")).First();
+            HtmlNode certificatesTemplate = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("certificate-entry")).First();
             if (industry.Certificates.Count == 0)
             {
-                HtmlNode certificatesSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("certificatesection")).First();
+                HtmlNode certificatesSection = doc.DocumentNode.Descendants(0).Where(n => n.HasClass("certificate-section")).First();
                 certificatesTemplate.Remove();
                 certificatesSection.Remove();
                 Globals.AppLogger.Warning("User did not provide any certificates! This section has been removed from the template.");

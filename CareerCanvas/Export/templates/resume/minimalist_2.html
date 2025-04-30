@@ -122,7 +122,7 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <header id="contact-section">
             <h1 id="name">{{fullName}}</h1>
             <div class="contact-info" id="contact-info">
                 <p id="address">{{homeAddress}}</p>
@@ -132,14 +132,14 @@
             </div>
         </header>
 
-        <div class="section" id="summarycontainer">
+        <div class="section" id="summary-section">
             <h2>Summary</h2>
-            <p id="professionalsummary">{{resumeSummary}}</p>
+            <p id="professional-summary">{{resumeSummary}}</p>
         </div>
 
-        <div class="section" id="experiencesection">
+        <div class="section" id="experience-section">
             <h2>Experience</h2>
-            <div class="item jobentry">
+            <div class="item job-entry">
                 <div class="item-header">
                     <div>
                         <div class="item-title">{{jobTitle}}</div>
@@ -151,9 +151,9 @@
             </div>
         </div>
 
-        <div class="section" id="educationsection">
+        <div class="section" id="education-section">
             <h2>Education</h2>
-            <div class="item educationentry">
+            <div class="item education-entry">
                 <div class="item-header">
                     <div>
                         <div class="item-title">{{degreeType}}</div>
@@ -164,9 +164,9 @@
             </div>
         </div>
 
-        <div class="section" id="certificatesection">
+        <div class="section" id="certificate-section">
             <h2>Certifications</h2>
-            <div class="item certificateentry">
+            <div class="item certificate-entry">
                 <div class="item-header">
                     <div>
                         <div class="item-title">{{certificateName}}</div>
@@ -177,10 +177,10 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" id="skills-section">
             <h2>Skills</h2>
-            <div id="skills">
-                <div class="skillentry">{{skillName}}</div>
+            <div>
+                <div class="skill-entry">{{skillName}}</div>
             </div>
         </div>
     </div>

@@ -151,48 +151,48 @@
 
     <div class="container">
         <div class="sidebar">
-            <div id="contact-info">
+            <div id="contact-section">
                 <h2 id="name">{{fullName}}</h2>
                 <p id="address">{{homeAddress}}</p>
                 <p id="email">{{emailAddress}}</p>
                 <p id="phonenumber">{{phoneNumber}}</p>
                 <p id="linkedin">{{linkedIn}}</p>
             </div>
-            <div class="skills">
+            <div class="skills" id="skills-section">
                 <h3>Skills</h3>
-                <ul id="skills">
-                    <li class="skillentry">{{skillName}}</li>
+                <ul>
+                    <li class="skill-entry">{{skillName}}</li>
                 </ul>
             </div>
         </div>
         <div class="main">
-            <div class="section" id="summarycontainer">
+            <div class="section" id="summary-section">
                 <h3>Professional Summary</h3>
-                <p id="professionalsummary">{{resumeSummary}}</p>
+                <p id="professional-summary">{{resumeSummary}}</p>
             </div>
-            <div class="section" id="experiencesection">
+            <div class="section" id="experience-section">
                 <h3>Professional Experience</h3>
                 <ul class="experience" id="jobs">
-                    <li class="jobentry">
+                    <li class="job-entry">
                         <strong>{{jobTitle}}</strong> - {{jobCompanyName}}
                         <p><strong>{{jobStartDate}} - {{jobEndDate}}</strong></p>
                         <p>{{jobDescription}}</p>
                     </li>
                 </ul>
             </div>
-            <div class="section" id="educationsection">
+            <div class="section" id="education-section">
                 <h3>Education</h3>
                 <ul class="education" id="education">
-                    <li class="educationentry">
+                    <li class="education-entry">
                         <strong>{{degreeType}}</strong> - {{schoolName}}
                         <p><strong>{{schoolStartDate}} - {{schoolEndDate}}</strong></p>
                     </li>
                 </ul>
             </div>
-            <div class="section" id="certificatesection">
+            <div class="section" id="certificate-section">
                 <h3>Certifications</h3>
                 <ul class="certificates" id="certificates">
-                    <li class="certificateentry">
+                    <li class="certificate-entry">
                         <strong>{{certificateName}}</strong>
                         <p>{{certificateIssuingOrganization}} • {{certificateDate}}</p>
                     </li>

@@ -197,7 +197,7 @@
 </head>
 <body>
     <div class="resume-container">
-        <div class="header">
+        <div class="header" id="contact-section">
             <h1 id="name">{{fullName}}</h1>
             <div class="contact-grid" id="contact-info">
                 <div class="contact-item" id="address">{{homeAddress}}</div>
@@ -208,14 +208,14 @@
         </div>
 
         <div class="content">
-            <div class="section full-width" id="summarycontainer">
+            <div class="section full-width" id="summary-section">
                 <h2 class="section-title">Professional Overview</h2>
-                <p id="professionalsummary">{{resumeSummary}}</p>
+                <p id="professional-summary">{{resumeSummary}}</p>
             </div>
 
-            <div class="section" id="experiencesection">
+            <div class="section" id="experience-section">
                 <h2 class="section-title">Work Experience</h2>
-                <div class="card jobentry">
+                <div class="card job-entry">
                     <div class="card-header">
                         <div>
                             <div class="card-title">{{jobTitle}}</div>
@@ -227,9 +227,9 @@
                 </div>
             </div>
 
-            <div class="section" id="educationsection">
+            <div class="section" id="education-section">
                 <h2 class="section-title">Education</h2>
-                <div class="card educationentry">
+                <div class="card education-entry">
                     <div class="card-header">
                         <div>
                             <div class="card-title">{{degreeType}}</div>
@@ -240,9 +240,9 @@
                 </div>
             </div>
 
-            <div class="section" id="certificatesection">
+            <div class="section" id="certificate-section">
                 <h2 class="section-title">Certifications</h2>
-                <div class="card certificateentry">
+                <div class="card certificate-entry">
                     <div class="card-header">
                         <div>
                             <div class="card-title">{{certificateName}}</div>
@@ -253,10 +253,10 @@
                 </div>
             </div>
 
-            <div class="section full-width">
+            <div class="section full-width" id="skills-section">
                 <h2 class="section-title">Skills & Expertise</h2>
-                <div class="skills-grid" id="skills">
-                    <div class="skill-card skillentry">{{skillName}}</div>
+                <div class="skills-grid">
+                    <div class="skill-card skill-entry">{{skillName}}</div>
                 </div>
             </div>
         </div>

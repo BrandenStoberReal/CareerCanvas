@@ -177,7 +177,7 @@
 </head>
 <body>
     <div class="resume-container">
-        <header>
+        <header id="contact-section">
             <h1 id="name">{{fullName}}</h1>
             <div class="contact-info" id="contact-info">
                 <p id="address">{{homeAddress}}</p>
@@ -188,21 +188,21 @@
         </header>
 
         <div class="main-content">
-            <div class="section" id="summarycontainer">
+            <div class="section" id="summary-section">
                 <div class="section-header">
                     <div class="section-icon">i</div>
                     <h2 class="section-title">Professional Summary</h2>
                 </div>
-                <p id="professionalsummary">{{resumeSummary}}</p>
+                <p id="professional-summary">{{resumeSummary}}</p>
             </div>
 
-            <div class="section" id="experiencesection">
+            <div class="section" id="experience-section">
                 <div class="section-header">
                     <div class="section-icon">W</div>
                     <h2 class="section-title">Work Experience</h2>
                 </div>
                 <ul class="timeline">
-                    <li class="timeline-item jobentry">
+                    <li class="timeline-item job-entry">
                         <div class="timeline-header">
                             <div>
                                 <div class="timeline-title">{{jobTitle}}</div>
@@ -221,7 +221,7 @@
                     <h2 class="section-title">Education</h2>
                 </div>
                 <ul class="timeline">
-                    <li class="timeline-item educationentry">
+                    <li class="timeline-item education-entry">
                         <div class="timeline-header">
                             <div>
                                 <div class="timeline-title">{{degreeType}}</div>
@@ -233,13 +233,13 @@
                 </ul>
             </div>
 
-            <div class="section" id="certificatesection">
+            <div class="section" id="certificate-section">
                 <div class="section-header">
                     <div class="section-icon">C</div>
                     <h2 class="section-title">Certifications</h2>
                 </div>
                 <ul class="timeline">
-                    <li class="timeline-item certificateentry">
+                    <li class="timeline-item certificate-entry">
                         <div class="timeline-header">
                             <div>
                                 <div class="timeline-title">{{certificateName}}</div>
@@ -251,13 +251,13 @@
                 </ul>
             </div>
 
-            <div class="section">
+            <div class="section" id="skills-section">
                 <div class="section-header">
                     <div class="section-icon">S</div>
                     <h2 class="section-title">Skills</h2>
                 </div>
-                <ul class="skills-list" id="skills">
-                    <li class="skillentry">{{skillName}}</li>
+                <ul class="skills-list">
+                    <li class="skill-entry">{{skillName}}</li>
                 </ul>
             </div>
         </div>
