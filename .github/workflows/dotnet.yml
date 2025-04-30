@@ -9,6 +9,18 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+    contents: read
+    actions: write
+    checks: write
+    deployments: write
+    discussions: read
+    issues: write
+    packages: write
+    pull-requests: write
+    security-events: read
+    id-token: write
+
 jobs:
   build:
 
