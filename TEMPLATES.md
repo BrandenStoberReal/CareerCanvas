@@ -167,11 +167,10 @@ An example is provided below from one of the default templates:
     </ul>
 </div>
 ```
-Note in the above example, the `section` class is not relevant. Take note of `education-entry`, which defines the parent element of a macroized element. This is important so the scanner knows where to replace the macros and duplicate the elements. This allows template authors to customize their templates without worrying about the inner workings of the application.
 
-Also, note that the `education` class is not relevant. This is used to style the list of education entries.
-
-Lastly, the `education-section` ID is used in case a user does not provide any data to fill. In this case, the elements are removed from the document, basing off the children of the `education-section` element.
+Important fields:
+- `education-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
+- `education-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
 ### Work Container
 An example is provided below from one of the default templates:
@@ -187,11 +186,10 @@ An example is provided below from one of the default templates:
         </ul>
     </div>
 ```
-Note in the above example, the `section` class is not relevant. Take note of `job-entry`, which defines the parent element of a macroized element. This is important so the scanner knows where to replace the macros and duplicate the elements. This allows template authors to customize their templates without worrying about the inner workings of the application.
 
-Also, note that the `experience` class is not relevant. This is used to style the list of job entries.
-
-Lastly, the `experience-section` ID is used in case a user does not provide any data to fill. In this case, the elements are removed from the document, basing off the children of the `experience-section` element.
+Important fields:
+- `job-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
+- `experience-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
 ### Certification Container
 An example is provided below from one of the default templates:
@@ -206,11 +204,10 @@ An example is provided below from one of the default templates:
     </ul>
 </div>
 ```
-Note in the above example, the `section` class is not relevant. Take note of `certificate-entry`, which defines the parent element of a macroized element. This is important so the scanner knows where to replace the macros and duplicate the elements. This allows template authors to customize their templates without worrying about the inner workings of the application.
 
-Also, note that the `certificates` class is not relevant. This is used to style the list of certificate entries.
-
-Lastly, the `certificate-section` ID is used in case a user does not provide any data to fill. In this case, the elements are removed from the document, basing off the children of the `certificate-section` element.
+Important fields:
+- `certificate-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
+- `certificate-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
 ### Skills Container
 An example is provided below from one of the default templates:
@@ -222,9 +219,10 @@ An example is provided below from one of the default templates:
     </ul>
 </div>
 ```
-Note in the above example, the `section` class is not relevant. Take note of `skill-entry`, which defines the parent element of a macroized element. This is important so the scanner knows where to replace the macros and duplicate the elements. This allows template authors to customize their templates without worrying about the inner workings of the application.
 
-Also, note that the `skills` class is not relevant. This is used to style the list of skills.
+Important fields:
+- `skill-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
+- `skills-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
 ### Example Template Output
 Assuming 3 skills are provided, named `HTML`, `CSS`, and `JavaScript`, the application would process them into the following output:
