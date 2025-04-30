@@ -165,7 +165,7 @@
             identityConfigExpansionPanel.Collapse = true;
             identityConfigExpansionPanel.Controls.Add(identityEncryptionCheckbox);
             identityConfigExpansionPanel.Depth = 0;
-            identityConfigExpansionPanel.Description = "Settings related to how identities are stored and handled";
+            identityConfigExpansionPanel.Description = "Identity storage options";
             identityConfigExpansionPanel.ExpandHeight = 542;
             identityConfigExpansionPanel.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             identityConfigExpansionPanel.ForeColor = Color.FromArgb(222, 0, 0, 0);
