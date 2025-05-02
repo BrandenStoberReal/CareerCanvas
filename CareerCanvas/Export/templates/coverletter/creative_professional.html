@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Professional Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #fcfcfc;
+            color: #333;
+            line-height: 1.6;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover-letter {
+            background-color: white;
+            padding: 50px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .accent-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #9c27b0, #673ab7, #3f51b5);
+            border-radius: 8px 8px 0 0;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+            .header h1 {
+                color: #3f51b5;
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+            }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .date-section {
+            text-align: right;
+            margin: 30px 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .recipient-section {
+            margin-bottom: 35px;
+            line-height: 1.5;
+            border-left: 3px solid #3f51b5;
+            padding-left: 15px;
+        }
+
+        .greeting {
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #3f51b5;
+        }
+
+        .content {
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+            .content p {
+                margin-bottom: 20px;
+                text-align: justify;
+            }
+
+        .closing {
+            margin-top: 40px;
+            line-height: 2;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-weight: 600;
+            color: #3f51b5;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-letter">
+        <div class="accent-bar"></div>
+
+        <!-- Header with name and contact info -->
+        <div class="header">
+            <h1 class="cc-macro-name">{{fullName}}</h1>
+            <p>Applying for: <strong>{{appliedJobTitle}}</strong></p>
+
+            <div class="contact-grid" id="contact-section">
+                <div class="contact-item cc-macro-address">{{homeAddress}}</div>
+                <div class="contact-item cc-macro-email">{{emailAddress}}</div>
+                <div class="contact-item cc-macro-phonenumber">{{phoneNumber}}</div>
+                <div class="contact-item cc-macro-linkedin">{{linkedIn}}</div>
+            </div>
+        </div>
+
+        <!-- Date -->
+        <div class="date-section">
+            <p>{{currentDate}}</p>
+        </div>
+
+        <!-- Recipient Information -->
+        <div class="recipient-section">
+            <p class="cc-macro-recipient-name">{{coverLetterRecipientPrefix}} {{coverLetterRecipientName}}</p>
+            <p class="cc-macro-recipient-title">{{coverLetterRecipientTitle}}</p>
+            <p class="cc-macro-company-name"><strong>{{coverLetterCompanyName}}</strong></p>
+            <p class="cc-macro-company-address">{{coverLetterCompanyAddress}}</p>
+            <p class="cc-macro-company-city cc-macro-company-state cc-macro-company-zip">{{coverLetterCompanyCity}}, {{coverLetterCompanyState}} {{coverLetterCompanyZip}}</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            <p class="cc-macro-recipient-name">Dear {{coverLetterRecipientPrefix}} {{coverLetterRecipientName}},</p>
+        </div>
+
+        <!-- Letter Content -->
+        <div class="content">
+            <p>With enthusiasm and confidence, I'm applying for the {{appliedJobTitle}} position at {{coverLetterCompanyName}}.</p>
+            {{coverLetterContent}}
+        </div>
+
+        <!-- Closing -->
+        <div class="closing">
+            <p>I'm excited about the opportunity to bring my creative perspective and professional skills to your team. I would love to discuss how my background aligns with your needs.</p>
+            <p>With appreciation,</p>
+            <div class="signature cc-macro-name">{{fullName}}</div>
+        </div>
+    </div>
+</body>
+</html>

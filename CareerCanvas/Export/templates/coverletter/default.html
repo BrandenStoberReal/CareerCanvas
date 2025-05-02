@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover-letter {
+            background-color: white;
+            padding: 50px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Header styles */
+        .sender-info {
+            margin-bottom: 30px;
+        }
+
+            .sender-info h1 {
+                color: #2c3e50;
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+
+        .sender-contact {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        /* Date styles */
+        .date {
+            margin: 25px 0;
+            color: #555;
+        }
+
+        /* Recipient styles */
+        .recipient-info {
+            margin-bottom: 25px;
+        }
+
+        /* Greeting styles */
+        .greeting {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Content styles */
+        .content {
+            text-align: justify;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+            .content p {
+                margin-bottom: 20px;
+            }
+
+        /* Closing styles */
+        .closing {
+            margin-bottom: 60px;
+        }
+
+        .signature {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-letter">
+        <!-- Sender Information -->
+        <div id="contact-section" class="sender-info">
+            <h1>{{fullName}}</h1>
+            <div class="sender-contact">{{homeAddress}}</div>
+            <div class="sender-contact">{{emailAddress}}</div>
+            <div class="sender-contact">{{phoneNumber}}</div>
+            <div class="sender-contact">{{linkedIn}}</div>
+        </div>
+
+
+        <!-- Current Date -->
+        <div class="date">
+            <p>{{currentDate}}</p>
+        </div>
+
+        <!-- Recipient Information -->
+        <div class="recipient-info">
+            <p>{{coverLetterRecipientPrefix}} {{coverLetterRecipientName}}</p>
+            <p>{{coverLetterRecipientTitle}}</p>
+            <p>{{coverLetterCompanyName}}</p>
+            <p>{{coverLetterCompanyAddress}}</p>
+            <p>{{coverLetterCompanyCity}}, {{coverLetterCompanyState}} {{coverLetterCompanyZip}}</p>
+            <p>{{coverLetterCompanyPhone}}</p>
+            <p>{{coverLetterCompanyEmail}}</p>
+            <p>{{coverLetterCompanyWebsite}}</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            <p>Dear {{coverLetterRecipientPrefix}} {{coverLetterRecipientName}},</p>
+        </div>
+
+        <!-- Letter Content -->
+        <div class="content">
+            <p>I am writing to express my interest in the {{appliedJobTitle}} position at {{coverLetterCompanyName}}.</p>
+            {{coverLetterContent}}
+        </div>
+
+        <!-- Closing -->
+        <div class="closing">
+            <p>Sincerely,</p>
+            <br><br>
+            <p class="signature">{{fullName}}</p>
+        </div>
+    </div>
+</body>
+</html>

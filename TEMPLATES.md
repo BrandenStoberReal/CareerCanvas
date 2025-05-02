@@ -2,26 +2,28 @@
 <!--TOC-->
 - [Template Options](#template-options)
   - [Macros](#macros)
-      - ['Required' Macro Foreword](#required-macro-foreword)
-      - [List of Macros](#list-of-macros)
-      - [Static Macros](#static-macros)
-        - [Static Macro Implementation](#static-macro-implementation)
-        - [Static Macro IDs](#static-macro-ids)
-      - [Dynamic Macros](#dynamic-macros)
-        - [Dynamic Macro Implementation](#dynamic-macro-implementation)
-        - [Dynamic Macro IDs](#dynamic-macro-ids)
-          - [Section IDs](#section-ids)
-          - [Entry IDs](#entry-ids)
-      - [Examples](#examples)
-        - [Education Container](#education-container)
-        - [Work Container](#work-container)
-        - [Certification Container](#certification-container)
-        - [Skills Container](#skills-container)
-        - [Example Template Output](#example-template-output)
+  - ['Required' Macro Foreword](#required-macro-foreword)
+  - [List of Macros](#list-of-macros)
+  - [Resume Specific Macros](#resume-specific-macros)
+  - [Cover Letter Specific Macros](#cover-letter-specific-macros)
+  - [Static Macros](#static-macros)
+    - [Static Macro Implementation](#static-macro-implementation)
+    - [Static Macro IDs](#static-macro-ids)
+  - [Dynamic Macros](#dynamic-macros)
+    - [Dynamic Macro Implementation](#dynamic-macro-implementation)
+    - [Dynamic Macro IDs](#dynamic-macro-ids)
+      - [Section IDs](#section-ids)
+      - [Entry IDs](#entry-ids)
+  - [Examples](#examples)
+    - [Education Container](#education-container)
+    - [Work Container](#work-container)
+    - [Certification Container](#certification-container)
+    - [Skills Container](#skills-container)
+    - [Example Template Output](#example-template-output)
 <!--/TOC-->
 
 # Template Options
-CareerCanvas allows you to create custom resume templates out of HTML. To do this, some information needs to be marked so the application knows how to process it.
+CareerCanvas allows you to create custom templates out of HTML. To do this, some information needs to be marked so the application knows how to process it.
 
 ## Macros
 Macros are used to mark the information that needs to be replaced. They are defined in the following format:
@@ -31,18 +33,18 @@ Macros are used to mark the information that needs to be replaced. They are defi
 Where `macro_name` is the name of the macro. The macro names should be `unique`. For macros that are used to replace list information, see the [dynamic macros](#dynamic-macro-implementation) section below.
 
 There are two types of macro types: `static` and `dynamic`.
-A `static macro` is a macro that will be replaced with a `static value`. For example, the `{{fullName}}` macro will be replaced with the full name of the resume's owner. `These macros can be defined anywhere in the document without issue`.
+A `static macro` is a macro that will be replaced with a `static value`. For example, the `{{fullName}}` macro will be replaced with the full name of the template's owner. `These macros can be defined anywhere in the document without issue`.
 A `dynamic macro` is a macro that will be replaced with a `dynamic value`. For example, the `{{jobTitle}}` macro's parent element will be duplicated for every job in the users work history. `The parent elements of these macros require special element IDs`. Read the section on [dynamic macros](#dynamic-macro-implementation) further in this document for details.
 
 Static macros can be defined anywhere in the document. For example, the following is a valid macro:
 ```html
 <p>{{fullName}}</p>
 ```
-This will be replaced with the full name of the resume's owner.
+This will be replaced with the full name of the template's owner.
 
 Both macro types can also be defined anywhere in the HTML element. For example, the following is a valid, albeit useless, macro:
 ```html
-<div class="resume">
+<div class="template">
     <h1 class="{{fullName}}">{{homeAddress}}</h1>
 </div>
 ```
@@ -57,17 +59,22 @@ Lastly, dynamic macros can be defined anywhere in an element's descendancy. For 
 This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the former being nested inside the `strong` element.
 
 ## 'Required' Macro Foreword
-Some macros are listed as `required` in the table below. Despite the name, these macros are not inherently forced to be in the resume; however, macros marked with the `required` entry are strongly recommended to include, as they typically compose the foundation of the document or are otherwise integral information. The application `will still load your template` if a required macro remains undefined, however, your template will likely look very bad.
+Some macros are listed as `required` in the table below. Despite the name, these macros are not inherently forced to be in the template; however, macros marked with the `required` entry are strongly recommended to include, as they typically compose the foundation of the document or are otherwise integral information. The application `will still load your template` if a required macro remains undefined, however, your template will likely look very bad.
 
 
 ## List of Macros
 | Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
 | :---: | :---: | :---: | :---: | :---: |
-| `{{fullName}}` | The full name of the resume's owner. | Yes | No | No |
-| `{{homeAddress}}` | The resume owner's legal residence. | No | No | No |
-| `{{emailAddress}}` | The resume owner's email address. | No | No | No |
-| `{{phoneNumber}}` | The resume owner's phone number. | No | No | No |
-| `{{linkedIn}}` | The resume owner's LinkedIn profile. | No | No | No |
+| `{{fullName}}` | The full name of the template's owner. | Yes | No | No |
+| `{{homeAddress}}` | The template owner's legal residence. | No | No | No |
+| `{{emailAddress}}` | The template owner's email address. | No | No | No |
+| `{{phoneNumber}}` | The template owner's phone number. | No | No | No |
+| `{{linkedIn}}` | The template owner's LinkedIn profile. | No | No | No |
+| `{{currentDate}}` | A placeholder for the current date (MMM DD, YYYY). | No | No | No |
+
+## Resume Specific Macros
+| Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
+| :---: | :---: | :---: | :---: | :---: |
 | `{{resumeSummary}}` | A summary of the resume owner's overall job experience. | No | No | Yes |
 | `{{skillName}}` | A placeholder for a skill the resume owner posesses. | No | Yes | Yes |
 | `{{jobTitle}}` | A placeholder for the job title defined in the owner's work history. | Yes | Yes | No |
@@ -98,7 +105,25 @@ Some macros are listed as `required` in the table below. Despite the name, these
 | `{{certificateDate}}` | A placeholder for the date the certificate was issued to the user. | No | Yes | No |
 | `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
 
+## Cover Letter Specific Macros
+| Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
+| :---: | :---: | :---: | :---: | :---: |
+| `{{coverLetterCompanyName}}` | A placeholder for the name of the company the cover letter is addressed to. | Yes | No | No |
+| `{{coverLetterCompanyAddress}}` | A placeholder for the address of the company the cover letter is addressed to. | No | No | No |
+| `{{coverLetterCompanyCity}}` | A placeholder for the city of the company the cover letter is addressed to. | No | No | No |
+| `{{coverLetterCompanyState}}` | A placeholder for the state of the company the cover letter is addressed to. | No | No | No |
+| `{{coverLetterCompanyZip}}` | A placeholder for the zip code of the company the cover letter is addressed to. | No | No | No |
+| `{{coverLetterCompanyPhone}}` | A placeholder for the phone number of the company the cover letter is addressed to. | No | No | No |
+| `{{coverLetterCompanyEmail}}` | A placeholder for the email address of the company the cover letter is addressed to. | No | No | No |
+| `{{coverLetterCompanyWebsite}}` | A placeholder for the website of the company the cover letter is addressed to. | No | No | No |
+| `{{coverLetterContent}}` | A placeholder for the content of the cover letter. | Yes | No | No |
+| `{{appliedJobTitle}}` | A placeholder for the job title the cover letter is addressing. | Yes | No | No |
+| `{{coverLetterRecipientName}}` | A placeholder for the name of the recipient of the cover letter. | No | No | No |
+| `{{coverLetterRecipientTitle}}` | A placeholder for the title of the recipient of the cover letter. | No | No | No |
+| `{{coverLetterRecipientPrefix}}` | A placeholder for the prefix of the recipient of the cover letter. | No | No | No |
+
 ## Static Macros
+**This section only applies to resumes! Static macros are handled uniquely in CVs!**
 
 ### Static Macro Implementation
 Static macros are required to be assigned a unique ID. This is used to delete the macro's parent element if the user does not provide relevant data. Each static macro has its own ID, which is used to identify the parent element of the macro and delete/modify it if needed.
@@ -114,6 +139,7 @@ Static macros are required to be assigned a unique ID. This is used to delete th
 | `{{resumeSummary}}` | `professional-summary` |
 
 ## Dynamic Macros
+**This section only applies to resumes! Dynamic macros do not exist in CVs!**
 
 ### Dynamic Macro Implementation
 Dynamic macros are used to create a list of items that are repeated for each item in the list. For example, the `{{jobTitle}}` macro will be replaced with the job title of each job in the user's work history.

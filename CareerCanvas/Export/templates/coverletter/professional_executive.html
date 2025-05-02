@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Executive Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 25px;
+        }
+
+        .cover-letter {
+            background-color: white;
+            padding: 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #ddd;
+        }
+
+        .letterhead {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+            .letterhead h1 {
+                color: #2f2f2f;
+                font-size: 2.2rem;
+                letter-spacing: 1px;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+            }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .date {
+            text-align: right;
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        .recipient-block {
+            margin-bottom: 40px;
+        }
+
+        .greeting {
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            margin-bottom: 40px;
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+            .content p {
+                margin-bottom: 25px;
+                text-indent: 30px;
+            }
+
+        .closing {
+            margin-top: 40px;
+        }
+
+        .signature {
+            margin-top: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-letter">
+        <!-- Letterhead -->
+        <div class="letterhead">
+            <h1 class="cc-macro-name">{{fullName}}</h1>
+            <div class="contact-row" id="contact-section">
+                <div class="cc-macro-address">{{homeAddress}}</div>
+                <div class="cc-macro-email">{{emailAddress}}</div>
+                <div class="cc-macro-phonenumber">{{phoneNumber}}</div>
+                <div class="cc-macro-linkedin">{{linkedIn}}</div>
+            </div>
+        </div>
+
+        <!-- Date -->
+        <div class="date">
+            <p>{{currentDate}}</p>
+        </div>
+
+        <!-- Recipient Information -->
+        <div class="recipient-block">
+            <p class="cc-macro-recipient-name">{{coverLetterRecipientPrefix}} {{coverLetterRecipientName}}</p>
+            <p class="cc-macro-recipient-title">{{coverLetterRecipientTitle}}</p>
+            <p class="cc-macro-company-name">{{coverLetterCompanyName}}</p>
+            <p class="cc-macro-company-address">{{coverLetterCompanyAddress}}</p>
+            <p class="cc-macro-company-city cc-macro-company-state cc-macro-company-zip">{{coverLetterCompanyCity}}, {{coverLetterCompanyState}} {{coverLetterCompanyZip}}</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            <p class="cc-macro-recipient-name">Dear {{coverLetterRecipientPrefix}} {{coverLetterRecipientName}},</p>
+        </div>
+
+        <!-- Letter Content -->
+        <div class="content">
+            <p>It is with great interest that I submit my application for the {{appliedJobTitle}} position at {{coverLetterCompanyName}}.</p>
+            {{coverLetterContent}}
+        </div>
+
+        <!-- Closing -->
+        <div class="closing">
+            <p>I would welcome the opportunity to discuss my qualifications further and demonstrate how my experience would benefit your organization.</p>
+            <p>Respectfully,</p>
+            <div class="signature cc-macro-name">{{fullName}}</div>
+        </div>
+    </div>
+</body>
+</html>

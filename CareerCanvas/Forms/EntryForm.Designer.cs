@@ -73,6 +73,8 @@
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
             historyRefreshTimer = new System.Windows.Forms.Timer(components);
             tabPage1 = new TabPage();
+            materialCard6 = new ReaLTaiizor.Controls.MaterialCard();
+            openCvBuilderButton = new ReaLTaiizor.Controls.MaterialButton();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             identityPage.SuspendLayout();
@@ -84,9 +86,11 @@
             materialCard3.SuspendLayout();
             resumePage.SuspendLayout();
             materialCard5.SuspendLayout();
+            cvPage.SuspendLayout();
             creditsPage.SuspendLayout();
             creditsFlowPanel.SuspendLayout();
             libraryCreditsFlowPanel.SuspendLayout();
+            materialCard6.SuspendLayout();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -522,6 +526,7 @@
             // 
             // cvPage
             // 
+            cvPage.Controls.Add(materialCard6);
             cvPage.Location = new Point(4, 24);
             cvPage.Name = "cvPage";
             cvPage.Size = new Size(1077, 616);
@@ -743,6 +748,42 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Test";
             // 
+            // materialCard6
+            // 
+            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard6.Controls.Add(openCvBuilderButton);
+            materialCard6.Depth = 0;
+            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard6.Location = new Point(14, 14);
+            materialCard6.Margin = new Padding(14);
+            materialCard6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard6.Name = "materialCard6";
+            materialCard6.Padding = new Padding(14);
+            materialCard6.Size = new Size(179, 588);
+            materialCard6.TabIndex = 1;
+            // 
+            // openCvBuilderButton
+            // 
+            openCvBuilderButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            openCvBuilderButton.AutoSize = false;
+            openCvBuilderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openCvBuilderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openCvBuilderButton.Depth = 0;
+            openCvBuilderButton.HighEmphasis = true;
+            openCvBuilderButton.Icon = null;
+            openCvBuilderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openCvBuilderButton.Location = new Point(18, 20);
+            openCvBuilderButton.Margin = new Padding(4, 6, 4, 6);
+            openCvBuilderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openCvBuilderButton.Name = "openCvBuilderButton";
+            openCvBuilderButton.NoAccentTextColor = Color.Empty;
+            openCvBuilderButton.Size = new Size(143, 36);
+            openCvBuilderButton.TabIndex = 0;
+            openCvBuilderButton.Text = "Open CV Builder";
+            openCvBuilderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openCvBuilderButton.UseAccentColor = false;
+            openCvBuilderButton.UseVisualStyleBackColor = true;
+            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -777,11 +818,13 @@
             materialCard3.ResumeLayout(false);
             resumePage.ResumeLayout(false);
             materialCard5.ResumeLayout(false);
+            cvPage.ResumeLayout(false);
             creditsPage.ResumeLayout(false);
             creditsFlowPanel.ResumeLayout(false);
             creditsFlowPanel.PerformLayout();
             libraryCreditsFlowPanel.ResumeLayout(false);
             libraryCreditsFlowPanel.PerformLayout();
+            materialCard6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -830,5 +873,7 @@
         private ReaLTaiizor.Controls.MaterialCard materialCard5;
         private ReaLTaiizor.Controls.MaterialButton openResumeWorkspaceButton;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel2;
+        private ReaLTaiizor.Controls.MaterialCard materialCard6;
+        private ReaLTaiizor.Controls.MaterialButton openCvBuilderButton;
     }
 }

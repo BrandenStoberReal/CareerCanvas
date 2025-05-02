@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Traditional Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover-letter {
+            padding: 40px 50px;
+            border: 1px solid #ddd;
+        }
+
+        .sender-info {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+            .sender-info h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+        .contact-details {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .date {
+            margin: 25px 0;
+        }
+
+        .recipient-details {
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .greeting {
+            margin-bottom: 25px;
+        }
+
+        .content {
+            text-align: justify;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-indent: 30px;
+        }
+
+            .content p {
+                margin-bottom: 15px;
+            }
+
+        .closing {
+            margin-top: 30px;
+        }
+
+        .signature {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-letter">
+        <!-- Sender Information -->
+        <div class="sender-info" id="contact-section">
+            <h1>{{fullName}}</h1>
+            <div>
+                <div>{{homeAddress}}</div>
+                <div>{{emailAddress}}</div>
+                <div>{{phoneNumber}}</div>
+                <div>{{linkedIn}}</div>
+            </div>
+        </div>
+
+        <!-- Date -->
+        <div class="date">
+            <p>{{currentDate}}</p>
+        </div>
+
+        <!-- Recipient Information -->
+        <div class="recipient-details">
+            <p>{{coverLetterRecipientPrefix}} {{coverLetterRecipientName}}</p>
+            <p>{{coverLetterRecipientTitle}}</p>
+            <p>{{coverLetterCompanyName}}</p>
+            <p>{{coverLetterCompanyAddress}}</p>
+            <p>{{coverLetterCompanyCity}}, {{coverLetterCompanyState}} {{coverLetterCompanyZip}}</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            <p>Dear {{coverLetterRecipientPrefix}} {{coverLetterRecipientName}}:</p>
+        </div>
+
+        <!-- Letter Content -->
+        <div class="content">
+            <p>Please accept my application for the {{appliedJobTitle}} position at {{coverLetterCompanyName}}.</p>
+            {{coverLetterContent}}
+        </div>
+
+        <!-- Closing -->
+        <div class="closing">
+            <p>Thank you for your time and consideration. I look forward to speaking with you about this opportunity.</p>
+            <p>Yours truly,</p>
+            <div class="signature">{{fullName}}</div>
+        </div>
+    </div>
+</body>
+</html>

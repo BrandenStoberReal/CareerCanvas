@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Minimal Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover-letter {
+            padding: 40px;
+            border-left: 4px solid #3498db;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+            .header h1 {
+                color: #3498db;
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .date {
+            margin: 20px 0;
+            color: #777;
+        }
+
+        .recipient-info {
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .greeting {
+            margin-bottom: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+            .content p {
+                margin-bottom: 20px;
+                text-align: justify;
+            }
+
+        .closing {
+            margin-top: 40px;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-weight: bold;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-letter">
+        <!-- Header with name and contact -->
+        <div class="header">
+            <h1 class="cc-macro-name">{{fullName}}</h1>
+            <div class="contact-info" id="contact-section">
+                <div class="cc-macro-address">{{homeAddress}}</div>
+                <div class="cc-macro-email">{{emailAddress}}</div>
+                <div class="cc-macro-phonenumber">{{phoneNumber}}</div>
+                <div class="cc-macro-linkedin">{{linkedIn}}</div>
+            </div>
+        </div>
+
+        <!-- Date -->
+        <div class="date">
+            <p>{{currentDate}}</p>
+        </div>
+
+        <!-- Recipient Information -->
+        <div class="recipient-info">
+            <p class="cc-macro-recipient-name">{{coverLetterRecipientPrefix}} {{coverLetterRecipientName}}</p>
+            <p class="cc-macro-recipient-title">{{coverLetterRecipientTitle}}</p>
+            <p class="cc-macro-company-name">{{coverLetterCompanyName}}</p>
+            <p class="cc-macro-company-address">{{coverLetterCompanyAddress}}</p>
+            <p class="cc-macro-company-city cc-macro-company-state cc-macro-company-zip">{{coverLetterCompanyCity}}, {{coverLetterCompanyState}} {{coverLetterCompanyZip}}</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            <p class="cc-macro-recipient-name">Dear {{coverLetterRecipientPrefix}} {{coverLetterRecipientName}},</p>
+        </div>
+
+        <!-- Letter Content -->
+        <div class="content">
+            <p>I am writing to apply for the {{appliedJobTitle}} position at {{coverLetterCompanyName}} that I found on your company website.</p>
+            {{coverLetterContent}}
+        </div>
+
+        <!-- Closing -->
+        <div class="closing">
+            <p>Thank you for your consideration. I look forward to the opportunity to discuss how my skills and experience would benefit {{coverLetterCompanyName}}.</p>
+            <p>Sincerely,</p>
+            <div class="signature cc-macro-name">{{fullName}}</div>
+        </div>
+    </div>
+</body>
+</html>
