@@ -37,7 +37,7 @@ namespace CareerCanvas.Classes.Main.Macros
         /// <returns></returns>
         public override string ToString()
         {
-            return MacroValue.ToString();
+            return MacroValue.Trim();
         }
 
         /// <summary>
@@ -53,10 +53,14 @@ namespace CareerCanvas.Classes.Main.Macros
                     {
                         // Remove empty elements
                         // TODO: Detect multiple macros & don't delete element if present
-                        foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.InnerText.Contains("{{" + MacroName + "}}")))
+                        foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
                         {
-                            node.Remove();
-                            Globals.AppLogger.Warning($"{MacroName} macro located and removed due to lack of data.");
+                            HtmlTextNode casted = (HtmlTextNode)node;
+                            if (casted.Text.Contains("{{" + MacroName + "}}"))
+                            {
+                                node.ParentNode.Remove();
+                                Globals.AppLogger.Warning($"{MacroName} macro located and removed due to lack of data.");
+                            }
                         }
                     }
                 }

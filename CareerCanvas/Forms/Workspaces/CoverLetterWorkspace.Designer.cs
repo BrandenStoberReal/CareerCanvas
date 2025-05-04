@@ -28,21 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            cvWebView = new Microsoft.Web.WebView2.WinForms.WebView2();
+            ((System.ComponentModel.ISupportInitialize)cvWebView).BeginInit();
             SuspendLayout();
+            // 
+            // cvWebView
+            // 
+            cvWebView.AllowExternalDrop = true;
+            cvWebView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            cvWebView.CreationProperties = null;
+            cvWebView.DefaultBackgroundColor = Color.White;
+            cvWebView.Location = new Point(6, 27);
+            cvWebView.Name = "cvWebView";
+            cvWebView.Size = new Size(747, 962);
+            cvWebView.TabIndex = 0;
+            cvWebView.ZoomFactor = 1D;
+            cvWebView.CoreWebView2InitializationCompleted += cvWebView_CoreWebView2InitializationCompleted;
             // 
             // CoverLetterWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1372, 995);
+            Controls.Add(cvWebView);
             FormStyle = ReaLTaiizor.Enum.Material.FormStyles.ActionBar_None;
             Name = "CoverLetterWorkspace";
             Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
             Text = "Cover Letter Workspace";
+            Load += CoverLetterWorkspace_Load;
+            ((System.ComponentModel.ISupportInitialize)cvWebView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Microsoft.Web.WebView2.WinForms.WebView2 cvWebView;
     }
 }

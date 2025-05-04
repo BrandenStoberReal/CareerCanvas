@@ -423,4 +423,51 @@ public partial class EntryForm : MaterialForm
     {
         ActiveControl = null;
     }
+
+    private void openCvBuilderButton_Click(object sender, EventArgs e)
+    {
+        var identity = new ProfessionalIdentity();
+        var industry = new Industry();
+
+        OpenFileDialog identityPicker = new OpenFileDialog();
+        identityPicker.Title = "Select an identity file";
+        identityPicker.Filter = "Identity files (*.identity)|*.identity";
+        identityPicker.InitialDirectory = Path.GetFullPath("./data/identities");
+
+        if (identityPicker.ShowDialog() == DialogResult.OK)
+        {
+            var identityPath = identityPicker.FileName;
+            var identityName = Path.GetFileNameWithoutExtension(identityPath).ToLower();
+            using (var file = File.OpenRead(identityPath))
+            {
+                identity = Serializer.Deserialize<ProfessionalIdentity>(file);
+            }
+        }
+        else
+        {
+            return;
+        }
+
+        OpenFileDialog industryPicker = new OpenFileDialog();
+        industryPicker.Title = "Select an industry file";
+        industryPicker.Filter = "Industry files (*.industry)|*.industry";
+        industryPicker.InitialDirectory = Path.GetFullPath("./data/industries");
+
+        if (industryPicker.ShowDialog() == DialogResult.OK)
+        {
+            var industryPath = industryPicker.FileName;
+            var industryName = Path.GetFileNameWithoutExtension(industryPath).ToLower();
+            using (var file = File.OpenRead(industryPath))
+            {
+                industry = Serializer.Deserialize<Industry>(file);
+            }
+        }
+        else
+        {
+            return;
+        }
+
+        var coverLetterWorkspace = new CoverLetterWorkspace(identity, industry);
+        coverLetterWorkspace.Show();
+    }
 }
