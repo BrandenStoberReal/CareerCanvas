@@ -33,7 +33,7 @@
  - [x] Material UI
  - [ ] Material UI - Application Themes
  - [ ] Material UI - Not Terrible UI
- - [ ] Cover Letter Builder
+ - [x] Cover Letter Builder
  - [ ] Cover Letter Builder - Export cover letter to PDF
  - [ ] Cover Letter Builder - Export cover letter to HTML
  - [ ] Cover Letter Builder - Google Gemini Integration
