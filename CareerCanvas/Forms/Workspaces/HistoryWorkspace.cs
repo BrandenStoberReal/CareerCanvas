@@ -240,7 +240,7 @@ public partial class HistoryWorkspace : MaterialForm
     /// </remarks>
     private void HistoryWorkspace_Shown(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -413,7 +413,7 @@ public partial class HistoryWorkspace : MaterialForm
     /// </remarks>
     private void HistoryWorkspace_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -697,7 +697,7 @@ public partial class HistoryWorkspace : MaterialForm
     /// <param name="e"></param>
     private void jobsExpansionPanel_Click(object sender, EventArgs e)
     {
-        this.ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -707,7 +707,7 @@ public partial class HistoryWorkspace : MaterialForm
     /// <param name="e"></param>
     private void educationExpansionPanel_Click(object sender, EventArgs e)
     {
-        this.ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -717,7 +717,7 @@ public partial class HistoryWorkspace : MaterialForm
     /// <param name="e"></param>
     private void certificatesExpansionPanel_Click(object sender, EventArgs e)
     {
-        this.ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -727,6 +727,6 @@ public partial class HistoryWorkspace : MaterialForm
     /// <param name="e"></param>
     private void skillsExpansionPanel_Click(object sender, EventArgs e)
     {
-        this.ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 }

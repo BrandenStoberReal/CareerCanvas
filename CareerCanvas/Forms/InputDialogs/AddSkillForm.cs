@@ -2,6 +2,7 @@
 using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 
@@ -41,12 +42,12 @@ public partial class AddSkillForm : MaterialForm
 
     private void flowLayoutPanel1_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     private void AddSkillForm_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     private void discardButton_Click(object sender, EventArgs e)

@@ -48,11 +48,11 @@ public partial class EducationInfoViewer : MaterialForm
 
     private void textBox_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     private void textBox_Enter(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 }

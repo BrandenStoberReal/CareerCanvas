@@ -163,7 +163,7 @@ public sealed partial class IdentityWorkspace : MaterialForm
     /// <param name="e"></param>
     private void IdentityWorkspace_Load(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ public sealed partial class IdentityWorkspace : MaterialForm
     /// <param name="e"></param>
     private void IdentityWorkspace_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -183,7 +183,7 @@ public sealed partial class IdentityWorkspace : MaterialForm
     /// <param name="e"></param>
     private void IdentityWorkspace_Shown(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>

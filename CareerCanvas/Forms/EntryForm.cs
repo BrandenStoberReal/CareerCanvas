@@ -43,7 +43,7 @@ public partial class EntryForm : MaterialForm
     private void EntryForm_Load(object sender, EventArgs e)
     {
         // Set the active control to null to prevent any control from being focused initially
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
 
         // Load identity settings if the configuration file exists
         if (File.Exists(Globals.IdentityConfigPath))
@@ -244,7 +244,7 @@ public partial class EntryForm : MaterialForm
     /// <param name="e">An EventArgs object that contains the event data.</param>
     private void identityConfigExpansionPanel_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -357,7 +357,7 @@ public partial class EntryForm : MaterialForm
 
     private void welcomePage_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -416,12 +416,12 @@ public partial class EntryForm : MaterialForm
 
     private void resumePage_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     private void materialCard5_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     private void openCvBuilderButton_Click(object sender, EventArgs e)
@@ -469,6 +469,6 @@ public partial class EntryForm : MaterialForm
 
         var coverLetterWorkspace = new CoverLetterWorkspace(identity, industry);
         coverLetterWorkspace.Show();
-        this.ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 }

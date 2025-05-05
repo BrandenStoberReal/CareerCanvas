@@ -28,6 +28,11 @@ namespace CareerCanvas.Forms.Workspaces
         public HtmlDocument _currentDocument = new HtmlDocument();
         private bool _webViewInitialized = false;
 
+        /// <summary>
+        /// Constructor for the CoverLetterWorkspace.
+        /// </summary>
+        /// <param name="identity"></param>
+        /// <param name="industry"></param>
         public CoverLetterWorkspace(ProfessionalIdentity identity, Industry industry)
         {
             InitializeComponent();
@@ -48,6 +53,9 @@ namespace CareerCanvas.Forms.Workspaces
             Globals.AppLogger.Debug("Applied global color scheme to CoverLetterWorkspace: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
         }
 
+        /// <summary>
+        /// Shows the Cover Letter Info dialog.
+        /// </summary>
         private void ShowCoverLetterInfoDialog()
         {
             // Now show the dialog separately from WebView2 initialization
@@ -66,6 +74,11 @@ namespace CareerCanvas.Forms.Workspaces
             }
         }
 
+        /// <summary>
+        /// Handles the WebView2 initialization completed event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cvWebView_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
             // Only handle the WebView2 initialization part here
@@ -87,24 +100,39 @@ namespace CareerCanvas.Forms.Workspaces
             }
         }
 
+        /// <summary>
+        /// Handles the form load event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CoverLetterWorkspace_Load(object sender, EventArgs e)
         {
             cvWebView.EnsureCoreWebView2Async();
         }
 
+        /// <summary>
+        /// Handles the edit info button click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void editInfoButton_Click(object sender, EventArgs e)
         {
             CoverLetterInfoForm coverLetterInfoForm = new CoverLetterInfoForm(ref _coverLetterInfo);
             coverLetterInfoForm.ShowDialog();
-            this.ActiveControl = null;
+            InputUtils.ClearActiveControl(this);
         }
 
+        /// <summary>
+        /// Handles the change template button click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changeTemplateButton_Click(object sender, EventArgs e)
         {
             ChangeCVTemplateForm changeTemplateForm = new ChangeCVTemplateForm(this, _identity, ref _currentDocument, _coverLetterInfo);
             changeTemplateForm.ShowDialog();
             cvWebView.NavigateToString(_currentDocument.DocumentNode.OuterHtml);
-            this.ActiveControl = null;
+            InputUtils.ClearActiveControl(this);
         }
     }
 }

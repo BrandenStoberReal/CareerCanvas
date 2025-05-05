@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 
@@ -94,7 +95,7 @@ public partial class AddEducationForm : MaterialForm
 
     private void flowLayoutPanel1_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     private void AddEducationForm_Shown(object sender, EventArgs e)
@@ -103,7 +104,7 @@ public partial class AddEducationForm : MaterialForm
 
     private void AddEducationForm_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     private void AddEducationForm_FormClosing(object sender, FormClosingEventArgs e)

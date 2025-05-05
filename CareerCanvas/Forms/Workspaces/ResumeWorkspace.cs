@@ -332,7 +332,7 @@ public partial class ResumeWorkspace : MaterialForm
     /// <param name="e"></param>
     private void materialCard1_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -342,7 +342,7 @@ public partial class ResumeWorkspace : MaterialForm
     /// <param name="e"></param>
     private void materialCard2_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -389,7 +389,7 @@ public partial class ResumeWorkspace : MaterialForm
     /// <param name="e"></param>
     private void tableLayoutPanel1_Click(object sender, EventArgs e)
     {
-        this.ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -399,6 +399,6 @@ public partial class ResumeWorkspace : MaterialForm
     /// <param name="e"></param>
     private void tableLayoutPanel2_Click(object sender, EventArgs e)
     {
-        this.ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Static;
+using CareerCanvas.Classes.Static.Utils;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 
@@ -65,7 +66,7 @@ public partial class JobInfoViewer : MaterialForm
     /// <param name="e">The event data.</param>
     private void JobInfoViewer_Shown(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -77,7 +78,7 @@ public partial class JobInfoViewer : MaterialForm
     /// <param name="e">The event data containing information about the click event.</param>
     private void textBox_Click(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 
     /// <summary>
@@ -89,6 +90,6 @@ public partial class JobInfoViewer : MaterialForm
     /// <param name="e">The event data containing information about the Enter event.</param>
     private void textBox_Enter(object sender, EventArgs e)
     {
-        ActiveControl = null;
+        InputUtils.ClearActiveControl(this);
     }
 }
