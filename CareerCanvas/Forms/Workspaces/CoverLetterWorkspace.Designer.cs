@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             cvWebView = new Microsoft.Web.WebView2.WinForms.WebView2();
+            materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
             ((System.ComponentModel.ISupportInitialize)cvWebView).BeginInit();
             SuspendLayout();
             // 
@@ -45,11 +46,26 @@
             cvWebView.ZoomFactor = 1D;
             cvWebView.CoreWebView2InitializationCompleted += cvWebView_CoreWebView2InitializationCompleted;
             // 
+            // materialCard1
+            // 
+            materialCard1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Depth = 0;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(770, 38);
+            materialCard1.Margin = new Padding(14);
+            materialCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(14);
+            materialCard1.Size = new Size(585, 940);
+            materialCard1.TabIndex = 1;
+            // 
             // CoverLetterWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1372, 995);
+            Controls.Add(materialCard1);
             Controls.Add(cvWebView);
             FormStyle = ReaLTaiizor.Enum.Material.FormStyles.ActionBar_None;
             Name = "CoverLetterWorkspace";
@@ -64,5 +80,6 @@
         #endregion
 
         private Microsoft.Web.WebView2.WinForms.WebView2 cvWebView;
+        private ReaLTaiizor.Controls.MaterialCard materialCard1;
     }
 }

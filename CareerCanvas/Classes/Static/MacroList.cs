@@ -30,7 +30,8 @@ namespace CareerCanvas.Classes.Static
         public static readonly string CoverLetterCompanyCityMacro = "coverLetterCompanyCity";
         public static readonly string CoverLetterCompanyStateMacro = "coverLetterCompanyState";
         public static readonly string CoverLetterCompanyZipMacro = "coverLetterCompanyZip";
-        public static readonly string CoverLetterRecipientNameMacro = "coverLetterRecipientName";
+        public static readonly string CoverLetterRecipientFirstNameMacro = "coverLetterRecipientFirstName";
+        public static readonly string CoverLetterRecipientLastNameMacro = "coverLetterRecipientLastName";
         public static readonly string CoverLetterRecipientPrefixMacro = "coverLetterRecipientPrefix";
         public static readonly string CoverLetterRecipientTitleMacro = "coverLetterRecipientTitle";
         public static readonly string CoverLetterCompanyPhoneMacro = "coverLetterCompanyPhone";

@@ -58,8 +58,22 @@ namespace CareerCanvas.Classes.Main.Macros
                             HtmlTextNode casted = (HtmlTextNode)node;
                             if (casted.Text.Contains("{{" + MacroName + "}}"))
                             {
-                                node.ParentNode.Remove();
+                                casted.ParentNode.Remove();
                                 Globals.AppLogger.Warning($"{MacroName} macro located and removed due to lack of data.");
+                            }
+                        }
+                    }
+                } else
+                {
+                    if (MacroValue == string.Empty || MacroValue == null)
+                    {
+                        foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
+                        {
+                            HtmlTextNode casted = (HtmlTextNode)node;
+                            if (casted.Text.Contains("{{" + MacroName + "}}"))
+                            {
+                                casted.Text = casted.Text.Replace("{{" + MacroName + "}}", string.Empty);
+                                Globals.AppLogger.Warning($"{MacroName} macro located and emptied due to lack of data.");
                             }
                         }
                     }

@@ -15,6 +15,7 @@ using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Classes.Main.Misc;
 using CareerCanvas.Classes.Static;
 using ReaLTaiizor.Manager;
+using CareerCanvas.Forms.InputDialogs;
 
 namespace CareerCanvas.Forms.Workspaces
 {
@@ -22,6 +23,8 @@ namespace CareerCanvas.Forms.Workspaces
     {
         private ProfessionalIdentity _identity;
         private Industry _industry;
+        private CoverLetterInfo _coverLetterInfo = new CoverLetterInfo();
+        private string _currentTemplateName = string.Empty;
 
         public CoverLetterWorkspace(ProfessionalIdentity identity, Industry industry)
         {
@@ -45,20 +48,16 @@ namespace CareerCanvas.Forms.Workspaces
 
         private void cvWebView_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
         {
+            this.WindowState = FormWindowState.Minimized;
+            CoverLetterInfoForm coverLetterInfoForm = new CoverLetterInfoForm(ref _coverLetterInfo);
+            coverLetterInfoForm.ShowDialog();
+            this.WindowState = FormWindowState.Normal;
+
             // Load the HTML content into the WebView2 control
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(File.ReadAllText("./templates/coverletter/default.html"));
-            CoverLetterUtils.FillDocumentData(doc, _identity, new CoverLetterInfo
-            {
-                CompanyName = "Example Company",
-                JobTitle = "Software Engineer",
-                CompanyAddress = "123 Example St.",
-                CompanyCity = "Example City",
-                CompanyState = "EX",
-                CompanyZip = "12345",
-                RecipientName = "John Doe",
-                RecipientPrefix = "Mr."
-            });
+            _currentTemplateName = "default";
+            CoverLetterUtils.FillDocumentData(doc, _identity, _coverLetterInfo);
 
             cvWebView.NavigateToString(doc.DocumentNode.OuterHtml);
         }

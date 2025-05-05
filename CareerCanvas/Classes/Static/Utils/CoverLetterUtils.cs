@@ -51,8 +51,11 @@ namespace CareerCanvas.Classes.Static.Utils
             StaticAbsoluteMacro companyZipMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterCompanyZipMacro, cvInfo.CompanyZip);
             companyZipMacro.Fill();
 
-            StaticAbsoluteMacro recipientNameMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterRecipientNameMacro, cvInfo.RecipientName);
-            recipientNameMacro.Fill();
+            StaticAbsoluteMacro recipientFirstNameMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterRecipientFirstNameMacro, cvInfo.RecipientFirstName);
+            recipientFirstNameMacro.Fill();
+
+            StaticAbsoluteMacro recipientLastNameMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterRecipientLastNameMacro, cvInfo.RecipientLastName);
+            recipientLastNameMacro.Fill();
 
             StaticAbsoluteMacro recipientPrefixMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterRecipientPrefixMacro, cvInfo.RecipientPrefix);
             recipientPrefixMacro.Fill();

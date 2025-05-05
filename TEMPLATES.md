@@ -118,7 +118,8 @@ Some macros are listed as `required` in the table below. Despite the name, these
 | `{{coverLetterCompanyWebsite}}` | A placeholder for the website of the company the cover letter is addressed to. | No | No | No |
 | `{{coverLetterContent}}` | A placeholder for the content of the cover letter. | Yes | No | No |
 | `{{appliedJobTitle}}` | A placeholder for the job title the cover letter is addressing. | Yes | No | No |
-| `{{coverLetterRecipientName}}` | A placeholder for the name of the recipient of the cover letter. | No | No | No |
+| `{{coverLetterRecipientFirstName}}` | A placeholder for the first name of the recipient of the cover letter. | No | No | No |
+| `{{coverLetterRecipientLastName}}` | A placeholder for the last name of the recipient of the cover letter. | No | No | No |
 | `{{coverLetterRecipientTitle}}` | A placeholder for the title of the recipient of the cover letter. | No | No | No |
 | `{{coverLetterRecipientPrefix}}` | A placeholder for the prefix of the recipient of the cover letter. | No | No | No |
 

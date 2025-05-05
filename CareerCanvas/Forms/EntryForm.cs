@@ -469,5 +469,6 @@ public partial class EntryForm : MaterialForm
 
         var coverLetterWorkspace = new CoverLetterWorkspace(identity, industry);
         coverLetterWorkspace.Show();
+        this.ActiveControl = null;
     }
 }

@@ -10,7 +10,8 @@ namespace CareerCanvas.Classes.Main.Misc
     {
         public string CompanyName { get; set; } = string.Empty;
         public string JobTitle { get; set; } = string.Empty;
-        public string RecipientName { get; set; } = string.Empty;
+        public string RecipientFirstName { get; set; } = string.Empty;
+        public string RecipientLastName { get; set; } = string.Empty;
         public string RecipientTitle { get; set; } = string.Empty;
         public string CompanyAddress { get; set; } = string.Empty;
         public string CompanyCity { get; set; } = string.Empty;
