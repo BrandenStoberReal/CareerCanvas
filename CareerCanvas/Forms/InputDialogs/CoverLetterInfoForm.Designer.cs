@@ -104,7 +104,7 @@
             saveButton.Name = "saveButton";
             saveButton.NoAccentTextColor = Color.Empty;
             saveButton.Size = new Size(64, 36);
-            saveButton.TabIndex = 2;
+            saveButton.TabIndex = 14;
             saveButton.Text = "Save";
             saveButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             saveButton.UseAccentColor = false;
@@ -187,7 +187,7 @@
             companyWebsiteBox.SelectionStart = 0;
             companyWebsiteBox.ShortcutsEnabled = true;
             companyWebsiteBox.Size = new Size(382, 48);
-            companyWebsiteBox.TabIndex = 25;
+            companyWebsiteBox.TabIndex = 13;
             companyWebsiteBox.TabStop = false;
             companyWebsiteBox.TextAlign = HorizontalAlignment.Left;
             companyWebsiteBox.TrailingIcon = null;
@@ -232,7 +232,7 @@
             companyEmailBox.SelectionStart = 0;
             companyEmailBox.ShortcutsEnabled = true;
             companyEmailBox.Size = new Size(382, 48);
-            companyEmailBox.TabIndex = 23;
+            companyEmailBox.TabIndex = 12;
             companyEmailBox.TabStop = false;
             companyEmailBox.TextAlign = HorizontalAlignment.Left;
             companyEmailBox.TrailingIcon = null;
@@ -277,7 +277,7 @@
             companyPhoneBox.SelectionStart = 0;
             companyPhoneBox.ShortcutsEnabled = true;
             companyPhoneBox.Size = new Size(382, 48);
-            companyPhoneBox.TabIndex = 21;
+            companyPhoneBox.TabIndex = 11;
             companyPhoneBox.TabStop = false;
             companyPhoneBox.TextAlign = HorizontalAlignment.Left;
             companyPhoneBox.TrailingIcon = null;
@@ -322,7 +322,7 @@
             companyZipBox.SelectionStart = 0;
             companyZipBox.ShortcutsEnabled = true;
             companyZipBox.Size = new Size(382, 48);
-            companyZipBox.TabIndex = 19;
+            companyZipBox.TabIndex = 10;
             companyZipBox.TabStop = false;
             companyZipBox.TextAlign = HorizontalAlignment.Left;
             companyZipBox.TrailingIcon = null;
@@ -367,7 +367,7 @@
             companyStateBox.SelectionStart = 0;
             companyStateBox.ShortcutsEnabled = true;
             companyStateBox.Size = new Size(382, 48);
-            companyStateBox.TabIndex = 17;
+            companyStateBox.TabIndex = 9;
             companyStateBox.TabStop = false;
             companyStateBox.TextAlign = HorizontalAlignment.Left;
             companyStateBox.TrailingIcon = null;
@@ -412,7 +412,7 @@
             companyCityBox.SelectionStart = 0;
             companyCityBox.ShortcutsEnabled = true;
             companyCityBox.Size = new Size(382, 48);
-            companyCityBox.TabIndex = 15;
+            companyCityBox.TabIndex = 8;
             companyCityBox.TabStop = false;
             companyCityBox.TextAlign = HorizontalAlignment.Left;
             companyCityBox.TrailingIcon = null;
@@ -457,7 +457,7 @@
             companyAddressBox.SelectionStart = 0;
             companyAddressBox.ShortcutsEnabled = true;
             companyAddressBox.Size = new Size(382, 48);
-            companyAddressBox.TabIndex = 13;
+            companyAddressBox.TabIndex = 7;
             companyAddressBox.TabStop = false;
             companyAddressBox.TextAlign = HorizontalAlignment.Left;
             companyAddressBox.TrailingIcon = null;
@@ -502,7 +502,7 @@
             recipientTitleBox.SelectionStart = 0;
             recipientTitleBox.ShortcutsEnabled = true;
             recipientTitleBox.Size = new Size(382, 48);
-            recipientTitleBox.TabIndex = 11;
+            recipientTitleBox.TabIndex = 6;
             recipientTitleBox.TabStop = false;
             recipientTitleBox.TextAlign = HorizontalAlignment.Left;
             recipientTitleBox.TrailingIcon = null;
@@ -547,7 +547,7 @@
             recipientLastNameBox.SelectionStart = 0;
             recipientLastNameBox.ShortcutsEnabled = true;
             recipientLastNameBox.Size = new Size(382, 48);
-            recipientLastNameBox.TabIndex = 9;
+            recipientLastNameBox.TabIndex = 4;
             recipientLastNameBox.TabStop = false;
             recipientLastNameBox.TextAlign = HorizontalAlignment.Left;
             recipientLastNameBox.TrailingIcon = null;
@@ -592,7 +592,7 @@
             recipientFirstNameBox.SelectionStart = 0;
             recipientFirstNameBox.ShortcutsEnabled = true;
             recipientFirstNameBox.Size = new Size(382, 48);
-            recipientFirstNameBox.TabIndex = 5;
+            recipientFirstNameBox.TabIndex = 3;
             recipientFirstNameBox.TabStop = false;
             recipientFirstNameBox.TextAlign = HorizontalAlignment.Left;
             recipientFirstNameBox.TrailingIcon = null;
@@ -637,7 +637,7 @@
             jobTitleBox.SelectionStart = 0;
             jobTitleBox.ShortcutsEnabled = true;
             jobTitleBox.Size = new Size(382, 48);
-            jobTitleBox.TabIndex = 3;
+            jobTitleBox.TabIndex = 2;
             jobTitleBox.TabStop = false;
             jobTitleBox.TextAlign = HorizontalAlignment.Left;
             jobTitleBox.TrailingIcon = null;
@@ -740,7 +740,7 @@
             recipientPrefixBox.SelectionStart = 0;
             recipientPrefixBox.ShortcutsEnabled = true;
             recipientPrefixBox.Size = new Size(382, 48);
-            recipientPrefixBox.TabIndex = 7;
+            recipientPrefixBox.TabIndex = 5;
             recipientPrefixBox.TabStop = false;
             recipientPrefixBox.TextAlign = HorizontalAlignment.Left;
             recipientPrefixBox.TrailingIcon = null;

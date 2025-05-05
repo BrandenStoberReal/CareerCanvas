@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Minimalist Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Garamond', 'Baskerville', serif;
+        }
+
+        body {
+            background-color: #fbfbfb;
+            color: #333;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover-letter {
+            background-color: white;
+            padding: 60px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 25px;
+            margin-bottom: 35px;
+        }
+
+        .name-section h1 {
+            font-size: 24px;
+            color: #222;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .date {
+            text-align: right;
+            margin: 25px 0;
+            color: #777;
+            font-style: italic;
+        }
+
+        .recipient {
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .greeting {
+            margin-bottom: 25px;
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+        .content {
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .closing {
+            margin-top: 35px;
+        }
+
+        .signature {
+            margin-top: 45px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-letter">
+        <!-- Header with name and contact -->
+        <div class="header">
+            <div class="name-section">
+                <h1>{{fullName}}</h1>
+            </div>
+            <div class="contact-info" id="contact-section">
+                <div>{{emailAddress}}</div>
+                <div>{{phoneNumber}}</div>
+                <div>{{linkedIn}}</div>
+            </div>
+        </div>
+
+        <!-- Date -->
+        <div class="date">
+            <p>{{currentDate}}</p>
+        </div>
+
+        <!-- Recipient Information -->
+        <div class="recipient">
+            <p>{{coverLetterRecipientFirstName}} {{coverLetterRecipientLastName}}</p>
+            <p>{{coverLetterRecipientTitle}}</p>
+            <p>{{coverLetterCompanyName}}</p>
+            <p>{{coverLetterCompanyCity}}, {{coverLetterCompanyState}}</p>
+        </div>
+
+        <!-- Greeting -->
+        <div class="greeting">
+            <p>Dear {{coverLetterRecipientPrefix}} {{coverLetterRecipientLastName}},</p>
+        </div>
+
+        <!-- Letter Content -->
+        <div class="content">
+            <p>I am writing to express my interest in the {{appliedJobTitle}} position at {{coverLetterCompanyName}}.</p>
+            {{coverLetterContent}}
+        </div>
+
+        <!-- Closing -->
+        <div class="closing">
+            <p>Thank you for considering my application. I look forward to the possibility of contributing to your team.</p>
+            <p>Sincerely,</p>
+            <div class="signature">{{fullName}}</div>
+        </div>
+    </div>
+</body>
+</html>

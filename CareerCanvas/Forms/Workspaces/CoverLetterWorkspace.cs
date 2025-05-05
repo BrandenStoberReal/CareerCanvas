@@ -24,7 +24,9 @@ namespace CareerCanvas.Forms.Workspaces
         private ProfessionalIdentity _identity;
         private Industry _industry;
         private CoverLetterInfo _coverLetterInfo = new CoverLetterInfo();
-        private string _currentTemplateName = string.Empty;
+        public string _currentTemplateName = string.Empty;
+        public HtmlDocument _currentDocument = new HtmlDocument();
+        private bool _webViewInitialized = false;
 
         public CoverLetterWorkspace(ProfessionalIdentity identity, Industry industry)
         {
@@ -46,25 +48,63 @@ namespace CareerCanvas.Forms.Workspaces
             Globals.AppLogger.Debug("Applied global color scheme to CoverLetterWorkspace: {ColorScheme}", Globals.AppConfig.ColorScheme.ToString());
         }
 
-        private void cvWebView_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
+        private void ShowCoverLetterInfoDialog()
         {
+            // Now show the dialog separately from WebView2 initialization
             this.WindowState = FormWindowState.Minimized;
+
             CoverLetterInfoForm coverLetterInfoForm = new CoverLetterInfoForm(ref _coverLetterInfo);
             coverLetterInfoForm.ShowDialog();
+
             this.WindowState = FormWindowState.Normal;
 
-            // Load the HTML content into the WebView2 control
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(File.ReadAllText("./templates/coverletter/default.html"));
-            _currentTemplateName = "default";
-            CoverLetterUtils.FillDocumentData(doc, _identity, _coverLetterInfo);
+            // Update the WebView with the data
+            if (_webViewInitialized)
+            {
+                CoverLetterUtils.FillDocumentData(_currentDocument, _identity, _coverLetterInfo);
+                cvWebView.NavigateToString(_currentDocument.DocumentNode.OuterHtml);
+            }
+        }
 
-            cvWebView.NavigateToString(doc.DocumentNode.OuterHtml);
+        private void cvWebView_CoreWebView2InitializationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
+        {
+            // Only handle the WebView2 initialization part here
+            if (e.IsSuccess)
+            {
+                // Load the HTML content into the WebView2 control
+                _currentDocument.LoadHtml(File.ReadAllText("./templates/coverletter/default.html"));
+                _currentTemplateName = "default";
+
+                // Mark initialization as complete
+                _webViewInitialized = true;
+
+                // Trigger UI update on the main thread
+                BeginInvoke(new Action(ShowCoverLetterInfoDialog));
+            }
+            else
+            {
+                MessageBox.Show("Failed to initialize WebView2: " + e.InitializationException.Message);
+            }
         }
 
         private void CoverLetterWorkspace_Load(object sender, EventArgs e)
         {
             cvWebView.EnsureCoreWebView2Async();
+        }
+
+        private void editInfoButton_Click(object sender, EventArgs e)
+        {
+            CoverLetterInfoForm coverLetterInfoForm = new CoverLetterInfoForm(ref _coverLetterInfo);
+            coverLetterInfoForm.ShowDialog();
+            this.ActiveControl = null;
+        }
+
+        private void changeTemplateButton_Click(object sender, EventArgs e)
+        {
+            ChangeCVTemplateForm changeTemplateForm = new ChangeCVTemplateForm(this, _identity, ref _currentDocument, _coverLetterInfo);
+            changeTemplateForm.ShowDialog();
+            cvWebView.NavigateToString(_currentDocument.DocumentNode.OuterHtml);
+            this.ActiveControl = null;
         }
     }
 }

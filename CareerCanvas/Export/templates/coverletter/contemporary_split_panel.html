@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contemporary Split Panel Cover Letter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cover-letter {
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .top-panel {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            color: white;
+            padding: 40px;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 75%;
+        }
+
+        .top-panel h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .job-title {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .meta-row {
+            display: flex;
+            margin-top: 25px;
+            gap: 40px;
+        }
+
+        .meta-column {
+            flex: 1;
+        }
+
+        .meta-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+
+        .meta-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .main-content {
+            padding: 40px;
+            position: relative;
+        }
+
+        .content-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .company-info {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .greeting {
+            margin-bottom: 25px;
+            font-weight: 500;
+            color: #3a7bd5;
+        }
+
+        .letter-content {
+            line-height: 1.8;
+            color: #444;
+        }
+
+            .letter-content p {
+                margin-bottom: 20px;
+            }
+
+        .closing {
+            margin-top: 30px;
+            color: #444;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-weight: 500;
+            color: #3a7bd5;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-letter">
+        <!-- Top panel with name and metadata -->
+        <div class="top-panel">
+            <div class="header-content">
+                <h1>{{fullName}}</h1>
+                <div class="job-title">{{appliedJobTitle}}</div>
+            </div>
+
+            <div class="meta-row">
+                <div class="meta-column">
+                    <div class="meta-title">Date</div>
+                    <div class="meta-content">{{currentDate}}</div>
+                </div>
+
+                <div class="meta-column">
+                    <div class="meta-title">Company</div>
+                    <div class="meta-content">{{coverLetterCompanyName}}</div>
+                </div>
+
+                <div class="meta-column">
+                    <div class="meta-title">Recipient</div>
+                    <div class="meta-content">{{coverLetterRecipientPrefix}} {{coverLetterRecipientLastName}}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main letter content -->
+        <div class="main-content">
+            <div class="content-container">
+                <div class="company-info">
+                    <p>{{coverLetterRecipientFirstName}} {{coverLetterRecipientLastName}}</p>
+                    <p>{{coverLetterRecipientTitle}}</p>
+                    <p>{{coverLetterCompanyName}}</p>
+                    <p>{{coverLetterCompanyCity}}, {{coverLetterCompanyState}}</p>
+                </div>
+
+                <div class="greeting">
+                    <p>Dear {{coverLetterRecipientPrefix}} {{coverLetterRecipientLastName}},</p>
+                </div>
+
+                <div class="letter-content">
+                    {{coverLetterContent}}
+                </div>
+
+                <div class="closing">
+                    <p>Thank you for considering my application. I would welcome the opportunity to discuss how my background, skills, and enthusiasm could contribute to your team's success.</p>
+                    <p>Sincerely,</p>
+                    <div class="signature">{{fullName}}</div>
+                </div>
+
+                <div class="contact-details" id="contact-section">
+                    <div>{{emailAddress}}</div>
+                    <div>{{phoneNumber}}</div>
+                    <div>{{linkedIn}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
