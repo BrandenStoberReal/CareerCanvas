@@ -33,7 +33,7 @@
  - [x] Material UI
  - [ ] Material UI - Application Themes
  - [ ] Material UI - Not Terrible UI
- - [ ] Cover Letter Builder
+ - [x] Cover Letter Builder
  - [ ] Cover Letter Builder - Export cover letter to PDF
  - [ ] Cover Letter Builder - Export cover letter to HTML
  - [ ] Cover Letter Builder - Google Gemini Integration
@@ -92,3 +92,5 @@ This project contains mild use of AI:
 - Partial use of Claude 3.7 for generating code comments.
 - Partial use of Claude 3.7 for formatting html-converted PDFs during export (JS, CSS, and HTML).
 - Partial use of Claude 3.7 for generating commit messages.
+- Use of Claude 3.7 for generating resume templates.
+- Use of Claude 3.7 for generating cover letter templates.
