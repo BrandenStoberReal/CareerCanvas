@@ -32,7 +32,7 @@ namespace CareerCanvas.Classes.Static.Utils
         /// Waits for a specific thread to complete.
         /// </summary>
         /// <param name="thread"></param>
-        public static void WaitForThreadToComplete(Thread thread)
+        public static void Wait(Thread thread)
         {
             thread.Join();
         }
