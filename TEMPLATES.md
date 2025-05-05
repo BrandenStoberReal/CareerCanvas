@@ -15,11 +15,11 @@
       - [Section IDs](#section-ids)
       - [Entry IDs](#entry-ids)
   - [Examples](#examples)
-    - [Education Container](#education-container)
-    - [Work Container](#work-container)
-    - [Certification Container](#certification-container)
-    - [Skills Container](#skills-container)
-    - [Example Template Output](#example-template-output)
+    - [Education Container - Resume](#education-container-resume)
+    - [Work Container - Resume](#work-container-resume)
+    - [Certification Container - Resume](#certification-container-resume)
+    - [Skills Container - Resume](#skills-container-resume)
+    - [Example Template Output - Resume](#example-template-output-resume)
 <!--/TOC-->
 
 # Template Options
@@ -181,7 +181,7 @@ These IDs are used to replace the macros located as a descendant of the element 
 | Skills Entry | `skill-entry` | Yes |
 
 ## Examples
-### Education Container
+### Education Container - Resume
 An example is provided below from one of the default templates:
 ```html
 <div class="section" id="education-section">
@@ -199,7 +199,7 @@ Important fields:
 - `education-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
 - `education-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
-### Work Container
+### Work Container - Resume
 An example is provided below from one of the default templates:
 ```html
     <div class="section" id="experience-section">
@@ -218,7 +218,7 @@ Important fields:
 - `job-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
 - `experience-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
-### Certification Container
+### Certification Container - Resume
 An example is provided below from one of the default templates:
 ```html
 <div class="section" id="certificate-section">
@@ -236,7 +236,7 @@ Important fields:
 - `certificate-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
 - `certificate-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
-### Skills Container
+### Skills Container - Resume
 An example is provided below from one of the default templates:
 ```html
 <div class="section" id="skills-section">
@@ -251,7 +251,7 @@ Important fields:
 - `skill-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
 - `skills-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
 
-### Example Template Output
+### Example Template Output - Resume
 Assuming 3 skills are provided, named `HTML`, `CSS`, and `JavaScript`, the application would process them into the following output:
 ```html
 <div class="section" id="skills-section">
