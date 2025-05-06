@@ -54,10 +54,9 @@
  - [x] Cross-builder Integration
  - [x] Persistent Storage
  - [x] Macro Parsing & Documentation
- - [ ] Custom Macros & Softcoded Macros
+ - [ ] ~~Custom Macros & Softcoded Macros~~ **Too niche to justify effort**
  - [ ] Update Notification System
  - [ ] Application Installer (.msi)
- - [ ] Keybinds
  - [ ] Improve Application UX
  - [ ] Applicationwide Tooltips
  - [x] Robust & Organized Logging
