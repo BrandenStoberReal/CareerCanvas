@@ -54,10 +54,9 @@
  - [x] Cross-builder Integration
  - [x] Persistent Storage
  - [x] Macro Parsing & Documentation
- - [ ] Custom Macros & Softcoded Macros
+ - [ ] ~~Custom Macros & Softcoded Macros~~ **Too niche to justify effort**
  - [ ] Update Notification System
  - [ ] Application Installer (.msi)
- - [ ] Keybinds
  - [ ] Improve Application UX
  - [ ] Applicationwide Tooltips
  - [x] Robust & Organized Logging
@@ -72,8 +71,9 @@ Take a look at the [releases](https://github.com/BrandenStoberReal/CareerCanvas/
 If you are savvy with HTML and CSS, please read [the documentation](TEMPLATES.md) for more information on how to create custom templates. A few templates come pre-loaded with the application and can be used as bases without issue.
 
 # Building
-You will need the `.NET 9` SDK installed to build the application. You can download it from the [.NET website](https://dotnet.microsoft.com/download/dotnet/9.0). Once you have the SDK installed, you can clone the repository and run the following command in the root directory of the project:
+You will need the `.NET 9` SDK installed to build the application. You can download it from the [.NET website](https://dotnet.microsoft.com/download/dotnet/9.0). Once you have the SDK installed, you can clone the repository and run the following commands in the root directory of the project:
 ```bash
+dotnet restore
 dotnet build
 ```
 This will build the application and create an executable in the `bin/Debug/net9.0-windows` directory. You can then run the application by double-clicking on the `CareerCanvas.exe` executable.
