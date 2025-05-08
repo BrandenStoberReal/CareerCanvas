@@ -134,5 +134,17 @@ namespace CareerCanvas.Forms.Workspaces
             cvWebView.NavigateToString(_currentDocument.DocumentNode.OuterHtml);
             InputUtils.ClearActiveControl(this);
         }
+
+        private void exportToPdfButton_Click(object sender, EventArgs e)
+        {
+            DocumentUtilities.SaveToPdfAsync(_currentDocument, backgroundToggle.Checked, optimizeToggle.Checked, useShadowsToggle.Checked, scaleToggle.Checked, "cover_letter.pdf");
+            InputUtils.ClearActiveControl(this);
+        }
+
+        private void exportToHtmlButton_Click(object sender, EventArgs e)
+        {
+            DocumentUtilities.SaveToFile(_currentDocument, "cover_letter.html");
+            InputUtils.ClearActiveControl(this);
+        }
     }
 }

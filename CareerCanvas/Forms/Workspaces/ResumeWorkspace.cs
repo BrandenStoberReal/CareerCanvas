@@ -100,174 +100,6 @@ public partial class ResumeWorkspace : MaterialForm
     }
 
     /// <summary>
-    /// Exports the current resume template to a PDF file.
-    /// This method handles the entire export process from converting HTML to PDF,
-    /// including temporary file management, background color extraction, and PDF styling.
-    /// </summary>
-    /// <remarks>
-    /// The method uses Puppeteer Sharp to render HTML content as PDF with consistent formatting.
-    /// It creates temporary files during the process and cleans them up afterward.
-    /// </remarks>
-    private async void ExportToPDF()
-    {
-        // Create a temporary directory to store the HTML file
-        var tempDir = Path.GetFullPath("./resumetmp");
-        Directory.CreateDirectory(tempDir);
-        var tempHtmlPath = Path.Combine(tempDir, "resumetmp.html");
-
-        // Save HTML content to temporary file
-        File.WriteAllText(tempHtmlPath, Template.DocumentNode.OuterHtml);
-
-        // Configure and display save file dialog
-        var saveFileDialog = new SaveFileDialog
-        {
-            Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*",
-            DefaultExt = "pdf",
-            Title = "Export Resume to PDF",
-            FileName = "resume.pdf",
-            InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
-        };
-
-        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-        {
-            try
-            {
-                // Create and show progress form to indicate PDF generation is in process
-                var progressForm = new Form
-                {
-                    Text = "Generating PDF...",
-                    Size = new System.Drawing.Size(250, 80),
-                    StartPosition = FormStartPosition.CenterParent,
-                    FormBorderStyle = FormBorderStyle.FixedDialog,
-                    MaximizeBox = false,
-                    MinimizeBox = false
-                };
-                progressForm.Controls.Add(new ProgressBar { Dock = DockStyle.Fill, Style = ProgressBarStyle.Marquee });
-                progressForm.Show();
-
-                // Download Chromium browser if not already present (required by Puppeteer)
-                var browserFetcher = new BrowserFetcher();
-                await browserFetcher.DownloadAsync();
-
-                // Launch headless browser instance
-                var browser = await Puppeteer.LaunchAsync(new LaunchOptions
-                {
-                    Headless = true
-                });
-
-                // Create a new page in the browser
-                var page = await browser.NewPageAsync();
-
-                // Set viewport size to match US Letter size (8.5 x 11 inches at 96 DPI)
-                await page.SetViewportAsync(new ViewPortOptions
-                {
-                    Width = 816, // 8.5 inches * 96 DPI
-                    Height = 1056 // 11 inches * 96 DPI
-                });
-
-                // Navigate to the temporary HTML file
-                await page.GoToAsync(Path.GetFullPath(tempHtmlPath));
-
-                // Extract background color from the document using JavaScript
-                if (backgroundToggle.Checked)
-                {
-                    string colormatchCode = File.ReadAllText(Path.GetFullPath("./js/colormatch.js"));
-                    var backgroundColor = await page.EvaluateFunctionAsync<string>(colormatchCode);
-
-                    // Add custom CSS for optimal PDF rendering while preserving original styling
-                    await page.AddStyleTagAsync(new AddTagOptions
-                    {
-                        Content = $@"
-                        @page {{
-                            size: letter;
-                            margin: 0.25in;
-                            background-color: {backgroundColor} !important;
-                        }}
-                        html {{
-                            background-color: {backgroundColor} !important;
-                            margin: 0;
-                            padding: 0;
-                        }}
-                        h1, h2, h3, h4, h5, h6 {{
-                            margin-top: 0.3em;
-                            margin-bottom: 0.3em;
-                        }}
-                        ul, ol {{
-                            margin-bottom: 0.2em;
-                            padding-left: 1.8em;
-                        }}
-                    "
-                    });
-                }
-
-                // Apply final document optimizations before PDF generation
-                if (optimizeToggle.Checked)
-                {
-                    string optimizationCode = File.ReadAllText(Path.GetFullPath("./js/finalize.js"));
-                    await page.EvaluateFunctionAsync(optimizationCode);
-                }
-
-                // Remove shadows from elements to prevent rendering issues
-                if (!useShadowsToggle.Checked)
-                {
-                    // Remove shadows if the toggle is unchecked
-                    string removeShadowsCode = File.ReadAllText(Path.GetFullPath("./js/noshadows.js"));
-                    await page.EvaluateFunctionAsync(removeShadowsCode);
-                }
-
-
-                // Analyze content and calculate optimal scale to maximize use of page
-                var optimizedScale = 0.95M;
-
-                if (scaleToggle.Checked)
-                {
-                    // Calculate optimal scale based on content size
-                    string scaleCode = File.ReadAllText(Path.GetFullPath("./js/rescale.js"));
-                    optimizedScale = await page.EvaluateFunctionAsync<decimal>(scaleCode);
-                }
-
-                // Generate the PDF with optimized formatting
-                await page.PdfAsync(saveFileDialog.FileName, new PdfOptions
-                {
-                    Format = PaperFormat.Letter,
-                    PrintBackground = true,
-                    MarginOptions = new MarginOptions
-                    {
-                        Left = "0.25in",
-                        Top = "0.25in",
-                        Bottom = "0.25in",
-                        Right = "0.25in"
-                    },
-                    PreferCSSPageSize = true,
-                    Scale = optimizedScale
-                });
-
-                // Clean up browser resources
-                await browser.CloseAsync();
-
-                // Close the progress indicator
-                progressForm.Close();
-
-                // Log success and notify user
-                Globals.AppLogger.Information($"Resume exported to PDF: {saveFileDialog.FileName}");
-                MessageBox.Show("Resume exported to PDF successfully.", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                // Log and display any errors that occur during the export process
-                Globals.AppLogger.Error($"Error exporting resume to PDF: {ex.Message}");
-                MessageBox.Show($"Error exporting resume: {ex.Message}", "Export Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                // Clean up temporary directory regardless of success or failure
-                try { Directory.Delete(tempDir, true); }
-                catch (Exception ex) { Globals.AppLogger.Error($"Error cleaning temporary directory: {ex.Message}"); }
-            }
-        }
-    }
-
-    /// <summary>
     /// Event handler for the ResumeWorkspace form load event.
     /// </summary>
     /// <param name="sender"></param>
@@ -367,7 +199,7 @@ public partial class ResumeWorkspace : MaterialForm
     /// <param name="e"></param>
     private void exportHtmlButton_Click(object sender, EventArgs e)
     {
-        ExportToHtml();
+        DocumentUtilities.SaveToFile(Template, "resume.html");
         Globals.AppLogger.Information("User exported resume to HTML format.");
     }
 
@@ -378,7 +210,7 @@ public partial class ResumeWorkspace : MaterialForm
     /// <param name="e"></param>
     private void exportPdfButton_Click(object sender, EventArgs e)
     {
-        ExportToPDF();
+        DocumentUtilities.SaveToPdfAsync(Template, backgroundToggle.Checked, optimizeToggle.Checked, useShadowsToggle.Checked, scaleToggle.Checked, "resume.pdf");
         Globals.AppLogger.Information("User exported resume to PDF format.");
     }
 
