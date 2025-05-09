@@ -7,6 +7,7 @@ using PuppeteerSharp.Media;
 using PuppeteerSharp;
 using HtmlAgilityPack;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
+using System.Diagnostics;
 
 namespace CareerCanvas.Classes.Static.Utils
 {
@@ -235,7 +236,11 @@ namespace CareerCanvas.Classes.Static.Utils
 
                     // Log success and notify user
                     Globals.AppLogger.Information("Document exported to PDF: {0}", saveFileDialog.FileName);
-                    MessageBox.Show("Document exported to PDF successfully.", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult open = MessageBox.Show("Document exported to PDF successfully. Open File?", "Export Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (open == DialogResult.Yes)
+                    {
+                        Process.Start("explorer.exe", saveFileDialog.FileName);
+                    }
                 }
             }
             catch (Exception ex)
@@ -308,7 +313,12 @@ namespace CareerCanvas.Classes.Static.Utils
             {
                 File.WriteAllText(saveFileDialog.FileName, document.DocumentNode.OuterHtml);
                 Globals.AppLogger.Information($"Document exported to HTML file: {saveFileDialog.FileName}");
-                MessageBox.Show("Document exported to HTML file successfully.", "Export Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult open = MessageBox.Show("Document exported to HTML file successfully. Open File?", "Export Complete", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                if (open == DialogResult.Yes)
+                {
+                    Process.Start("explorer.exe", saveFileDialog.FileName);
+                }
             }
         }
     }
