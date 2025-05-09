@@ -84,6 +84,14 @@
             identityRefreshTimer = new System.Windows.Forms.Timer(components);
             historyRefreshTimer = new System.Windows.Forms.Timer(components);
             tabPage1 = new TabPage();
+            materialLabel5 = new ReaLTaiizor.Controls.MaterialLabel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            materialCard7 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard8 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard9 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard10 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard11 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard12 = new ReaLTaiizor.Controls.MaterialCard();
             materialTabControl1.SuspendLayout();
             welcomePage.SuspendLayout();
             identityPage.SuspendLayout();
@@ -102,6 +110,7 @@
             creditsPage.SuspendLayout();
             creditsFlowPanel.SuspendLayout();
             libraryCreditsFlowPanel.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
             // 
             // materialTabControl1
@@ -126,6 +135,7 @@
             // 
             // welcomePage
             // 
+            welcomePage.Controls.Add(tableLayoutPanel2);
             welcomePage.Controls.Add(materialLabel2);
             welcomePage.Controls.Add(entryTitleLabel);
             welcomePage.Location = new Point(4, 24);
@@ -788,11 +798,12 @@
             // 
             creditsFlowPanel.Controls.Add(peopleCreditTitleLabel);
             creditsFlowPanel.Controls.Add(brandenCreditLabel);
+            creditsFlowPanel.Controls.Add(materialLabel5);
             creditsFlowPanel.Dock = DockStyle.Left;
             creditsFlowPanel.FlowDirection = FlowDirection.TopDown;
             creditsFlowPanel.Location = new Point(0, 0);
             creditsFlowPanel.Name = "creditsFlowPanel";
-            creditsFlowPanel.Size = new Size(261, 616);
+            creditsFlowPanel.Size = new Size(318, 616);
             creditsFlowPanel.TabIndex = 0;
             // 
             // peopleCreditTitleLabel
@@ -802,7 +813,7 @@
             peopleCreditTitleLabel.Depth = 0;
             peopleCreditTitleLabel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             peopleCreditTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
-            peopleCreditTitleLabel.Location = new Point(78, 0);
+            peopleCreditTitleLabel.Location = new Point(110, 0);
             peopleCreditTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             peopleCreditTitleLabel.Name = "peopleCreditTitleLabel";
             peopleCreditTitleLabel.Size = new Size(91, 24);
@@ -816,7 +827,7 @@
             brandenCreditLabel.Depth = 0;
             brandenCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             brandenCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            brandenCreditLabel.Location = new Point(3, 24);
+            brandenCreditLabel.Location = new Point(35, 24);
             brandenCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             brandenCreditLabel.Name = "brandenCreditLabel";
             brandenCreditLabel.Size = new Size(241, 17);
@@ -987,6 +998,118 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Test";
             // 
+            // materialLabel5
+            // 
+            materialLabel5.Anchor = AnchorStyles.Top;
+            materialLabel5.AutoSize = true;
+            materialLabel5.Depth = 0;
+            materialLabel5.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel5.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel5.Location = new Point(3, 41);
+            materialLabel5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel5.Name = "materialLabel5";
+            materialLabel5.Size = new Size(306, 17);
+            materialLabel5.TabIndex = 9;
+            materialLabel5.Text = "Travis Geisinger - Machine Learning Integration";
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel2.Controls.Add(materialCard12, 0, 1);
+            tableLayoutPanel2.Controls.Add(materialCard11, 1, 1);
+            tableLayoutPanel2.Controls.Add(materialCard10, 2, 1);
+            tableLayoutPanel2.Controls.Add(materialCard9, 2, 0);
+            tableLayoutPanel2.Controls.Add(materialCard8, 1, 0);
+            tableLayoutPanel2.Controls.Add(materialCard7, 0, 0);
+            tableLayoutPanel2.Location = new Point(3, 72);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Size = new Size(1071, 541);
+            tableLayoutPanel2.TabIndex = 3;
+            // 
+            // materialCard7
+            // 
+            materialCard7.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard7.Depth = 0;
+            materialCard7.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard7.Location = new Point(14, 14);
+            materialCard7.Margin = new Padding(14);
+            materialCard7.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard7.Name = "materialCard7";
+            materialCard7.Padding = new Padding(14);
+            materialCard7.Size = new Size(329, 242);
+            materialCard7.TabIndex = 0;
+            // 
+            // materialCard8
+            // 
+            materialCard8.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard8.Depth = 0;
+            materialCard8.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard8.Location = new Point(371, 14);
+            materialCard8.Margin = new Padding(14);
+            materialCard8.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard8.Name = "materialCard8";
+            materialCard8.Padding = new Padding(14);
+            materialCard8.Size = new Size(329, 242);
+            materialCard8.TabIndex = 1;
+            // 
+            // materialCard9
+            // 
+            materialCard9.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard9.Depth = 0;
+            materialCard9.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard9.Location = new Point(728, 14);
+            materialCard9.Margin = new Padding(14);
+            materialCard9.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard9.Name = "materialCard9";
+            materialCard9.Padding = new Padding(14);
+            materialCard9.Size = new Size(329, 242);
+            materialCard9.TabIndex = 1;
+            // 
+            // materialCard10
+            // 
+            materialCard10.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard10.Depth = 0;
+            materialCard10.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard10.Location = new Point(728, 284);
+            materialCard10.Margin = new Padding(14);
+            materialCard10.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard10.Name = "materialCard10";
+            materialCard10.Padding = new Padding(14);
+            materialCard10.Size = new Size(329, 242);
+            materialCard10.TabIndex = 1;
+            // 
+            // materialCard11
+            // 
+            materialCard11.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard11.Depth = 0;
+            materialCard11.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard11.Location = new Point(371, 284);
+            materialCard11.Margin = new Padding(14);
+            materialCard11.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard11.Name = "materialCard11";
+            materialCard11.Padding = new Padding(14);
+            materialCard11.Size = new Size(329, 242);
+            materialCard11.TabIndex = 1;
+            // 
+            // materialCard12
+            // 
+            materialCard12.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard12.Depth = 0;
+            materialCard12.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard12.Location = new Point(14, 284);
+            materialCard12.Margin = new Padding(14);
+            materialCard12.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard12.Name = "materialCard12";
+            materialCard12.Padding = new Padding(14);
+            materialCard12.Size = new Size(329, 242);
+            materialCard12.TabIndex = 1;
+            // 
             // EntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1031,6 +1154,7 @@
             creditsFlowPanel.PerformLayout();
             libraryCreditsFlowPanel.ResumeLayout(false);
             libraryCreditsFlowPanel.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1090,5 +1214,13 @@
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit openAiKeyBox;
         private LinkLabel geminiLinkLabel;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel5;
+        private TableLayoutPanel tableLayoutPanel2;
+        private ReaLTaiizor.Controls.MaterialCard materialCard12;
+        private ReaLTaiizor.Controls.MaterialCard materialCard11;
+        private ReaLTaiizor.Controls.MaterialCard materialCard10;
+        private ReaLTaiizor.Controls.MaterialCard materialCard9;
+        private ReaLTaiizor.Controls.MaterialCard materialCard8;
+        private ReaLTaiizor.Controls.MaterialCard materialCard7;
     }
 }
