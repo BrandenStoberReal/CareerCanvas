@@ -590,7 +590,7 @@
             aiPage.Padding = new Padding(3);
             aiPage.Size = new Size(1077, 616);
             aiPage.TabIndex = 6;
-            aiPage.Text = "Artifical Intelligence";
+            aiPage.Text = "AI Secrets";
             aiPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
