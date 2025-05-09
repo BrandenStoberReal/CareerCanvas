@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using CareerCanvas.Classes.Configs;
+using CareerCanvas.Classes.Main.Protobuf;
 using Serilog;
 using ILogger = Serilog.ILogger;
 
@@ -29,6 +30,11 @@ public static class Globals
     ///     Global application config.
     /// </summary>
     public static AppConfig AppConfig { get; set; } = new();
+
+    /// <summary>
+    ///    AI keys and secrets.
+    /// </summary>
+    public static AiSecrets AiSecrets { get; set; } = new();
 
     /// <summary>
     ///     The path to the identity config file.

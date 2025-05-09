@@ -63,6 +63,14 @@ public partial class EntryForm : MaterialForm
 
         // Set the identity encryption checkbox based on the loaded configuration
         identityEncryptionCheckbox.Checked = Globals.IdentityConfig.UseEncryption;
+
+        // Set API key controls
+        if (Globals.AiSecrets != null)
+        {
+            openAiKeyBox.Text = Globals.AiSecrets.OpenAiApiKey;
+            anthropicKeyBox.Text = Globals.AiSecrets.AnthropicApiKey;
+            geminiKeyBox.Text = Globals.AiSecrets.GoogleApiKey;
+        }
     }
 
     /// <summary>
@@ -470,5 +478,20 @@ public partial class EntryForm : MaterialForm
         var coverLetterWorkspace = new CoverLetterWorkspace(identity, industry);
         coverLetterWorkspace.Show();
         InputUtils.ClearActiveControl(this);
+    }
+
+    private void openAiKeyBox_TextChanged(object sender, EventArgs e)
+    {
+        Globals.AiSecrets.OpenAiApiKey = openAiKeyBox.Text;
+    }
+
+    private void anthropicKeyBox_TextChanged(object sender, EventArgs e)
+    {
+        Globals.AiSecrets.AnthropicApiKey = anthropicKeyBox.Text;
+    }
+
+    private void geminiKeyBox_TextChanged(object sender, EventArgs e)
+    {
+        Globals.AiSecrets.GoogleApiKey = geminiKeyBox.Text;
     }
 }

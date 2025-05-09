@@ -1,3 +1,4 @@
+using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Forms;
@@ -32,6 +33,20 @@ internal static class Program
             File.WriteAllText("./data/misc/encryption.key", EncryptionUtils.Generate256BitKey());
         }
 
+        // Load secrets
+        if (File.Exists("./data/misc/secrets.csm"))
+        {
+            using (var file = File.OpenRead("./data/misc/secrets.csm"))
+            {
+                Globals.AiSecrets = Serializer.Deserialize<AiSecrets>(file);
+                Globals.AppLogger.Information("AI secrets loaded.");
+            }
+        }
+        else
+        {
+            Globals.AppLogger.Warning("AI secrets not found. Creating new secrets config.");
+        }
+
         Globals.AppLogger.Information("Starting application...");
         Application.Run(new EntryForm());
     }
@@ -43,6 +58,13 @@ internal static class Program
         {
             Serializer.Serialize(file, Globals.IdentityConfig);
             Globals.AppLogger.Information("Identity settings saved.");
+        }
+
+        // Save AI secrets
+        using (var file = File.Create("./data/misc/secrets.csm"))
+        {
+            Serializer.Serialize(file, Globals.AiSecrets);
+            Globals.AppLogger.Information("AI secrets saved.");
         }
 
         // Encrypt identity settings
