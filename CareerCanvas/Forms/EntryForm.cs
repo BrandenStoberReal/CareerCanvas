@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Windows.Forms;
 using CareerCanvas.Classes.Configs;
 using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
@@ -493,5 +495,10 @@ public partial class EntryForm : MaterialForm
     private void geminiKeyBox_TextChanged(object sender, EventArgs e)
     {
         Globals.AiSecrets.GoogleApiKey = geminiKeyBox.Text;
+    }
+
+    private void geminiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        Process.Start("explorer.exe", "https://aistudio.google.com/app/apikey");
     }
 }

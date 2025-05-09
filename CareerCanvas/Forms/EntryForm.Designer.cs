@@ -61,11 +61,12 @@
             aiPage = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
             geminiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
             anthropicKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            materialLabel3 = new ReaLTaiizor.Controls.MaterialLabel();
-            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
             openAiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel3 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
+            geminiLinkLabel = new LinkLabel();
             creditsPage = new TabPage();
             creditsFlowPanel = new FlowLayoutPanel();
             peopleCreditTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
@@ -595,32 +596,32 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.AutoSize = true;
-            tableLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(geminiKeyBox, 1, 2);
-            tableLayoutPanel1.Controls.Add(materialLabel4, 0, 2);
-            tableLayoutPanel1.Controls.Add(anthropicKeyBox, 1, 1);
-            tableLayoutPanel1.Controls.Add(materialLabel3, 0, 1);
-            tableLayoutPanel1.Controls.Add(materialLabel1, 0, 0);
-            tableLayoutPanel1.Controls.Add(openAiKeyBox, 1, 0);
-            tableLayoutPanel1.Location = new Point(505, 6);
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.Controls.Add(geminiKeyBox, 2, 2);
+            tableLayoutPanel1.Controls.Add(anthropicKeyBox, 2, 1);
+            tableLayoutPanel1.Controls.Add(openAiKeyBox, 2, 0);
+            tableLayoutPanel1.Controls.Add(materialLabel1, 1, 0);
+            tableLayoutPanel1.Controls.Add(materialLabel3, 1, 1);
+            tableLayoutPanel1.Controls.Add(materialLabel4, 1, 2);
+            tableLayoutPanel1.Controls.Add(geminiLinkLabel, 0, 2);
+            tableLayoutPanel1.Location = new Point(360, 6);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 11;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.090909F));
-            tableLayoutPanel1.Size = new Size(566, 594);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(711, 594);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // geminiKeyBox
@@ -635,7 +636,7 @@
             geminiKeyBox.HideSelection = true;
             geminiKeyBox.Hint = "Key goes here...";
             geminiKeyBox.LeadingIcon = null;
-            geminiKeyBox.Location = new Point(286, 109);
+            geminiKeyBox.Location = new Point(307, 111);
             geminiKeyBox.MaxLength = 32767;
             geminiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             geminiKeyBox.Name = "geminiKeyBox";
@@ -647,26 +648,13 @@
             geminiKeyBox.SelectionLength = 0;
             geminiKeyBox.SelectionStart = 0;
             geminiKeyBox.ShortcutsEnabled = true;
-            geminiKeyBox.Size = new Size(277, 48);
+            geminiKeyBox.Size = new Size(396, 48);
             geminiKeyBox.TabIndex = 5;
             geminiKeyBox.TabStop = false;
             geminiKeyBox.TextAlign = HorizontalAlignment.Left;
             geminiKeyBox.TrailingIcon = null;
             geminiKeyBox.UseSystemPasswordChar = true;
             geminiKeyBox.TextChanged += geminiKeyBox_TextChanged;
-            // 
-            // materialLabel4
-            // 
-            materialLabel4.Anchor = AnchorStyles.Right;
-            materialLabel4.AutoSize = true;
-            materialLabel4.Depth = 0;
-            materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel4.Location = new Point(113, 123);
-            materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel4.Name = "materialLabel4";
-            materialLabel4.Size = new Size(167, 19);
-            materialLabel4.TabIndex = 4;
-            materialLabel4.Text = "Google Gemini API Key:";
             // 
             // anthropicKeyBox
             // 
@@ -680,7 +668,7 @@
             anthropicKeyBox.HideSelection = true;
             anthropicKeyBox.Hint = "Key goes here...";
             anthropicKeyBox.LeadingIcon = null;
-            anthropicKeyBox.Location = new Point(286, 56);
+            anthropicKeyBox.Location = new Point(307, 57);
             anthropicKeyBox.MaxLength = 32767;
             anthropicKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             anthropicKeyBox.Name = "anthropicKeyBox";
@@ -692,39 +680,13 @@
             anthropicKeyBox.SelectionLength = 0;
             anthropicKeyBox.SelectionStart = 0;
             anthropicKeyBox.ShortcutsEnabled = true;
-            anthropicKeyBox.Size = new Size(277, 48);
+            anthropicKeyBox.Size = new Size(396, 48);
             anthropicKeyBox.TabIndex = 3;
             anthropicKeyBox.TabStop = false;
             anthropicKeyBox.TextAlign = HorizontalAlignment.Left;
             anthropicKeyBox.TrailingIcon = null;
             anthropicKeyBox.UseSystemPasswordChar = true;
             anthropicKeyBox.TextChanged += anthropicKeyBox_TextChanged;
-            // 
-            // materialLabel3
-            // 
-            materialLabel3.Anchor = AnchorStyles.Right;
-            materialLabel3.AutoSize = true;
-            materialLabel3.Depth = 0;
-            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel3.Location = new Point(149, 70);
-            materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel3.Name = "materialLabel3";
-            materialLabel3.Size = new Size(131, 19);
-            materialLabel3.TabIndex = 2;
-            materialLabel3.Text = "Anthropic API Key:";
-            // 
-            // materialLabel1
-            // 
-            materialLabel1.Anchor = AnchorStyles.Right;
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(166, 17);
-            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(114, 19);
-            materialLabel1.TabIndex = 0;
-            materialLabel1.Text = "OpenAI API Key:";
             // 
             // openAiKeyBox
             // 
@@ -738,7 +700,7 @@
             openAiKeyBox.HideSelection = true;
             openAiKeyBox.Hint = "Key goes here...";
             openAiKeyBox.LeadingIcon = null;
-            openAiKeyBox.Location = new Point(286, 3);
+            openAiKeyBox.Location = new Point(307, 3);
             openAiKeyBox.MaxLength = 32767;
             openAiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             openAiKeyBox.Name = "openAiKeyBox";
@@ -750,13 +712,66 @@
             openAiKeyBox.SelectionLength = 0;
             openAiKeyBox.SelectionStart = 0;
             openAiKeyBox.ShortcutsEnabled = true;
-            openAiKeyBox.Size = new Size(277, 48);
+            openAiKeyBox.Size = new Size(396, 48);
             openAiKeyBox.TabIndex = 1;
             openAiKeyBox.TabStop = false;
             openAiKeyBox.TextAlign = HorizontalAlignment.Left;
             openAiKeyBox.TrailingIcon = null;
             openAiKeyBox.UseSystemPasswordChar = true;
             openAiKeyBox.TextChanged += openAiKeyBox_TextChanged;
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.Anchor = AnchorStyles.Right;
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(187, 17);
+            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(114, 19);
+            materialLabel1.TabIndex = 0;
+            materialLabel1.Text = "OpenAI API Key:";
+            // 
+            // materialLabel3
+            // 
+            materialLabel3.Anchor = AnchorStyles.Right;
+            materialLabel3.AutoSize = true;
+            materialLabel3.Depth = 0;
+            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel3.Location = new Point(170, 71);
+            materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.Size = new Size(131, 19);
+            materialLabel3.TabIndex = 2;
+            materialLabel3.Text = "Anthropic API Key:";
+            // 
+            // materialLabel4
+            // 
+            materialLabel4.Anchor = AnchorStyles.Right;
+            materialLabel4.AutoSize = true;
+            materialLabel4.Depth = 0;
+            materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel4.Location = new Point(134, 125);
+            materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel4.Name = "materialLabel4";
+            materialLabel4.Size = new Size(167, 19);
+            materialLabel4.TabIndex = 4;
+            materialLabel4.Text = "Google Gemini API Key:";
+            // 
+            // geminiLinkLabel
+            // 
+            geminiLinkLabel.Anchor = AnchorStyles.Right;
+            geminiLinkLabel.AutoSize = true;
+            geminiLinkLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            geminiLinkLabel.LinkColor = Color.FromArgb(255, 128, 128);
+            geminiLinkLabel.Location = new Point(3, 127);
+            geminiLinkLabel.Name = "geminiLinkLabel";
+            geminiLinkLabel.Size = new Size(125, 15);
+            geminiLinkLabel.TabIndex = 6;
+            geminiLinkLabel.TabStop = true;
+            geminiLinkLabel.Text = "Grab a free Gemini key";
+            geminiLinkLabel.LinkClicked += geminiLinkLabel_LinkClicked;
             // 
             // creditsPage
             // 
@@ -1009,7 +1024,6 @@
             cvPage.ResumeLayout(false);
             materialCard6.ResumeLayout(false);
             aiPage.ResumeLayout(false);
-            aiPage.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             creditsPage.ResumeLayout(false);
@@ -1075,5 +1089,6 @@
         private ReaLTaiizor.Controls.MaterialLabel materialLabel3;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit openAiKeyBox;
+        private LinkLabel geminiLinkLabel;
     }
 }
