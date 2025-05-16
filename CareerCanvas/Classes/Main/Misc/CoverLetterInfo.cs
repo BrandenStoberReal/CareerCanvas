@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CareerCanvas.Classes.Main.Misc
+﻿namespace CareerCanvas.Classes.Main.Misc
 {
     public class CoverLetterInfo
     {

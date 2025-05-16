@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CareerCanvas.Classes.Static.Utils
+﻿namespace CareerCanvas.Classes.Static.Utils
 {
     public static class ThreadingUtils
     {

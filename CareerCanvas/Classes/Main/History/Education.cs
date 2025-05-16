@@ -6,19 +6,24 @@ namespace CareerCanvas.Classes.Main.History;
 [ProtoContract]
 public enum DegreeType
 {
-    [ProtoEnum] [Description("High School Diploma")]
+    [ProtoEnum]
+    [Description("High School Diploma")]
     HighSchool,
 
-    [ProtoEnum] [Description("Associate's Degree")]
+    [ProtoEnum]
+    [Description("Associate's Degree")]
     Associate,
 
-    [ProtoEnum] [Description("Bachelor's Degree")]
+    [ProtoEnum]
+    [Description("Bachelor's Degree")]
     Bachelor,
 
-    [ProtoEnum] [Description("Master's Degree")]
+    [ProtoEnum]
+    [Description("Master's Degree")]
     Master,
 
-    [ProtoEnum] [Description("Doctorate Degree")]
+    [ProtoEnum]
+    [Description("Doctorate Degree")]
     Doctorate
 }
 

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PuppeteerSharp.Media;
+﻿using System.Diagnostics;
 using PuppeteerSharp;
-using HtmlAgilityPack;
+using PuppeteerSharp.Media;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
-using System.Diagnostics;
 
 namespace CareerCanvas.Classes.Static.Utils
 {
@@ -217,7 +211,8 @@ namespace CareerCanvas.Classes.Static.Utils
                     if (progressForm != null && !progressForm.IsDisposed)
                     {
                         var formToClose = progressForm; // Create a local copy that won't be modified
-                        formToClose.BeginInvoke(new Action(() => {
+                        formToClose.BeginInvoke(new Action(() =>
+                        {
                             try
                             {
                                 if (!formToClose.IsDisposed)

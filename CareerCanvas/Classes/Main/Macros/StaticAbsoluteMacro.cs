@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CareerCanvas.Classes.Main.Bases;
+﻿using CareerCanvas.Classes.Main.Bases;
 using CareerCanvas.Classes.Static;
 using HtmlAgilityPack;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
@@ -63,7 +58,8 @@ namespace CareerCanvas.Classes.Main.Macros
                             }
                         }
                     }
-                } else
+                }
+                else
                 {
                     if (MacroValue == string.Empty || MacroValue == null)
                     {

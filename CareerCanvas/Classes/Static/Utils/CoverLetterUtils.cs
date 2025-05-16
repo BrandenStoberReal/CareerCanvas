@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CareerCanvas.Classes.Main.History;
-using CareerCanvas.Classes.Main.Macros;
+﻿using CareerCanvas.Classes.Main.Macros;
 using CareerCanvas.Classes.Main.Misc;
 using CareerCanvas.Classes.Main.Protobuf;
-using HtmlAgilityPack;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace CareerCanvas.Classes.Static.Utils

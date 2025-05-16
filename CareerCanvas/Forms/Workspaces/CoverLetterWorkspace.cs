@@ -1,21 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using CareerCanvas.Classes.Main.Misc;
 using CareerCanvas.Classes.Main.Protobuf;
-using ReaLTaiizor.Forms;
-using HtmlAgilityPack;
-using HtmlDocument = HtmlAgilityPack.HtmlDocument;
-using CareerCanvas.Classes.Static.Utils;
-using CareerCanvas.Classes.Main.Misc;
 using CareerCanvas.Classes.Static;
-using ReaLTaiizor.Manager;
+using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Forms.InputDialogs;
+using ReaLTaiizor.Forms;
+using ReaLTaiizor.Manager;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace CareerCanvas.Forms.Workspaces
 {

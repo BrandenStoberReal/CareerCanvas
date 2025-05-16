@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ReaLTaiizor.Forms;
+﻿using ReaLTaiizor.Forms;
 
 namespace CareerCanvas.Classes.Static.Utils
 {

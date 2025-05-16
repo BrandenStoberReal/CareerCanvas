@@ -1,5 +1,4 @@
-﻿using CareerCanvas.Classes.Main.History;
-using CareerCanvas.Classes.Main.Protobuf;
+﻿using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Classes.Static.Utils;
 using ReaLTaiizor.Forms;

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CareerCanvas.Classes.Static
+﻿namespace CareerCanvas.Classes.Static
 {
     /// <summary>
     /// MacroList is a static class that contains a list of macros used in the application.
