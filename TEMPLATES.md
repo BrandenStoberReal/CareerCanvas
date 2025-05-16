@@ -209,7 +209,7 @@ Wrap your repeatable blocks in elements with **section** and **entry** IDs. The 
 - **HTML5**: All templates must be valid HTML5.
 - **CSS Classes**: Use classes for styling, not IDs. IDs are reserved for macros and section/entry IDs.
 - **No Inline Styles**: Avoid inline styles; use CSS classes instead.
-- **Mark The Document Type**: Include the "cover-letter" or "resume-container" class in the main container to indicate the type of template you are making. Different template types have different optimizations and styles.
+- **Mark The Document Type**: Include the "**cover-letter**" or "**resume-container**" class in the main container to indicate the type of template you are making. Different template types have different optimizations and styles.
 
 ### 6.1. Example of Document Type Marking
 Cover Letter Template:
