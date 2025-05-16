@@ -1,267 +1,204 @@
-# Table of Contents
-<!--TOC-->
-- [Template Options](#template-options)
-  - [Macros](#macros)
-  - ['Required' Macro Foreword](#required-macro-foreword)
-  - [List of Macros](#list-of-macros)
-  - [Resume Specific Macros](#resume-specific-macros)
-  - [Cover Letter Specific Macros](#cover-letter-specific-macros)
-  - [Static Macros](#static-macros)
-    - [Static Macro Implementation](#static-macro-implementation)
-    - [Static Macro IDs](#static-macro-ids)
-  - [Dynamic Macros](#dynamic-macros)
-    - [Dynamic Macro Implementation](#dynamic-macro-implementation)
-    - [Dynamic Macro IDs](#dynamic-macro-ids)
-      - [Section IDs](#section-ids)
-      - [Entry IDs](#entry-ids)
-  - [Examples](#examples)
-    - [Education Container - Resume](#education-container-resume)
-    - [Work Container - Resume](#work-container-resume)
-    - [Certification Container - Resume](#certification-container-resume)
-    - [Skills Container - Resume](#skills-container-resume)
-    - [Example Template Output - Resume](#example-template-output-resume)
-<!--/TOC-->
+# Template Reference Guide
 
-# Template Options
-CareerCanvas allows you to create custom templates out of HTML. To do this, some information needs to be marked so the application knows how to process it.
+CareerCanvas templates are plain HTML with **macros** marking where user data should be injected. There are two macro categories:
 
-## Macros
-Macros are used to mark the information that needs to be replaced. They are defined in the following format:
-```html
-{{macro_name}}
-```
-Where `macro_name` is the name of the macro. The macro names should be `unique`. For macros that are used to replace list information, see the [dynamic macros](#dynamic-macro-implementation) section below.
+1. **Static Macros** – replaced once with a single value.  
+2. **Dynamic Macros** – repeated for each item in a list (e.g., multiple jobs, schools, skills).
 
-There are two types of macro types: `static` and `dynamic`.
-A `static macro` is a macro that will be replaced with a `static value`. For example, the `{{fullName}}` macro will be replaced with the full name of the template's owner. `These macros can be defined anywhere in the document without issue`.
-A `dynamic macro` is a macro that will be replaced with a `dynamic value`. For example, the `{{jobTitle}}` macro's parent element will be duplicated for every job in the users work history. `The parent elements of these macros require special element IDs`. Read the section on [dynamic macros](#dynamic-macro-implementation) further in this document for details.
+Throughout this document:
 
-Static macros can be defined anywhere in the document. For example, the following is a valid macro:
-```html
-<p>{{fullName}}</p>
-```
-This will be replaced with the full name of the template's owner.
+- `{{macroName}}` denotes a macro.  
+- Elements with special `id` attributes guide the engine to duplicate or remove content.  
 
-Both macro types can also be defined anywhere in the HTML element. For example, the following is a valid, albeit useless, macro:
-```html
-<div class="template">
-    <h1 class="{{fullName}}">{{homeAddress}}</h1>
-</div>
-```
-This will replace the `h1` element's class with the user's full name.
+---
 
-Lastly, dynamic macros can be defined anywhere in an element's descendancy. For example, the following is a valid macro:
-```html
-<li class="education-entry">
-    <h3>{{degreeType}} - <strong>{{schoolName}}</strong></h3>
-</li>
-```
-This would correctly replace `{{schoolName}}` and `{{degreeType}}` despite the former being nested inside the `strong` element.
+## Table of Contents
 
-## 'Required' Macro Foreword
-Some macros are listed as `required` in the table below. Despite the name, these macros are not inherently forced to be in the template; however, macros marked with the `required` entry are strongly recommended to include, as they typically compose the foundation of the document or are otherwise integral information. The application `will still load your template` if a required macro remains undefined, however, your template will likely look very bad.
+<!-- TOC -->
+- [1. Macros Overview](#1-macros-overview)  
+  - [1.1. Static vs. Dynamic](#11-static-vs-dynamic)  
+  - [1.2. ‘Recommended’ vs. Required](#12-recommended-vs-required)  
+- [2. Macro List](#2-macro-list)  
+  - [2.1. Global Macros](#21-global-macros)  
+  - [2.2. Resume-Specific](#22-resume-specific)  
+  - [2.3. Cover-Letter-Specific](#23-cover-letter-specific)  
+- [3. Static Macro IDs](#3-static-macro-ids)  
+- [4. Dynamic Macro Implementation](#4-dynamic-macro-implementation)  
+  - [4.1. Section IDs](#41-section-ids)  
+  - [4.2. Entry IDs](#42-entry-ids)  
+- [5. Examples](#5-examples)  
+  - [5.1. Education](#51-education)  
+  - [5.2. Work Experience](#52-work-experience)  
+  - [5.3. Certifications](#53-certifications)  
+  - [5.4. Skills](#54-skills)  
+<!-- /TOC -->
 
+---
 
-## List of Macros
-| Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
-| :---: | :---: | :---: | :---: | :---: |
-| `{{fullName}}` | The full name of the template's owner. | Yes | No | No |
-| `{{homeAddress}}` | The template owner's legal residence. | No | No | No |
-| `{{emailAddress}}` | The template owner's email address. | No | No | No |
-| `{{phoneNumber}}` | The template owner's phone number. | No | No | No |
-| `{{linkedIn}}` | The template owner's LinkedIn profile. | No | No | No |
-| `{{currentDate}}` | A placeholder for the current date (MMM DD, YYYY). | No | No | No |
+## 1. Macros Overview
 
-## Resume Specific Macros
-| Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
-| :---: | :---: | :---: | :---: | :---: |
-| `{{resumeSummary}}` | A summary of the resume owner's overall job experience. | No | No | Yes |
-| `{{skillName}}` | A placeholder for a skill the resume owner posesses. | No | Yes | Yes |
-| `{{jobTitle}}` | A placeholder for the job title defined in the owner's work history. | Yes | Yes | No |
-| `{{jobDescription}}` | A placeholder for the job description defined in the owner's work history. | No | Yes | No |
-| `{{jobStartMonth}}` | A placeholder for the job's starting month as defined in the owner's work history. | No | Yes | No |
-| `{{jobStartMonthShort}}` | A placeholder for the job's starting month as defined in the owner's work history (shortened month name). | No | Yes | No |
-| `{{jobStartYear}}` | A placeholder for the job's starting year as defined in the owner's work history. | No | Yes | No |
-| `{{jobEndMonth}}` | A placeholder for the job's ending month as defined in the owner's work history. | No | Yes | No |
-| `{{jobEndMonthShort}}` | A placeholder for the job's ending month as defined in the owner's work history (shortened month name). | No | Yes | No |
-| `{{jobEndYear}}` | A placeholder for the job's ending year as defined in the owner's work history. | No | Yes | No |
-| `{{jobStartDate}}` | A placeholder for the job's starting date (MMM yyyy) as defined in the owner's work history. | No | Yes | No |
-| `{{jobEndDate}}` | A placeholder for the job's ending date (MMM yyyy) as defined in the owner's work history. | No | Yes | No |
-| `{{jobCompanyName}}` | A placeholder for the job company defined in the owner's work history. | Yes | Yes | No |
-| `{{degreeType}}` | A placeholder for a degree obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
-| `{{schoolName}}` | A placeholder for the name of the school where the degree was obtained or is currently being obtained. | Yes | Yes | No |
-| `{{schoolStartMonth}}` | A placeholder for the month the degree was started. | No | Yes | No |
-| `{{schoolStartMonthShort}}` | A placeholder for the month the degree was started (shortened month name). | No | Yes | No |
-| `{{schoolStartYear}}` | A placeholder for the year the degree was started. | No | Yes | No |
-| `{{schoolEndMonth}}` | A placeholder for the month the degree was obtained. | No | Yes | No |
-| `{{schoolEndMonthShort}}` | A placeholder for the month the degree was obtained (shortened month name). | No | Yes | No |
-| `{{schoolEndYear}}` | A placeholder for the year the degree was obtained. | No | Yes | No |
-| `{{schoolStartDate}}` | A placeholder for the date the degree was started (MMM yyyy). | No | Yes | No |
-| `{{schoolEndDate}}` | A placeholder for the date the degree was obtained (MMM yyyy). | No | Yes | No |
-| `{{certificationName}}` | A placeholder for the name of a certification obtained or currently obtaining in the user's educational history. | Yes | Yes | No |
-| `{{certificateMonth}}` | A placeholder for the month the certificate was issued. | No | Yes | No |
-| `{{certificateMonthShort}}` | A placeholder for the month the certificate was issued (shortened month name). | No | Yes | No |
-| `{{certificateYear}}` | A placeholder for the year the certificate was issued. | No | Yes | No |
-| `{{certificateDate}}` | A placeholder for the date the certificate was issued to the user. | No | Yes | No |
-| `{{certificateIssuingOrganization}}` | A placeholder for the name of the issuer of the certificate. | Yes | Yes | No |
+### 1.1. Static vs. Dynamic
 
-## Cover Letter Specific Macros
-| Macro Name | Description | Required? | Dynamic? | Placeholder Available? |
-| :---: | :---: | :---: | :---: | :---: |
-| `{{coverLetterCompanyName}}` | A placeholder for the name of the company the cover letter is addressed to. | Yes | No | No |
-| `{{coverLetterCompanyAddress}}` | A placeholder for the address of the company the cover letter is addressed to. | No | No | No |
-| `{{coverLetterCompanyCity}}` | A placeholder for the city of the company the cover letter is addressed to. | No | No | No |
-| `{{coverLetterCompanyState}}` | A placeholder for the state of the company the cover letter is addressed to. | No | No | No |
-| `{{coverLetterCompanyZip}}` | A placeholder for the zip code of the company the cover letter is addressed to. | No | No | No |
-| `{{coverLetterCompanyPhone}}` | A placeholder for the phone number of the company the cover letter is addressed to. | No | No | No |
-| `{{coverLetterCompanyEmail}}` | A placeholder for the email address of the company the cover letter is addressed to. | No | No | No |
-| `{{coverLetterCompanyWebsite}}` | A placeholder for the website of the company the cover letter is addressed to. | No | No | No |
-| `{{coverLetterContent}}` | A placeholder for the content of the cover letter. | Yes | No | No |
-| `{{appliedJobTitle}}` | A placeholder for the job title the cover letter is addressing. | Yes | No | No |
-| `{{coverLetterRecipientFirstName}}` | A placeholder for the first name of the recipient of the cover letter. | No | No | No |
-| `{{coverLetterRecipientLastName}}` | A placeholder for the last name of the recipient of the cover letter. | No | No | No |
-| `{{coverLetterRecipientTitle}}` | A placeholder for the title of the recipient of the cover letter. | No | No | No |
-| `{{coverLetterRecipientPrefix}}` | A placeholder for the prefix of the recipient of the cover letter. | No | No | No |
+- **Static Macros**  
+  - Format: `{{macroName}}`  
+  - Replaced exactly once with a single value (e.g., full name).  
+  - Can appear anywhere in the document.
 
-## Static Macros
-**This section only applies to resumes! Static macros are handled uniquely in CVs!**
+- **Dynamic Macros**  
+  - Also `{{macroName}}`, but live inside a repeatable container (e.g., `<li>`).  
+  - The parent element (or ancestor) must have a designated ID so the engine knows to duplicate it per data item.
 
-### Static Macro Implementation
-Static macros are required to be assigned a unique ID. This is used to delete the macro's parent element if the user does not provide relevant data. Each static macro has its own ID, which is used to identify the parent element of the macro and delete/modify it if needed.
+### 1.2. ‘Recommended’ vs. Required
 
-### Static Macro IDs
-| Macro Name | ID |
-| :---: | :---: |
-| `{{fullName}}` | `name` |
-| `{{homeAddress}}` | `address` |
-| `{{emailAddress}}` | `email` |
-| `{{phoneNumber}}` | `phonenumber` |
-| `{{linkedIn}}` | `linkedin` |
-| `{{resumeSummary}}` | `professional-summary` |
+- **Required** macros/IDs must be present for the template to render correctly.  
+- **Recommended** macros (formerly “required”) are _strongly suggested_ for a good-looking template; missing ones won’t break loading but may leave key sections blank.
 
-## Dynamic Macros
-**This section only applies to resumes! Dynamic macros do not exist in CVs!**
+---
 
-### Dynamic Macro Implementation
-Dynamic macros are used to create a list of items that are repeated for each item in the list. For example, the `{{jobTitle}}` macro will be replaced with the job title of each job in the user's work history.
+## 2. Macro List
 
-For these macros to function properly, a template developer needs to explicitly mark the parent element of the macro with a [unique ID](#dynamic-macro-ids).
+### 2.1. Global Macros
 
-There are currently four categories for dynamic macros: `education`, `work`, `certification`, and `skills`. Each category has its own set of macros that are used to identify the parent element of the macro.
+| Macro                 | Description                       | Required | Dynamic | Placeholder |
+|:----------------------|:----------------------------------|:--------:|:-------:|:-----------:|
+| `{{fullName}}`        | User’s full name                  |   Yes    |   No    | No          |
+| `{{homeAddress}}`     | Legal residence                   |   No     |   No    | No          |
+| `{{emailAddress}}`    | Email                             |   No     |   No    | No          |
+| `{{phoneNumber}}`     | Phone                             |   No     |   No    | No          |
+| `{{linkedIn}}`        | LinkedIn URL                      |   No     |   No    | No          |
+| `{{currentDate}}`     | Today’s date (e.g. “May 15, 2025”)|   No     |   No    | No          |
 
-Dynamic macros are always replaced `recursively` as long as the criteria for the parent element is met. This means that if a dynamic macro's element is nested inside another dynamic macro's element, both macros would be filled regardless of the hierarchy.
+### 2.2. Resume-Specific Macros
 
-### Dynamic Macro IDs
-Some hardcoded HTML element IDs are required to be present in the template. These IDs are used to identify the parent element of the macro and are used to duplicate the element for each item in the list. The IDs are also used to delete the parent element if the user does not provide relevant data, and other assorted things.
+| Macro                     | Description                           | Req. | Dyn. | Placeholder |
+|:--------------------------|:--------------------------------------|:----:|:----:|:-----------:|
+| `{{resumeSummary}}`       | Professional summary                  | Rec. | No   | Yes         |
+| **Work History**           |                                       |      |      |             |
+| `{{jobTitle}}`             | Job title                             | Yes  | Yes  | No          |
+| `{{jobCompanyName}}`       | Employer                              | Yes  | Yes  | No          |
+| `{{jobStartDate}}`         | “MMM YYYY” start                      | No   | Yes  | No          |
+| `{{jobEndDate}}`           | “MMM YYYY” end                        | No   | Yes  | No          |
+| `{{jobDescription}}`       | Role description                      | No   | Yes  | No          |
+| **Education**               |                                       |      |      |             |
+| `{{degreeType}}`           | Degree                                | Yes  | Yes  | No          |
+| `{{schoolName}}`           | Institution                           | Yes  | Yes  | No          |
+| `{{schoolStartDate}}`      | “MMM YYYY” start                      | No   | Yes  | No          |
+| `{{schoolEndDate}}`        | “MMM YYYY” end                        | No   | Yes  | No          |
+| **Certifications**          |                                       |      |      |             |
+| `{{certificateName}}`      | Certification                         | Yes  | Yes  | No          |
+| `{{certificateIssuingOrganization}}` | Issuer                  | Yes  | Yes  | No          |
+| `{{certificateDate}}`      | Date issued (“MMM YYYY”)             | No   | Yes  | No          |
+| **Skills**                  |                                       |      |      |             |
+| `{{skillName}}`            | Individual skill                     | No   | Yes  | Yes         |
 
-Please note that any ID marked as 'required' `must be present` in the template. If the ID is not present, the application will not correctly replace the macros and the template will not be valid. The application will still load the template, but it will not be able to replace the macros.
+### 2.3. Cover-Letter-Specific
 
-#### Section IDs
-These IDs are used to delete an applicable section if the user has no data pertaining to that section. This allows the final document to be cleaner, more readable, and more professional.
+| Macro                           | Description                 | Req. | Dyn. | Placeholder |
+|:--------------------------------|:----------------------------|:----:|:----:|:-----------:|
+| `{{coverLetterCompanyName}}`    | Recipient company           | Yes  | No   | No          |
+| `{{appliedJobTitle}}`           | Position applied for        | Yes  | No   | No          |
+| `{{coverLetterContent}}`        | Main letter body            | Yes  | No   | No          |
+| `{{coverLetterRecipientPrefix}}`| e.g. “Mr.” / “Ms.”          | No   | No   | No          |
+| `{{coverLetterRecipientFirstName}}`, `LastName`, `Title`, etc. | Optional salutations | No | No | No |
 
-Optional sections serve no purpose besides for consistency and can be removed/excluded from the template if desired. The application will still function correctly without them.
+---
 
-| Section Name | ID | Required? |
-| :---: | :---: | :---: |
-| Employment Summary Section | `summary-section` | Yes |
-| Education Section | `education-section` | Yes |
-| Work Experience Section | `experience-section` | Yes |
-| Certification Section | `certificate-section` | Yes |
-| Skills Section | `skills-section` | No |
-| Contact Information Section | `contact-section` | No |
+## 3. Static Macro IDs
 
-#### Entry IDs
-These IDs are used to replace the macros located as a descendant of the element with the ID.
+Each static macro must have its parent element tagged with an `id` so that if the user omits that field, the entire element can be removed:
 
-| Entry Name | ID | Required? |
-| :---: | :---: | :---: |
-| Education Entry | `education-entry` | Yes |
-| Work Entry | `job-entry` | Yes |
-| Certification Entry | `certificate-entry` | Yes |
-| Skills Entry | `skill-entry` | Yes |
+| Macro                 | ID                   |
+|:----------------------|:---------------------|
+| `{{fullName}}`        | `name`               |
+| `{{homeAddress}}`     | `address`            |
+| `{{emailAddress}}`    | `email`              |
+| `{{phoneNumber}}`     | `phonenumber`        |
+| `{{linkedIn}}`        | `linkedin`           |
+| `{{resumeSummary}}`   | `professional-summary` |
 
-## Examples
-### Education Container - Resume
-An example is provided below from one of the default templates:
+---
+
+## 4. Dynamic Macro Implementation
+
+Wrap your repeatable blocks in elements with **section** and **entry** IDs. The engine:
+
+1. Duplicates the entry element for each data item.  
+2. Removes the whole section if the data array is empty.
+
+### 4.1. Section IDs
+
+| Section                 | ID                   | Required |
+|:------------------------|:---------------------|:--------:|
+| Summary                 | `summary-section`    | Yes      |
+| Education               | `education-section`  | Yes      |
+| Work Experience         | `experience-section` | Yes      |
+| Certifications          | `certificate-section`| Yes      |
+| Skills                  | `skills-section`     | No       |
+| Contact Info (CV only)  | `contact-section`    | No       |
+
+### 4.2. Entry IDs
+
+| Entry Type        | ID               | Required |
+|:------------------|:-----------------|:--------:|
+| Education item    | `education-entry`| Yes      |
+| Job item          | `job-entry`      | Yes      |
+| Certificate item  | `certificate-entry`| Yes    |
+| Skill item        | `skill-entry`    | Yes      |
+
+---
+
+## 5. Examples
+
+### 5.1. Education
+
 ```html
 <div class="section" id="education-section">
-    <h2>Education</h2>
-    <ul class="education">
-        <li class="education-entry">
-            <h3>{{degreeType}} - {{schoolName}}</h3>
-            <p>{{schoolStartMonth}} {{schoolStartYear}} - {{schoolEndMonth}} {{schoolEndYear}}</p>
-        </li>
-    </ul>
+  <h2>Education</h2>
+  <ul class="education">
+    <li class="education-entry">
+      <h3>{{degreeType}} – {{schoolName}}</h3>
+      <p>{{schoolStartDate}} – {{schoolEndDate}}</p>
+    </li>
+  </ul>
 </div>
 ```
 
-Important fields:
-- `education-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
-- `education-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
+### 5.2. Work Experience
 
-### Work Container - Resume
-An example is provided below from one of the default templates:
 ```html
-    <div class="section" id="experience-section">
-        <h2>Experience</h2>
-        <ul class="experience">
-            <li class="job-entry">
-                <h3>{{jobTitle}} - {{jobCompanyName}}</h3>
-                <p>{{jobStartMonth}} {{jobStartYear}} - {{jobEndMonth}} {{jobEndYear}}</p>
-                <p>{{jobDescription}}</p>
-            </li>
-        </ul>
-    </div>
+<div class="section" id="experience-section">
+  <h2>Experience</h2>
+  <ul class="experience">
+    <li class="job-entry">
+      <h3>{{jobTitle}} @ {{jobCompanyName}}</h3>
+      <p>{{jobStartDate}} – {{jobEndDate}}</p>
+      <p>{{jobDescription}}</p>
+    </li>
+  </ul>
+</div>
 ```
 
-Important fields:
-- `job-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
-- `experience-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
+### 5.3. Certifications
 
-### Certification Container - Resume
-An example is provided below from one of the default templates:
 ```html
 <div class="section" id="certificate-section">
-    <h2>Certificates</h2>
-    <ul class="certificates">
-        <li class="certificate-entry">
-            <h3>{{certificateName}}</h3>
-            <p>{{certificateIssuingOrganization}} ({{certificateDate}})</p>
-        </li>
-    </ul>
+  <h2>Certifications</h2>
+  <ul class="certificates">
+    <li class="certificate-entry">
+      <h3>{{certificateName}}</h3>
+      <p>{{certificateIssuingOrganization}} ({{certificateDate}})</p>
+    </li>
+  </ul>
 </div>
 ```
 
-Important fields:
-- `certificate-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
-- `certificate-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
+### 5.4. Skills
 
-### Skills Container - Resume
-An example is provided below from one of the default templates:
 ```html
 <div class="section" id="skills-section">
-    <h2>Skills</h2>
-    <ul class="skills">
-        <li class="skill-entry">{{skillName}}</li>
-    </ul>
+  <h2>Skills</h2>
+  <ul class="skills">
+    <li class="skill-entry">{{skillName}}</li>
+  </ul>
 </div>
 ```
-
-Important fields:
-- `skill-entry` - This is the parent element of the macroized elements. This is important so the scanner knows where to replace the macros and duplicate the elements.
-- `skills-section` - This is the ID of the entry's parent section. This is used to delete the section if the user does not provide any data to fill.
-
-### Example Template Output - Resume
-Assuming 3 skills are provided, named `HTML`, `CSS`, and `JavaScript`, the application would process them into the following output:
-```html
-<div class="section" id="skills-section">
-    <h2>Skills</h2>
-    <ul class="skills">
-        <li class="skill-entry">HTML</li>
-        <li class="skill-entry">CSS</li>
-        <li class="skill-entry">JavaScript</li>
-    </ul>
-</div>
-```
-
-This would be the final HTML of the skills section rendered by the application given the previous input data.
