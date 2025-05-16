@@ -245,8 +245,11 @@ namespace CareerCanvas.Classes.Static.Utils
                 {
                     progressForm.BeginInvoke(new Action(() =>
                     {
-                        progressForm.Close();
-                        progressForm.Dispose();
+                        if (progressForm != null && !progressForm.IsDisposed)
+                        {
+                            progressForm.Close();
+                            progressForm.Dispose();
+                        }
                     }));
                     progressForm = null;
                 }

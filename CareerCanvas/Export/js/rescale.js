@@ -1,5 +1,5 @@
 ﻿() => {
-    // Get the content dimensions using more comprehensive measurements
+    // 1) Measure your page…
     const body = document.body;
     const html = document.documentElement;
     const contentHeight = Math.max(
@@ -17,26 +17,26 @@
         html.offsetWidth
     );
 
-    // Letter size dimensions in pixels at 96 DPI
-    const letterHeight = 1056; // 11 inches
-    const letterWidth = 816;   // 8.5 inches
+    // 2) PDF target dims @96dpi
+    const letterHeight = 11 * 96; // 1056
+    const letterWidth = 8.5 * 96; //  816
+    const marginPixels = 0.25 * 96; //   24
+    const availHeight = letterHeight - marginPixels * 2;
+    const availWidth = letterWidth - marginPixels * 2;
 
-    // Account for margins (0.25 inch on each side)
-    const marginPixels = 24;   // 0.25 inches * 96 DPI
-    const availableHeight = letterHeight - (marginPixels * 2);
-    const availableWidth = letterWidth - (marginPixels * 2);
-
-    // Calculate scaling factors
-    const heightScale = availableHeight / contentHeight;
-    const widthScale = availableWidth / contentWidth;
-
-    // Use the smaller scale to ensure content fits in both dimensions
+    // 3) Compute scale
+    const heightScale = availHeight / contentHeight;
+    const widthScale = availWidth / contentWidth;
     let optimalScale = Math.min(heightScale, widthScale);
 
-    // Apply more flexible scaling limits to better fit content
-    optimalScale = Math.min(1.2, optimalScale);  // Allow up to 120% scaling for better readability
-    optimalScale = Math.max(0.75, optimalScale); // Don't scale down below 75%
+    // 4) Clamp
+    optimalScale = Math.min(1.2, optimalScale);
+    optimalScale = Math.max(0.75, optimalScale);
 
-    // Round to 2 decimal places for consistent rendering
-    return parseFloat(optimalScale.toFixed(2));
+    // 5) Apply it
+    document.documentElement.style.transform = `scale(${optimalScale.toFixed(2)})`;
+    document.documentElement.style.transformOrigin = 'top left';
+
+    // 6) (Optional) return for debugging
+    return optimalScale;
 }
