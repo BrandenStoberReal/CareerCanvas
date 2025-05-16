@@ -47,56 +47,6 @@ public partial class ResumeWorkspace : MaterialForm
     }
 
     /// <summary>
-    /// Exports the current resume to an HTML file.
-    /// </summary>
-    /// <remarks>
-    /// This method opens a save file dialog allowing the user to choose a location and filename
-    /// for the exported HTML file. If the user confirms the dialog, the method writes the current
-    /// HTML template content to the specified file. Success or failure is logged and the user is
-    /// notified via a message box.
-    /// </remarks>
-    private void ExportToHtml()
-    {
-        // Create and configure the save file dialog
-        SaveFileDialog saveFileDialog = new SaveFileDialog();
-        saveFileDialog.Filter = "HTML Files (*.html;*.htm)|*.html;*.htm|All Files (*.*)|*.*";
-        saveFileDialog.DefaultExt = "html";
-        saveFileDialog.Title = "Export Resume to HTML";
-        saveFileDialog.FileName = "resume.html";
-        // Set default save location to the user's Downloads folder
-        saveFileDialog.InitialDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-
-        // Show the dialog and proceed if the user clicks OK
-        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-        {
-            try
-            {
-                // Get the HTML content from the template
-                string htmlContent = Template.DocumentNode.OuterHtml;
-
-                // Write the HTML content to the selected file
-                File.WriteAllText(saveFileDialog.FileName, htmlContent);
-
-                // Log the successful export
-                Globals.AppLogger.Information($"Resume exported to HTML: {saveFileDialog.FileName}");
-
-                // Notify the user of successful export
-                MessageBox.Show("Resume exported to HTML successfully.", "Export Complete",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                // Log any errors that occur during export
-                Globals.AppLogger.Error($"Error exporting resume to HTML: {ex.Message}");
-
-                // Display error message to the user
-                MessageBox.Show($"Error exporting resume: {ex.Message}", "Export Failed",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-    }
-
-    /// <summary>
     /// Event handler for the ResumeWorkspace form load event.
     /// </summary>
     /// <param name="sender"></param>

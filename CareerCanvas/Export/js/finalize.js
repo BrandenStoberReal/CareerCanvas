@@ -1,58 +1,52 @@
 ﻿() => {
-    // Constants and utilities
-    const ELEGANT_CARDS_IDENTIFIERS = ['elegant_cards'];
-    const SPACING_VALUES = {
-        standard: { margin: '10px', padding: '15px', headerMargin: '5px', headerPadding: '5px' },
-        elegant: { margin: '5px', padding: '10px', headerMargin: '0', headerPadding: '0' }
+    // 1) Configuration
+    const THRESHOLDS = {
+        margin: 15,     // px threshold above which we clamp margins
+        padding: 20,    // px threshold above which we clamp paddings
+        gap: 20         // px minimum gap that triggers gap-reduction
     };
 
-    // Helper function to check if element has computed style exceeding a threshold
-    const hasExcessiveSpacing = (element, property, threshold) => {
-        return parseFloat(window.getComputedStyle(element)[property]) > threshold;
+    const SPACING = {
+        standard: { m: 10, p: 15, hm: 5, hp: 5 },
+        elegant: { m: 5, p: 10, hm: 0, hp: 0 }
     };
 
-    // Helper function to check if element is in normal document flow
-    const isInNormalFlow = (element) => {
-        const position = window.getComputedStyle(element).position;
-        return position !== 'absolute' && position !== 'fixed';
-    };
+    const IDENTIFIERS = ['elegant_cards'];
 
-    // Detect if we're using the elegant_cards template
-    const isElegantCardsTemplate = ELEGANT_CARDS_IDENTIFIERS.some(identifier =>
-        document.body.innerHTML.includes(identifier) ||
-        !!document.querySelector(`link[href*="${identifier}"]`) ||
-        document.documentElement.outerHTML.includes(identifier)
+    // 2) Detect template type
+    const isElegant = IDENTIFIERS.some(id =>
+        document.body.dataset.template?.includes(id) ||
+        !!document.querySelector(`link[href*="${id}"]`)
     );
+    const S = isElegant ? SPACING.elegant : SPACING.standard;
 
-    // Use the appropriate spacing values based on template
-    const spacing = isElegantCardsTemplate ? SPACING_VALUES.elegant : SPACING_VALUES.standard;
+    // 3) Build & inject CSS
+    const css = [];
 
-    // 1. Header optimization
-    const header = document.querySelector('header');
-    if (header) {
-        header.style.marginBottom = spacing.headerMargin;
-        header.style.paddingBottom = spacing.headerPadding;
-        header.style.pageBreakAfter = 'avoid';
+    // Header
+    css.push(`
+    header {
+      margin-bottom: ${S.hm}px !important;
+      padding-bottom: ${S.hp}px !important;
+      page-break-after: avoid !important;
     }
+  `);
 
-    // 2. Template-specific optimizations
-    if (isElegantCardsTemplate) {
-        // Elegant cards template special handling
-        const mainContent = document.querySelector('.resume-body, .content-area, main');
-        if (mainContent) {
-            mainContent.style.marginTop = '-10px'; // Negative margin to eliminate gap
-            mainContent.style.paddingTop = '0';
-            mainContent.style.pageBreakBefore = 'avoid';
-        }
-
-        // Optimize card elements
-        document.querySelectorAll('.card, .section-card, .content-card').forEach(card => {
-            card.style.marginBottom = '8px';
-            card.style.pageBreakInside = 'avoid';
-        });
+    if (isElegant) {
+        css.push(`
+      .resume-body, .content-area, main {
+        margin-top: -10px !important;
+        padding-top: 0 !important;
+        page-break-before: avoid !important;
+      }
+      .card, .section-card, .content-card {
+        margin-bottom: 8px !important;
+        page-break-inside: avoid !important;
+      }
+    `);
     } else {
-        // Standard template handling - optimize first section spacing
-        const firstSectionSelectors = [
+        // standard first-section tweak
+        const firsts = [
             '.main-content:first-child',
             '.section:first-child',
             'main > section:first-child',
@@ -63,108 +57,66 @@
             'body > div:not(header):first-of-type',
             '.cv-section:first-child'
         ];
-
-        // Find and adjust the first main content section
-        for (const selector of firstSectionSelectors) {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.style.marginTop = '5px';
-                element.style.paddingTop = '5px';
-                break; // Stop after finding and adjusting the first matching element
-            }
-        }
+        firsts.forEach(sel => {
+            css.push(`${sel} { margin-top:5px !important; padding-top:5px !important; }`);
+        });
     }
 
-    // 3. Global spacing optimization for all container elements
-    document.querySelectorAll('section, article, div, main').forEach(element => {
-        if (!isInNormalFlow(element)) return;
-
-        // Reduce excessive margins and paddings
-        if (hasExcessiveSpacing(element, 'marginTop', 15)) {
-            element.style.marginTop = spacing.margin;
-        }
-        if (hasExcessiveSpacing(element, 'marginBottom', 15)) {
-            element.style.marginBottom = spacing.margin;
-        }
-        if (hasExcessiveSpacing(element, 'paddingTop', 20)) {
-            element.style.paddingTop = spacing.padding;
-        }
-        if (hasExcessiveSpacing(element, 'paddingBottom', 20)) {
-            element.style.paddingBottom = spacing.padding;
-        }
-    });
-
-    // 4. Gap detection and fixing between elements
-    // Get all visible elements in the document
-    const allVisibleElements = Array.from(document.body.querySelectorAll('*')).filter(el => {
-        const style = window.getComputedStyle(el);
-        return style.display !== 'none' &&
-            style.visibility !== 'hidden' &&
-            style.opacity !== '0' &&
-            el.offsetParent !== null;
-    });
-
-    // Sort by vertical position
-    allVisibleElements.sort((a, b) =>
-        a.getBoundingClientRect().top - b.getBoundingClientRect().top
-    );
-
-    // Find and fix gaps between consecutive elements
-    for (let i = 0; i < allVisibleElements.length - 1; i++) {
-        const current = allVisibleElements[i];
-        const next = allVisibleElements[i + 1];
-
-        // Skip if either element is not in normal flow
-        if (!isInNormalFlow(current) || !isInNormalFlow(next)) continue;
-
-        // Skip parent-child relationships
-        if (current.contains(next) || next.contains(current)) continue;
-
-        const currentRect = current.getBoundingClientRect();
-        const nextRect = next.getBoundingClientRect();
-
-        // Check for excessive gap
-        if (nextRect.top > currentRect.bottom) {
-            const gap = nextRect.top - currentRect.bottom;
-
-            // Only fix gaps larger than 20px
-            if (gap > 20) {
-                const currentMarginBottom = parseFloat(window.getComputedStyle(current).marginBottom);
-                const nextMarginTop = parseFloat(window.getComputedStyle(next).marginTop);
-
-                // Apply proportional adjustments
-                const reductionRatio = 0.75; // Reduce by 75% to avoid complete elimination
-                if (currentMarginBottom > 0) {
-                    current.style.marginBottom = Math.max(0, currentMarginBottom * reductionRatio) + 'px';
-                }
-                if (nextMarginTop > 0) {
-                    next.style.marginTop = Math.max(0, nextMarginTop * reductionRatio) + 'px';
-                }
-            }
-        }
+    // Global clamp & page-break rules
+    css.push(`
+    section, article, div, main {
+      page-break-inside: avoid !important;
+      margin-top:    ${S.m}px !important;
+      margin-bottom: ${S.m}px !important;
+      padding-top:   ${S.p}px !important;
+      padding-bottom:${S.p}px !important;
     }
 
-    // 5. Image handling
-    document.querySelectorAll('img').forEach(img => {
-        img.style.maxWidth = '100%';
-        img.style.height = 'auto';
-    });
+    img {
+      max-width: 100% !important;
+      height:    auto !important;
+    }
 
-    // 6. Page break controls
-    // Prevent section breaks
-    document.querySelectorAll('section, article, .card, .section-card, .content-card').forEach(element => {
-        if (element.textContent.trim().length > 0 || element.querySelector('img')) {
-            element.style.pageBreakInside = 'avoid';
+    h1, h2, h3, h4, h5, h6 {
+      page-break-after: avoid !important;
+    }
+    h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
+      page-break-before: avoid !important;
+    }
+  `);
+
+    const styleTag = document.createElement('style');
+    styleTag.textContent = css.join('\n');
+    document.head.appendChild(styleTag);
+
+    // 4) Gap detection & reduction (only top‐level containers)
+    ['.resume-container', '.cover-letter'].forEach(containerSel => {
+        const container = document.querySelector(containerSel);
+        if (!container) return;
+
+        // Only direct children
+        const kids = Array.from(container.children)
+            .filter(el => {
+                const st = window.getComputedStyle(el);
+                return st.display !== 'none' && st.visibility !== 'hidden' && el.offsetParent;
+            })
+            .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
+
+        for (let i = 0; i < kids.length - 1; i++) {
+            const curr = kids[i], next = kids[i + 1];
+            const r1 = curr.getBoundingClientRect(), r2 = next.getBoundingClientRect();
+            const gap = r2.top - r1.bottom;
+            if (gap > THRESHOLDS.gap) {
+                const st1 = window.getComputedStyle(curr), st2 = window.getComputedStyle(next);
+                const mb1 = parseFloat(st1.marginBottom) || 0;
+                const mt2 = parseFloat(st2.marginTop) || 0;
+                // gently nudge them closer
+                const ratio = 0.75;
+                if (mb1 > 0) curr.style.marginBottom = Math.max(0, mb1 * ratio) + 'px';
+                if (mt2 > 0) next.style.marginTop = Math.max(0, mt2 * ratio) + 'px';
+            }
         }
     });
 
-    // Keep headings with their content
-    document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(heading => {
-        heading.style.pageBreakAfter = 'avoid';
-
-        const nextElement = heading.nextElementSibling;
-        if (nextElement) {
-            nextElement.style.pageBreakBefore = 'avoid';
-        }
-    });
+    // All done!
 }

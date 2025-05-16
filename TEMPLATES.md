@@ -30,7 +30,9 @@ Throughout this document:
   - [5.1. Education](#51-education)  
   - [5.2. Work Experience](#52-work-experience)  
   - [5.3. Certifications](#53-certifications)  
-  - [5.4. Skills](#54-skills)  
+  - [5.4. Skills](#54-skills)
+- [6. Misc Template Requirements](#6-misc-template-requirements)
+    - [6.1. Example of Document Type Marking](#61-example-of-document-type-marking)
 <!-- /TOC -->
 
 ---
@@ -200,5 +202,26 @@ Wrap your repeatable blocks in elements with **section** and **entry** IDs. The 
   <ul class="skills">
     <li class="skill-entry">{{skillName}}</li>
   </ul>
+</div>
+```
+
+## 6. Misc Template Requirements
+- **HTML5**: All templates must be valid HTML5.
+- **CSS Classes**: Use classes for styling, not IDs. IDs are reserved for macros and section/entry IDs.
+- **No Inline Styles**: Avoid inline styles; use CSS classes instead.
+- **Mark The Document Type**: Include the "cover-letter" or "resume-container" class in the main container to indicate the type of template you are making. Different template types have different optimizations and styles.
+
+### 6.1. Example of Document Type Marking
+Cover Letter Template:
+```html
+<div class="cover-letter">
+  … your template content …
+</div>
+```
+
+Resume Template:
+```html
+<div class="resume-container">
+  … your template content …
 </div>
 ```

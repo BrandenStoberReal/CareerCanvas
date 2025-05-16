@@ -43,6 +43,8 @@
             materialLabel5 = new ReaLTaiizor.Controls.MaterialLabel();
             materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
             materialLabel6 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
+            paragraphsSlider = new ReaLTaiizor.Controls.MaterialSlider();
             ((System.ComponentModel.ISupportInitialize)cvWebView).BeginInit();
             materialCard1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -79,8 +81,8 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.Controls.Add(changeTemplateButton, 0, 0);
             tableLayoutPanel1.Controls.Add(editInfoButton, 1, 0);
             tableLayoutPanel1.Controls.Add(exportToPdfButton, 1, 1);
@@ -93,23 +95,25 @@
             tableLayoutPanel1.Controls.Add(materialLabel5, 1, 4);
             tableLayoutPanel1.Controls.Add(materialLabel4, 1, 5);
             tableLayoutPanel1.Controls.Add(materialLabel6, 1, 6);
+            tableLayoutPanel1.Controls.Add(materialLabel1, 1, 7);
+            tableLayoutPanel1.Controls.Add(paragraphsSlider, 0, 7);
             tableLayoutPanel1.Location = new Point(17, 17);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 14;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142857F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.142856F));
             tableLayoutPanel1.Size = new Size(551, 906);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -325,6 +329,36 @@
             materialLabel6.TabIndex = 13;
             materialLabel6.Text = "Recommended: On";
             // 
+            // materialLabel1
+            // 
+            materialLabel1.Anchor = AnchorStyles.Right;
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.Location = new Point(424, 470);
+            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(124, 19);
+            materialLabel1.TabIndex = 17;
+            materialLabel1.Text = "Recommended: 2";
+            // 
+            // paragraphsSlider
+            // 
+            paragraphsSlider.Anchor = AnchorStyles.Left;
+            paragraphsSlider.Depth = 0;
+            paragraphsSlider.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            paragraphsSlider.Location = new Point(3, 460);
+            paragraphsSlider.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            paragraphsSlider.Name = "paragraphsSlider";
+            paragraphsSlider.RangeMax = 5;
+            paragraphsSlider.Size = new Size(373, 40);
+            paragraphsSlider.StepChange = 1;
+            paragraphsSlider.TabIndex = 16;
+            paragraphsSlider.Text = "AI Paragraphs";
+            paragraphsSlider.Value = 2;
+            paragraphsSlider.ValueMax = 5;
+            paragraphsSlider.onValueChanged += paragraphsSlider_onValueChanged;
+            // 
             // CoverLetterWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -362,5 +396,7 @@
         private ReaLTaiizor.Controls.MaterialLabel materialLabel3;
         private ReaLTaiizor.Controls.MaterialButton exportToPdfButton;
         private ReaLTaiizor.Controls.MaterialButton exportToHtmlButton;
+        private ReaLTaiizor.Controls.MaterialSlider paragraphsSlider;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
     }
 }

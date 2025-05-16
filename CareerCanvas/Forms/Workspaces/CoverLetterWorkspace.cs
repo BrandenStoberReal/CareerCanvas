@@ -14,7 +14,7 @@ namespace CareerCanvas.Forms.Workspaces
         private ProfessionalIdentity _identity;
         private Industry _industry;
         private CoverLetterInfo _coverLetterInfo = new CoverLetterInfo();
-        public string _currentTemplateName = string.Empty;
+        public string _currentTemplatePath = string.Empty;
         public HtmlDocument _currentDocument = new HtmlDocument();
         private bool _webViewInitialized = false;
 
@@ -76,7 +76,7 @@ namespace CareerCanvas.Forms.Workspaces
             {
                 // Load the HTML content into the WebView2 control
                 _currentDocument.LoadHtml(File.ReadAllText("./templates/coverletter/default.html"));
-                _currentTemplateName = "default";
+                _currentTemplatePath = Path.GetFullPath("./templates/coverletter/default.html");
 
                 // Mark initialization as complete
                 _webViewInitialized = true;
@@ -135,6 +135,14 @@ namespace CareerCanvas.Forms.Workspaces
         {
             DocumentUtilities.SaveToFile(_currentDocument, "cover_letter.html");
             InputUtils.ClearActiveControl(this);
+        }
+
+        private void paragraphsSlider_onValueChanged(object sender, int newValue)
+        {
+            if (newValue < 1)
+            {
+                paragraphsSlider.Value = 1;
+            }
         }
     }
 }

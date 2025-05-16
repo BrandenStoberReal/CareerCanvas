@@ -53,7 +53,7 @@ namespace CareerCanvas.Forms.InputDialogs
                 {
                     string fileName = Path.GetFileNameWithoutExtension(file);
                     MaterialListBoxItem item = new MaterialListBoxItem(Globals.textInfo.ToTitleCase(fileName).Replace("_", " "));
-                    item.Tag = fileName;
+                    item.Tag = Path.GetFullPath(file);
                     templateListBox.Items.Add(item);
                 }
             }
@@ -61,7 +61,7 @@ namespace CareerCanvas.Forms.InputDialogs
             // Select the current template
             foreach (MaterialListBoxItem item in templateListBox.Items)
             {
-                if (item.Tag.ToString() == parentForm._currentTemplateName)
+                if (item.Tag.ToString() == parentForm._currentTemplatePath)
                 {
                     templateListBox.SelectedItem = item;
                     break;
@@ -72,7 +72,7 @@ namespace CareerCanvas.Forms.InputDialogs
         private void templateListBox_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
         {
             // Load the selected template
-            string templatePath = Path.Combine("./templates/coverletter", selectedItem.Tag.ToString() + ".html");
+            string templatePath = selectedItem.Tag.ToString();
             HtmlDocument template = new HtmlDocument();
             template.LoadHtml(File.ReadAllText(templatePath));
             // Fill the document with identity data
@@ -84,11 +84,11 @@ namespace CareerCanvas.Forms.InputDialogs
         private void saveChangeButton_Click(object sender, EventArgs e)
         {
             // Load the selected template
-            string templatePath = Path.Combine("./templates/coverletter", templateListBox.SelectedItem.Tag.ToString() + ".html");
+            string templatePath = templateListBox.SelectedItem.Tag.ToString();
             parentDoc.LoadHtml(File.ReadAllText(templatePath));
             CoverLetterUtils.FillDocumentData(parentDoc, identity, coverLetterInfo);
 
-            parentForm._currentTemplateName = Path.GetFileNameWithoutExtension(templatePath);
+            parentForm._currentTemplatePath = Path.GetFullPath(templatePath);
             Close();
         }
 
