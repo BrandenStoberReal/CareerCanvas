@@ -15,12 +15,19 @@ namespace CareerCanvas.Classes.Static.Utils
         /// <param name="optimize"></param>
         /// <param name="useShadows"></param>
         /// <param name="rescale"></param>
-        /// <param name="defaultfilename"></param>
-        /// <param name="defaultscale"></param>
+        /// <param name="defaultFilename"></param>
+        /// <param name="defaultScale"></param>
         public static async Task SaveToPdfAsync(HtmlDocument document, bool background, bool optimize, bool useShadows, bool rescale, string defaultFilename = "output.pdf", decimal defaultScale = 0.95M)
         {
+            Globals.AppLogger.Debug("Exporting document to PDF with background: {Background}, optimize: {Optimize}, useShadows: {UseShadows}, rescale: {Rescale}, defaultFilename: {DefaultFilename}, defaultScale: {DefaultScale}",
+                background, optimize, useShadows, rescale, defaultFilename, defaultScale);
+
             if (document == null)
-                throw new ArgumentNullException(nameof(document));
+            {
+                Globals.AppLogger.Error("Incoming document is null. Cannot export to PDF.");
+                MessageBox.Show("Error exporting document: Document is null.", "Export Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Create a unique temporary directory with a GUID to avoid conflicts
             var tempDir = Path.Combine(Path.GetTempPath(), $"pdftmp_{Guid.NewGuid()}");
@@ -33,9 +40,12 @@ namespace CareerCanvas.Classes.Static.Utils
                 // Create a temporary directory to store the HTML file
                 Directory.CreateDirectory(tempDir);
                 tempHtmlPath = Path.Combine(tempDir, "pdftmp.html");
+                Globals.AppLogger.Debug("Temporary HTML file path: {TempHtmlPath}", tempHtmlPath);
 
                 // Save HTML content to temporary file
+                Globals.AppLogger.Debug("Saving HTML content to temporary file...");
                 File.WriteAllText(tempHtmlPath, document.DocumentNode.OuterHtml);
+                Globals.AppLogger.Debug("Temporary HTML file written successfully.");
 
                 // Configure save file dialog
                 using (var saveFileDialog = new SaveFileDialog
@@ -48,7 +58,18 @@ namespace CareerCanvas.Classes.Static.Utils
                 })
                 {
                     if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    {
+                        Globals.AppLogger.Debug("User canceled the PDF export operation.");
+                        if (File.Exists(tempHtmlPath))
+                        {
+                            File.Delete(tempHtmlPath); // Clean up temporary HTML file
+                        }
+                        if (Directory.Exists(tempDir))
+                        {
+                            Directory.Delete(tempDir, true); // Clean up temporary directory
+                        }
                         return;
+                    }
 
                     // Create and show progress form to indicate PDF generation is in process
                     progressForm = new Form
@@ -62,6 +83,8 @@ namespace CareerCanvas.Classes.Static.Utils
                         ControlBox = false,
                         ShowInTaskbar = false
                     };
+                    progressForm.Icon = SystemIcons.Application; // Set a default icon
+                    Globals.AppLogger.Debug("Progress form instantiated successfully.");
 
                     var progressBar = new ProgressBar
                     {
@@ -70,23 +93,33 @@ namespace CareerCanvas.Classes.Static.Utils
                         MarqueeAnimationSpeed = 50,
                         Margin = new Padding(10)
                     };
+                    Globals.AppLogger.Debug("Progress bar control instantiated successfully.");
 
                     progressForm.Controls.Add(progressBar);
                     progressForm.Show();
+                    Globals.AppLogger.Debug("Progress form shown to user.");
+
+                    Globals.AppLogger.Debug("Triggering application events...");
                     Application.DoEvents(); // Ensure UI is updated
+                    Globals.AppLogger.Debug("Application events queue complete.");
 
                     // Download Chromium browser if not already present
+                    Globals.AppLogger.Debug("Downloading Chromium...");
                     var browserFetcher = new BrowserFetcher();
                     await browserFetcher.DownloadAsync().ConfigureAwait(false);
+                    Globals.AppLogger.Debug("Chromium download complete.");
 
                     // Launch headless browser instance with optimized settings
+                    Globals.AppLogger.Debug("Launching headless Chromium instance...");
                     browser = await Puppeteer.LaunchAsync(new LaunchOptions
                     {
                         Headless = true,
                         Args = new[] { "--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage" }
                     }).ConfigureAwait(false);
+                    Globals.AppLogger.Debug("Headless Chromium instance successfully launched.");
 
                     // Create a new page in the browser
+                    Globals.AppLogger.Debug("Setting up Chromium env...");
                     var page = await browser.NewPageAsync().ConfigureAwait(false);
 
                     // Set viewport size to match US Letter size (8.5 x 11 inches at 96 DPI)
@@ -95,15 +128,20 @@ namespace CareerCanvas.Classes.Static.Utils
                         Width = 816, // 8.5 inches * 96 DPI
                         Height = 1056 // 11 inches * 96 DPI
                     }).ConfigureAwait(false);
+                    Globals.AppLogger.Debug("Chromium enviornment build complete.");
 
                     // Navigate to the temporary HTML file with a timeout
+                    Globals.AppLogger.Debug("Navigating to temporary HTML file...");
                     await page.GoToAsync($"file://{Path.GetFullPath(tempHtmlPath)}",
                         new NavigationOptions { Timeout = 60000, WaitUntil = new[] { WaitUntilNavigation.Networkidle0 } })
                         .ConfigureAwait(false);
+                    Globals.AppLogger.Debug("HTML file successfully loaded inside Chromium..");
 
                     // Extract background color from the document using JavaScript
+                    Globals.AppLogger.Debug("Applying Javascript tweaks...");
                     if (background)
                     {
+                        Globals.AppLogger.Debug("Applying colormatch Javascript code...");
                         string jsFilePath = Path.GetFullPath("./js/colormatch.js");
                         if (File.Exists(jsFilePath))
                         {
@@ -134,6 +172,7 @@ namespace CareerCanvas.Classes.Static.Utils
                                 }}
                             "
                             }).ConfigureAwait(false);
+                            Globals.AppLogger.Debug("Colormatch Javascript code successfully injected.");
                         }
                         else
                         {
@@ -144,11 +183,13 @@ namespace CareerCanvas.Classes.Static.Utils
                     // Apply final document optimizations before PDF generation
                     if (optimize)
                     {
+                        Globals.AppLogger.Debug("Applying Javascript PDF optimization code...");
                         string jsFilePath = Path.GetFullPath("./js/finalize.js");
                         if (File.Exists(jsFilePath))
                         {
                             string optimizationCode = File.ReadAllText(jsFilePath);
                             await page.EvaluateFunctionAsync(optimizationCode).ConfigureAwait(false);
+                            Globals.AppLogger.Debug("Javascript PDF optimization code successfully injected.");
                         }
                         else
                         {
@@ -159,11 +200,13 @@ namespace CareerCanvas.Classes.Static.Utils
                     // Remove shadows from elements to prevent rendering issues
                     if (!useShadows)
                     {
+                        Globals.AppLogger.Debug("Applying shadow removal Javascript code...");
                         string jsFilePath = Path.GetFullPath("./js/noshadows.js");
                         if (File.Exists(jsFilePath))
                         {
                             string removeShadowsCode = File.ReadAllText(jsFilePath);
                             await page.EvaluateFunctionAsync(removeShadowsCode).ConfigureAwait(false);
+                            Globals.AppLogger.Debug("Shadow removal code successfully injected.");
                         }
                         else
                         {
@@ -176,6 +219,7 @@ namespace CareerCanvas.Classes.Static.Utils
 
                     if (rescale)
                     {
+                        Globals.AppLogger.Debug("Applying HTML->PDF rescale code (scale: {Scale})...", optimizedScale);
                         string jsFilePath = Path.GetFullPath("./js/rescale.js");
                         if (File.Exists(jsFilePath))
                         {
@@ -184,6 +228,7 @@ namespace CareerCanvas.Classes.Static.Utils
 
                             // Ensure the scale is within reasonable bounds
                             optimizedScale = Math.Max(0.5M, Math.Min(1.5M, optimizedScale));
+                            Globals.AppLogger.Debug("Rescale code successfully injected. Newly optimized scale: {OptimizedScale}", optimizedScale);
                         }
                         else
                         {
@@ -192,6 +237,7 @@ namespace CareerCanvas.Classes.Static.Utils
                     }
 
                     // Generate the PDF with optimized formatting
+                    Globals.AppLogger.Debug("Generating PDF file...");
                     await page.PdfAsync(saveFileDialog.FileName, new PdfOptions
                     {
                         Format = PaperFormat.Letter,
@@ -206,28 +252,12 @@ namespace CareerCanvas.Classes.Static.Utils
                         PreferCSSPageSize = true,
                         Scale = optimizedScale
                     }).ConfigureAwait(false);
+                    Globals.AppLogger.Debug("PDF file generated successfully.");
 
-                    // Close the progress indicator BEFORE showing the success message
-                    if (progressForm != null && !progressForm.IsDisposed)
+                    progressForm.Invoke(() =>
                     {
-                        var formToClose = progressForm; // Create a local copy that won't be modified
-                        formToClose.BeginInvoke(new Action(() =>
-                        {
-                            try
-                            {
-                                if (!formToClose.IsDisposed)
-                                {
-                                    formToClose.Close();
-                                    formToClose.Dispose();
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                Globals.AppLogger.Error(ex, "Error closing progress form");
-                            }
-                        }));
-                        progressForm = null; // Now it's safe to null the original reference
-                    }
+                        progressForm.WindowState = FormWindowState.Minimized;
+                    });
 
                     // Log success and notify user
                     Globals.AppLogger.Information("Document exported to PDF: {0}", saveFileDialog.FileName);
@@ -240,26 +270,36 @@ namespace CareerCanvas.Classes.Static.Utils
             }
             catch (Exception ex)
             {
-                // Close the progress form even in case of error
-                if (progressForm != null && !progressForm.IsDisposed)
-                {
-                    progressForm.BeginInvoke(new Action(() =>
-                    {
-                        if (progressForm != null && !progressForm.IsDisposed)
-                        {
-                            progressForm.Close();
-                            progressForm.Dispose();
-                        }
-                    }));
-                    progressForm = null;
-                }
-
                 // Log and display any errors that occur during the export process
                 Globals.AppLogger.Error(ex, "Error exporting document to PDF");
                 MessageBox.Show($"Error exporting document: {ex.Message}", "Export Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
+                // Close progress form if it still exists.
+                if (progressForm != null && !progressForm.IsDisposed)
+                {
+                    var form = progressForm;
+                    progressForm = null;
+
+                    form.BeginInvoke((MethodInvoker)(() =>
+                    {
+                        try
+                        {
+                            if (form.IsDisposed) return;
+
+                            Globals.AppLogger.Debug("Closing progress form...");
+                            form.Close();
+                            form.Dispose();
+                            Globals.AppLogger.Debug("Progress form closed successfully.");
+                        }
+                        catch (Exception ex)
+                        {
+                            Globals.AppLogger.Error(ex, "Error closing progress form.");
+                        }
+                    }));
+                }
+
                 // Close the browser if it was opened
                 if (browser != null)
                 {
