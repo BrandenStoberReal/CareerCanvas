@@ -47,7 +47,6 @@
             backgroundToggle = new ReaLTaiizor.Controls.MaterialSwitch();
             materialLabel3 = new ReaLTaiizor.Controls.MaterialLabel();
             materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
-            materialSlider1 = new ReaLTaiizor.Controls.MaterialSlider();
             ((System.ComponentModel.ISupportInitialize)resumeViewer).BeginInit();
             materialCard1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -95,7 +94,6 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Controls.Add(exportHtmlButton, 0, 0);
             tableLayoutPanel2.Controls.Add(exportPdfButton, 0, 1);
-            tableLayoutPanel2.Controls.Add(materialSlider1, 1, 0);
             tableLayoutPanel2.Location = new Point(17, 53);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 9;
@@ -281,12 +279,12 @@
             materialLabel5.AutoSize = true;
             materialLabel5.Depth = 0;
             materialLabel5.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel5.Location = new Point(299, 165);
+            materialLabel5.Location = new Point(296, 165);
             materialLabel5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialLabel5.Name = "materialLabel5";
-            materialLabel5.Size = new Size(135, 19);
+            materialLabel5.Size = new Size(138, 19);
             materialLabel5.TabIndex = 8;
-            materialLabel5.Text = "Recommended: On";
+            materialLabel5.Text = "Recommended: Off";
             // 
             // materialLabel4
             // 
@@ -341,8 +339,6 @@
             // 
             optimizeToggle.Anchor = AnchorStyles.Left;
             optimizeToggle.AutoSize = true;
-            optimizeToggle.Checked = true;
-            optimizeToggle.CheckState = CheckState.Indeterminate;
             optimizeToggle.Depth = 0;
             optimizeToggle.Location = new Point(0, 156);
             optimizeToggle.Margin = new Padding(0);
@@ -401,22 +397,6 @@
             materialLabel1.Text = "Customization";
             materialLabel1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // materialSlider1
-            // 
-            materialSlider1.Depth = 0;
-            materialSlider1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialSlider1.Location = new Point(221, 3);
-            materialSlider1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialSlider1.Name = "materialSlider1";
-            materialSlider1.RangeMax = 5;
-            materialSlider1.RangeMin = 1;
-            materialSlider1.Size = new Size(213, 40);
-            materialSlider1.StepChange = 1;
-            materialSlider1.TabIndex = 10;
-            materialSlider1.Text = "AI Paragraphs";
-            materialSlider1.Value = 3;
-            materialSlider1.ValueMax = 5;
-            // 
             // ResumeWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -463,6 +443,5 @@
         private ReaLTaiizor.Controls.MaterialLabel materialLabel5;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel4;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel3;
-        private ReaLTaiizor.Controls.MaterialSlider materialSlider1;
     }
 }

@@ -226,8 +226,6 @@ namespace CareerCanvas.Classes.Static.Utils
                             string scaleCode = File.ReadAllText(jsFilePath);
                             optimizedScale = await page.EvaluateFunctionAsync<decimal>(scaleCode).ConfigureAwait(false);
 
-                            // Ensure the scale is within reasonable bounds
-                            optimizedScale = Math.Max(0.5M, Math.Min(1.5M, optimizedScale));
                             Globals.AppLogger.Debug("Rescale code successfully injected. Newly optimized scale: {OptimizedScale}", optimizedScale);
                         }
                         else
@@ -249,14 +247,14 @@ namespace CareerCanvas.Classes.Static.Utils
                             Bottom = "0.25in",
                             Right = "0.25in"
                         },
-                        PreferCSSPageSize = true,
+                        PreferCSSPageSize = false,
                         Scale = optimizedScale
                     }).ConfigureAwait(false);
                     Globals.AppLogger.Debug("PDF file generated successfully.");
 
                     progressForm.Invoke(() =>
                     {
-                        progressForm.WindowState = FormWindowState.Minimized;
+                         progressForm.WindowState = FormWindowState.Minimized;
                     });
 
                     // Log success and notify user
