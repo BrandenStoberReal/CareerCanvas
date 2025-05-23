@@ -65,8 +65,8 @@ public partial class ResumeWorkspace : MaterialForm
         toolTip.SetToolTip(exportHtmlButton, "Export the resume to HTML format.");
         toolTip.SetToolTip(exportPdfButton, "Export the resume to PDF format.");
         toolTip.SetToolTip(backgroundToggle, "Enable or disable background color matching in the PDF.");
-        toolTip.SetToolTip(optimizeToggle, "Enable or disable final document optimizations. (EXPERIMENTAL)");
-        toolTip.SetToolTip(scaleToggle, "Enable or disable automatic scaling of the resume to fit the page.");
+        toolTip.SetToolTip(optimizeToggle, "Enable or disable multi-page resume output. (EXPERIMENTAL)");
+        toolTip.SetToolTip(scaleToggle, "Enable or disable single-page resume output.");
         toolTip.SetToolTip(useShadowsToggle, "Enable or disable shadows in the resume template.");
 
         Globals.AppLogger.Debug("Tooltips successfully bound in ResumeWorkspace.");
@@ -179,5 +179,31 @@ public partial class ResumeWorkspace : MaterialForm
     private void tableLayoutPanel2_Click(object sender, EventArgs e)
     {
         InputUtils.ClearActiveControl(this);
+    }
+
+    private void scaleToggle_CheckedChanged(object sender, EventArgs e)
+    {
+        if (scaleToggle.Checked && optimizeToggle.Checked)
+        {
+            optimizeToggle.Checked = false;
+        }
+
+        if (!scaleToggle.Checked && !optimizeToggle.Checked)
+        {
+            optimizeToggle.Checked = true;
+        }
+    }
+
+    private void optimizeToggle_CheckedChanged(object sender, EventArgs e)
+    {
+        if (scaleToggle.Checked && optimizeToggle.Checked)
+        {
+            scaleToggle.Checked = false;
+        }
+
+        if (!scaleToggle.Checked && !optimizeToggle.Checked)
+        {
+            scaleToggle.Checked = true;
+        }
     }
 }
