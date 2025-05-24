@@ -1,10 +1,10 @@
-﻿using System.ComponentModel;
-using CareerCanvas.Classes.Main.Protobuf;
+﻿using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Forms.InputDialogs;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
+using System.ComponentModel;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace CareerCanvas.Forms.Workspaces;

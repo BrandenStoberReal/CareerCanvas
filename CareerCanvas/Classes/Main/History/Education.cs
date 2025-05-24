@@ -1,5 +1,5 @@
-﻿using System.ComponentModel;
-using ProtoBuf;
+﻿using ProtoBuf;
+using System.ComponentModel;
 
 namespace CareerCanvas.Classes.Main.History;
 

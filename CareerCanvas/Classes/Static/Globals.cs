@@ -1,7 +1,7 @@
-﻿using System.Globalization;
-using CareerCanvas.Classes.Configs;
+﻿using CareerCanvas.Classes.Configs;
 using CareerCanvas.Classes.Main.Protobuf;
 using Serilog;
+using System.Globalization;
 using ILogger = Serilog.ILogger;
 
 namespace CareerCanvas.Classes.Static;

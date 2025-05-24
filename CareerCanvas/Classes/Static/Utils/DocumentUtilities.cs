@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
-using PuppeteerSharp;
+﻿using PuppeteerSharp;
 using PuppeteerSharp.Media;
+using System.Diagnostics;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace CareerCanvas.Classes.Static.Utils
@@ -254,7 +254,7 @@ namespace CareerCanvas.Classes.Static.Utils
 
                     progressForm.Invoke(() =>
                     {
-                         progressForm.WindowState = FormWindowState.Minimized;
+                        progressForm.WindowState = FormWindowState.Minimized;
                     });
 
                     // Log success and notify user

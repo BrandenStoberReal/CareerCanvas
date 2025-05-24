@@ -16,6 +16,7 @@ namespace CareerCanvas.Classes.Static.Utils
         /// <param name="cvInfo"></param>
         public static void FillDocumentData(HtmlDocument doc, ProfessionalIdentity identity, CoverLetterInfo cvInfo)
         {
+            #region Static Macros
             StaticAbsoluteMacro nameMacro = new StaticAbsoluteMacro(ref doc, MacroList.FullNameMacro, $"{identity.FirstName} {identity.LastName}");
             nameMacro.Fill();
 
@@ -72,6 +73,7 @@ namespace CareerCanvas.Classes.Static.Utils
 
             StaticAbsoluteMacro companyWebsiteMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterCompanyWebsiteMacro, cvInfo.CompanyWebsite);
             companyWebsiteMacro.Fill();
+            #endregion
         }
     }
 }

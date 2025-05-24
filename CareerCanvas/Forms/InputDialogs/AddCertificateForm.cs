@@ -1,9 +1,9 @@
-﻿using System.Globalization;
-using CareerCanvas.Classes.Main.History;
+﻿using CareerCanvas.Classes.Main.History;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Classes.Static.Utils;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
+using System.Globalization;
 
 namespace CareerCanvas.Forms.InputDialogs;
 

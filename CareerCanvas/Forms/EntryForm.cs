@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using CareerCanvas.Classes.Configs;
 using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
@@ -8,6 +7,7 @@ using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
+using System.Diagnostics;
 
 namespace CareerCanvas.Forms;
 
