@@ -1,4 +1,5 @@
 ﻿using CareerCanvas.Classes.Main.History;
+using CareerCanvas.Classes.Main.Macros;
 using CareerCanvas.Classes.Main.Protobuf;
 using HtmlAgilityPack;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
@@ -42,64 +43,30 @@ namespace CareerCanvas.Classes.Static.Utils
                 #region Static Macros
 
                 // Address fill
-                if (identity.Address != String.Empty)
-                {
-                    doc.GetElementbyId("address").InnerHtml = doc.GetElementbyId("address").InnerHtml.Replace("{{homeAddress}}", "Address: " + identity.Address);
-                    Globals.AppLogger.Debug("Address macro successfully located and replaced with user's home address.");
-                }
-                else
-                {
-                    doc.GetElementbyId("address").Remove();
-                    Globals.AppLogger.Debug("Address field removed from resume template due to empty value.");
-                }
+                StaticAbsoluteMacro addressMacro = new StaticAbsoluteMacro(ref doc, MacroList.HomeAddressMacro, "Address: " + identity.Address);
+                addressMacro.Fill();
 
                 // Email fill
-                if (identity.Email != String.Empty)
-                {
-                    doc.GetElementbyId("email").InnerHtml = doc.GetElementbyId("email").InnerHtml.Replace("{{emailAddress}}", "Email: " + identity.Email);
-                    Globals.AppLogger.Debug("Email macro successfully located and replaced with user's email address.");
-                }
-                else
-                {
-                    doc.GetElementbyId("email").Remove();
-                    Globals.AppLogger.Debug("Email field removed from resume template due to empty value.");
-                }
+                StaticAbsoluteMacro emailMacro = new StaticAbsoluteMacro(ref doc, MacroList.EmailAddressMacro, "Email: " + identity.Email);
+                emailMacro.Fill();
 
                 // Phone number fill
-                if (identity.PhoneNumber != String.Empty)
-                {
-                    doc.GetElementbyId("phonenumber").InnerHtml = doc.GetElementbyId("phonenumber").InnerHtml.Replace("{{phoneNumber}}", "Phone: " + identity.PhoneNumber);
-                    Globals.AppLogger.Debug("Phone number macro successfully located and replaced with user's phone number.");
-                }
-                else
-                {
-                    doc.GetElementbyId("phonenumber").Remove();
-                    Globals.AppLogger.Debug("Phone number field removed from resume template due to empty value.");
-                }
+                StaticAbsoluteMacro phoneMacro = new StaticAbsoluteMacro(ref doc, MacroList.PhoneNumberMacro, "Phone: " + identity.PhoneNumber);
+                phoneMacro.Fill();
 
                 // Linkedin fill
-                if (identity.LinkedIn != String.Empty)
-                {
-                    doc.GetElementbyId("linkedin").InnerHtml = doc.GetElementbyId("linkedin").InnerHtml.Replace("{{linkedIn}}", "LinkedIn: " + identity.LinkedIn);
-                    Globals.AppLogger.Debug("LinkedIn macro successfully located and replaced with user's LinkedIn profile.");
-                }
-                else
-                {
-                    doc.GetElementbyId("linkedin").Remove();
-                    Globals.AppLogger.Debug("LinkedIn field removed from resume template due to empty value.");
-                }
+                StaticAbsoluteMacro linkedInMacro = new StaticAbsoluteMacro(ref doc, MacroList.LinkedInMacro, "LinkedIn: " + identity.LinkedIn);
+                linkedInMacro.Fill();
 
                 // Summary fill
-                if (industry.ProfessionalSummary != String.Empty)
+                string summaryString = industry.ProfessionalSummary;
+                if (summaryString == null || summaryString == String.Empty)
                 {
-                    doc.GetElementbyId("professional-summary").InnerHtml = doc.GetElementbyId("professional-summary").InnerHtml.Replace("{{resumeSummary}}", industry.ProfessionalSummary);
-                    Globals.AppLogger.Debug("Summary macro successfully located and replaced with user's professional summary.");
+                    summaryString = "A summary of my professional experiences is available upon request.";
+                    Globals.AppLogger.Warning("User did not provide a professional summary! A default summary has been provided.");
                 }
-                else
-                {
-                    doc.GetElementbyId("professional-summary").InnerHtml = doc.GetElementbyId("professional-summary").InnerHtml.Replace("{{resumeSummary}}", "A summary of my professional experiences is available upon request.");
-                    Globals.AppLogger.Debug("Summary macro successfully located and replaced with default summary.");
-                }
+                StaticAbsoluteMacro summaryMacro = new StaticAbsoluteMacro(ref doc, ResumeMacroList.ResumeSummaryMacro, summaryString);
+                summaryMacro.Fill();
 
                 #endregion Static Macros
 

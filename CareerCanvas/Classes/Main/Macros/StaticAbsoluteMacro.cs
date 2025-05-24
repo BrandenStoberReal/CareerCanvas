@@ -32,7 +32,7 @@ namespace CareerCanvas.Classes.Main.Macros
         /// <returns></returns>
         public override string ToString()
         {
-            return MacroValue.Trim();
+            return MacroValue?.Trim() ?? String.Empty;
         }
 
         /// <summary>
@@ -44,6 +44,7 @@ namespace CareerCanvas.Classes.Main.Macros
             {
                 if (destructive)
                 {
+                    // Forcefully remove all instances of the macro if the value is empty
                     if (MacroValue == string.Empty || MacroValue == null)
                     {
                         // Remove empty elements
@@ -61,6 +62,7 @@ namespace CareerCanvas.Classes.Main.Macros
                 }
                 else
                 {
+                    // Forcefully empty all instances of the macro if the value is empty
                     if (MacroValue == string.Empty || MacroValue == null)
                     {
                         foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
@@ -76,7 +78,7 @@ namespace CareerCanvas.Classes.Main.Macros
                 }
 
                 // Replace remaining elements
-                HtmlDocument.DocumentNode.InnerHtml = HtmlDocument.DocumentNode.InnerHtml.Replace("{{" + MacroName + "}}", MacroValue.Trim());
+                HtmlDocument.DocumentNode.InnerHtml = HtmlDocument.DocumentNode.InnerHtml.Replace("{{" + MacroName + "}}", MacroValue?.Trim() ?? String.Empty);
             }
             catch (Exception ex)
             {
