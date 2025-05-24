@@ -42,10 +42,10 @@ namespace CareerCanvas.Classes.Main.Macros
         {
             try
             {
-                if (destructive)
+                // Forcefully remove/empty all instances of the macro if the value is blank or null
+                if (MacroValue == string.Empty || MacroValue == null)
                 {
-                    // Forcefully remove all instances of the macro if the value is empty
-                    if (MacroValue == string.Empty || MacroValue == null)
+                    if (destructive)
                     {
                         // Remove empty elements
                         // TODO: Detect multiple macros & don't delete element if present
@@ -59,18 +59,14 @@ namespace CareerCanvas.Classes.Main.Macros
                             }
                         }
                     }
-                }
-                else
-                {
-                    // Forcefully empty all instances of the macro if the value is empty
-                    if (MacroValue == string.Empty || MacroValue == null)
+                    else
                     {
                         foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
                         {
-                            HtmlTextNode casted = (HtmlTextNode)node;
-                            if (casted.Text.Contains("{{" + MacroName + "}}"))
+                            HtmlTextNode castedNode = (HtmlTextNode)node;
+                            if (castedNode.Text.Contains("{{" + MacroName + "}}"))
                             {
-                                casted.Text = casted.Text.Replace("{{" + MacroName + "}}", string.Empty);
+                                castedNode.Text = castedNode.Text.Replace("{{" + MacroName + "}}", string.Empty);
                                 Globals.AppLogger.Warning($"{MacroName} macro located and emptied due to lack of data.");
                             }
                         }
@@ -78,13 +74,11 @@ namespace CareerCanvas.Classes.Main.Macros
                 }
 
                 // Replace remaining elements
-                HtmlDocument.DocumentNode.InnerHtml = HtmlDocument.DocumentNode.InnerHtml.Replace("{{" + MacroName + "}}", MacroValue?.Trim() ?? String.Empty);
+                HtmlDocument.DocumentNode.InnerHtml = HtmlDocument.DocumentNode.InnerHtml.Replace("{{" + MacroName + "}}", MacroValue?.Trim());
             }
             catch (Exception ex)
             {
-                Globals.AppLogger.Error("An error occurred while filling the document data. Macro: {0} Value: {1}", MacroName, MacroValue?.ToString());
-                Globals.AppLogger.Error("Error Message: " + ex.Message);
-                Globals.AppLogger.Error("Stack Trace: " + ex.StackTrace);
+                Globals.AppLogger.Error(ex, "An error occurred while filling the document data. Macro: {0} Value: {1}", MacroName, MacroValue?.ToString());
             }
         }
     }
