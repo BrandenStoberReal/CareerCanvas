@@ -45,26 +45,19 @@ namespace CareerCanvas.Classes.Main.Macros
                 // Forcefully remove/empty all instances of the macro if the value is blank or null
                 if (MacroValue == string.Empty || MacroValue == null)
                 {
-                    if (destructive)
+                    // Remove empty elements
+                    // TODO: Detect multiple macros & don't delete element if present
+                    foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
                     {
-                        // Remove empty elements
-                        // TODO: Detect multiple macros & don't delete element if present
-                        foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
+                        HtmlTextNode castedNode = (HtmlTextNode)node;
+                        if (castedNode.Text.Contains("{{" + MacroName + "}}"))
                         {
-                            HtmlTextNode casted = (HtmlTextNode)node;
-                            if (casted.Text.Contains("{{" + MacroName + "}}"))
+                            if (destructive)
                             {
-                                casted.ParentNode.Remove();
+                                castedNode.ParentNode.Remove();
                                 Globals.AppLogger.Warning($"{MacroName} macro located and removed due to lack of data.");
                             }
-                        }
-                    }
-                    else
-                    {
-                        foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
-                        {
-                            HtmlTextNode castedNode = (HtmlTextNode)node;
-                            if (castedNode.Text.Contains("{{" + MacroName + "}}"))
+                            else
                             {
                                 castedNode.Text = castedNode.Text.Replace("{{" + MacroName + "}}", string.Empty);
                                 Globals.AppLogger.Warning($"{MacroName} macro located and emptied due to lack of data.");
