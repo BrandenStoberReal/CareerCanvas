@@ -3,7 +3,7 @@
     /// <summary>
     /// MacroList is a static class that contains a list of macros used in the application.
     /// </summary>
-    public static class MacroList
+    public static class BaseMacroList
     {
         public static readonly string FullNameMacro = "fullName";
         public static readonly string HomeAddressMacro = "homeAddress";

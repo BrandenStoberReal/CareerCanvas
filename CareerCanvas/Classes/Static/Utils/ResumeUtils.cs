@@ -34,28 +34,28 @@ namespace CareerCanvas.Classes.Static.Utils
         {
             Globals.AppLogger.Debug("Filling document data with information! Placeholder skills: " + string.Join(", ", FillerSkillNames));
 
-            // Replace placeholders with identity data
-            doc.GetElementbyId("name").InnerHtml = doc.GetElementbyId("name").InnerHtml.Replace("{{fullName}}", $"{identity.FirstName} {identity.MiddleName} {identity.LastName}");
-            Globals.AppLogger.Debug("Name macro successfully located and replaced with user's full name.");
-
             try
             {
                 #region Static Macros
 
+                // Name fill
+                StaticAbsoluteMacro nameMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.FullNameMacro, $"{identity.FirstName} {identity.MiddleName} {identity.LastName}");
+                nameMacro.Fill();
+
                 // Address fill
-                StaticAbsoluteMacro addressMacro = new StaticAbsoluteMacro(ref doc, MacroList.HomeAddressMacro, "Address: " + identity.Address);
+                StaticAbsoluteMacro addressMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.HomeAddressMacro, "Address: " + identity.Address);
                 addressMacro.Fill();
 
                 // Email fill
-                StaticAbsoluteMacro emailMacro = new StaticAbsoluteMacro(ref doc, MacroList.EmailAddressMacro, "Email: " + identity.Email);
+                StaticAbsoluteMacro emailMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.EmailAddressMacro, "Email: " + identity.Email);
                 emailMacro.Fill();
 
                 // Phone number fill
-                StaticAbsoluteMacro phoneMacro = new StaticAbsoluteMacro(ref doc, MacroList.PhoneNumberMacro, "Phone: " + identity.PhoneNumber);
+                StaticAbsoluteMacro phoneMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.PhoneNumberMacro, "Phone: " + identity.PhoneNumber);
                 phoneMacro.Fill();
 
                 // Linkedin fill
-                StaticAbsoluteMacro linkedInMacro = new StaticAbsoluteMacro(ref doc, MacroList.LinkedInMacro, "LinkedIn: " + identity.LinkedIn);
+                StaticAbsoluteMacro linkedInMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.LinkedInMacro, "LinkedIn: " + identity.LinkedIn);
                 linkedInMacro.Fill();
 
                 // Summary fill

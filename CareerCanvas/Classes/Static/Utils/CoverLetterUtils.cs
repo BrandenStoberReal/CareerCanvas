@@ -17,13 +17,13 @@ namespace CareerCanvas.Classes.Static.Utils
         public static void FillDocumentData(HtmlDocument doc, ProfessionalIdentity identity, CoverLetterInfo cvInfo)
         {
             #region Static Macros
-            StaticAbsoluteMacro nameMacro = new StaticAbsoluteMacro(ref doc, MacroList.FullNameMacro, $"{identity.FirstName} {identity.LastName}");
+            StaticAbsoluteMacro nameMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.FullNameMacro, $"{identity.FirstName} {identity.LastName}");
             nameMacro.Fill();
 
-            StaticAbsoluteMacro addressMacro = new StaticAbsoluteMacro(ref doc, MacroList.HomeAddressMacro, identity.Address);
+            StaticAbsoluteMacro addressMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.HomeAddressMacro, identity.Address);
             addressMacro.Fill();
 
-            StaticAbsoluteMacro dateMacro = new StaticAbsoluteMacro(ref doc, MacroList.CurrentDateMacro, DateTime.Now.ToString("MMM dd, yyyy"));
+            StaticAbsoluteMacro dateMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.CurrentDateMacro, DateTime.Now.ToString("MMM dd, yyyy"));
             dateMacro.Fill();
 
             StaticAbsoluteMacro companyNameMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterCompanyNameMacro, cvInfo.CompanyName);
@@ -53,13 +53,13 @@ namespace CareerCanvas.Classes.Static.Utils
             StaticAbsoluteMacro recipientPrefixMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterRecipientPrefixMacro, cvInfo.RecipientPrefix);
             recipientPrefixMacro.Fill();
 
-            StaticAbsoluteMacro emailMacro = new StaticAbsoluteMacro(ref doc, MacroList.EmailAddressMacro, identity.Email);
+            StaticAbsoluteMacro emailMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.EmailAddressMacro, identity.Email);
             emailMacro.Fill();
 
-            StaticAbsoluteMacro phoneMacro = new StaticAbsoluteMacro(ref doc, MacroList.PhoneNumberMacro, identity.PhoneNumber);
+            StaticAbsoluteMacro phoneMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.PhoneNumberMacro, identity.PhoneNumber);
             phoneMacro.Fill();
 
-            StaticAbsoluteMacro linkedInMacro = new StaticAbsoluteMacro(ref doc, MacroList.LinkedInMacro, identity.LinkedIn);
+            StaticAbsoluteMacro linkedInMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.LinkedInMacro, identity.LinkedIn);
             linkedInMacro.Fill();
 
             StaticAbsoluteMacro recipientTitleMacro = new StaticAbsoluteMacro(ref doc, CoverLetterMacroList.CoverLetterRecipientTitleMacro, cvInfo.RecipientTitle);

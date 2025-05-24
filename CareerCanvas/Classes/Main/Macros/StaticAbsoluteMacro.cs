@@ -45,8 +45,6 @@ namespace CareerCanvas.Classes.Main.Macros
                 // Forcefully remove/empty all instances of the macro if the value is blank or null
                 if (MacroValue == string.Empty || MacroValue == null)
                 {
-                    // Remove empty elements
-                    // TODO: Detect multiple macros & don't delete element if present
                     foreach (var node in HtmlDocument.DocumentNode.Descendants().Where(x => x.NodeType == HtmlNodeType.Text))
                     {
                         HtmlTextNode castedNode = (HtmlTextNode)node;
@@ -54,6 +52,8 @@ namespace CareerCanvas.Classes.Main.Macros
                         {
                             if (destructive)
                             {
+                                // Remove empty elements
+                                // TODO: Detect multiple macros & don't delete element if present
                                 castedNode.ParentNode.Remove();
                                 Globals.AppLogger.Warning($"{MacroName} macro located and removed due to lack of data.");
                             }
