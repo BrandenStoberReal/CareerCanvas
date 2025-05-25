@@ -34,8 +34,8 @@
  - [ ] Material UI - Application Themes
  - [ ] Material UI - Not Terrible UI
  - [x] Cover Letter Builder
- - [ ] Cover Letter Builder - Export cover letter to PDF
- - [ ] Cover Letter Builder - Export cover letter to HTML
+ - [x] Cover Letter Builder - Export cover letter to PDF
+ - [x] Cover Letter Builder - Export cover letter to HTML
  - [ ] Cover Letter Builder - Google Gemini Integration
  - [ ] Cover Letter Builder - OpenAI Integration
  - [x] Identity Builder
