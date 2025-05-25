@@ -10,9 +10,6 @@ namespace CareerCanvas.Classes.Main.Macros
     /// </summary>
     public class StaticAbsoluteMacro : StaticMacro
     {
-        [Obsolete("This field is obsolete. Smarter logic is built into the fill method by default.", true)]
-        private string removeClassCode = "cc-remove-if-blank";
-
         /// <summary>
         /// Constructor for StaticAbsoluteMacro.
         /// </summary>

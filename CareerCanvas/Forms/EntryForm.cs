@@ -8,6 +8,7 @@ using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 using System.Diagnostics;
+using System.Xml;
 
 namespace CareerCanvas.Forms;
 
@@ -72,6 +73,22 @@ public partial class EntryForm : MaterialForm
             anthropicKeyBox.Text = Globals.AiSecrets.AnthropicApiKey;
             geminiKeyBox.Text = Globals.AiSecrets.GoogleApiKey;
         }
+
+        // Fill the start page labels
+        int resumeTemplates = 0;
+        int cvTemplates = 0;
+        int identitiesCount = 0;
+        int industriesCount = 0;
+
+        resumeTemplates = Directory.GetFiles(Path.GetFullPath("./templates/resume")).Count(file => Path.GetExtension(file) == ".html");
+        cvTemplates = Directory.GetFiles(Path.GetFullPath("./templates/coverletter")).Count(file => Path.GetExtension(file) == ".html");
+        identitiesCount = Directory.GetFiles(Path.GetFullPath("./data/identities")).Count(file => Path.GetExtension(file) == ".identity");
+        industriesCount = Directory.GetFiles(Path.GetFullPath("./data/industries")).Count(file => Path.GetExtension(file) == ".industry");
+
+        resumeTemplatesCountLabel.Text = resumeTemplates.ToString() + " " + resumeTemplatesCountLabel.Text;
+        coverLetterTemplatesCountLabel.Text = cvTemplates.ToString() + " " + coverLetterTemplatesCountLabel.Text;
+        identityCountLabel.Text = identitiesCount.ToString() + " " + identityCountLabel.Text;
+        industryCountLabel.Text = industriesCount.ToString() + " " + industryCountLabel.Text;
     }
 
     /// <summary>
@@ -364,6 +381,11 @@ public partial class EntryForm : MaterialForm
         industryWorkspace.Show();
     }
 
+    /// <summary>
+    /// Clears the active control when the welcome page is clicked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void welcomePage_Click(object sender, EventArgs e)
     {
         InputUtils.ClearActiveControl(this);
@@ -423,16 +445,31 @@ public partial class EntryForm : MaterialForm
         resumeWorkspace.Show();
     }
 
+    /// <summary>
+    /// Clears the active control when the resume page is clicked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void resumePage_Click(object sender, EventArgs e)
     {
         InputUtils.ClearActiveControl(this);
     }
 
+    /// <summary>
+    /// Clears the active control when the material card is clicked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void materialCard5_Click(object sender, EventArgs e)
     {
         InputUtils.ClearActiveControl(this);
     }
 
+    /// <summary>
+    /// Opens the cover letter builder workspace when the button is clicked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void openCvBuilderButton_Click(object sender, EventArgs e)
     {
         var identity = new ProfessionalIdentity();
@@ -481,23 +518,68 @@ public partial class EntryForm : MaterialForm
         InputUtils.ClearActiveControl(this);
     }
 
+    /// <summary>
+    /// Manages the saving of the user's openAI API key to the global configuration.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void openAiKeyBox_TextChanged(object sender, EventArgs e)
     {
         Globals.AiSecrets.OpenAiApiKey = openAiKeyBox.Text;
     }
 
+    /// <summary>
+    /// Manages the saving of the user's Anthropic API key to the global configuration.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void anthropicKeyBox_TextChanged(object sender, EventArgs e)
     {
         Globals.AiSecrets.AnthropicApiKey = anthropicKeyBox.Text;
     }
 
+    /// <summary>
+    /// Manages the saving of the user's Gemini API key to the global configuration.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void geminiKeyBox_TextChanged(object sender, EventArgs e)
     {
         Globals.AiSecrets.GoogleApiKey = geminiKeyBox.Text;
     }
 
+    /// <summary>
+    /// Opens Gemini's API key page in the user's default browser.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void geminiLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
         Process.Start("explorer.exe", "https://aistudio.google.com/app/apikey");
+    }
+
+    /// <summary>
+    /// Cleans up the logs folder when clicked.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void clearLogsButton_Click(object sender, EventArgs e)
+    {
+        DialogResult confirmation = MessageBox.Show("Are you sure?", "Clean Logs Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+        if (confirmation == DialogResult.Yes)
+        {
+            foreach (var file in Directory.GetFiles(Path.GetFullPath("./logs")))
+            {
+                try
+                {
+                    File.Delete(file);
+                }
+                catch (Exception ex)
+                {
+                    // We would log it here, but well y'know...
+                }
+            }
+            MessageBox.Show("Logs cleared successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

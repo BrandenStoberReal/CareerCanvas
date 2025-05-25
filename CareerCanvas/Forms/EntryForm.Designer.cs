@@ -30,10 +30,32 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntryForm));
-            materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
-            welcomePage = new TabPage();
-            materialLabel2 = new ReaLTaiizor.Controls.MaterialLabel();
-            entryTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            identityRefreshTimer = new System.Windows.Forms.Timer(components);
+            historyRefreshTimer = new System.Windows.Forms.Timer(components);
+            tabPage1 = new TabPage();
+            aiPage = new TabPage();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            geminiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            anthropicKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            openAiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel3 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
+            geminiLinkLabel = new LinkLabel();
+            cvPage = new TabPage();
+            materialCard6 = new ReaLTaiizor.Controls.MaterialCard();
+            openCvBuilderButton = new ReaLTaiizor.Controls.MaterialButton();
+            resumePage = new TabPage();
+            materialCard5 = new ReaLTaiizor.Controls.MaterialCard();
+            openResumeWorkspaceButton = new ReaLTaiizor.Controls.MaterialButton();
+            industryPage = new TabPage();
+            materialCard4 = new ReaLTaiizor.Controls.MaterialCard();
+            newHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
+            openIndustryFolderButton = new ReaLTaiizor.Controls.MaterialButton();
+            importHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
+            materialCard3 = new ReaLTaiizor.Controls.MaterialCard();
+            historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
+            historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identityPage = new TabPage();
             identityConfigExpansionPanel = new ReaLTaiizor.Controls.MaterialExpansionPanel();
             identityEncryptionCheckbox = new ReaLTaiizor.Controls.MaterialCheckBox();
@@ -44,133 +66,499 @@
             materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
             identitiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
             identitiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
-            industryPage = new TabPage();
-            materialCard4 = new ReaLTaiizor.Controls.MaterialCard();
-            newHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
-            openIndustryFolderButton = new ReaLTaiizor.Controls.MaterialButton();
-            importHistoryButton = new ReaLTaiizor.Controls.MaterialButton();
-            materialCard3 = new ReaLTaiizor.Controls.MaterialCard();
-            historiesListBox = new ReaLTaiizor.Controls.MaterialListBox();
-            historiesLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            resumePage = new TabPage();
-            materialCard5 = new ReaLTaiizor.Controls.MaterialCard();
-            openResumeWorkspaceButton = new ReaLTaiizor.Controls.MaterialButton();
-            cvPage = new TabPage();
-            materialCard6 = new ReaLTaiizor.Controls.MaterialCard();
-            openCvBuilderButton = new ReaLTaiizor.Controls.MaterialButton();
-            aiPage = new TabPage();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            geminiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            anthropicKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            openAiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
-            materialLabel3 = new ReaLTaiizor.Controls.MaterialLabel();
-            materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
-            geminiLinkLabel = new LinkLabel();
-            creditsPage = new TabPage();
-            creditsFlowPanel = new FlowLayoutPanel();
-            peopleCreditTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            brandenCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            libraryCreditsFlowPanel = new FlowLayoutPanel();
-            librariesCreditTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            googleCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            newtonsoftCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            microsoftCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            asposeCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            alexanderCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            taiizorCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            serilogCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            hapCreditLabel = new ReaLTaiizor.Controls.MaterialLabel();
-            identityRefreshTimer = new System.Windows.Forms.Timer(components);
-            historyRefreshTimer = new System.Windows.Forms.Timer(components);
-            tabPage1 = new TabPage();
-            materialLabel5 = new ReaLTaiizor.Controls.MaterialLabel();
+            welcomePage = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
-            materialCard7 = new ReaLTaiizor.Controls.MaterialCard();
-            materialCard8 = new ReaLTaiizor.Controls.MaterialCard();
-            materialCard9 = new ReaLTaiizor.Controls.MaterialCard();
-            materialCard10 = new ReaLTaiizor.Controls.MaterialCard();
-            materialCard11 = new ReaLTaiizor.Controls.MaterialCard();
             materialCard12 = new ReaLTaiizor.Controls.MaterialCard();
-            materialTabControl1.SuspendLayout();
-            welcomePage.SuspendLayout();
+            materialCard11 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard10 = new ReaLTaiizor.Controls.MaterialCard();
+            materialCard9 = new ReaLTaiizor.Controls.MaterialCard();
+            industryCountLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            identityCountLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            coverLetterTemplatesCountLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            resumeTemplatesCountLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel9 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialCard8 = new ReaLTaiizor.Controls.MaterialCard();
+            materialLabel8 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel7 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel6 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel5 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialCard7 = new ReaLTaiizor.Controls.MaterialCard();
+            clearLogsButton = new ReaLTaiizor.Controls.MaterialButton();
+            materialLabel10 = new ReaLTaiizor.Controls.MaterialLabel();
+            materialLabel2 = new ReaLTaiizor.Controls.MaterialLabel();
+            entryTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
+            materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
+            aiPage.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            cvPage.SuspendLayout();
+            materialCard6.SuspendLayout();
+            resumePage.SuspendLayout();
+            materialCard5.SuspendLayout();
+            industryPage.SuspendLayout();
+            materialCard4.SuspendLayout();
+            materialCard3.SuspendLayout();
             identityPage.SuspendLayout();
             identityConfigExpansionPanel.SuspendLayout();
             materialCard2.SuspendLayout();
             materialCard1.SuspendLayout();
-            industryPage.SuspendLayout();
-            materialCard4.SuspendLayout();
-            materialCard3.SuspendLayout();
-            resumePage.SuspendLayout();
-            materialCard5.SuspendLayout();
-            cvPage.SuspendLayout();
-            materialCard6.SuspendLayout();
-            aiPage.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            creditsPage.SuspendLayout();
-            creditsFlowPanel.SuspendLayout();
-            libraryCreditsFlowPanel.SuspendLayout();
+            welcomePage.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
+            materialCard9.SuspendLayout();
+            materialCard8.SuspendLayout();
+            materialCard7.SuspendLayout();
+            materialTabControl1.SuspendLayout();
             SuspendLayout();
             // 
-            // materialTabControl1
+            // identityRefreshTimer
             // 
-            materialTabControl1.Controls.Add(welcomePage);
-            materialTabControl1.Controls.Add(identityPage);
-            materialTabControl1.Controls.Add(industryPage);
-            materialTabControl1.Controls.Add(resumePage);
-            materialTabControl1.Controls.Add(cvPage);
-            materialTabControl1.Controls.Add(aiPage);
-            materialTabControl1.Controls.Add(creditsPage);
-            materialTabControl1.Depth = 0;
-            materialTabControl1.Dock = DockStyle.Right;
-            materialTabControl1.HotTrack = true;
-            materialTabControl1.Location = new Point(206, 24);
-            materialTabControl1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialTabControl1.Multiline = true;
-            materialTabControl1.Name = "materialTabControl1";
-            materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(1085, 644);
-            materialTabControl1.TabIndex = 0;
+            identityRefreshTimer.Enabled = true;
+            identityRefreshTimer.Interval = 1000;
+            identityRefreshTimer.Tick += identityRefreshTimer_Tick;
             // 
-            // welcomePage
+            // historyRefreshTimer
             // 
-            welcomePage.Controls.Add(tableLayoutPanel2);
-            welcomePage.Controls.Add(materialLabel2);
-            welcomePage.Controls.Add(entryTitleLabel);
-            welcomePage.Location = new Point(4, 24);
-            welcomePage.Name = "welcomePage";
-            welcomePage.Size = new Size(1077, 616);
-            welcomePage.TabIndex = 2;
-            welcomePage.Text = "Welcome";
-            welcomePage.UseVisualStyleBackColor = true;
+            historyRefreshTimer.Enabled = true;
+            historyRefreshTimer.Interval = 1000;
+            historyRefreshTimer.Tick += historyRefreshTimer_Tick;
             // 
-            // materialLabel2
+            // tabPage1
             // 
-            materialLabel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            materialLabel2.Depth = 0;
-            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(3, 46);
-            materialLabel2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel2.Name = "materialLabel2";
-            materialLabel2.Size = new Size(1071, 23);
-            materialLabel2.TabIndex = 2;
-            materialLabel2.Text = "Looking to get started? Check out the identities page and go down the list!";
-            materialLabel2.TextAlign = ContentAlignment.MiddleCenter;
+            tabPage1.Location = new Point(0, 0);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(200, 100);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Test";
             // 
-            // entryTitleLabel
+            // aiPage
             // 
-            entryTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            entryTitleLabel.Depth = 0;
-            entryTitleLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
-            entryTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
-            entryTitleLabel.Location = new Point(3, 0);
-            entryTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            entryTitleLabel.Name = "entryTitleLabel";
-            entryTitleLabel.Size = new Size(1071, 46);
-            entryTitleLabel.TabIndex = 0;
-            entryTitleLabel.Text = "Welcome!";
-            entryTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
+            aiPage.Controls.Add(tableLayoutPanel1);
+            aiPage.Location = new Point(4, 24);
+            aiPage.Name = "aiPage";
+            aiPage.Padding = new Padding(3);
+            aiPage.Size = new Size(1077, 616);
+            aiPage.TabIndex = 6;
+            aiPage.Text = "AI Secrets";
+            aiPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.Controls.Add(geminiKeyBox, 2, 2);
+            tableLayoutPanel1.Controls.Add(anthropicKeyBox, 2, 1);
+            tableLayoutPanel1.Controls.Add(openAiKeyBox, 2, 0);
+            tableLayoutPanel1.Controls.Add(materialLabel1, 1, 0);
+            tableLayoutPanel1.Controls.Add(materialLabel3, 1, 1);
+            tableLayoutPanel1.Controls.Add(materialLabel4, 1, 2);
+            tableLayoutPanel1.Controls.Add(geminiLinkLabel, 0, 2);
+            tableLayoutPanel1.Location = new Point(360, 6);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 11;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
+            tableLayoutPanel1.Size = new Size(711, 594);
+            tableLayoutPanel1.TabIndex = 0;
+            // 
+            // geminiKeyBox
+            // 
+            geminiKeyBox.AnimateReadOnly = false;
+            geminiKeyBox.AutoCompleteMode = AutoCompleteMode.None;
+            geminiKeyBox.AutoCompleteSource = AutoCompleteSource.None;
+            geminiKeyBox.BackgroundImageLayout = ImageLayout.None;
+            geminiKeyBox.CharacterCasing = CharacterCasing.Normal;
+            geminiKeyBox.Depth = 0;
+            geminiKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            geminiKeyBox.HideSelection = true;
+            geminiKeyBox.Hint = "Key goes here...";
+            geminiKeyBox.LeadingIcon = null;
+            geminiKeyBox.Location = new Point(292, 111);
+            geminiKeyBox.MaxLength = 32767;
+            geminiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            geminiKeyBox.Name = "geminiKeyBox";
+            geminiKeyBox.PasswordChar = '●';
+            geminiKeyBox.PrefixSuffixText = null;
+            geminiKeyBox.ReadOnly = false;
+            geminiKeyBox.RightToLeft = RightToLeft.No;
+            geminiKeyBox.SelectedText = "";
+            geminiKeyBox.SelectionLength = 0;
+            geminiKeyBox.SelectionStart = 0;
+            geminiKeyBox.ShortcutsEnabled = true;
+            geminiKeyBox.Size = new Size(396, 48);
+            geminiKeyBox.TabIndex = 5;
+            geminiKeyBox.TabStop = false;
+            geminiKeyBox.TextAlign = HorizontalAlignment.Left;
+            geminiKeyBox.TrailingIcon = null;
+            geminiKeyBox.UseSystemPasswordChar = true;
+            geminiKeyBox.TextChanged += geminiKeyBox_TextChanged;
+            // 
+            // anthropicKeyBox
+            // 
+            anthropicKeyBox.AnimateReadOnly = false;
+            anthropicKeyBox.AutoCompleteMode = AutoCompleteMode.None;
+            anthropicKeyBox.AutoCompleteSource = AutoCompleteSource.None;
+            anthropicKeyBox.BackgroundImageLayout = ImageLayout.None;
+            anthropicKeyBox.CharacterCasing = CharacterCasing.Normal;
+            anthropicKeyBox.Depth = 0;
+            anthropicKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            anthropicKeyBox.HideSelection = true;
+            anthropicKeyBox.Hint = "Key goes here...";
+            anthropicKeyBox.LeadingIcon = null;
+            anthropicKeyBox.Location = new Point(292, 57);
+            anthropicKeyBox.MaxLength = 32767;
+            anthropicKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            anthropicKeyBox.Name = "anthropicKeyBox";
+            anthropicKeyBox.PasswordChar = '●';
+            anthropicKeyBox.PrefixSuffixText = null;
+            anthropicKeyBox.ReadOnly = false;
+            anthropicKeyBox.RightToLeft = RightToLeft.No;
+            anthropicKeyBox.SelectedText = "";
+            anthropicKeyBox.SelectionLength = 0;
+            anthropicKeyBox.SelectionStart = 0;
+            anthropicKeyBox.ShortcutsEnabled = true;
+            anthropicKeyBox.Size = new Size(396, 48);
+            anthropicKeyBox.TabIndex = 3;
+            anthropicKeyBox.TabStop = false;
+            anthropicKeyBox.TextAlign = HorizontalAlignment.Left;
+            anthropicKeyBox.TrailingIcon = null;
+            anthropicKeyBox.UseSystemPasswordChar = true;
+            anthropicKeyBox.TextChanged += anthropicKeyBox_TextChanged;
+            // 
+            // openAiKeyBox
+            // 
+            openAiKeyBox.AnimateReadOnly = false;
+            openAiKeyBox.AutoCompleteMode = AutoCompleteMode.None;
+            openAiKeyBox.AutoCompleteSource = AutoCompleteSource.None;
+            openAiKeyBox.BackgroundImageLayout = ImageLayout.None;
+            openAiKeyBox.CharacterCasing = CharacterCasing.Normal;
+            openAiKeyBox.Depth = 0;
+            openAiKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            openAiKeyBox.HideSelection = true;
+            openAiKeyBox.Hint = "Key goes here...";
+            openAiKeyBox.LeadingIcon = null;
+            openAiKeyBox.Location = new Point(292, 3);
+            openAiKeyBox.MaxLength = 32767;
+            openAiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            openAiKeyBox.Name = "openAiKeyBox";
+            openAiKeyBox.PasswordChar = '●';
+            openAiKeyBox.PrefixSuffixText = null;
+            openAiKeyBox.ReadOnly = false;
+            openAiKeyBox.RightToLeft = RightToLeft.No;
+            openAiKeyBox.SelectedText = "";
+            openAiKeyBox.SelectionLength = 0;
+            openAiKeyBox.SelectionStart = 0;
+            openAiKeyBox.ShortcutsEnabled = true;
+            openAiKeyBox.Size = new Size(396, 48);
+            openAiKeyBox.TabIndex = 1;
+            openAiKeyBox.TabStop = false;
+            openAiKeyBox.TextAlign = HorizontalAlignment.Left;
+            openAiKeyBox.TrailingIcon = null;
+            openAiKeyBox.UseSystemPasswordChar = true;
+            openAiKeyBox.TextChanged += openAiKeyBox_TextChanged;
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.Anchor = AnchorStyles.Right;
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel1.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel1.Location = new Point(182, 18);
+            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(104, 17);
+            materialLabel1.TabIndex = 0;
+            materialLabel1.Text = "OpenAI API Key:";
+            // 
+            // materialLabel3
+            // 
+            materialLabel3.Anchor = AnchorStyles.Right;
+            materialLabel3.AutoSize = true;
+            materialLabel3.Depth = 0;
+            materialLabel3.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel3.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel3.Location = new Point(167, 72);
+            materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.Size = new Size(119, 17);
+            materialLabel3.TabIndex = 2;
+            materialLabel3.Text = "Anthropic API Key:";
+            // 
+            // materialLabel4
+            // 
+            materialLabel4.Anchor = AnchorStyles.Right;
+            materialLabel4.AutoSize = true;
+            materialLabel4.Depth = 0;
+            materialLabel4.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel4.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel4.Location = new Point(134, 126);
+            materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel4.Name = "materialLabel4";
+            materialLabel4.Size = new Size(152, 17);
+            materialLabel4.TabIndex = 4;
+            materialLabel4.Text = "Google Gemini API Key:";
+            // 
+            // geminiLinkLabel
+            // 
+            geminiLinkLabel.Anchor = AnchorStyles.Right;
+            geminiLinkLabel.AutoSize = true;
+            geminiLinkLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            geminiLinkLabel.LinkColor = Color.FromArgb(255, 128, 128);
+            geminiLinkLabel.Location = new Point(3, 127);
+            geminiLinkLabel.Name = "geminiLinkLabel";
+            geminiLinkLabel.Size = new Size(125, 15);
+            geminiLinkLabel.TabIndex = 6;
+            geminiLinkLabel.TabStop = true;
+            geminiLinkLabel.Text = "Grab a free Gemini key";
+            geminiLinkLabel.LinkClicked += geminiLinkLabel_LinkClicked;
+            // 
+            // cvPage
+            // 
+            cvPage.Controls.Add(materialCard6);
+            cvPage.Location = new Point(4, 24);
+            cvPage.Name = "cvPage";
+            cvPage.Size = new Size(1077, 616);
+            cvPage.TabIndex = 3;
+            cvPage.Text = "Cover Letter";
+            cvPage.UseVisualStyleBackColor = true;
+            // 
+            // materialCard6
+            // 
+            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard6.Controls.Add(openCvBuilderButton);
+            materialCard6.Depth = 0;
+            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard6.Location = new Point(14, 14);
+            materialCard6.Margin = new Padding(14);
+            materialCard6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard6.Name = "materialCard6";
+            materialCard6.Padding = new Padding(14);
+            materialCard6.Size = new Size(179, 588);
+            materialCard6.TabIndex = 1;
+            // 
+            // openCvBuilderButton
+            // 
+            openCvBuilderButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            openCvBuilderButton.AutoSize = false;
+            openCvBuilderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openCvBuilderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openCvBuilderButton.Depth = 0;
+            openCvBuilderButton.HighEmphasis = true;
+            openCvBuilderButton.Icon = null;
+            openCvBuilderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openCvBuilderButton.Location = new Point(18, 20);
+            openCvBuilderButton.Margin = new Padding(4, 6, 4, 6);
+            openCvBuilderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openCvBuilderButton.Name = "openCvBuilderButton";
+            openCvBuilderButton.NoAccentTextColor = Color.Empty;
+            openCvBuilderButton.Size = new Size(143, 36);
+            openCvBuilderButton.TabIndex = 0;
+            openCvBuilderButton.Text = "Open CV Builder";
+            openCvBuilderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openCvBuilderButton.UseAccentColor = false;
+            openCvBuilderButton.UseVisualStyleBackColor = true;
+            openCvBuilderButton.Click += openCvBuilderButton_Click;
+            // 
+            // resumePage
+            // 
+            resumePage.Controls.Add(materialCard5);
+            resumePage.Location = new Point(4, 24);
+            resumePage.Name = "resumePage";
+            resumePage.Size = new Size(1077, 616);
+            resumePage.TabIndex = 0;
+            resumePage.Text = "Resume";
+            resumePage.UseVisualStyleBackColor = true;
+            resumePage.Click += resumePage_Click;
+            // 
+            // materialCard5
+            // 
+            materialCard5.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard5.Controls.Add(openResumeWorkspaceButton);
+            materialCard5.Depth = 0;
+            materialCard5.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard5.Location = new Point(14, 14);
+            materialCard5.Margin = new Padding(14);
+            materialCard5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard5.Name = "materialCard5";
+            materialCard5.Padding = new Padding(14);
+            materialCard5.Size = new Size(211, 588);
+            materialCard5.TabIndex = 0;
+            materialCard5.Click += materialCard5_Click;
+            // 
+            // openResumeWorkspaceButton
+            // 
+            openResumeWorkspaceButton.AutoSize = false;
+            openResumeWorkspaceButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openResumeWorkspaceButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openResumeWorkspaceButton.Depth = 0;
+            openResumeWorkspaceButton.HighEmphasis = true;
+            openResumeWorkspaceButton.Icon = null;
+            openResumeWorkspaceButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openResumeWorkspaceButton.Location = new Point(18, 20);
+            openResumeWorkspaceButton.Margin = new Padding(4, 6, 4, 6);
+            openResumeWorkspaceButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openResumeWorkspaceButton.Name = "openResumeWorkspaceButton";
+            openResumeWorkspaceButton.NoAccentTextColor = Color.Empty;
+            openResumeWorkspaceButton.Size = new Size(175, 36);
+            openResumeWorkspaceButton.TabIndex = 0;
+            openResumeWorkspaceButton.Text = "Open Resume Builder";
+            openResumeWorkspaceButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openResumeWorkspaceButton.UseAccentColor = false;
+            openResumeWorkspaceButton.UseVisualStyleBackColor = true;
+            openResumeWorkspaceButton.Click += openResumeWorkspaceButton_Click;
+            // 
+            // industryPage
+            // 
+            industryPage.Controls.Add(materialCard4);
+            industryPage.Controls.Add(materialCard3);
+            industryPage.Location = new Point(4, 24);
+            industryPage.Name = "industryPage";
+            industryPage.Size = new Size(1077, 616);
+            industryPage.TabIndex = 5;
+            industryPage.Text = "Industries";
+            industryPage.UseVisualStyleBackColor = true;
+            industryPage.Click += industryPage_Click;
+            // 
+            // materialCard4
+            // 
+            materialCard4.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard4.Controls.Add(newHistoryButton);
+            materialCard4.Controls.Add(openIndustryFolderButton);
+            materialCard4.Controls.Add(importHistoryButton);
+            materialCard4.Depth = 0;
+            materialCard4.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard4.Location = new Point(14, 14);
+            materialCard4.Margin = new Padding(14);
+            materialCard4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard4.Name = "materialCard4";
+            materialCard4.Padding = new Padding(14);
+            materialCard4.Size = new Size(176, 588);
+            materialCard4.TabIndex = 103;
+            // 
+            // newHistoryButton
+            // 
+            newHistoryButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            newHistoryButton.AutoSize = false;
+            newHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            newHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            newHistoryButton.Depth = 0;
+            newHistoryButton.HighEmphasis = true;
+            newHistoryButton.Icon = null;
+            newHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            newHistoryButton.Location = new Point(10, 7);
+            newHistoryButton.Margin = new Padding(6);
+            newHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            newHistoryButton.Name = "newHistoryButton";
+            newHistoryButton.NoAccentTextColor = Color.Empty;
+            newHistoryButton.Size = new Size(153, 36);
+            newHistoryButton.TabIndex = 100;
+            newHistoryButton.TabStop = false;
+            newHistoryButton.Text = "New Industry";
+            newHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            newHistoryButton.UseAccentColor = false;
+            newHistoryButton.UseVisualStyleBackColor = true;
+            newHistoryButton.Click += newHistoryButton_Click;
+            // 
+            // openIndustryFolderButton
+            // 
+            openIndustryFolderButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            openIndustryFolderButton.AutoSize = false;
+            openIndustryFolderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            openIndustryFolderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            openIndustryFolderButton.Depth = 0;
+            openIndustryFolderButton.HighEmphasis = true;
+            openIndustryFolderButton.Icon = null;
+            openIndustryFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            openIndustryFolderButton.Location = new Point(10, 103);
+            openIndustryFolderButton.Margin = new Padding(6);
+            openIndustryFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            openIndustryFolderButton.Name = "openIndustryFolderButton";
+            openIndustryFolderButton.NoAccentTextColor = Color.Empty;
+            openIndustryFolderButton.Size = new Size(153, 36);
+            openIndustryFolderButton.TabIndex = 102;
+            openIndustryFolderButton.TabStop = false;
+            openIndustryFolderButton.Text = "Open Folder";
+            openIndustryFolderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            openIndustryFolderButton.UseAccentColor = false;
+            openIndustryFolderButton.UseVisualStyleBackColor = true;
+            openIndustryFolderButton.Click += openIndustryFolderButton_Click;
+            // 
+            // importHistoryButton
+            // 
+            importHistoryButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            importHistoryButton.AutoSize = false;
+            importHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            importHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            importHistoryButton.Depth = 0;
+            importHistoryButton.HighEmphasis = true;
+            importHistoryButton.Icon = null;
+            importHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            importHistoryButton.Location = new Point(10, 55);
+            importHistoryButton.Margin = new Padding(6);
+            importHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            importHistoryButton.Name = "importHistoryButton";
+            importHistoryButton.NoAccentTextColor = Color.Empty;
+            importHistoryButton.Size = new Size(153, 36);
+            importHistoryButton.TabIndex = 101;
+            importHistoryButton.TabStop = false;
+            importHistoryButton.Text = "Import Industry";
+            importHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            importHistoryButton.UseAccentColor = false;
+            importHistoryButton.UseVisualStyleBackColor = true;
+            importHistoryButton.Click += importHistoryButton_Click;
+            // 
+            // materialCard3
+            // 
+            materialCard3.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard3.Controls.Add(historiesListBox);
+            materialCard3.Controls.Add(historiesLabel);
+            materialCard3.Depth = 0;
+            materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard3.Location = new Point(638, 14);
+            materialCard3.Margin = new Padding(14);
+            materialCard3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard3.Name = "materialCard3";
+            materialCard3.Padding = new Padding(14);
+            materialCard3.Size = new Size(425, 588);
+            materialCard3.TabIndex = 6;
+            // 
+            // historiesListBox
+            // 
+            historiesListBox.BackColor = Color.White;
+            historiesListBox.BorderColor = Color.LightGray;
+            historiesListBox.Depth = 0;
+            historiesListBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            historiesListBox.Location = new Point(17, 40);
+            historiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            historiesListBox.Name = "historiesListBox";
+            historiesListBox.SelectedIndex = -1;
+            historiesListBox.SelectedItem = null;
+            historiesListBox.Size = new Size(391, 531);
+            historiesListBox.TabIndex = 5;
+            historiesListBox.SelectedIndexChanged += historiesListBox_SelectedIndexChanged;
+            // 
+            // historiesLabel
+            // 
+            historiesLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            historiesLabel.Depth = 0;
+            historiesLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            historiesLabel.Location = new Point(17, 14);
+            historiesLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            historiesLabel.Name = "historiesLabel";
+            historiesLabel.Size = new Size(391, 23);
+            historiesLabel.TabIndex = 4;
+            historiesLabel.Text = "Industries";
+            historiesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // identityPage
             // 
@@ -355,662 +743,17 @@
             identitiesListBox.TabStop = false;
             identitiesListBox.SelectedIndexChanged += identitiesListBox_SelectedIndexChanged;
             // 
-            // industryPage
-            // 
-            industryPage.Controls.Add(materialCard4);
-            industryPage.Controls.Add(materialCard3);
-            industryPage.Location = new Point(4, 24);
-            industryPage.Name = "industryPage";
-            industryPage.Size = new Size(1077, 616);
-            industryPage.TabIndex = 5;
-            industryPage.Text = "Industries";
-            industryPage.UseVisualStyleBackColor = true;
-            industryPage.Click += industryPage_Click;
-            // 
-            // materialCard4
-            // 
-            materialCard4.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard4.Controls.Add(newHistoryButton);
-            materialCard4.Controls.Add(openIndustryFolderButton);
-            materialCard4.Controls.Add(importHistoryButton);
-            materialCard4.Depth = 0;
-            materialCard4.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard4.Location = new Point(14, 14);
-            materialCard4.Margin = new Padding(14);
-            materialCard4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard4.Name = "materialCard4";
-            materialCard4.Padding = new Padding(14);
-            materialCard4.Size = new Size(176, 588);
-            materialCard4.TabIndex = 103;
-            // 
-            // newHistoryButton
-            // 
-            newHistoryButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            newHistoryButton.AutoSize = false;
-            newHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            newHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            newHistoryButton.Depth = 0;
-            newHistoryButton.HighEmphasis = true;
-            newHistoryButton.Icon = null;
-            newHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            newHistoryButton.Location = new Point(10, 7);
-            newHistoryButton.Margin = new Padding(6);
-            newHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            newHistoryButton.Name = "newHistoryButton";
-            newHistoryButton.NoAccentTextColor = Color.Empty;
-            newHistoryButton.Size = new Size(153, 36);
-            newHistoryButton.TabIndex = 100;
-            newHistoryButton.TabStop = false;
-            newHistoryButton.Text = "New Industry";
-            newHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            newHistoryButton.UseAccentColor = false;
-            newHistoryButton.UseVisualStyleBackColor = true;
-            newHistoryButton.Click += newHistoryButton_Click;
-            // 
-            // openIndustryFolderButton
-            // 
-            openIndustryFolderButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            openIndustryFolderButton.AutoSize = false;
-            openIndustryFolderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            openIndustryFolderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            openIndustryFolderButton.Depth = 0;
-            openIndustryFolderButton.HighEmphasis = true;
-            openIndustryFolderButton.Icon = null;
-            openIndustryFolderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openIndustryFolderButton.Location = new Point(10, 103);
-            openIndustryFolderButton.Margin = new Padding(6);
-            openIndustryFolderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            openIndustryFolderButton.Name = "openIndustryFolderButton";
-            openIndustryFolderButton.NoAccentTextColor = Color.Empty;
-            openIndustryFolderButton.Size = new Size(153, 36);
-            openIndustryFolderButton.TabIndex = 102;
-            openIndustryFolderButton.TabStop = false;
-            openIndustryFolderButton.Text = "Open Folder";
-            openIndustryFolderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            openIndustryFolderButton.UseAccentColor = false;
-            openIndustryFolderButton.UseVisualStyleBackColor = true;
-            openIndustryFolderButton.Click += openIndustryFolderButton_Click;
-            // 
-            // importHistoryButton
-            // 
-            importHistoryButton.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            importHistoryButton.AutoSize = false;
-            importHistoryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            importHistoryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            importHistoryButton.Depth = 0;
-            importHistoryButton.HighEmphasis = true;
-            importHistoryButton.Icon = null;
-            importHistoryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            importHistoryButton.Location = new Point(10, 55);
-            importHistoryButton.Margin = new Padding(6);
-            importHistoryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            importHistoryButton.Name = "importHistoryButton";
-            importHistoryButton.NoAccentTextColor = Color.Empty;
-            importHistoryButton.Size = new Size(153, 36);
-            importHistoryButton.TabIndex = 101;
-            importHistoryButton.TabStop = false;
-            importHistoryButton.Text = "Import Industry";
-            importHistoryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            importHistoryButton.UseAccentColor = false;
-            importHistoryButton.UseVisualStyleBackColor = true;
-            importHistoryButton.Click += importHistoryButton_Click;
-            // 
-            // materialCard3
-            // 
-            materialCard3.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard3.Controls.Add(historiesListBox);
-            materialCard3.Controls.Add(historiesLabel);
-            materialCard3.Depth = 0;
-            materialCard3.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard3.Location = new Point(638, 14);
-            materialCard3.Margin = new Padding(14);
-            materialCard3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard3.Name = "materialCard3";
-            materialCard3.Padding = new Padding(14);
-            materialCard3.Size = new Size(425, 588);
-            materialCard3.TabIndex = 6;
-            // 
-            // historiesListBox
-            // 
-            historiesListBox.BackColor = Color.White;
-            historiesListBox.BorderColor = Color.LightGray;
-            historiesListBox.Depth = 0;
-            historiesListBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            historiesListBox.Location = new Point(17, 40);
-            historiesListBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            historiesListBox.Name = "historiesListBox";
-            historiesListBox.SelectedIndex = -1;
-            historiesListBox.SelectedItem = null;
-            historiesListBox.Size = new Size(391, 531);
-            historiesListBox.TabIndex = 5;
-            historiesListBox.SelectedIndexChanged += historiesListBox_SelectedIndexChanged;
-            // 
-            // historiesLabel
-            // 
-            historiesLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            historiesLabel.Depth = 0;
-            historiesLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            historiesLabel.Location = new Point(17, 14);
-            historiesLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            historiesLabel.Name = "historiesLabel";
-            historiesLabel.Size = new Size(391, 23);
-            historiesLabel.TabIndex = 4;
-            historiesLabel.Text = "Industries";
-            historiesLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // resumePage
-            // 
-            resumePage.Controls.Add(materialCard5);
-            resumePage.Location = new Point(4, 24);
-            resumePage.Name = "resumePage";
-            resumePage.Size = new Size(1077, 616);
-            resumePage.TabIndex = 0;
-            resumePage.Text = "Resume";
-            resumePage.UseVisualStyleBackColor = true;
-            resumePage.Click += resumePage_Click;
-            // 
-            // materialCard5
-            // 
-            materialCard5.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard5.Controls.Add(openResumeWorkspaceButton);
-            materialCard5.Depth = 0;
-            materialCard5.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard5.Location = new Point(14, 14);
-            materialCard5.Margin = new Padding(14);
-            materialCard5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard5.Name = "materialCard5";
-            materialCard5.Padding = new Padding(14);
-            materialCard5.Size = new Size(211, 588);
-            materialCard5.TabIndex = 0;
-            materialCard5.Click += materialCard5_Click;
-            // 
-            // openResumeWorkspaceButton
-            // 
-            openResumeWorkspaceButton.AutoSize = false;
-            openResumeWorkspaceButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            openResumeWorkspaceButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            openResumeWorkspaceButton.Depth = 0;
-            openResumeWorkspaceButton.HighEmphasis = true;
-            openResumeWorkspaceButton.Icon = null;
-            openResumeWorkspaceButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openResumeWorkspaceButton.Location = new Point(18, 20);
-            openResumeWorkspaceButton.Margin = new Padding(4, 6, 4, 6);
-            openResumeWorkspaceButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            openResumeWorkspaceButton.Name = "openResumeWorkspaceButton";
-            openResumeWorkspaceButton.NoAccentTextColor = Color.Empty;
-            openResumeWorkspaceButton.Size = new Size(175, 36);
-            openResumeWorkspaceButton.TabIndex = 0;
-            openResumeWorkspaceButton.Text = "Open Resume Builder";
-            openResumeWorkspaceButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            openResumeWorkspaceButton.UseAccentColor = false;
-            openResumeWorkspaceButton.UseVisualStyleBackColor = true;
-            openResumeWorkspaceButton.Click += openResumeWorkspaceButton_Click;
-            // 
-            // cvPage
-            // 
-            cvPage.Controls.Add(materialCard6);
-            cvPage.Location = new Point(4, 24);
-            cvPage.Name = "cvPage";
-            cvPage.Size = new Size(1077, 616);
-            cvPage.TabIndex = 3;
-            cvPage.Text = "Cover Letter";
-            cvPage.UseVisualStyleBackColor = true;
-            // 
-            // materialCard6
-            // 
-            materialCard6.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard6.Controls.Add(openCvBuilderButton);
-            materialCard6.Depth = 0;
-            materialCard6.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard6.Location = new Point(14, 14);
-            materialCard6.Margin = new Padding(14);
-            materialCard6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard6.Name = "materialCard6";
-            materialCard6.Padding = new Padding(14);
-            materialCard6.Size = new Size(179, 588);
-            materialCard6.TabIndex = 1;
-            // 
-            // openCvBuilderButton
-            // 
-            openCvBuilderButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            openCvBuilderButton.AutoSize = false;
-            openCvBuilderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            openCvBuilderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            openCvBuilderButton.Depth = 0;
-            openCvBuilderButton.HighEmphasis = true;
-            openCvBuilderButton.Icon = null;
-            openCvBuilderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openCvBuilderButton.Location = new Point(18, 20);
-            openCvBuilderButton.Margin = new Padding(4, 6, 4, 6);
-            openCvBuilderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            openCvBuilderButton.Name = "openCvBuilderButton";
-            openCvBuilderButton.NoAccentTextColor = Color.Empty;
-            openCvBuilderButton.Size = new Size(143, 36);
-            openCvBuilderButton.TabIndex = 0;
-            openCvBuilderButton.Text = "Open CV Builder";
-            openCvBuilderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            openCvBuilderButton.UseAccentColor = false;
-            openCvBuilderButton.UseVisualStyleBackColor = true;
-            openCvBuilderButton.Click += openCvBuilderButton_Click;
-            // 
-            // aiPage
-            // 
-            aiPage.Controls.Add(tableLayoutPanel1);
-            aiPage.Location = new Point(4, 24);
-            aiPage.Name = "aiPage";
-            aiPage.Padding = new Padding(3);
-            aiPage.Size = new Size(1077, 616);
-            aiPage.TabIndex = 6;
-            aiPage.Text = "AI Secrets";
-            aiPage.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.Controls.Add(geminiKeyBox, 2, 2);
-            tableLayoutPanel1.Controls.Add(anthropicKeyBox, 2, 1);
-            tableLayoutPanel1.Controls.Add(openAiKeyBox, 2, 0);
-            tableLayoutPanel1.Controls.Add(materialLabel1, 1, 0);
-            tableLayoutPanel1.Controls.Add(materialLabel3, 1, 1);
-            tableLayoutPanel1.Controls.Add(materialLabel4, 1, 2);
-            tableLayoutPanel1.Controls.Add(geminiLinkLabel, 0, 2);
-            tableLayoutPanel1.Location = new Point(360, 6);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 11;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(711, 594);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // geminiKeyBox
-            // 
-            geminiKeyBox.AnimateReadOnly = false;
-            geminiKeyBox.AutoCompleteMode = AutoCompleteMode.None;
-            geminiKeyBox.AutoCompleteSource = AutoCompleteSource.None;
-            geminiKeyBox.BackgroundImageLayout = ImageLayout.None;
-            geminiKeyBox.CharacterCasing = CharacterCasing.Normal;
-            geminiKeyBox.Depth = 0;
-            geminiKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            geminiKeyBox.HideSelection = true;
-            geminiKeyBox.Hint = "Key goes here...";
-            geminiKeyBox.LeadingIcon = null;
-            geminiKeyBox.Location = new Point(307, 111);
-            geminiKeyBox.MaxLength = 32767;
-            geminiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            geminiKeyBox.Name = "geminiKeyBox";
-            geminiKeyBox.PasswordChar = '●';
-            geminiKeyBox.PrefixSuffixText = null;
-            geminiKeyBox.ReadOnly = false;
-            geminiKeyBox.RightToLeft = RightToLeft.No;
-            geminiKeyBox.SelectedText = "";
-            geminiKeyBox.SelectionLength = 0;
-            geminiKeyBox.SelectionStart = 0;
-            geminiKeyBox.ShortcutsEnabled = true;
-            geminiKeyBox.Size = new Size(396, 48);
-            geminiKeyBox.TabIndex = 5;
-            geminiKeyBox.TabStop = false;
-            geminiKeyBox.TextAlign = HorizontalAlignment.Left;
-            geminiKeyBox.TrailingIcon = null;
-            geminiKeyBox.UseSystemPasswordChar = true;
-            geminiKeyBox.TextChanged += geminiKeyBox_TextChanged;
-            // 
-            // anthropicKeyBox
-            // 
-            anthropicKeyBox.AnimateReadOnly = false;
-            anthropicKeyBox.AutoCompleteMode = AutoCompleteMode.None;
-            anthropicKeyBox.AutoCompleteSource = AutoCompleteSource.None;
-            anthropicKeyBox.BackgroundImageLayout = ImageLayout.None;
-            anthropicKeyBox.CharacterCasing = CharacterCasing.Normal;
-            anthropicKeyBox.Depth = 0;
-            anthropicKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            anthropicKeyBox.HideSelection = true;
-            anthropicKeyBox.Hint = "Key goes here...";
-            anthropicKeyBox.LeadingIcon = null;
-            anthropicKeyBox.Location = new Point(307, 57);
-            anthropicKeyBox.MaxLength = 32767;
-            anthropicKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            anthropicKeyBox.Name = "anthropicKeyBox";
-            anthropicKeyBox.PasswordChar = '●';
-            anthropicKeyBox.PrefixSuffixText = null;
-            anthropicKeyBox.ReadOnly = false;
-            anthropicKeyBox.RightToLeft = RightToLeft.No;
-            anthropicKeyBox.SelectedText = "";
-            anthropicKeyBox.SelectionLength = 0;
-            anthropicKeyBox.SelectionStart = 0;
-            anthropicKeyBox.ShortcutsEnabled = true;
-            anthropicKeyBox.Size = new Size(396, 48);
-            anthropicKeyBox.TabIndex = 3;
-            anthropicKeyBox.TabStop = false;
-            anthropicKeyBox.TextAlign = HorizontalAlignment.Left;
-            anthropicKeyBox.TrailingIcon = null;
-            anthropicKeyBox.UseSystemPasswordChar = true;
-            anthropicKeyBox.TextChanged += anthropicKeyBox_TextChanged;
-            // 
-            // openAiKeyBox
-            // 
-            openAiKeyBox.AnimateReadOnly = false;
-            openAiKeyBox.AutoCompleteMode = AutoCompleteMode.None;
-            openAiKeyBox.AutoCompleteSource = AutoCompleteSource.None;
-            openAiKeyBox.BackgroundImageLayout = ImageLayout.None;
-            openAiKeyBox.CharacterCasing = CharacterCasing.Normal;
-            openAiKeyBox.Depth = 0;
-            openAiKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            openAiKeyBox.HideSelection = true;
-            openAiKeyBox.Hint = "Key goes here...";
-            openAiKeyBox.LeadingIcon = null;
-            openAiKeyBox.Location = new Point(307, 3);
-            openAiKeyBox.MaxLength = 32767;
-            openAiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            openAiKeyBox.Name = "openAiKeyBox";
-            openAiKeyBox.PasswordChar = '●';
-            openAiKeyBox.PrefixSuffixText = null;
-            openAiKeyBox.ReadOnly = false;
-            openAiKeyBox.RightToLeft = RightToLeft.No;
-            openAiKeyBox.SelectedText = "";
-            openAiKeyBox.SelectionLength = 0;
-            openAiKeyBox.SelectionStart = 0;
-            openAiKeyBox.ShortcutsEnabled = true;
-            openAiKeyBox.Size = new Size(396, 48);
-            openAiKeyBox.TabIndex = 1;
-            openAiKeyBox.TabStop = false;
-            openAiKeyBox.TextAlign = HorizontalAlignment.Left;
-            openAiKeyBox.TrailingIcon = null;
-            openAiKeyBox.UseSystemPasswordChar = true;
-            openAiKeyBox.TextChanged += openAiKeyBox_TextChanged;
-            // 
-            // materialLabel1
-            // 
-            materialLabel1.Anchor = AnchorStyles.Right;
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel1.Location = new Point(187, 17);
-            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(114, 19);
-            materialLabel1.TabIndex = 0;
-            materialLabel1.Text = "OpenAI API Key:";
-            // 
-            // materialLabel3
-            // 
-            materialLabel3.Anchor = AnchorStyles.Right;
-            materialLabel3.AutoSize = true;
-            materialLabel3.Depth = 0;
-            materialLabel3.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel3.Location = new Point(170, 71);
-            materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel3.Name = "materialLabel3";
-            materialLabel3.Size = new Size(131, 19);
-            materialLabel3.TabIndex = 2;
-            materialLabel3.Text = "Anthropic API Key:";
-            // 
-            // materialLabel4
-            // 
-            materialLabel4.Anchor = AnchorStyles.Right;
-            materialLabel4.AutoSize = true;
-            materialLabel4.Depth = 0;
-            materialLabel4.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel4.Location = new Point(134, 125);
-            materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel4.Name = "materialLabel4";
-            materialLabel4.Size = new Size(167, 19);
-            materialLabel4.TabIndex = 4;
-            materialLabel4.Text = "Google Gemini API Key:";
-            // 
-            // geminiLinkLabel
-            // 
-            geminiLinkLabel.Anchor = AnchorStyles.Right;
-            geminiLinkLabel.AutoSize = true;
-            geminiLinkLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            geminiLinkLabel.LinkColor = Color.FromArgb(255, 128, 128);
-            geminiLinkLabel.Location = new Point(3, 127);
-            geminiLinkLabel.Name = "geminiLinkLabel";
-            geminiLinkLabel.Size = new Size(125, 15);
-            geminiLinkLabel.TabIndex = 6;
-            geminiLinkLabel.TabStop = true;
-            geminiLinkLabel.Text = "Grab a free Gemini key";
-            geminiLinkLabel.LinkClicked += geminiLinkLabel_LinkClicked;
-            // 
-            // creditsPage
-            // 
-            creditsPage.Controls.Add(creditsFlowPanel);
-            creditsPage.Controls.Add(libraryCreditsFlowPanel);
-            creditsPage.Location = new Point(4, 24);
-            creditsPage.Name = "creditsPage";
-            creditsPage.Size = new Size(1077, 616);
-            creditsPage.TabIndex = 1;
-            creditsPage.Text = "Credits";
-            creditsPage.UseVisualStyleBackColor = true;
-            // 
-            // creditsFlowPanel
-            // 
-            creditsFlowPanel.Controls.Add(peopleCreditTitleLabel);
-            creditsFlowPanel.Controls.Add(brandenCreditLabel);
-            creditsFlowPanel.Controls.Add(materialLabel5);
-            creditsFlowPanel.Dock = DockStyle.Left;
-            creditsFlowPanel.FlowDirection = FlowDirection.TopDown;
-            creditsFlowPanel.Location = new Point(0, 0);
-            creditsFlowPanel.Name = "creditsFlowPanel";
-            creditsFlowPanel.Size = new Size(318, 616);
-            creditsFlowPanel.TabIndex = 0;
-            // 
-            // peopleCreditTitleLabel
-            // 
-            peopleCreditTitleLabel.Anchor = AnchorStyles.Top;
-            peopleCreditTitleLabel.AutoSize = true;
-            peopleCreditTitleLabel.Depth = 0;
-            peopleCreditTitleLabel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            peopleCreditTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
-            peopleCreditTitleLabel.Location = new Point(110, 0);
-            peopleCreditTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            peopleCreditTitleLabel.Name = "peopleCreditTitleLabel";
-            peopleCreditTitleLabel.Size = new Size(91, 24);
-            peopleCreditTitleLabel.TabIndex = 8;
-            peopleCreditTitleLabel.Text = "Dev Team";
-            // 
-            // brandenCreditLabel
-            // 
-            brandenCreditLabel.Anchor = AnchorStyles.Top;
-            brandenCreditLabel.AutoSize = true;
-            brandenCreditLabel.Depth = 0;
-            brandenCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            brandenCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            brandenCreditLabel.Location = new Point(35, 24);
-            brandenCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            brandenCreditLabel.Name = "brandenCreditLabel";
-            brandenCreditLabel.Size = new Size(241, 17);
-            brandenCreditLabel.TabIndex = 0;
-            brandenCreditLabel.Text = "Branden Stober - UI and Programming";
-            // 
-            // libraryCreditsFlowPanel
-            // 
-            libraryCreditsFlowPanel.Controls.Add(librariesCreditTitleLabel);
-            libraryCreditsFlowPanel.Controls.Add(googleCreditLabel);
-            libraryCreditsFlowPanel.Controls.Add(newtonsoftCreditLabel);
-            libraryCreditsFlowPanel.Controls.Add(microsoftCreditLabel);
-            libraryCreditsFlowPanel.Controls.Add(asposeCreditLabel);
-            libraryCreditsFlowPanel.Controls.Add(alexanderCreditLabel);
-            libraryCreditsFlowPanel.Controls.Add(taiizorCreditLabel);
-            libraryCreditsFlowPanel.Controls.Add(serilogCreditLabel);
-            libraryCreditsFlowPanel.Controls.Add(hapCreditLabel);
-            libraryCreditsFlowPanel.Dock = DockStyle.Right;
-            libraryCreditsFlowPanel.FlowDirection = FlowDirection.TopDown;
-            libraryCreditsFlowPanel.Location = new Point(716, 0);
-            libraryCreditsFlowPanel.Name = "libraryCreditsFlowPanel";
-            libraryCreditsFlowPanel.Size = new Size(361, 616);
-            libraryCreditsFlowPanel.TabIndex = 4;
-            // 
-            // librariesCreditTitleLabel
-            // 
-            librariesCreditTitleLabel.Anchor = AnchorStyles.Top;
-            librariesCreditTitleLabel.AutoSize = true;
-            librariesCreditTitleLabel.Depth = 0;
-            librariesCreditTitleLabel.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            librariesCreditTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
-            librariesCreditTitleLabel.Location = new Point(139, 0);
-            librariesCreditTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            librariesCreditTitleLabel.Name = "librariesCreditTitleLabel";
-            librariesCreditTitleLabel.Size = new Size(79, 24);
-            librariesCreditTitleLabel.TabIndex = 7;
-            librariesCreditTitleLabel.Text = "Libraries";
-            // 
-            // googleCreditLabel
-            // 
-            googleCreditLabel.Anchor = AnchorStyles.Top;
-            googleCreditLabel.AutoSize = true;
-            googleCreditLabel.Depth = 0;
-            googleCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            googleCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            googleCreditLabel.Location = new Point(100, 24);
-            googleCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            googleCreditLabel.Name = "googleCreditLabel";
-            googleCreditLabel.Size = new Size(158, 17);
-            googleCreditLabel.TabIndex = 1;
-            googleCreditLabel.Text = "Google - Protobuf library";
-            // 
-            // newtonsoftCreditLabel
-            // 
-            newtonsoftCreditLabel.Anchor = AnchorStyles.Top;
-            newtonsoftCreditLabel.AutoSize = true;
-            newtonsoftCreditLabel.Depth = 0;
-            newtonsoftCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            newtonsoftCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            newtonsoftCreditLabel.Location = new Point(96, 41);
-            newtonsoftCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            newtonsoftCreditLabel.Name = "newtonsoftCreditLabel";
-            newtonsoftCreditLabel.Size = new Size(166, 17);
-            newtonsoftCreditLabel.TabIndex = 2;
-            newtonsoftCreditLabel.Text = "Newtonsoft - JSON library";
-            // 
-            // microsoftCreditLabel
-            // 
-            microsoftCreditLabel.Anchor = AnchorStyles.Top;
-            microsoftCreditLabel.AutoSize = true;
-            microsoftCreditLabel.Depth = 0;
-            microsoftCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            microsoftCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            microsoftCreditLabel.Location = new Point(3, 58);
-            microsoftCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            microsoftCreditLabel.Name = "microsoftCreditLabel";
-            microsoftCreditLabel.Size = new Size(352, 17);
-            microsoftCreditLabel.TabIndex = 3;
-            microsoftCreditLabel.Text = "Microsoft - WinForms, DotNet, and WebView2 Runtimes";
-            // 
-            // asposeCreditLabel
-            // 
-            asposeCreditLabel.Anchor = AnchorStyles.Top;
-            asposeCreditLabel.AutoSize = true;
-            asposeCreditLabel.Depth = 0;
-            asposeCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            asposeCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            asposeCreditLabel.Location = new Point(74, 75);
-            asposeCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            asposeCreditLabel.Name = "asposeCreditLabel";
-            asposeCreditLabel.Size = new Size(210, 17);
-            asposeCreditLabel.TabIndex = 4;
-            asposeCreditLabel.Text = "Aspose - HTML and PDF libraries";
-            // 
-            // alexanderCreditLabel
-            // 
-            alexanderCreditLabel.Anchor = AnchorStyles.Top;
-            alexanderCreditLabel.AutoSize = true;
-            alexanderCreditLabel.Depth = 0;
-            alexanderCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            alexanderCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            alexanderCreditLabel.Location = new Point(72, 92);
-            alexanderCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            alexanderCreditLabel.Name = "alexanderCreditLabel";
-            alexanderCreditLabel.Size = new Size(213, 17);
-            alexanderCreditLabel.TabIndex = 5;
-            alexanderCreditLabel.Text = "Alexandre Mutel - Markdig library";
-            // 
-            // taiizorCreditLabel
-            // 
-            taiizorCreditLabel.Anchor = AnchorStyles.Top;
-            taiizorCreditLabel.AutoSize = true;
-            taiizorCreditLabel.Depth = 0;
-            taiizorCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            taiizorCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            taiizorCreditLabel.Location = new Point(88, 109);
-            taiizorCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            taiizorCreditLabel.Name = "taiizorCreditLabel";
-            taiizorCreditLabel.Size = new Size(182, 17);
-            taiizorCreditLabel.TabIndex = 6;
-            taiizorCreditLabel.Text = "Taiizor - Material UI controls";
-            // 
-            // serilogCreditLabel
-            // 
-            serilogCreditLabel.Anchor = AnchorStyles.Top;
-            serilogCreditLabel.AutoSize = true;
-            serilogCreditLabel.Depth = 0;
-            serilogCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            serilogCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            serilogCreditLabel.Location = new Point(87, 126);
-            serilogCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            serilogCreditLabel.Name = "serilogCreditLabel";
-            serilogCreditLabel.Size = new Size(183, 17);
-            serilogCreditLabel.TabIndex = 8;
-            serilogCreditLabel.Text = "Serilog - Logging Framework";
-            // 
-            // hapCreditLabel
-            // 
-            hapCreditLabel.Anchor = AnchorStyles.Top;
-            hapCreditLabel.AutoSize = true;
-            hapCreditLabel.Depth = 0;
-            hapCreditLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            hapCreditLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            hapCreditLabel.Location = new Point(84, 143);
-            hapCreditLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            hapCreditLabel.Name = "hapCreditLabel";
-            hapCreditLabel.Size = new Size(189, 17);
-            hapCreditLabel.TabIndex = 9;
-            hapCreditLabel.Text = "Zzzprojects - HtmlAgilityPack";
-            // 
-            // identityRefreshTimer
-            // 
-            identityRefreshTimer.Enabled = true;
-            identityRefreshTimer.Interval = 1000;
-            identityRefreshTimer.Tick += identityRefreshTimer_Tick;
-            // 
-            // historyRefreshTimer
-            // 
-            historyRefreshTimer.Enabled = true;
-            historyRefreshTimer.Interval = 1000;
-            historyRefreshTimer.Tick += historyRefreshTimer_Tick;
-            // 
-            // tabPage1
-            // 
-            tabPage1.Location = new Point(0, 0);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(200, 100);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Test";
-            // 
-            // materialLabel5
-            // 
-            materialLabel5.Anchor = AnchorStyles.Top;
-            materialLabel5.AutoSize = true;
-            materialLabel5.Depth = 0;
-            materialLabel5.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel5.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel5.Location = new Point(3, 41);
-            materialLabel5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel5.Name = "materialLabel5";
-            materialLabel5.Size = new Size(306, 17);
-            materialLabel5.TabIndex = 9;
-            materialLabel5.Text = "Travis Geisinger - Machine Learning Integration";
+            // welcomePage
+            // 
+            welcomePage.Controls.Add(tableLayoutPanel2);
+            welcomePage.Controls.Add(materialLabel2);
+            welcomePage.Controls.Add(entryTitleLabel);
+            welcomePage.Location = new Point(4, 24);
+            welcomePage.Name = "welcomePage";
+            welcomePage.Size = new Size(1077, 616);
+            welcomePage.TabIndex = 2;
+            welcomePage.Text = "Welcome";
+            welcomePage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -1032,57 +775,18 @@
             tableLayoutPanel2.Size = new Size(1071, 541);
             tableLayoutPanel2.TabIndex = 3;
             // 
-            // materialCard7
+            // materialCard12
             // 
-            materialCard7.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard7.Depth = 0;
-            materialCard7.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard7.Location = new Point(14, 14);
-            materialCard7.Margin = new Padding(14);
-            materialCard7.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard7.Name = "materialCard7";
-            materialCard7.Padding = new Padding(14);
-            materialCard7.Size = new Size(329, 242);
-            materialCard7.TabIndex = 0;
-            // 
-            // materialCard8
-            // 
-            materialCard8.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard8.Depth = 0;
-            materialCard8.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard8.Location = new Point(371, 14);
-            materialCard8.Margin = new Padding(14);
-            materialCard8.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard8.Name = "materialCard8";
-            materialCard8.Padding = new Padding(14);
-            materialCard8.Size = new Size(329, 242);
-            materialCard8.TabIndex = 1;
-            // 
-            // materialCard9
-            // 
-            materialCard9.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard9.Depth = 0;
-            materialCard9.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard9.Location = new Point(728, 14);
-            materialCard9.Margin = new Padding(14);
-            materialCard9.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard9.Name = "materialCard9";
-            materialCard9.Padding = new Padding(14);
-            materialCard9.Size = new Size(329, 242);
-            materialCard9.TabIndex = 1;
-            // 
-            // materialCard10
-            // 
-            materialCard10.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard10.Depth = 0;
-            materialCard10.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard10.Location = new Point(728, 284);
-            materialCard10.Margin = new Padding(14);
-            materialCard10.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard10.Name = "materialCard10";
-            materialCard10.Padding = new Padding(14);
-            materialCard10.Size = new Size(329, 242);
-            materialCard10.TabIndex = 1;
+            materialCard12.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard12.Depth = 0;
+            materialCard12.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard12.Location = new Point(14, 284);
+            materialCard12.Margin = new Padding(14);
+            materialCard12.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard12.Name = "materialCard12";
+            materialCard12.Padding = new Padding(14);
+            materialCard12.Size = new Size(329, 242);
+            materialCard12.TabIndex = 1;
             // 
             // materialCard11
             // 
@@ -1097,18 +801,266 @@
             materialCard11.Size = new Size(329, 242);
             materialCard11.TabIndex = 1;
             // 
-            // materialCard12
+            // materialCard10
             // 
-            materialCard12.BackColor = Color.FromArgb(255, 255, 255);
-            materialCard12.Depth = 0;
-            materialCard12.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialCard12.Location = new Point(14, 284);
-            materialCard12.Margin = new Padding(14);
-            materialCard12.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialCard12.Name = "materialCard12";
-            materialCard12.Padding = new Padding(14);
-            materialCard12.Size = new Size(329, 242);
-            materialCard12.TabIndex = 1;
+            materialCard10.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard10.Depth = 0;
+            materialCard10.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard10.Location = new Point(728, 284);
+            materialCard10.Margin = new Padding(14);
+            materialCard10.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard10.Name = "materialCard10";
+            materialCard10.Padding = new Padding(14);
+            materialCard10.Size = new Size(329, 242);
+            materialCard10.TabIndex = 1;
+            // 
+            // materialCard9
+            // 
+            materialCard9.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard9.Controls.Add(industryCountLabel);
+            materialCard9.Controls.Add(identityCountLabel);
+            materialCard9.Controls.Add(coverLetterTemplatesCountLabel);
+            materialCard9.Controls.Add(resumeTemplatesCountLabel);
+            materialCard9.Controls.Add(materialLabel9);
+            materialCard9.Depth = 0;
+            materialCard9.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard9.Location = new Point(728, 14);
+            materialCard9.Margin = new Padding(14);
+            materialCard9.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard9.Name = "materialCard9";
+            materialCard9.Padding = new Padding(14);
+            materialCard9.Size = new Size(329, 242);
+            materialCard9.TabIndex = 1;
+            // 
+            // industryCountLabel
+            // 
+            industryCountLabel.Depth = 0;
+            industryCountLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            industryCountLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            industryCountLabel.Location = new Point(17, 110);
+            industryCountLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            industryCountLabel.Name = "industryCountLabel";
+            industryCountLabel.Size = new Size(295, 23);
+            industryCountLabel.TabIndex = 7;
+            industryCountLabel.Text = "industries";
+            industryCountLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // identityCountLabel
+            // 
+            identityCountLabel.Depth = 0;
+            identityCountLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            identityCountLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            identityCountLabel.Location = new Point(17, 83);
+            identityCountLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            identityCountLabel.Name = "identityCountLabel";
+            identityCountLabel.Size = new Size(295, 23);
+            identityCountLabel.TabIndex = 6;
+            identityCountLabel.Text = "identities";
+            identityCountLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // coverLetterTemplatesCountLabel
+            // 
+            coverLetterTemplatesCountLabel.Depth = 0;
+            coverLetterTemplatesCountLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            coverLetterTemplatesCountLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            coverLetterTemplatesCountLabel.Location = new Point(17, 60);
+            coverLetterTemplatesCountLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            coverLetterTemplatesCountLabel.Name = "coverLetterTemplatesCountLabel";
+            coverLetterTemplatesCountLabel.Size = new Size(295, 23);
+            coverLetterTemplatesCountLabel.TabIndex = 5;
+            coverLetterTemplatesCountLabel.Text = "cover letter template(s)";
+            coverLetterTemplatesCountLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // resumeTemplatesCountLabel
+            // 
+            resumeTemplatesCountLabel.Depth = 0;
+            resumeTemplatesCountLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            resumeTemplatesCountLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            resumeTemplatesCountLabel.Location = new Point(17, 37);
+            resumeTemplatesCountLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            resumeTemplatesCountLabel.Name = "resumeTemplatesCountLabel";
+            resumeTemplatesCountLabel.Size = new Size(295, 23);
+            resumeTemplatesCountLabel.TabIndex = 4;
+            resumeTemplatesCountLabel.Text = "resume template(s)";
+            resumeTemplatesCountLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialLabel9
+            // 
+            materialLabel9.Depth = 0;
+            materialLabel9.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel9.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
+            materialLabel9.Location = new Point(17, 14);
+            materialLabel9.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel9.Name = "materialLabel9";
+            materialLabel9.Size = new Size(295, 23);
+            materialLabel9.TabIndex = 4;
+            materialLabel9.Text = "Currently Loaded";
+            materialLabel9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialCard8
+            // 
+            materialCard8.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard8.Controls.Add(materialLabel8);
+            materialCard8.Controls.Add(materialLabel7);
+            materialCard8.Controls.Add(materialLabel6);
+            materialCard8.Controls.Add(materialLabel5);
+            materialCard8.Depth = 0;
+            materialCard8.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard8.Location = new Point(371, 14);
+            materialCard8.Margin = new Padding(14);
+            materialCard8.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard8.Name = "materialCard8";
+            materialCard8.Padding = new Padding(14);
+            materialCard8.Size = new Size(329, 242);
+            materialCard8.TabIndex = 1;
+            // 
+            // materialLabel8
+            // 
+            materialLabel8.Depth = 0;
+            materialLabel8.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel8.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel8.Location = new Point(17, 83);
+            materialLabel8.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel8.Name = "materialLabel8";
+            materialLabel8.Size = new Size(295, 23);
+            materialLabel8.TabIndex = 3;
+            materialLabel8.Text = "Various OSS Developers - Libraries";
+            materialLabel8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialLabel7
+            // 
+            materialLabel7.Depth = 0;
+            materialLabel7.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel7.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel7.Location = new Point(17, 60);
+            materialLabel7.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel7.Name = "materialLabel7";
+            materialLabel7.Size = new Size(295, 23);
+            materialLabel7.TabIndex = 2;
+            materialLabel7.Text = "Travis Geisinger - Machine Learning";
+            materialLabel7.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialLabel6
+            // 
+            materialLabel6.Depth = 0;
+            materialLabel6.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel6.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
+            materialLabel6.Location = new Point(17, 37);
+            materialLabel6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel6.Name = "materialLabel6";
+            materialLabel6.Size = new Size(295, 23);
+            materialLabel6.TabIndex = 1;
+            materialLabel6.Text = "Branden Stober - UI and Backend";
+            materialLabel6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialLabel5
+            // 
+            materialLabel5.Depth = 0;
+            materialLabel5.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel5.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
+            materialLabel5.Location = new Point(17, 14);
+            materialLabel5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel5.Name = "materialLabel5";
+            materialLabel5.Size = new Size(295, 23);
+            materialLabel5.TabIndex = 0;
+            materialLabel5.Text = "Credits";
+            materialLabel5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialCard7
+            // 
+            materialCard7.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard7.Controls.Add(clearLogsButton);
+            materialCard7.Controls.Add(materialLabel10);
+            materialCard7.Depth = 0;
+            materialCard7.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard7.Location = new Point(14, 14);
+            materialCard7.Margin = new Padding(14);
+            materialCard7.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialCard7.Name = "materialCard7";
+            materialCard7.Padding = new Padding(14);
+            materialCard7.Size = new Size(329, 242);
+            materialCard7.TabIndex = 0;
+            // 
+            // clearLogsButton
+            // 
+            clearLogsButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            clearLogsButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            clearLogsButton.Depth = 0;
+            clearLogsButton.HighEmphasis = true;
+            clearLogsButton.Icon = null;
+            clearLogsButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            clearLogsButton.Location = new Point(111, 43);
+            clearLogsButton.Margin = new Padding(4, 6, 4, 6);
+            clearLogsButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            clearLogsButton.Name = "clearLogsButton";
+            clearLogsButton.NoAccentTextColor = Color.Empty;
+            clearLogsButton.Size = new Size(107, 36);
+            clearLogsButton.TabIndex = 5;
+            clearLogsButton.Text = "Clear Logs";
+            clearLogsButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            clearLogsButton.UseAccentColor = false;
+            clearLogsButton.UseVisualStyleBackColor = true;
+            clearLogsButton.Click += clearLogsButton_Click;
+            // 
+            // materialLabel10
+            // 
+            materialLabel10.Depth = 0;
+            materialLabel10.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel10.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H6;
+            materialLabel10.Location = new Point(17, 14);
+            materialLabel10.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel10.Name = "materialLabel10";
+            materialLabel10.Size = new Size(295, 23);
+            materialLabel10.TabIndex = 4;
+            materialLabel10.Text = "Operations";
+            materialLabel10.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialLabel2
+            // 
+            materialLabel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle1;
+            materialLabel2.Location = new Point(3, 46);
+            materialLabel2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(1071, 23);
+            materialLabel2.TabIndex = 2;
+            materialLabel2.Text = "Looking to get started? Check out the identities page and go down the list!";
+            materialLabel2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // entryTitleLabel
+            // 
+            entryTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            entryTitleLabel.Depth = 0;
+            entryTitleLabel.Font = new Font("Roboto", 34F, FontStyle.Bold, GraphicsUnit.Pixel);
+            entryTitleLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.H4;
+            entryTitleLabel.Location = new Point(3, 0);
+            entryTitleLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            entryTitleLabel.Name = "entryTitleLabel";
+            entryTitleLabel.Size = new Size(1071, 46);
+            entryTitleLabel.TabIndex = 0;
+            entryTitleLabel.Text = "Welcome!";
+            entryTitleLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // materialTabControl1
+            // 
+            materialTabControl1.Controls.Add(welcomePage);
+            materialTabControl1.Controls.Add(identityPage);
+            materialTabControl1.Controls.Add(industryPage);
+            materialTabControl1.Controls.Add(resumePage);
+            materialTabControl1.Controls.Add(cvPage);
+            materialTabControl1.Controls.Add(aiPage);
+            materialTabControl1.Depth = 0;
+            materialTabControl1.Dock = DockStyle.Right;
+            materialTabControl1.HotTrack = true;
+            materialTabControl1.Location = new Point(206, 24);
+            materialTabControl1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialTabControl1.Multiline = true;
+            materialTabControl1.Name = "materialTabControl1";
+            materialTabControl1.SelectedIndex = 0;
+            materialTabControl1.Size = new Size(1085, 644);
+            materialTabControl1.TabIndex = 0;
             // 
             // EntryForm
             // 
@@ -1132,95 +1084,89 @@
             Text = "Career Canvas";
             FormClosing += EntryForm_FormClosing;
             Load += EntryForm_Load;
-            materialTabControl1.ResumeLayout(false);
-            welcomePage.ResumeLayout(false);
+            aiPage.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            cvPage.ResumeLayout(false);
+            materialCard6.ResumeLayout(false);
+            resumePage.ResumeLayout(false);
+            materialCard5.ResumeLayout(false);
+            industryPage.ResumeLayout(false);
+            materialCard4.ResumeLayout(false);
+            materialCard3.ResumeLayout(false);
             identityPage.ResumeLayout(false);
             identityConfigExpansionPanel.ResumeLayout(false);
             identityConfigExpansionPanel.PerformLayout();
             materialCard2.ResumeLayout(false);
             materialCard1.ResumeLayout(false);
-            industryPage.ResumeLayout(false);
-            materialCard4.ResumeLayout(false);
-            materialCard3.ResumeLayout(false);
-            resumePage.ResumeLayout(false);
-            materialCard5.ResumeLayout(false);
-            cvPage.ResumeLayout(false);
-            materialCard6.ResumeLayout(false);
-            aiPage.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
-            creditsPage.ResumeLayout(false);
-            creditsFlowPanel.ResumeLayout(false);
-            creditsFlowPanel.PerformLayout();
-            libraryCreditsFlowPanel.ResumeLayout(false);
-            libraryCreditsFlowPanel.PerformLayout();
+            welcomePage.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
+            materialCard9.ResumeLayout(false);
+            materialCard8.ResumeLayout(false);
+            materialCard7.ResumeLayout(false);
+            materialCard7.PerformLayout();
+            materialTabControl1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private ReaLTaiizor.Controls.MaterialTabControl materialTabControl1;
-        private TabPage resumePage;
-        private TabPage creditsPage;
-        private TabPage welcomePage;
-        private TabPage cvPage;
-        private TabPage identityPage;
-        private ReaLTaiizor.Controls.MaterialButton newIdentityButton;
-        private ReaLTaiizor.Controls.MaterialListBox identitiesListBox;
-        private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
-        private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
-        private TabPage industryPage;
-        private ReaLTaiizor.Controls.MaterialLabel historiesLabel;
-        private ReaLTaiizor.Controls.MaterialButton newHistoryButton;
-        private ReaLTaiizor.Controls.MaterialButton importHistoryButton;
         private System.Windows.Forms.Timer identityRefreshTimer;
-        private ReaLTaiizor.Controls.MaterialCard materialCard1;
-        private ReaLTaiizor.Controls.MaterialCard materialCard2;
-        private ReaLTaiizor.Controls.MaterialExpansionPanel identityConfigExpansionPanel;
-        private ReaLTaiizor.Controls.MaterialCheckBox identityEncryptionCheckbox;
-        private FlowLayoutPanel creditsFlowPanel;
-        private ReaLTaiizor.Controls.MaterialLabel brandenCreditLabel;
-        private FlowLayoutPanel libraryCreditsFlowPanel;
-        private ReaLTaiizor.Controls.MaterialLabel googleCreditLabel;
-        private ReaLTaiizor.Controls.MaterialLabel newtonsoftCreditLabel;
-        private ReaLTaiizor.Controls.MaterialLabel microsoftCreditLabel;
-        private ReaLTaiizor.Controls.MaterialLabel asposeCreditLabel;
-        private ReaLTaiizor.Controls.MaterialLabel alexanderCreditLabel;
-        private ReaLTaiizor.Controls.MaterialLabel taiizorCreditLabel;
-        private ReaLTaiizor.Controls.MaterialLabel peopleCreditTitleLabel;
-        private ReaLTaiizor.Controls.MaterialLabel librariesCreditTitleLabel;
-        private ReaLTaiizor.Controls.MaterialLabel serilogCreditLabel;
-        private ReaLTaiizor.Controls.MaterialLabel hapCreditLabel;
         private System.Windows.Forms.Timer historyRefreshTimer;
-        private ReaLTaiizor.Controls.MaterialButton openIdentityFolderButton;
-        private ReaLTaiizor.Controls.MaterialButton openIndustryFolderButton;
-        private ReaLTaiizor.Controls.MaterialCard materialCard3;
-        private ReaLTaiizor.Controls.MaterialCard materialCard4;
-        private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
-        private ReaLTaiizor.Controls.MaterialLabel entryTitleLabel;
         private TabPage tabPage1;
-        private ReaLTaiizor.Controls.MaterialCard materialCard5;
-        private ReaLTaiizor.Controls.MaterialButton openResumeWorkspaceButton;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel2;
-        private ReaLTaiizor.Controls.MaterialCard materialCard6;
-        private ReaLTaiizor.Controls.MaterialButton openCvBuilderButton;
         private TabPage aiPage;
         private TableLayoutPanel tableLayoutPanel1;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit geminiKeyBox;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel4;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit anthropicKeyBox;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel3;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
         private ReaLTaiizor.Controls.MaterialTextBoxEdit openAiKeyBox;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel3;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel4;
         private LinkLabel geminiLinkLabel;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel5;
+        private TabPage cvPage;
+        private ReaLTaiizor.Controls.MaterialCard materialCard6;
+        private ReaLTaiizor.Controls.MaterialButton openCvBuilderButton;
+        private TabPage resumePage;
+        private ReaLTaiizor.Controls.MaterialCard materialCard5;
+        private ReaLTaiizor.Controls.MaterialButton openResumeWorkspaceButton;
+        private TabPage industryPage;
+        private ReaLTaiizor.Controls.MaterialCard materialCard4;
+        private ReaLTaiizor.Controls.MaterialButton newHistoryButton;
+        private ReaLTaiizor.Controls.MaterialButton openIndustryFolderButton;
+        private ReaLTaiizor.Controls.MaterialButton importHistoryButton;
+        private ReaLTaiizor.Controls.MaterialCard materialCard3;
+        private ReaLTaiizor.Controls.MaterialListBox historiesListBox;
+        private ReaLTaiizor.Controls.MaterialLabel historiesLabel;
+        private TabPage identityPage;
+        private ReaLTaiizor.Controls.MaterialExpansionPanel identityConfigExpansionPanel;
+        private ReaLTaiizor.Controls.MaterialCheckBox identityEncryptionCheckbox;
+        private ReaLTaiizor.Controls.MaterialCard materialCard2;
+        private ReaLTaiizor.Controls.MaterialButton openIdentityFolderButton;
+        private ReaLTaiizor.Controls.MaterialButton openIdentityButton;
+        private ReaLTaiizor.Controls.MaterialButton newIdentityButton;
+        private ReaLTaiizor.Controls.MaterialCard materialCard1;
+        private ReaLTaiizor.Controls.MaterialLabel identitiesLabel;
+        private ReaLTaiizor.Controls.MaterialListBox identitiesListBox;
+        private TabPage welcomePage;
         private TableLayoutPanel tableLayoutPanel2;
         private ReaLTaiizor.Controls.MaterialCard materialCard12;
         private ReaLTaiizor.Controls.MaterialCard materialCard11;
         private ReaLTaiizor.Controls.MaterialCard materialCard10;
         private ReaLTaiizor.Controls.MaterialCard materialCard9;
         private ReaLTaiizor.Controls.MaterialCard materialCard8;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel8;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel7;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel6;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel5;
         private ReaLTaiizor.Controls.MaterialCard materialCard7;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel2;
+        private ReaLTaiizor.Controls.MaterialLabel entryTitleLabel;
+        private ReaLTaiizor.Controls.MaterialTabControl materialTabControl1;
+        private ReaLTaiizor.Controls.MaterialLabel coverLetterTemplatesCountLabel;
+        private ReaLTaiizor.Controls.MaterialLabel resumeTemplatesCountLabel;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel9;
+        private ReaLTaiizor.Controls.MaterialLabel industryCountLabel;
+        private ReaLTaiizor.Controls.MaterialLabel identityCountLabel;
+        private ReaLTaiizor.Controls.MaterialButton clearLogsButton;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel10;
     }
 }
