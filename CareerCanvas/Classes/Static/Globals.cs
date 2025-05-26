@@ -25,10 +25,11 @@ public static class Globals
     public static ILogger AppLogger { get; private set; } = new LoggerConfiguration()
 #if DEBUG
     .MinimumLevel.Debug()
+    .WriteTo.File("logs/app-debug.log", rollingInterval: RollingInterval.Day)
 #else
     .MinimumLevel.Information()
-#endif
     .WriteTo.File("logs/app.log", rollingInterval: RollingInterval.Day)
+#endif
     .CreateLogger();
 
     /// <summary>

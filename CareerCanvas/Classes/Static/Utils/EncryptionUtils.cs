@@ -10,11 +10,22 @@ public static class EncryptionUtils
     /// <param name="inputFile"></param>
     /// <param name="outputFile"></param>
     /// <param name="key"></param>
-    public static void EncryptFile(string inputFile, string outputFile, string key)
+    public static void EncryptFile(string inputFile, string outputFile, string key, bool removeoriginal = false)
     {
         var plainBytes = File.ReadAllBytes(inputFile);
         var encryptedBytes = EncryptBytesToBytes(plainBytes, key);
         File.WriteAllBytes(outputFile, encryptedBytes);
+        if (removeoriginal)
+        {
+            try
+            {
+                File.Delete(inputFile);
+            }
+            catch (Exception ex)
+            {
+                Globals.AppLogger.Error(ex, "Failed to delete original file after encryption.");
+            }
+        }
     }
 
     /// <summary>
@@ -23,11 +34,22 @@ public static class EncryptionUtils
     /// <param name="inputFile"></param>
     /// <param name="outputFile"></param>
     /// <param name="key"></param>
-    public static void DecryptFile(string inputFile, string outputFile, string key)
+    public static void DecryptFile(string inputFile, string outputFile, string key, bool removeoriginal = false)
     {
         var encryptedBytes = File.ReadAllBytes(inputFile);
         var decryptedBytes = DecryptBytesFromBytes(encryptedBytes, key);
         File.WriteAllBytes(outputFile, decryptedBytes);
+        if (removeoriginal)
+        {
+            try
+            {
+                File.Delete(inputFile);
+            }
+            catch (Exception ex)
+            {
+                Globals.AppLogger.Error(ex, "Failed to delete encrypted file after decryption.");
+            }
+        }
     }
 
     /// <summary>
@@ -63,6 +85,20 @@ public static class EncryptionUtils
         {
             aesAlg.KeySize = 256; // Set the key size to 256 bits
             aesAlg.GenerateKey(); // Generate a random 256-bit key
+            return Convert.ToBase64String(aesAlg.Key);
+        }
+    }
+
+    /// <summary>
+    /// Generates a random  512-bit key for AES encryption.
+    /// </summary>
+    /// <returns></returns>
+    public static string Generate512BitKey()
+    {
+        using (var aesAlg = Aes.Create())
+        {
+            aesAlg.KeySize = 512; // Set the key size to 512 bits
+            aesAlg.GenerateKey(); // Generate a random 512-bit key
             return Convert.ToBase64String(aesAlg.Key);
         }
     }
