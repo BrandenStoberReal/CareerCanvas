@@ -165,7 +165,7 @@ public partial class EntryForm : MaterialForm
             if (file.EndsWith(".identity"))
             {
                 // Format the identity name by converting underscores to spaces and marking encrypted files
-                var identityName = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " ")
+                var identityName = Globals.CultureTextInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " ")
                     .Replace(".enc", " (Encrypted)"));
 
                 // Check if the identity name is not already in the list box
@@ -202,7 +202,7 @@ public partial class EntryForm : MaterialForm
             {
                 // Convert the file name to a title case string without the extension and underscores
                 var historyName =
-                    Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " "));
+                    Globals.CultureTextInfo.ToTitleCase(Path.GetFileNameWithoutExtension(file).Replace("_", " "));
 
                 // Check if the item is not already in the list box
                 if (historiesListBox.Items.All(x => x.Text != historyName))

@@ -205,7 +205,7 @@ public partial class HistoryWorkspace : MaterialForm
         }
 
         // Load data into workspace
-        titleBox.Text = Globals.textInfo.ToTitleCase(Path.GetFileNameWithoutExtension(filepath).Replace("_", " "));
+        titleBox.Text = Globals.CultureTextInfo.ToTitleCase(Path.GetFileNameWithoutExtension(filepath).Replace("_", " "));
         _jobHistory = industry.Jobs;
         _educationHistory = industry.Schooling;
         _certificateHistory = industry.Certificates;

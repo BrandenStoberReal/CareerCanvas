@@ -35,7 +35,7 @@ public static class Globals
     /// <summary>
     ///     The text info object for the application.
     /// </summary>
-    public static TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+    public static TextInfo CultureTextInfo = new CultureInfo("en-US", false).TextInfo;
 
     /// <summary>
     ///     Global identity service config.

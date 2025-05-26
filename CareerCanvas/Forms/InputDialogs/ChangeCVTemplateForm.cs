@@ -52,7 +52,7 @@ namespace CareerCanvas.Forms.InputDialogs
                 if (file.EndsWith(".html"))
                 {
                     string fileName = Path.GetFileNameWithoutExtension(file);
-                    MaterialListBoxItem item = new MaterialListBoxItem(Globals.textInfo.ToTitleCase(fileName).Replace("_", " "));
+                    MaterialListBoxItem item = new MaterialListBoxItem(Globals.CultureTextInfo.ToTitleCase(fileName).Replace("_", " "));
                     item.Tag = Path.GetFullPath(file);
                     templateListBox.Items.Add(item);
                 }
