@@ -88,6 +88,7 @@
             materialLabel2 = new ReaLTaiizor.Controls.MaterialLabel();
             entryTitleLabel = new ReaLTaiizor.Controls.MaterialLabel();
             materialTabControl1 = new ReaLTaiizor.Controls.MaterialTabControl();
+            prefsPage = new TabPage();
             aiPage.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             cvPage.SuspendLayout();
@@ -153,7 +154,7 @@
             tableLayoutPanel1.Controls.Add(materialLabel3, 1, 1);
             tableLayoutPanel1.Controls.Add(materialLabel4, 1, 2);
             tableLayoutPanel1.Controls.Add(geminiLinkLabel, 0, 2);
-            tableLayoutPanel1.Location = new Point(360, 6);
+            tableLayoutPanel1.Location = new Point(6, 6);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 11;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
@@ -167,7 +168,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(711, 594);
+            tableLayoutPanel1.Size = new Size(1065, 604);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // geminiKeyBox
@@ -194,7 +195,7 @@
             geminiKeyBox.SelectionLength = 0;
             geminiKeyBox.SelectionStart = 0;
             geminiKeyBox.ShortcutsEnabled = true;
-            geminiKeyBox.Size = new Size(396, 48);
+            geminiKeyBox.Size = new Size(773, 48);
             geminiKeyBox.TabIndex = 5;
             geminiKeyBox.TabStop = false;
             geminiKeyBox.TextAlign = HorizontalAlignment.Left;
@@ -226,7 +227,7 @@
             anthropicKeyBox.SelectionLength = 0;
             anthropicKeyBox.SelectionStart = 0;
             anthropicKeyBox.ShortcutsEnabled = true;
-            anthropicKeyBox.Size = new Size(396, 48);
+            anthropicKeyBox.Size = new Size(773, 48);
             anthropicKeyBox.TabIndex = 3;
             anthropicKeyBox.TabStop = false;
             anthropicKeyBox.TextAlign = HorizontalAlignment.Left;
@@ -258,7 +259,7 @@
             openAiKeyBox.SelectionLength = 0;
             openAiKeyBox.SelectionStart = 0;
             openAiKeyBox.ShortcutsEnabled = true;
-            openAiKeyBox.Size = new Size(396, 48);
+            openAiKeyBox.Size = new Size(773, 48);
             openAiKeyBox.TabIndex = 1;
             openAiKeyBox.TabStop = false;
             openAiKeyBox.TextAlign = HorizontalAlignment.Left;
@@ -343,25 +344,24 @@
             materialCard6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard6.Name = "materialCard6";
             materialCard6.Padding = new Padding(14);
-            materialCard6.Size = new Size(179, 588);
+            materialCard6.Size = new Size(1049, 588);
             materialCard6.TabIndex = 1;
             // 
             // openCvBuilderButton
             // 
             openCvBuilderButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            openCvBuilderButton.AutoSize = false;
             openCvBuilderButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             openCvBuilderButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
             openCvBuilderButton.Depth = 0;
             openCvBuilderButton.HighEmphasis = true;
             openCvBuilderButton.Icon = null;
             openCvBuilderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openCvBuilderButton.Location = new Point(18, 20);
+            openCvBuilderButton.Location = new Point(452, 532);
             openCvBuilderButton.Margin = new Padding(4, 6, 4, 6);
             openCvBuilderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             openCvBuilderButton.Name = "openCvBuilderButton";
             openCvBuilderButton.NoAccentTextColor = Color.Empty;
-            openCvBuilderButton.Size = new Size(143, 36);
+            openCvBuilderButton.Size = new Size(145, 36);
             openCvBuilderButton.TabIndex = 0;
             openCvBuilderButton.Text = "Open CV Builder";
             openCvBuilderButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -391,7 +391,7 @@
             materialCard5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard5.Name = "materialCard5";
             materialCard5.Padding = new Padding(14);
-            materialCard5.Size = new Size(211, 588);
+            materialCard5.Size = new Size(1049, 588);
             materialCard5.TabIndex = 0;
             materialCard5.Click += materialCard5_Click;
             // 
@@ -404,7 +404,7 @@
             openResumeWorkspaceButton.HighEmphasis = true;
             openResumeWorkspaceButton.Icon = null;
             openResumeWorkspaceButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openResumeWorkspaceButton.Location = new Point(18, 20);
+            openResumeWorkspaceButton.Location = new Point(437, 532);
             openResumeWorkspaceButton.Margin = new Padding(4, 6, 4, 6);
             openResumeWorkspaceButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             openResumeWorkspaceButton.Name = "openResumeWorkspaceButton";
@@ -551,7 +551,8 @@
             // 
             historiesLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             historiesLabel.Depth = 0;
-            historiesLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            historiesLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            historiesLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             historiesLabel.Location = new Point(17, 14);
             historiesLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             historiesLabel.Name = "historiesLabel";
@@ -717,7 +718,8 @@
             // 
             identitiesLabel.Anchor = AnchorStyles.Top;
             identitiesLabel.Depth = 0;
-            identitiesLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            identitiesLabel.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            identitiesLabel.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
             identitiesLabel.Location = new Point(20, 14);
             identitiesLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             identitiesLabel.Name = "identitiesLabel";
@@ -1051,6 +1053,7 @@
             materialTabControl1.Controls.Add(resumePage);
             materialTabControl1.Controls.Add(cvPage);
             materialTabControl1.Controls.Add(aiPage);
+            materialTabControl1.Controls.Add(prefsPage);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Right;
             materialTabControl1.HotTrack = true;
@@ -1061,6 +1064,15 @@
             materialTabControl1.SelectedIndex = 0;
             materialTabControl1.Size = new Size(1085, 644);
             materialTabControl1.TabIndex = 0;
+            // 
+            // prefsPage
+            // 
+            prefsPage.Location = new Point(4, 24);
+            prefsPage.Name = "prefsPage";
+            prefsPage.Size = new Size(1077, 616);
+            prefsPage.TabIndex = 7;
+            prefsPage.Text = "Preferences";
+            prefsPage.UseVisualStyleBackColor = true;
             // 
             // EntryForm
             // 
@@ -1089,6 +1101,7 @@
             tableLayoutPanel1.PerformLayout();
             cvPage.ResumeLayout(false);
             materialCard6.ResumeLayout(false);
+            materialCard6.PerformLayout();
             resumePage.ResumeLayout(false);
             materialCard5.ResumeLayout(false);
             industryPage.ResumeLayout(false);
@@ -1168,5 +1181,6 @@
         private ReaLTaiizor.Controls.MaterialLabel identityCountLabel;
         private ReaLTaiizor.Controls.MaterialButton clearLogsButton;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel10;
+        private TabPage prefsPage;
     }
 }

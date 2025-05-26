@@ -9,10 +9,25 @@ namespace CareerCanvas.Classes.Static;
 public static class Globals
 {
     /// <summary>
+    /// Boolean for whether the application is running in debug mode.
+    /// </summary>
+    public static bool DebugMode =
+#if DEBUG
+    true;
+
+#else
+    false;
+#endif
+
+    /// <summary>
     ///    The logger for the application.
     /// </summary>
     public static ILogger AppLogger { get; private set; } = new LoggerConfiguration()
+#if DEBUG
+    .MinimumLevel.Debug()
+#else
     .MinimumLevel.Information()
+#endif
     .WriteTo.File("logs/app.log", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 

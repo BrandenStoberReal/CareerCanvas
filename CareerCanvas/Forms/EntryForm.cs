@@ -47,6 +47,12 @@ public partial class EntryForm : MaterialForm
         // Set the active control to null to prevent any control from being focused initially
         InputUtils.ClearActiveControl(this);
 
+        // Append debug title if running in debug mode
+        if (Globals.DebugMode)
+        {
+            this.Text += " [DEBUG MODE]";
+        }
+
         // Load identity settings if the configuration file exists
         if (File.Exists(Globals.IdentityConfigPath))
         {
