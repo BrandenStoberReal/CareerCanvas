@@ -175,7 +175,8 @@ public partial class HistoryWorkspace : MaterialForm
             Schooling = _educationHistory,
             Certificates = _certificateHistory,
             Skills = _skillsHistory,
-            Description = descriptionBox.Text
+            Description = descriptionBox.Text,
+            ProfessionalSummary = professionalSummaryBox.Text
         };
 
         var industryPath = Path.Combine("./data/industries", titleBox.Text.ToLower().Replace(" ", "_") + ".industry");
@@ -211,6 +212,7 @@ public partial class HistoryWorkspace : MaterialForm
         _certificateHistory = industry.Certificates;
         _skillsHistory = industry.Skills;
         descriptionBox.Text = industry.Description;
+        professionalSummaryBox.Text = industry.ProfessionalSummary;
         Globals.AppLogger.Information("Loaded industry {Industry} from {Path}.", titleBox.Text, filepath);
     }
 
@@ -544,7 +546,6 @@ public partial class HistoryWorkspace : MaterialForm
             certificatesListBox.SelectedItem = null;
         }
     }
-
 
     /// <summary>
     /// Event handler for the Click event of the remove skill button.

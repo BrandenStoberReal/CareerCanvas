@@ -1,6 +1,7 @@
 ﻿using CareerCanvas.Classes.Main.Macros;
 using CareerCanvas.Classes.Main.Misc;
 using CareerCanvas.Classes.Main.Protobuf;
+using CareerCanvas.Classes.Static.Macro;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace CareerCanvas.Classes.Static.Utils

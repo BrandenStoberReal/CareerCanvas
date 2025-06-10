@@ -56,6 +56,8 @@
             skillsListBox = new ReaLTaiizor.Controls.MaterialListBox();
             addSkillButton = new ReaLTaiizor.Controls.MaterialButton();
             updateSkillsTimer = new System.Windows.Forms.Timer(components);
+            materialLabel2 = new ReaLTaiizor.Controls.MaterialLabel();
+            professionalSummaryBox = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
             jobsExpansionPanel.SuspendLayout();
             educationExpansionPanel.SuspendLayout();
             certificatesExpansionPanel.SuspendLayout();
@@ -601,11 +603,51 @@
             updateSkillsTimer.Interval = 200;
             updateSkillsTimer.Tick += updateSkillsTimer_Tick;
             // 
+            // materialLabel2
+            // 
+            materialLabel2.AutoSize = true;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.Location = new Point(829, 597);
+            materialLabel2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(163, 19);
+            materialLabel2.TabIndex = 110;
+            materialLabel2.Text = "Professional Summary";
+            // 
+            // professionalSummaryBox
+            // 
+            professionalSummaryBox.AnimateReadOnly = false;
+            professionalSummaryBox.BackgroundImageLayout = ImageLayout.None;
+            professionalSummaryBox.CharacterCasing = CharacterCasing.Normal;
+            professionalSummaryBox.Depth = 0;
+            professionalSummaryBox.HideSelection = true;
+            professionalSummaryBox.LeaveOnEnterKey = true;
+            professionalSummaryBox.Location = new Point(615, 619);
+            professionalSummaryBox.MaxLength = 32767;
+            professionalSummaryBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            professionalSummaryBox.Name = "professionalSummaryBox";
+            professionalSummaryBox.PasswordChar = '\0';
+            professionalSummaryBox.ReadOnly = false;
+            professionalSummaryBox.ScrollBars = ScrollBars.None;
+            professionalSummaryBox.SelectedText = "";
+            professionalSummaryBox.SelectionLength = 0;
+            professionalSummaryBox.SelectionStart = 0;
+            professionalSummaryBox.ShortcutsEnabled = true;
+            professionalSummaryBox.Size = new Size(590, 455);
+            professionalSummaryBox.TabIndex = 111;
+            professionalSummaryBox.TabStop = false;
+            professionalSummaryBox.TextAlign = HorizontalAlignment.Left;
+            professionalSummaryBox.UseSystemPasswordChar = false;
+
+            // 
             // HistoryWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1820, 1092);
+            Controls.Add(professionalSummaryBox);
+            Controls.Add(materialLabel2);
             Controls.Add(descriptionBox);
             Controls.Add(materialLabel1);
             Controls.Add(skillsExpansionPanel);
@@ -662,5 +704,7 @@
         private ReaLTaiizor.Controls.MaterialListBox skillsListBox;
         private ReaLTaiizor.Controls.MaterialButton addSkillButton;
         private System.Windows.Forms.Timer updateSkillsTimer;
+        private ReaLTaiizor.Controls.MaterialLabel materialLabel2;
+        private ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit professionalSummaryBox;
     }
 }
