@@ -228,6 +228,23 @@ public partial class HistoryWorkspace : MaterialForm
     /// </remarks>
     private void HistoryWorkspace_Load(object sender, EventArgs e)
     {
+        // Set up tooltips
+        ToolTip toolTip = new ToolTip();
+
+        toolTip.SetToolTip(addEmploymentButton, "Add a new job to your employment history.");
+        toolTip.SetToolTip(addEducationButton, "Add a new education entry to your education history.");
+        toolTip.SetToolTip(addCertificateButton, "Add a new certificate to your certificate history.");
+        toolTip.SetToolTip(addSkillButton, "Add a new skill to your skills history.");
+        toolTip.SetToolTip(removeJobButton, "Remove the selected job from your employment history.");
+        toolTip.SetToolTip(removeEducationButton, "Remove the selected education entry from your education history.");
+        toolTip.SetToolTip(removeCertificateButton, "Remove the selected certificate from your certificate history.");
+        toolTip.SetToolTip(removeSkillButton, "Remove the selected skill from your skills history.");
+        toolTip.SetToolTip(jobInfoButton, "View information about the selected job.");
+        toolTip.SetToolTip(educationInfoButton, "View information about the selected education entry.");
+        toolTip.SetToolTip(certificateInfoButton, "View information about the selected certificate.");
+        toolTip.SetToolTip(skillInfoButton, "View information about the selected skill.");
+        toolTip.SetToolTip(summaryLabel, "A brief overview of your professional background.");
+        toolTip.SetToolTip(professionalSummaryBox, "A brief overview of your professional background.");
     }
 
     /// <summary>

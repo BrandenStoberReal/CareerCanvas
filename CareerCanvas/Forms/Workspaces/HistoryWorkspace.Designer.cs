@@ -56,7 +56,7 @@
             skillsListBox = new ReaLTaiizor.Controls.MaterialListBox();
             addSkillButton = new ReaLTaiizor.Controls.MaterialButton();
             updateSkillsTimer = new System.Windows.Forms.Timer(components);
-            materialLabel2 = new ReaLTaiizor.Controls.MaterialLabel();
+            summaryLabel = new ReaLTaiizor.Controls.MaterialLabel();
             professionalSummaryBox = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
             jobsExpansionPanel.SuspendLayout();
             educationExpansionPanel.SuspendLayout();
@@ -603,17 +603,17 @@
             updateSkillsTimer.Interval = 200;
             updateSkillsTimer.Tick += updateSkillsTimer_Tick;
             // 
-            // materialLabel2
+            // summaryLabel
             // 
-            materialLabel2.AutoSize = true;
-            materialLabel2.Depth = 0;
-            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialLabel2.Location = new Point(829, 597);
-            materialLabel2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel2.Name = "materialLabel2";
-            materialLabel2.Size = new Size(163, 19);
-            materialLabel2.TabIndex = 110;
-            materialLabel2.Text = "Professional Summary";
+            summaryLabel.AutoSize = true;
+            summaryLabel.Depth = 0;
+            summaryLabel.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            summaryLabel.Location = new Point(829, 597);
+            summaryLabel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            summaryLabel.Name = "summaryLabel";
+            summaryLabel.Size = new Size(163, 19);
+            summaryLabel.TabIndex = 110;
+            summaryLabel.Text = "Professional Summary";
             // 
             // professionalSummaryBox
             // 
@@ -639,7 +639,6 @@
             professionalSummaryBox.TabStop = false;
             professionalSummaryBox.TextAlign = HorizontalAlignment.Left;
             professionalSummaryBox.UseSystemPasswordChar = false;
-
             // 
             // HistoryWorkspace
             // 
@@ -647,7 +646,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1820, 1092);
             Controls.Add(professionalSummaryBox);
-            Controls.Add(materialLabel2);
+            Controls.Add(summaryLabel);
             Controls.Add(descriptionBox);
             Controls.Add(materialLabel1);
             Controls.Add(skillsExpansionPanel);
@@ -704,7 +703,7 @@
         private ReaLTaiizor.Controls.MaterialListBox skillsListBox;
         private ReaLTaiizor.Controls.MaterialButton addSkillButton;
         private System.Windows.Forms.Timer updateSkillsTimer;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel2;
+        private ReaLTaiizor.Controls.MaterialLabel summaryLabel;
         private ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit professionalSummaryBox;
     }
 }
