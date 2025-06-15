@@ -2,8 +2,8 @@
 
 CareerCanvas templates are plain HTML with **macros** marking where user data should be injected. There are two macro categories:
 
-1. **Static Macros** ñ replaced once with a single value.  
-2. **Dynamic Macros** ñ repeated for each item in a list (e.g., multiple jobs, schools, skills).
+1. **Static Macros** ‚Äì replaced once with a single value.  
+2. **Dynamic Macros** ‚Äì repeated for each item in a list (e.g., multiple jobs, schools, skills).
 
 Throughout this document:
 
@@ -17,7 +17,7 @@ Throughout this document:
 <!-- TOC -->
 - [1. Macros Overview](#1-macros-overview)  
   - [1.1. Static vs. Dynamic](#11-static-vs-dynamic)  
-  - [1.2. ëRecommendedí vs. Required](#12-recommended-vs-required)  
+  - [1.2. ‚ÄòRecommended‚Äô vs. Required](#12-recommended-vs-required)  
 - [2. Macro List](#2-macro-list)  
   - [2.1. Global Macros](#21-global-macros)  
   - [2.2. Resume-Specific](#22-resume-specific)  
@@ -31,8 +31,6 @@ Throughout this document:
   - [5.2. Work Experience](#52-work-experience)  
   - [5.3. Certifications](#53-certifications)  
   - [5.4. Skills](#54-skills)
-- [6. Misc Template Requirements](#6-misc-template-requirements)
-    - [6.1. Example of Document Type Marking](#61-example-of-document-type-marking)
 <!-- /TOC -->
 
 ---
@@ -50,10 +48,10 @@ Throughout this document:
   - Also `{{macroName}}`, but live inside a repeatable container (e.g., `<li>`).  
   - The parent element (or ancestor) must have a designated ID so the engine knows to duplicate it per data item.
 
-### 1.2. ëRecommendedí vs. Required
+### 1.2. ‚ÄòRecommended‚Äô vs. Required
 
 - **Required** macros/IDs must be present for the template to render correctly.  
-- **Recommended** macros (formerly ìrequiredî) are _strongly suggested_ for a good-looking template; missing ones wonít break loading but may leave key sections blank.
+- **Recommended** macros (formerly ‚Äúrequired‚Äù) are _strongly suggested_ for a good-looking template; missing ones won‚Äôt break loading but may leave key sections blank.
 
 ---
 
@@ -63,12 +61,12 @@ Throughout this document:
 
 | Macro                 | Description                       | Required | Dynamic | Placeholder |
 |:----------------------|:----------------------------------|:--------:|:-------:|:-----------:|
-| `{{fullName}}`        | Userís full name                  |   Yes    |   No    | No          |
+| `{{fullName}}`        | User‚Äôs full name                  |   Yes    |   No    | No          |
 | `{{homeAddress}}`     | Legal residence                   |   No     |   No    | No          |
 | `{{emailAddress}}`    | Email                             |   No     |   No    | No          |
 | `{{phoneNumber}}`     | Phone                             |   No     |   No    | No          |
 | `{{linkedIn}}`        | LinkedIn URL                      |   No     |   No    | No          |
-| `{{currentDate}}`     | Todayís date (e.g. ìMay 15, 2025î)|   No     |   No    | No          |
+| `{{currentDate}}`     | Today‚Äôs date (e.g. ‚ÄúMay 15, 2025‚Äù)|   No     |   No    | No          |
 
 ### 2.2. Resume-Specific Macros
 
@@ -78,18 +76,18 @@ Throughout this document:
 | **Work History**           |                                       |      |      |             |
 | `{{jobTitle}}`             | Job title                             | Yes  | Yes  | No          |
 | `{{jobCompanyName}}`       | Employer                              | Yes  | Yes  | No          |
-| `{{jobStartDate}}`         | ìMMM YYYYî start                      | No   | Yes  | No          |
-| `{{jobEndDate}}`           | ìMMM YYYYî end                        | No   | Yes  | No          |
+| `{{jobStartDate}}`         | ‚ÄúMMM YYYY‚Äù start                      | No   | Yes  | No          |
+| `{{jobEndDate}}`           | ‚ÄúMMM YYYY‚Äù end                        | No   | Yes  | No          |
 | `{{jobDescription}}`       | Role description                      | No   | Yes  | No          |
 | **Education**               |                                       |      |      |             |
 | `{{degreeType}}`           | Degree                                | Yes  | Yes  | No          |
 | `{{schoolName}}`           | Institution                           | Yes  | Yes  | No          |
-| `{{schoolStartDate}}`      | ìMMM YYYYî start                      | No   | Yes  | No          |
-| `{{schoolEndDate}}`        | ìMMM YYYYî end                        | No   | Yes  | No          |
+| `{{schoolStartDate}}`      | ‚ÄúMMM YYYY‚Äù start                      | No   | Yes  | No          |
+| `{{schoolEndDate}}`        | ‚ÄúMMM YYYY‚Äù end                        | No   | Yes  | No          |
 | **Certifications**          |                                       |      |      |             |
 | `{{certificateName}}`      | Certification                         | Yes  | Yes  | No          |
 | `{{certificateIssuingOrganization}}` | Issuer                  | Yes  | Yes  | No          |
-| `{{certificateDate}}`      | Date issued (ìMMM YYYYî)             | No   | Yes  | No          |
+| `{{certificateDate}}`      | Date issued (‚ÄúMMM YYYY‚Äù)             | No   | Yes  | No          |
 | **Skills**                  |                                       |      |      |             |
 | `{{skillName}}`            | Individual skill                     | No   | Yes  | Yes         |
 
@@ -100,7 +98,7 @@ Throughout this document:
 | `{{coverLetterCompanyName}}`    | Recipient company           | Yes  | No   | No          |
 | `{{appliedJobTitle}}`           | Position applied for        | Yes  | No   | No          |
 | `{{coverLetterContent}}`        | Main letter body            | Yes  | No   | No          |
-| `{{coverLetterRecipientPrefix}}`| e.g. ìMr.î / ìMs.î          | No   | No   | No          |
+| `{{coverLetterRecipientPrefix}}`| e.g. ‚ÄúMr.‚Äù / ‚ÄúMs.‚Äù          | No   | No   | No          |
 | `{{coverLetterRecipientFirstName}}`, `LastName`, `Title`, etc. | Optional salutations | No | No | No |
 
 ---
@@ -158,8 +156,8 @@ Wrap your repeatable blocks in elements with **section** and **entry** IDs. The 
   <h2>Education</h2>
   <ul class="education">
     <li class="education-entry">
-      <h3>{{degreeType}} ñ {{schoolName}}</h3>
-      <p>{{schoolStartDate}} ñ {{schoolEndDate}}</p>
+      <h3>{{degreeType}} ‚Äì {{schoolName}}</h3>
+      <p>{{schoolStartDate}} ‚Äì {{schoolEndDate}}</p>
     </li>
   </ul>
 </div>
@@ -173,7 +171,7 @@ Wrap your repeatable blocks in elements with **section** and **entry** IDs. The 
   <ul class="experience">
     <li class="job-entry">
       <h3>{{jobTitle}} @ {{jobCompanyName}}</h3>
-      <p>{{jobStartDate}} ñ {{jobEndDate}}</p>
+      <p>{{jobStartDate}} ‚Äì {{jobEndDate}}</p>
       <p>{{jobDescription}}</p>
     </li>
   </ul>
@@ -209,19 +207,3 @@ Wrap your repeatable blocks in elements with **section** and **entry** IDs. The 
 - **HTML5**: All templates must be valid HTML5.
 - **CSS Classes**: Use classes for styling, not IDs. IDs are reserved for macros and section/entry IDs.
 - **No Inline Styles**: Avoid inline styles; use CSS classes instead.
-- **Mark The Document Type**: Include the "**cover-letter**" or "**resume-container**" class in the main container to indicate the type of template you are making. Different template types have different optimizations and styles.
-
-### 6.1. Example of Document Type Marking
-Cover Letter Template:
-```html
-<div class="cover-letter">
-  Ö your template content Ö
-</div>
-```
-
-Resume Template:
-```html
-<div class="resume-container">
-  Ö your template content Ö
-</div>
-```
