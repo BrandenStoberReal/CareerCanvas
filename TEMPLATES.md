@@ -31,6 +31,7 @@ Throughout this document:
   - [5.2. Work Experience](#52-work-experience)  
   - [5.3. Certifications](#53-certifications)  
   - [5.4. Skills](#54-skills)
+- [6. Misc Template Requirements](#6-misc-template-requirements)
 <!-- /TOC -->
 
 ---
