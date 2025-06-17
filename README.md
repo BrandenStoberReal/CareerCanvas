@@ -51,16 +51,16 @@
  - [x] Resume Builder - Export resume to PDF
  - [x] Resume Builder - Export resume to HTML
  - [x] Resume Builder - Misc Utilities
- - [x] Cross-builder Integration
+ - [x] Cross-builder Integration/Communication
  - [x] Persistent Storage
  - [x] Macro Parsing & Documentation
  - [ ] ~~Custom Macros & Softcoded Macros~~ **Too niche to justify effort**
  - [ ] Update Notification System
  - [ ] Application Installer (.msi)
  - [ ] Improve Application UX
- - [ ] Applicationwide Tooltips
+ - [ ] Application-wide Tooltips
  - [x] Robust & Organized Logging
- - [ ] Debug Mode
+ - [x] Debug Mode
  - [ ] Application Refinement/Polishing
 
 
