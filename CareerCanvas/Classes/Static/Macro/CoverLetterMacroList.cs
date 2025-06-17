@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CareerCanvas.Classes.Static.Macro
+﻿namespace CareerCanvas.Classes.Static.Macro
 {
     /// <summary>
     /// CoverLetterMacroList is a static class that contains a list of macros used in cover letters.

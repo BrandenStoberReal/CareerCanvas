@@ -93,7 +93,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Controls.Add(exportHtmlButton, 0, 0);
-            tableLayoutPanel2.Controls.Add(exportPdfButton, 0, 1);
+            tableLayoutPanel2.Controls.Add(exportPdfButton, 1, 0);
             tableLayoutPanel2.Location = new Point(17, 53);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 9;
@@ -112,14 +112,14 @@
             // 
             // exportHtmlButton
             // 
-            exportHtmlButton.Anchor = AnchorStyles.Left;
+            exportHtmlButton.Anchor = AnchorStyles.Right;
             exportHtmlButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             exportHtmlButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
             exportHtmlButton.Depth = 0;
             exportHtmlButton.HighEmphasis = true;
             exportHtmlButton.Icon = null;
             exportHtmlButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            exportHtmlButton.Location = new Point(4, 7);
+            exportHtmlButton.Location = new Point(71, 7);
             exportHtmlButton.Margin = new Padding(4, 6, 4, 6);
             exportHtmlButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             exportHtmlButton.Name = "exportHtmlButton";
@@ -141,7 +141,7 @@
             exportPdfButton.HighEmphasis = true;
             exportPdfButton.Icon = null;
             exportPdfButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            exportPdfButton.Location = new Point(4, 57);
+            exportPdfButton.Location = new Point(222, 7);
             exportPdfButton.Margin = new Padding(4, 6, 4, 6);
             exportPdfButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             exportPdfButton.Name = "exportPdfButton";

@@ -8,7 +8,6 @@ using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
 using ReaLTaiizor.Manager;
 using System.Diagnostics;
-using System.Xml;
 
 namespace CareerCanvas.Forms;
 
@@ -587,5 +586,6 @@ public partial class EntryForm : MaterialForm
             }
             MessageBox.Show("Logs cleared successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        InputUtils.ClearActiveControl(this);
     }
 }

@@ -55,7 +55,7 @@
             addJobButton.NoAccentTextColor = Color.Empty;
             addJobButton.Size = new Size(112, 36);
             addJobButton.TabIndex = 7;
-            addJobButton.Text = "Save Job";
+            addJobButton.Text = "Save Skill";
             addJobButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             addJobButton.UseAccentColor = false;
             addJobButton.UseVisualStyleBackColor = true;
@@ -202,7 +202,7 @@
             Name = "AddSkillForm";
             Padding = new Padding(3, 24, 3, 3);
             Sizable = false;
-            Text = "Add New Job";
+            Text = "Add New Skill";
             FormClosing += AddSkillForm_FormClosing;
             Load += AddSkillForm_Load;
             Shown += AddSkillForm_Shown;

@@ -44,7 +44,7 @@ namespace CareerCanvas.Classes.Static.Utils
                 nameMacro.Fill();
 
                 // Address fill
-                StaticAbsoluteMacro addressMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.HomeAddressMacro, "Address: " + identity.Address);
+                StaticAbsoluteMacro addressMacro = new StaticAbsoluteMacro(ref doc, BaseMacroList.HomeAddressMacro, $"Address: {identity.Address}, {identity.City}, {identity.State}");
                 addressMacro.Fill();
 
                 // Email fill
@@ -219,9 +219,9 @@ namespace CareerCanvas.Classes.Static.Utils
                                 jobNode.Descendants().Where(n => n.InnerText == "{{jobDescription}}").First().Remove();
                             }
                         }
-                        jobTemplate.Remove();
-                        Globals.AppLogger.Debug("Job field template removed successfully. This is intended behavior.");
                     }
+                    jobTemplate.Remove();
+                    Globals.AppLogger.Debug("Job field template removed successfully. This is intended behavior.");
                 }
 
                 // Education fill
@@ -239,7 +239,16 @@ namespace CareerCanvas.Classes.Static.Utils
                     {
                         Globals.AppLogger.Debug("Processing education \"{0}\"...", education.SchoolName);
                         HtmlNode eduNode = educationTemplate.Clone();
-                        educationTemplate.ParentNode.AppendChild(eduNode);
+
+                        if (educationTemplate.ParentNode == null)
+                        {
+                            Globals.AppLogger.Error("Education template parent node is null! Cannot append education node.");
+                            continue;
+                        }
+                        else
+                        {
+                            educationTemplate.ParentNode.AppendChild(eduNode);
+                        }
 
                         // Degree type
                         if (eduNode.InnerHtml.Contains("{{degreeType}}"))
@@ -310,10 +319,10 @@ namespace CareerCanvas.Classes.Static.Utils
                             eduNode.InnerHtml = eduNode.InnerHtml.Replace("{{schoolEndDate}}", education.EndDate.ToString("MMMM yyyy"));
                             Globals.AppLogger.Debug("SchoolEndDate macro located and replaced with proper data.");
                         }
-
-                        educationTemplate.Remove();
-                        Globals.AppLogger.Debug("Education field template removed successfully. This is intended behavior.");
                     }
+
+                    educationTemplate.Remove();
+                    Globals.AppLogger.Debug("Education field template removed successfully. This is intended behavior.");
                 }
 
                 // Certificates fill
@@ -374,9 +383,9 @@ namespace CareerCanvas.Classes.Static.Utils
                             certNode.InnerHtml = certNode.InnerHtml.Replace("{{certificateDate}}", certificate.Certificate.IssueDate.ToString("MMMM yyyy"));
                             Globals.AppLogger.Debug("CertificateDate macro located and replaced with proper data.");
                         }
-                        certificatesTemplate.Remove();
-                        Globals.AppLogger.Debug("Certificates field template removed successfully. This is intended behavior.");
                     }
+                    certificatesTemplate.Remove();
+                    Globals.AppLogger.Debug("Certificates field template removed successfully. This is intended behavior.");
                 }
 
                 #endregion Dynamic Macros

@@ -344,7 +344,7 @@
             materialCard6.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard6.Name = "materialCard6";
             materialCard6.Padding = new Padding(14);
-            materialCard6.Size = new Size(1049, 588);
+            materialCard6.Size = new Size(1049, 78);
             materialCard6.TabIndex = 1;
             // 
             // openCvBuilderButton
@@ -356,7 +356,7 @@
             openCvBuilderButton.HighEmphasis = true;
             openCvBuilderButton.Icon = null;
             openCvBuilderButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openCvBuilderButton.Location = new Point(452, 532);
+            openCvBuilderButton.Location = new Point(452, 20);
             openCvBuilderButton.Margin = new Padding(4, 6, 4, 6);
             openCvBuilderButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             openCvBuilderButton.Name = "openCvBuilderButton";
@@ -391,7 +391,7 @@
             materialCard5.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             materialCard5.Name = "materialCard5";
             materialCard5.Padding = new Padding(14);
-            materialCard5.Size = new Size(1049, 588);
+            materialCard5.Size = new Size(1049, 78);
             materialCard5.TabIndex = 0;
             materialCard5.Click += materialCard5_Click;
             // 
@@ -404,7 +404,7 @@
             openResumeWorkspaceButton.HighEmphasis = true;
             openResumeWorkspaceButton.Icon = null;
             openResumeWorkspaceButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            openResumeWorkspaceButton.Location = new Point(437, 532);
+            openResumeWorkspaceButton.Location = new Point(437, 20);
             openResumeWorkspaceButton.Margin = new Padding(4, 6, 4, 6);
             openResumeWorkspaceButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             openResumeWorkspaceButton.Name = "openResumeWorkspaceButton";
