@@ -16,6 +16,19 @@ public partial class EntryForm : MaterialForm
 {
     private string selectedAiKey = string.Empty;
 
+    private void UpdateKeysList(LLmProviders provider, string key)
+    {
+        if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == provider))
+        {
+            Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == provider);
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(provider, key));
+        }
+        else
+        {
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(provider, key));
+        }
+    }
+
     /// <summary>
     ///     Constructor for the EntryForm class.
     ///     Initializes the form components and configures the MaterialSkinManager settings.
@@ -569,123 +582,43 @@ public partial class EntryForm : MaterialForm
         switch (aiKeyComboBox.Text)
         {
             case "DeepSeek":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.DeepSeek))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.DeepSeek);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepSeek, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepSeek, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.DeepSeek, aiKeyBox.Text.Trim());
                 break;
 
             case "Anthropic":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Anthropic))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Anthropic);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Anthropic, aiKeyBox.Text.Trim());
                 break;
 
             case "Cohere":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Cohere))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Cohere);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Cohere, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Cohere, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Cohere, aiKeyBox.Text.Trim());
                 break;
 
             case "DeepInfra":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.DeepInfra))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.DeepInfra);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepInfra, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepInfra, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.DeepInfra, aiKeyBox.Text.Trim());
                 break;
 
             case "Gemini":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Google))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Google);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Google, aiKeyBox.Text.Trim());
                 break;
 
             case "Groq":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Groq))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Groq);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Groq, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Groq, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Groq, aiKeyBox.Text.Trim());
                 break;
 
             case "Mistral":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Mistral))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Mistral);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Mistral, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Mistral, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Mistral, aiKeyBox.Text.Trim());
                 break;
 
             case "OpenAi":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.OpenAi))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.OpenAi);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.OpenAi, aiKeyBox.Text.Trim());
                 break;
 
             case "Perplexity":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Perplexity))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Perplexity);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Perplexity, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Perplexity, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Perplexity, aiKeyBox.Text.Trim());
                 break;
 
             case "XAi":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.XAi))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.XAi);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.XAi, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.XAi, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.XAi, aiKeyBox.Text.Trim());
                 break;
         }
     }
@@ -696,123 +629,43 @@ public partial class EntryForm : MaterialForm
         switch (selectedAiKey)
         {
             case "DeepSeek":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.DeepSeek))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.DeepSeek);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepSeek, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepSeek, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.DeepSeek, aiKeyBox.Text.Trim());
                 break;
 
             case "Anthropic":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Anthropic))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Anthropic);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Anthropic, aiKeyBox.Text.Trim());
                 break;
 
             case "Cohere":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Cohere))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Cohere);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Cohere, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Cohere, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Cohere, aiKeyBox.Text.Trim());
                 break;
 
             case "DeepInfra":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.DeepInfra))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.DeepInfra);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepInfra, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.DeepInfra, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.DeepInfra, aiKeyBox.Text.Trim());
                 break;
 
             case "Gemini":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Google))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Google);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Google, aiKeyBox.Text.Trim());
                 break;
 
             case "Groq":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Groq))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Groq);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Groq, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Groq, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Groq, aiKeyBox.Text.Trim());
                 break;
 
             case "Mistral":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Mistral))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Mistral);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Mistral, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Mistral, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Mistral, aiKeyBox.Text.Trim());
                 break;
 
             case "OpenAi":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.OpenAi))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.OpenAi);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.OpenAi, aiKeyBox.Text.Trim());
                 break;
 
             case "Perplexity":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Perplexity))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Perplexity);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Perplexity, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Perplexity, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.Perplexity, aiKeyBox.Text.Trim());
                 break;
 
             case "XAi":
-                if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.XAi))
-                {
-                    Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.XAi);
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.XAi, aiKeyBox.Text.Trim()));
-                }
-                else
-                {
-                    Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.XAi, aiKeyBox.Text.Trim()));
-                }
+                UpdateKeysList(LLmProviders.XAi, aiKeyBox.Text.Trim());
                 break;
         }
 
