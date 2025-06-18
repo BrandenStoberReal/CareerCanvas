@@ -58,6 +58,7 @@
             updateSkillsTimer = new System.Windows.Forms.Timer(components);
             summaryLabel = new ReaLTaiizor.Controls.MaterialLabel();
             professionalSummaryBox = new ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit();
+            enhanceSummaryButton = new ReaLTaiizor.Controls.MaterialButton();
             jobsExpansionPanel.SuspendLayout();
             educationExpansionPanel.SuspendLayout();
             certificatesExpansionPanel.SuspendLayout();
@@ -640,11 +641,33 @@
             professionalSummaryBox.TextAlign = HorizontalAlignment.Left;
             professionalSummaryBox.UseSystemPasswordChar = false;
             // 
+            // enhanceSummaryButton
+            // 
+            enhanceSummaryButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            enhanceSummaryButton.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            enhanceSummaryButton.Depth = 0;
+            enhanceSummaryButton.HighEmphasis = true;
+            enhanceSummaryButton.Icon = null;
+            enhanceSummaryButton.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            enhanceSummaryButton.Location = new Point(1212, 619);
+            enhanceSummaryButton.Margin = new Padding(4, 6, 4, 6);
+            enhanceSummaryButton.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            enhanceSummaryButton.Name = "enhanceSummaryButton";
+            enhanceSummaryButton.NoAccentTextColor = Color.Empty;
+            enhanceSummaryButton.Size = new Size(158, 36);
+            enhanceSummaryButton.TabIndex = 112;
+            enhanceSummaryButton.Text = "Enhance with AI";
+            enhanceSummaryButton.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            enhanceSummaryButton.UseAccentColor = false;
+            enhanceSummaryButton.UseVisualStyleBackColor = true;
+            enhanceSummaryButton.Click += enhanceSummaryButton_Click;
+            // 
             // HistoryWorkspace
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1820, 1092);
+            Controls.Add(enhanceSummaryButton);
             Controls.Add(professionalSummaryBox);
             Controls.Add(summaryLabel);
             Controls.Add(descriptionBox);
@@ -705,5 +728,6 @@
         private System.Windows.Forms.Timer updateSkillsTimer;
         private ReaLTaiizor.Controls.MaterialLabel summaryLabel;
         private ReaLTaiizor.Controls.MaterialMultiLineTextBoxEdit professionalSummaryBox;
+        private ReaLTaiizor.Controls.MaterialButton enhanceSummaryButton;
     }
 }

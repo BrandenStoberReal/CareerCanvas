@@ -747,4 +747,8 @@ public partial class HistoryWorkspace : MaterialForm
     {
         InputUtils.ClearActiveControl(this);
     }
+
+    private void enhanceSummaryButton_Click(object sender, EventArgs e)
+    {
+    }
 }
