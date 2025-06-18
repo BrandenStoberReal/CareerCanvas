@@ -1,17 +1,14 @@
 ﻿using LlmTornado;
 using LlmTornado.Code;
 using LlmTornado.Code.Models;
-using LlmTornado.Models;
 
 #region Models
-
 using LlmTornado.Chat.Models;
 using LlmTornado.Chat.Models.DeepInfra;
 using LlmTornado.Chat.Models.DeepSeek;
 using LlmTornado.Chat.Models.Mistral;
 using LlmTornado.Chat.Models.Perplexity;
 using LlmTornado.Chat.Models.XAi;
-
 #endregion Models
 
 namespace CareerCanvas.Classes.Static.Utils;
