@@ -3,6 +3,7 @@ using CareerCanvas.Classes.Main.Protobuf;
 using CareerCanvas.Classes.Static;
 using CareerCanvas.Classes.Static.Utils;
 using CareerCanvas.Forms.Workspaces;
+using LlmTornado.Code;
 using ProtoBuf;
 using ReaLTaiizor.Child.Material;
 using ReaLTaiizor.Forms;
@@ -586,6 +587,26 @@ public partial class EntryForm : MaterialForm
             }
             MessageBox.Show("Logs cleared successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        InputUtils.ClearActiveControl(this);
+    }
+
+    private void openAiKeyBox_Leave(object sender, EventArgs e)
+    {
+        Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, openAiKeyBox.Text));
+    }
+
+    private void anthropicKeyBox_Leave(object sender, EventArgs e)
+    {
+        Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, anthropicKeyBox.Text));
+    }
+
+    private void geminiKeyBox_Click(object sender, EventArgs e)
+    {
+        Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, geminiKeyBox.Text));
+    }
+
+    private void tableLayoutPanel1_Click(object sender, EventArgs e)
+    {
         InputUtils.ClearActiveControl(this);
     }
 }

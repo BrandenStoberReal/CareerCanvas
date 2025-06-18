@@ -170,6 +170,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.Size = new Size(1065, 604);
             tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.Click += tableLayoutPanel1_Click;
             // 
             // geminiKeyBox
             // 
@@ -201,7 +202,7 @@
             geminiKeyBox.TextAlign = HorizontalAlignment.Left;
             geminiKeyBox.TrailingIcon = null;
             geminiKeyBox.UseSystemPasswordChar = true;
-            geminiKeyBox.TextChanged += geminiKeyBox_TextChanged;
+            geminiKeyBox.Click += geminiKeyBox_Click;
             // 
             // anthropicKeyBox
             // 
@@ -233,7 +234,7 @@
             anthropicKeyBox.TextAlign = HorizontalAlignment.Left;
             anthropicKeyBox.TrailingIcon = null;
             anthropicKeyBox.UseSystemPasswordChar = true;
-            anthropicKeyBox.TextChanged += anthropicKeyBox_TextChanged;
+            anthropicKeyBox.Leave += anthropicKeyBox_Leave;
             // 
             // openAiKeyBox
             // 
@@ -265,7 +266,7 @@
             openAiKeyBox.TextAlign = HorizontalAlignment.Left;
             openAiKeyBox.TrailingIcon = null;
             openAiKeyBox.UseSystemPasswordChar = true;
-            openAiKeyBox.TextChanged += openAiKeyBox_TextChanged;
+            openAiKeyBox.Leave += openAiKeyBox_Leave;
             // 
             // materialLabel1
             // 
