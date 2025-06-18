@@ -202,7 +202,7 @@
             geminiKeyBox.TextAlign = HorizontalAlignment.Left;
             geminiKeyBox.TrailingIcon = null;
             geminiKeyBox.UseSystemPasswordChar = true;
-            geminiKeyBox.Click += geminiKeyBox_Click;
+            geminiKeyBox.Leave += geminiKeyBox_Leave;
             // 
             // anthropicKeyBox
             // 
