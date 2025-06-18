@@ -562,17 +562,41 @@ public partial class EntryForm : MaterialForm
 
     private void openAiKeyBox_Leave(object sender, EventArgs e)
     {
-        Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, openAiKeyBox.Text));
+        if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.OpenAi))
+        {
+            Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.OpenAi);
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, openAiKeyBox.Text));
+        }
+        else
+        {
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.OpenAi, openAiKeyBox.Text));
+        }
     }
 
     private void anthropicKeyBox_Leave(object sender, EventArgs e)
     {
-        Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, anthropicKeyBox.Text));
+        if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Anthropic))
+        {
+            Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Anthropic);
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, anthropicKeyBox.Text));
+        }
+        else
+        {
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Anthropic, anthropicKeyBox.Text));
+        }
     }
 
     private void geminiKeyBox_Leave(object sender, EventArgs e)
     {
-        Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, geminiKeyBox.Text));
+        if (Globals.AiSecrets.ApiKeys.Any(x => x.Item1 == LLmProviders.Google))
+        {
+            Globals.AiSecrets.ApiKeys.RemoveAll(x => x.Item1 == LLmProviders.Google);
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, geminiKeyBox.Text));
+        }
+        else
+        {
+            Globals.AiSecrets.ApiKeys.Add(Tuple.Create(LLmProviders.Google, geminiKeyBox.Text));
+        }
     }
 
     private void tableLayoutPanel1_Click(object sender, EventArgs e)
