@@ -35,13 +35,8 @@
             tabPage1 = new TabPage();
             aiPage = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
-            geminiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            anthropicKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            openAiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
-            materialLabel1 = new ReaLTaiizor.Controls.MaterialLabel();
-            materialLabel3 = new ReaLTaiizor.Controls.MaterialLabel();
-            materialLabel4 = new ReaLTaiizor.Controls.MaterialLabel();
-            geminiLinkLabel = new LinkLabel();
+            aiKeyBox = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
+            aiKeyComboBox = new ReaLTaiizor.Controls.MaterialComboBox();
             cvPage = new TabPage();
             materialCard6 = new ReaLTaiizor.Controls.MaterialCard();
             openCvBuilderButton = new ReaLTaiizor.Controls.MaterialButton();
@@ -147,13 +142,8 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.Controls.Add(geminiKeyBox, 2, 2);
-            tableLayoutPanel1.Controls.Add(anthropicKeyBox, 2, 1);
-            tableLayoutPanel1.Controls.Add(openAiKeyBox, 2, 0);
-            tableLayoutPanel1.Controls.Add(materialLabel1, 1, 0);
-            tableLayoutPanel1.Controls.Add(materialLabel3, 1, 1);
-            tableLayoutPanel1.Controls.Add(materialLabel4, 1, 2);
-            tableLayoutPanel1.Controls.Add(geminiLinkLabel, 0, 2);
+            tableLayoutPanel1.Controls.Add(aiKeyBox, 2, 0);
+            tableLayoutPanel1.Controls.Add(aiKeyComboBox, 0, 0);
             tableLayoutPanel1.Location = new Point(6, 6);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 11;
@@ -172,157 +162,61 @@
             tableLayoutPanel1.TabIndex = 0;
             tableLayoutPanel1.Click += tableLayoutPanel1_Click;
             // 
-            // geminiKeyBox
+            // aiKeyBox
             // 
-            geminiKeyBox.AnimateReadOnly = false;
-            geminiKeyBox.AutoCompleteMode = AutoCompleteMode.None;
-            geminiKeyBox.AutoCompleteSource = AutoCompleteSource.None;
-            geminiKeyBox.BackgroundImageLayout = ImageLayout.None;
-            geminiKeyBox.CharacterCasing = CharacterCasing.Normal;
-            geminiKeyBox.Depth = 0;
-            geminiKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            geminiKeyBox.HideSelection = true;
-            geminiKeyBox.Hint = "Key goes here...";
-            geminiKeyBox.LeadingIcon = null;
-            geminiKeyBox.Location = new Point(292, 111);
-            geminiKeyBox.MaxLength = 32767;
-            geminiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            geminiKeyBox.Name = "geminiKeyBox";
-            geminiKeyBox.PasswordChar = '●';
-            geminiKeyBox.PrefixSuffixText = null;
-            geminiKeyBox.ReadOnly = false;
-            geminiKeyBox.RightToLeft = RightToLeft.No;
-            geminiKeyBox.SelectedText = "";
-            geminiKeyBox.SelectionLength = 0;
-            geminiKeyBox.SelectionStart = 0;
-            geminiKeyBox.ShortcutsEnabled = true;
-            geminiKeyBox.Size = new Size(773, 48);
-            geminiKeyBox.TabIndex = 5;
-            geminiKeyBox.TabStop = false;
-            geminiKeyBox.TextAlign = HorizontalAlignment.Left;
-            geminiKeyBox.TrailingIcon = null;
-            geminiKeyBox.UseSystemPasswordChar = true;
-            geminiKeyBox.Leave += geminiKeyBox_Leave;
+            aiKeyBox.AnimateReadOnly = false;
+            aiKeyBox.AutoCompleteMode = AutoCompleteMode.None;
+            aiKeyBox.AutoCompleteSource = AutoCompleteSource.None;
+            aiKeyBox.BackgroundImageLayout = ImageLayout.None;
+            aiKeyBox.CharacterCasing = CharacterCasing.Normal;
+            aiKeyBox.Depth = 0;
+            aiKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            aiKeyBox.HideSelection = true;
+            aiKeyBox.Hint = "Key goes here...";
+            aiKeyBox.LeadingIcon = null;
+            aiKeyBox.Location = new Point(261, 3);
+            aiKeyBox.MaxLength = 32767;
+            aiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            aiKeyBox.Name = "aiKeyBox";
+            aiKeyBox.PasswordChar = '●';
+            aiKeyBox.PrefixSuffixText = null;
+            aiKeyBox.ReadOnly = false;
+            aiKeyBox.RightToLeft = RightToLeft.No;
+            aiKeyBox.SelectedText = "";
+            aiKeyBox.SelectionLength = 0;
+            aiKeyBox.SelectionStart = 0;
+            aiKeyBox.ShortcutsEnabled = true;
+            aiKeyBox.Size = new Size(773, 48);
+            aiKeyBox.TabIndex = 1;
+            aiKeyBox.TabStop = false;
+            aiKeyBox.TextAlign = HorizontalAlignment.Left;
+            aiKeyBox.TrailingIcon = null;
+            aiKeyBox.UseSystemPasswordChar = true;
+            aiKeyBox.Leave += aiKeyBox_Leave;
             // 
-            // anthropicKeyBox
+            // aiKeyComboBox
             // 
-            anthropicKeyBox.AnimateReadOnly = false;
-            anthropicKeyBox.AutoCompleteMode = AutoCompleteMode.None;
-            anthropicKeyBox.AutoCompleteSource = AutoCompleteSource.None;
-            anthropicKeyBox.BackgroundImageLayout = ImageLayout.None;
-            anthropicKeyBox.CharacterCasing = CharacterCasing.Normal;
-            anthropicKeyBox.Depth = 0;
-            anthropicKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            anthropicKeyBox.HideSelection = true;
-            anthropicKeyBox.Hint = "Key goes here...";
-            anthropicKeyBox.LeadingIcon = null;
-            anthropicKeyBox.Location = new Point(292, 57);
-            anthropicKeyBox.MaxLength = 32767;
-            anthropicKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            anthropicKeyBox.Name = "anthropicKeyBox";
-            anthropicKeyBox.PasswordChar = '●';
-            anthropicKeyBox.PrefixSuffixText = null;
-            anthropicKeyBox.ReadOnly = false;
-            anthropicKeyBox.RightToLeft = RightToLeft.No;
-            anthropicKeyBox.SelectedText = "";
-            anthropicKeyBox.SelectionLength = 0;
-            anthropicKeyBox.SelectionStart = 0;
-            anthropicKeyBox.ShortcutsEnabled = true;
-            anthropicKeyBox.Size = new Size(773, 48);
-            anthropicKeyBox.TabIndex = 3;
-            anthropicKeyBox.TabStop = false;
-            anthropicKeyBox.TextAlign = HorizontalAlignment.Left;
-            anthropicKeyBox.TrailingIcon = null;
-            anthropicKeyBox.UseSystemPasswordChar = true;
-            anthropicKeyBox.Leave += anthropicKeyBox_Leave;
-            // 
-            // openAiKeyBox
-            // 
-            openAiKeyBox.AnimateReadOnly = false;
-            openAiKeyBox.AutoCompleteMode = AutoCompleteMode.None;
-            openAiKeyBox.AutoCompleteSource = AutoCompleteSource.None;
-            openAiKeyBox.BackgroundImageLayout = ImageLayout.None;
-            openAiKeyBox.CharacterCasing = CharacterCasing.Normal;
-            openAiKeyBox.Depth = 0;
-            openAiKeyBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            openAiKeyBox.HideSelection = true;
-            openAiKeyBox.Hint = "Key goes here...";
-            openAiKeyBox.LeadingIcon = null;
-            openAiKeyBox.Location = new Point(292, 3);
-            openAiKeyBox.MaxLength = 32767;
-            openAiKeyBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            openAiKeyBox.Name = "openAiKeyBox";
-            openAiKeyBox.PasswordChar = '●';
-            openAiKeyBox.PrefixSuffixText = null;
-            openAiKeyBox.ReadOnly = false;
-            openAiKeyBox.RightToLeft = RightToLeft.No;
-            openAiKeyBox.SelectedText = "";
-            openAiKeyBox.SelectionLength = 0;
-            openAiKeyBox.SelectionStart = 0;
-            openAiKeyBox.ShortcutsEnabled = true;
-            openAiKeyBox.Size = new Size(773, 48);
-            openAiKeyBox.TabIndex = 1;
-            openAiKeyBox.TabStop = false;
-            openAiKeyBox.TextAlign = HorizontalAlignment.Left;
-            openAiKeyBox.TrailingIcon = null;
-            openAiKeyBox.UseSystemPasswordChar = true;
-            openAiKeyBox.Leave += openAiKeyBox_Leave;
-            // 
-            // materialLabel1
-            // 
-            materialLabel1.Anchor = AnchorStyles.Right;
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel1.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel1.Location = new Point(182, 18);
-            materialLabel1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(104, 17);
-            materialLabel1.TabIndex = 0;
-            materialLabel1.Text = "OpenAI API Key:";
-            // 
-            // materialLabel3
-            // 
-            materialLabel3.Anchor = AnchorStyles.Right;
-            materialLabel3.AutoSize = true;
-            materialLabel3.Depth = 0;
-            materialLabel3.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel3.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel3.Location = new Point(167, 72);
-            materialLabel3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel3.Name = "materialLabel3";
-            materialLabel3.Size = new Size(119, 17);
-            materialLabel3.TabIndex = 2;
-            materialLabel3.Text = "Anthropic API Key:";
-            // 
-            // materialLabel4
-            // 
-            materialLabel4.Anchor = AnchorStyles.Right;
-            materialLabel4.AutoSize = true;
-            materialLabel4.Depth = 0;
-            materialLabel4.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel4.FontType = ReaLTaiizor.Manager.MaterialSkinManager.FontType.Subtitle2;
-            materialLabel4.Location = new Point(134, 126);
-            materialLabel4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            materialLabel4.Name = "materialLabel4";
-            materialLabel4.Size = new Size(152, 17);
-            materialLabel4.TabIndex = 4;
-            materialLabel4.Text = "Google Gemini API Key:";
-            // 
-            // geminiLinkLabel
-            // 
-            geminiLinkLabel.Anchor = AnchorStyles.Right;
-            geminiLinkLabel.AutoSize = true;
-            geminiLinkLabel.Font = new Font("Times New Roman", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            geminiLinkLabel.LinkColor = Color.FromArgb(255, 128, 128);
-            geminiLinkLabel.Location = new Point(3, 127);
-            geminiLinkLabel.Name = "geminiLinkLabel";
-            geminiLinkLabel.Size = new Size(125, 15);
-            geminiLinkLabel.TabIndex = 6;
-            geminiLinkLabel.TabStop = true;
-            geminiLinkLabel.Text = "Grab a free Gemini key";
-            geminiLinkLabel.LinkClicked += geminiLinkLabel_LinkClicked;
+            aiKeyComboBox.AutoResize = false;
+            aiKeyComboBox.BackColor = Color.FromArgb(255, 255, 255);
+            aiKeyComboBox.Depth = 0;
+            aiKeyComboBox.DrawMode = DrawMode.OwnerDrawVariable;
+            aiKeyComboBox.DropDownHeight = 174;
+            aiKeyComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            aiKeyComboBox.DropDownWidth = 121;
+            aiKeyComboBox.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            aiKeyComboBox.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            aiKeyComboBox.FormattingEnabled = true;
+            aiKeyComboBox.IntegralHeight = false;
+            aiKeyComboBox.ItemHeight = 43;
+            aiKeyComboBox.Items.AddRange(new object[] { "DeepSeek", "Anthropic", "Cohere", "DeepInfra", "Gemini", "Groq", "Mistral", "OpenAi", "Perplexity", "XAi" });
+            aiKeyComboBox.Location = new Point(3, 3);
+            aiKeyComboBox.MaxDropDownItems = 4;
+            aiKeyComboBox.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            aiKeyComboBox.Name = "aiKeyComboBox";
+            aiKeyComboBox.Size = new Size(252, 49);
+            aiKeyComboBox.StartIndex = 0;
+            aiKeyComboBox.TabIndex = 7;
+            aiKeyComboBox.SelectedIndexChanged += aiKeyComboBox_SelectedIndexChanged;
             // 
             // cvPage
             // 
@@ -1099,7 +993,6 @@
             Load += EntryForm_Load;
             aiPage.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             cvPage.ResumeLayout(false);
             materialCard6.ResumeLayout(false);
             materialCard6.PerformLayout();
@@ -1129,13 +1022,7 @@
         private TabPage tabPage1;
         private TabPage aiPage;
         private TableLayoutPanel tableLayoutPanel1;
-        private ReaLTaiizor.Controls.MaterialTextBoxEdit geminiKeyBox;
-        private ReaLTaiizor.Controls.MaterialTextBoxEdit anthropicKeyBox;
-        private ReaLTaiizor.Controls.MaterialTextBoxEdit openAiKeyBox;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel1;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel3;
-        private ReaLTaiizor.Controls.MaterialLabel materialLabel4;
-        private LinkLabel geminiLinkLabel;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit aiKeyBox;
         private TabPage cvPage;
         private ReaLTaiizor.Controls.MaterialCard materialCard6;
         private ReaLTaiizor.Controls.MaterialButton openCvBuilderButton;
@@ -1183,5 +1070,6 @@
         private ReaLTaiizor.Controls.MaterialButton clearLogsButton;
         private ReaLTaiizor.Controls.MaterialLabel materialLabel10;
         private TabPage prefsPage;
+        private ReaLTaiizor.Controls.MaterialComboBox aiKeyComboBox;
     }
 }
