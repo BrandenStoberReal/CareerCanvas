@@ -47,6 +47,20 @@ internal static class Program
             Globals.AppLogger.Warning("AI secrets not found. Creating new secrets config.");
         }
 
+        // Load preferences
+        if (File.Exists("./data/misc/prefs.pns"))
+        {
+            using (var file = File.OpenRead("./data/misc/prefs.pns"))
+            {
+                Globals.Preferences = Serializer.Deserialize<Preferences>(file);
+                Globals.AppLogger.Information("Preferences loaded.");
+            }
+        }
+        else
+        {
+            Globals.AppLogger.Warning("Preferences not found. Creating new preferences.");
+        }
+
         Globals.AppLogger.Information("Starting application...");
         Application.Run(new EntryForm());
     }
@@ -65,6 +79,13 @@ internal static class Program
         {
             Serializer.Serialize(file, Globals.AiSecrets);
             Globals.AppLogger.Information("AI secrets saved.");
+        }
+
+        // Save preferences
+        using (var file = File.Create("./data/misc/prefs.pns"))
+        {
+            Serializer.Serialize(file, Globals.Preferences);
+            Globals.AppLogger.Information("Preferences saved.");
         }
 
         // Encrypt identity settings

@@ -53,6 +53,11 @@ public static class Globals
     public static AiSecrets AiSecrets { get; set; } = new();
 
     /// <summary>
+    /// User preferences
+    /// </summary>
+    public static Preferences Preferences { get; set; } = new();
+
+    /// <summary>
     ///     The path to the identity config file.
     /// </summary>
     public static string IdentityConfigPath { get; set; } = "./data/misc/identity.careerconfig";
