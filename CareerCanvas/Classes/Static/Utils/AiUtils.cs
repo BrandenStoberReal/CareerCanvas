@@ -4,20 +4,22 @@ using LlmTornado.Code.Models;
 using LlmTornado.Models;
 
 #region Models
+
 using LlmTornado.Chat.Models;
 using LlmTornado.Chat.Models.DeepInfra;
 using LlmTornado.Chat.Models.DeepSeek;
 using LlmTornado.Chat.Models.Mistral;
 using LlmTornado.Chat.Models.Perplexity;
 using LlmTornado.Chat.Models.XAi;
-#endregion
+
+#endregion Models
 
 namespace CareerCanvas.Classes.Static.Utils;
 
-public static class A
+public static class AiUtils
 {
     private static TornadoApi B;
-    
+
     private static Dictionary<LLmProviders, List<IModel>> C = new Dictionary<LLmProviders, List<IModel>>
     {
         [LLmProviders.Anthropic] = ChatModelAnthropic.ModelsAll,
@@ -33,9 +35,9 @@ public static class A
     };
 
     private static ChatModel D;
-    
+
     private static Dictionary<IModel, string> E = ChatModel.AllModelsMap.ToDictionary(x => x.Value, x => x.Key);
-    
+
     public static void RefreshApis()
     {
         List<ProviderAuthentication> F = [];
@@ -46,7 +48,7 @@ public static class A
     public static string[] GetAvailableModels()
     {
         List<IModel> H = [];
-        foreach(LLmProviders I in C.Keys)
+        foreach (LLmProviders I in C.Keys)
         {
             if (B.GetProviderAuthentication(I) != null)
             {
