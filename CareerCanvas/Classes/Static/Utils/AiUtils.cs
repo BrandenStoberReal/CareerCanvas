@@ -61,6 +61,13 @@ public static class AiUtils
         return J.ToArray();
     }
 
+    public static string[] GetAvailableModels(LLmProviders provider)
+    {
+        List<string> J = [];
+        J.AddRange(from IModel K in C[provider] select E[K]);
+        return J.ToArray();
+    }
+
     public static void SetModel(string model)
     {
         D = model;
